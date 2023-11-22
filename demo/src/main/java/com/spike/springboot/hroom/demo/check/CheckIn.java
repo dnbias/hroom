@@ -9,6 +9,7 @@ public class CheckIn extends GeneralCheck {
    private  LocalDate startDate;
    private LocalTime startTime;
 
+
     public LocalDate getStartDate() {
         return startDate;
     }
