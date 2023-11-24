@@ -1,10 +1,10 @@
 package com.dnbias.hroom.reservation;
 
-import com.spike.springboot.hroom.demo.check.CheckIn;
-import com.spike.springboot.hroom.demo.check.CheckOut;
-import com.spike.springboot.hroom.demo.room.Insertion;
-import com.spike.springboot.hroom.demo.transaction.Transaction;
-import com.spike.springboot.hroom.demo.user.Tenant;
+import com.dnbias.hroom.check.CheckIn;
+import com.dnbias.hroom.check.CheckOut;
+import com.dnbias.hroom.room.Insertion;
+import com.dnbias.hroom.transaction.Transaction;
+import com.dnbias.hroom.user.Tenant;
 
 public class Reservation {
 
@@ -12,10 +12,10 @@ public class Reservation {
    private  CheckIn checkIn;
    private CheckOut checkOut;
    private Tenant tenant;
-   private Inseretion rented;
+   private Insertion rented;
    private int insertionID;
 
-    public Reservation(Transaction transaction, CheckIn checkIn, CheckOut checkOut, Tenant tenant, Inseretion rented, int insertionID) {
+    public Reservation(Transaction transaction, CheckIn checkIn, CheckOut checkOut, Tenant tenant, Insertion rented, int insertionID) {
         this.transaction = transaction;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
@@ -63,16 +63,16 @@ public class Reservation {
         this.tenant = tenant;
     }
 
-    public Inseretion getRented() {
+    public Insertion getRented() {
         return rented;
     }
 
-    public void setRented(Inseretion rented) {
+    public void setRented(Insertion rented) {
         this.rented = rented;
     }
 
-    public int getReservationID() {
-        return reservationID;
+    public int getInsertionID() {
+        return insertionID;
     }
 
     public void setReservationID(int insertionID) {

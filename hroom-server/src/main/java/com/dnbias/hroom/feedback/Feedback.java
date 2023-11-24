@@ -1,16 +1,18 @@
 package com.dnbias.hroom.feedback;
 
+import com.dnbias.hroom.user.User;
+
 import java.sql.Timestamp;
 
 public abstract class Feedback {
 
-   private  String writer;
+   private User writer;
    private int rating;
    private String description;
    private Timestamp timestamp;
-   private String target;
+   private TargetOfFeedback target;
 
-    public Feedback(String writer, int rating, String description, Timestamp timestamp, String target) {
+    public Feedback(User writer, int rating, String description, Timestamp timestamp, TargetOfFeedback target) {
         this.writer = writer;
         this.rating = rating;
         this.description = description;
@@ -18,11 +20,11 @@ public abstract class Feedback {
         this.target = target;
     }
 
-    public String getWriter() {
+    public User getWriter() {
         return writer;
     }
 
-    public void setWriter(String writer) {
+    public void setWriter(User writer) {
         this.writer = writer;
     }
 
@@ -50,11 +52,11 @@ public abstract class Feedback {
         this.timestamp = timestamp;
     }
 
-    public String getTarget() {
+    public TargetOfFeedback getTarget() {
         return target;
     }
 
-    public void setTarget(String target) {
+    public void setTarget(TargetOfFeedback target) {
         this.target = target;
     }
 }

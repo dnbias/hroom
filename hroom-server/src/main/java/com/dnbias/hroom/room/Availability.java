@@ -2,9 +2,9 @@ package com.dnbias.hroom.room;
 
 import java.time.LocalDate;
 
-public class Disponibility {
+public class Availability {
 
-    public Disponibility(int weekdays, LocalDate timeStart, LocalDate timeEnd, LocalDate daysNotAvailable) {
+    public Availability(int weekdays, LocalDate timeStart, LocalDate timeEnd, LocalDate daysNotAvailable) {
         this.weekdays = weekdays;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -49,9 +49,5 @@ public class Disponibility {
     private LocalDate timeEnd;
 
     private LocalDate daysNotAvailable;
-
-
-
-
 
 }

@@ -1,17 +1,17 @@
 package com.dnbias.hroom.user;
 
-import com.spike.springboot.hroom.demo.feedback.Feedback;
-import com.spike.springboot.hroom.demo.report.Report;
-import com.spike.springboot.hroom.demo.room.Insertion;
+import com.dnbias.hroom.feedback.Feedback;
+import com.dnbias.hroom.report.Report;
+import com.dnbias.hroom.room.Insertion;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class LandLord extends User{
+public class Landlord extends User{
     private String residence;
-    private List<Inseretion> insertionOwned = new ArrayList<>();
+    private List<Insertion> insertionOwned = new ArrayList<>();
     private List<Feedback> feedbackMean = new ArrayList<>();
     private int numberOfInsertions;
 
@@ -21,7 +21,7 @@ public class LandLord extends User{
     private List<Report> report;
     private Map<Tenant, Insertion> mapReservations;
 
-    public LandLord(String residence, List<Insertion> insertionOwned, List<Feedback> feedbackMean, int numberOfInsertions, int numberOfRents, List<Report> report, Map<Tenant, Insertion> mapReservations) {
+    public Landlord(String residence, List<Insertion> insertionOwned, List<Feedback> feedbackMean, int numberOfInsertions, int numberOfRents, List<Report> report, Map<Tenant, Insertion> mapReservations) {
         this.residence = residence;
         this.insertionOwned = insertionOwned;
         this.feedbackMean = feedbackMean;
@@ -55,11 +55,11 @@ public class LandLord extends User{
         this.residence = residence;
     }
 
-    public List<Inseretion> getInsertionOwned() {
+    public List<Insertion> getInsertionOwned() {
         return insertionOwned;
     }
 
-    public void setInsertionOwned(List<Inseretion> insertionOwned) {
+    public void setInsertionOwned(List<Insertion> insertionOwned) {
         this.insertionOwned = insertionOwned;
     }
 

@@ -1,25 +1,25 @@
 package com.dnbias.hroom.user;
 
-import com.spike.springboot.hroom.demo.feedback.Feedback;
-import com.spike.springboot.hroom.demo.reservation.Reservation;
-import com.spike.springboot.hroom.demo.room.Insertion;
+import com.dnbias.hroom.feedback.TargetOfFeedback;
+import com.dnbias.hroom.feedback.Feedback;
+import com.dnbias.hroom.reservation.Reservation;
+import com.dnbias.hroom.room.Insertion;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class Tenant extends User {
-
-    private String residece;
+public class Tenant extends User implements TargetOfFeedback {
+    private String residence;
     private List<Insertion> savedInsertions = new ArrayList<>();
     private String preferredPayment;
-
     private List<Feedback> receivedFeedbacks = new ArrayList<>();
     private HashMap<Reservation,String> reservations ;
 
-    public Tenant(String residece, List<Insertions> savedInsertions, String preferredPayment, List<Feedback> receivedFeedbacks, HashMap<Reservation, String> reservations) {
-        this.residece = residece;
+    public Tenant(String residence, List<Insertion> savedInsertions, String preferredPayment,
+                  List<Feedback> receivedFeedbacks, HashMap<Reservation, String> reservations) {
+        this.residence = residence;
         this.savedInsertions = savedInsertions;
         this.preferredPayment = preferredPayment;
         this.receivedFeedbacks = receivedFeedbacks;
@@ -27,7 +27,7 @@ public class Tenant extends User {
     }
 
     // TODO: 19/11/23
-    public void addFeedBack(Insertion, String message)
+    public void addFeedBack(Insertion insertion, int rating, String description)
     {
 
     }
@@ -41,17 +41,18 @@ public class Tenant extends User {
     }
 
     @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId, typeUser choose) throws IllegalArgumentException {
+    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId,
+                         typeUser choose) throws IllegalArgumentException {
 
     }
 
-    public String getResidece() {
-        return residece;
+    public String getResidence() {
+        return residence;
     }
 
 
-    public void setResidece(String residece) {
-        this.residece = residece;
+    public void setResidence(String residence) {
+        this.residence = residence;
     }
 
     public List<Insertion> getSavedInsertions() {

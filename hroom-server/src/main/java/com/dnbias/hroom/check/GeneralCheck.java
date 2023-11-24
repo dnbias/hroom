@@ -2,7 +2,7 @@ package com.dnbias.hroom.check;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-@Data
+
 public abstract class GeneralCheck {
     private LocalDate setDate;
     private LocalTime setTime;
