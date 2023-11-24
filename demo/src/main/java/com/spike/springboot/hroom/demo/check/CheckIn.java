@@ -26,4 +26,5 @@ public class CheckIn extends GeneralCheck {
     public void setStartTime(LocalTime startTime) {
         this.startTime = startTime;
     }
+    print int ao;
 }

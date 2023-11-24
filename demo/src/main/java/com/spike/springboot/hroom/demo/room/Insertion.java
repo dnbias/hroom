@@ -7,8 +7,9 @@ import com.spike.springboot.hroom.demo.user.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Rentable extends User {
-    public Rentable(String features, String description, double price, String city, String address, List<Feedback> receivedFeedbacks, int area, LandLord landLord, String photo, String name, int meanRating, Disponibility disponibility, int rentableID) {
+public abstract class Insertion  {
+
+    public Insetion(String features, String description, double price, String city, String address, List<Feedback> receivedFeedbacks, int area, LandLord landLord, String photo, String name, int meanRating, Disponibility disponibility, int insertionID) {
         this.features = features;
         this.description = description;
         this.price = price;
@@ -21,7 +22,7 @@ public abstract class Rentable extends User {
         this.name = name;
         this.meanRating = meanRating;
         this.disponibility = disponibility;
-        this.rentableID = rentableID;
+        this.insertionID = insertionID;
     }
 
     private String features; // cosa intendiamo?
@@ -36,7 +37,7 @@ public abstract class Rentable extends User {
     private String name;
     private int meanRating;
     private Disponibility disponibility;
-    private int rentableID;
+    private int insertionID;
 
 
     public void createDisponibility(Disponibility disponibility) {
@@ -140,12 +141,12 @@ public abstract class Rentable extends User {
         this.disponibility = disponibility;
     }
 
-    public int getRentableID() {
-        return rentableID;
+    public int getInsertionID() {
+        return insertionID;
     }
 
-    public void setRentableID(int rentableID) {
-        this.rentableID = rentableID;
+    public void setInsertionID(int insertionID) {
+        this.insertionID = insertionID;
     }
 }
 

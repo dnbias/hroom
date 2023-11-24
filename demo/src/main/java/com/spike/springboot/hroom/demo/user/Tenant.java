@@ -2,7 +2,7 @@ package com.spike.springboot.hroom.demo.user;
 
 import com.spike.springboot.hroom.demo.feedback.Feedback;
 import com.spike.springboot.hroom.demo.reservation.Reservation;
-import com.spike.springboot.hroom.demo.room.Rentable;
+import com.spike.springboot.hroom.demo.room.Insertion;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,7 +12,7 @@ import java.util.List;
 public class Tenant extends User {
     private String residece;
 
-    private List<Insertions> savedInsertions = new ArrayList<>();
+        private List<Insertion> savedInsertions = new ArrayList<>();
     private String preferredPayment;
 
     private List<Feedback> receivedFeedbacks = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Tenant extends User {
     }
 
     // TODO: 19/11/23
-    public void addFeedBack(Rentable rentable, String message)
+    public void addFeedBack(Insertion, String message)
     {
 
     }
@@ -48,20 +48,17 @@ public class Tenant extends User {
     public String getResidece() {
         return residece;
     }
-    //classe inner
-     class Insertions{
 
-     }
 
     public void setResidece(String residece) {
         this.residece = residece;
     }
 
-    public List<Insertions> getSavedInsertions() {
+    public List<Insertion> getSavedInsertions() {
         return savedInsertions;
     }
 
-    public void setSavedInsertions(List<Insertions> savedInsertions) {
+    public void setSavedInsertions(List<Insertion> savedInsertions) {
         this.savedInsertions = savedInsertions;
     }
 

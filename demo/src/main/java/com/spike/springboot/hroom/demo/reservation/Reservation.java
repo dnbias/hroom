@@ -2,7 +2,7 @@ package com.spike.springboot.hroom.demo.reservation;
 
 import com.spike.springboot.hroom.demo.check.CheckIn;
 import com.spike.springboot.hroom.demo.check.CheckOut;
-import com.spike.springboot.hroom.demo.room.Rentable;
+import com.spike.springboot.hroom.demo.room.Insertion;
 import com.spike.springboot.hroom.demo.transaction.Transaction;
 import com.spike.springboot.hroom.demo.user.Tenant;
 
@@ -12,16 +12,16 @@ public class Reservation {
    private  CheckIn checkIn;
    private CheckOut checkOut;
    private Tenant tenant;
-   private Rentable rented;
-   private int reservationID;
+   private Inseretion rented;
+   private int insertionID;
 
-    public Reservation(Transaction transaction, CheckIn checkIn, CheckOut checkOut, Tenant tenant, Rentable rented, int reservationID) {
+    public Reservation(Transaction transaction, CheckIn checkIn, CheckOut checkOut, Tenant tenant, Inseretion rented, int insertionID) {
         this.transaction = transaction;
         this.checkIn = checkIn;
         this.checkOut = checkOut;
         this.tenant = tenant;
         this.rented = rented;
-        this.reservationID = reservationID;
+        this.insertionID = insertionID;
     }
 
     public void addCheckIn(CheckIn checkIn){
@@ -63,11 +63,11 @@ public class Reservation {
         this.tenant = tenant;
     }
 
-    public Rentable getRented() {
+    public Inseretion getRented() {
         return rented;
     }
 
-    public void setRented(Rentable rented) {
+    public void setRented(Inseretion rented) {
         this.rented = rented;
     }
 
@@ -75,7 +75,7 @@ public class Reservation {
         return reservationID;
     }
 
-    public void setReservationID(int reservationID) {
-        this.reservationID = reservationID;
+    public void setReservationID(int insertionID) {
+        this.insertionID = insertionID;
     }
 }

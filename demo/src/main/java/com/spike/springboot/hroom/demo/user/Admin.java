@@ -12,13 +12,13 @@ public class Admin extends User {
 
     }
 
-    public void allowNewRentable(String rentableID){
+    public void allowNewRentable(String insertionID){
 
     }
 
 
 
-    public void deleteRentable(){
+    public void deleteInsertion(){
 
     }
 

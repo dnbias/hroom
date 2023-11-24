@@ -2,7 +2,7 @@ package com.spike.springboot.hroom.demo.user;
 
 import com.spike.springboot.hroom.demo.feedback.Feedback;
 import com.spike.springboot.hroom.demo.report.Report;
-import com.spike.springboot.hroom.demo.room.Rentable;
+import com.spike.springboot.hroom.demo.room.Insertion;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class LandLord extends User{
     private String residence;
-    private List<Rentable> rentableOwned = new ArrayList<>();
+    private List<Inseretion> insertionOwned = new ArrayList<>();
     private List<Feedback> feedbackMean = new ArrayList<>();
     private int numberOfInsertions;
 
@@ -19,11 +19,11 @@ public class LandLord extends User{
     private int numberOfRents;
 
     private List<Report> report;
-    private Map<Tenant, Rentable> mapReservations;
+    private Map<Tenant, Insertion> mapReservations;
 
-    public LandLord(String residence, List<Rentable> rentableOwned, List<Feedback> feedbackMean, int numberOfInsertions, int numberOfRents, List<Report> report, Map<Tenant, Rentable> mapReservations) {
+    public LandLord(String residence, List<Insertion> insertionOwned, List<Feedback> feedbackMean, int numberOfInsertions, int numberOfRents, List<Report> report, Map<Tenant, Insertion> mapReservations) {
         this.residence = residence;
-        this.rentableOwned = rentableOwned;
+        this.insertionOwned = insertionOwned;
         this.feedbackMean = feedbackMean;
         this.numberOfInsertions = numberOfInsertions;
         this.numberOfRents = numberOfRents;
@@ -35,10 +35,10 @@ public class LandLord extends User{
 
     }
 
-    public Rentable createRentable( String features,String Description,String price, String city, String address,String name, String photo)
+    public Insertion createInsertion( String features,String Description,String price, String city, String address,String name, String photo)
     {
-        Rentable Reatable = null;
-        return Reatable;
+        Insertion insertion= null;
+        return insertion;
     }
 
     @Override
@@ -55,12 +55,12 @@ public class LandLord extends User{
         this.residence = residence;
     }
 
-    public List<Rentable> getRentableOwned() {
-        return rentableOwned;
+    public List<Inseretion> getInsertionOwned() {
+        return insertionOwned;
     }
 
-    public void setRentableOwned(List<Rentable> rentableOwned) {
-        this.rentableOwned = rentableOwned;
+    public void setInsertionOwned(List<Inseretion> insertionOwned) {
+        this.insertionOwned = insertionOwned;
     }
 
     public List<Feedback> getFeedbackMean() {
@@ -95,11 +95,11 @@ public class LandLord extends User{
         this.report = report;
     }
 
-    public Map<Tenant, Rentable> getMapReservations() {
+    public Map<Tenant, Insertion> getMapReservations() {
         return mapReservations;
     }
 
-    public void setMapReservations(Map<Tenant, Rentable> mapReservations) {
+    public void setMapReservations(Map<Tenant, Insertion > mapReservations) {
         this.mapReservations = mapReservations;
     }
 }
