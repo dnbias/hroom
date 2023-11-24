@@ -2,7 +2,7 @@ package com.dnbias.hroom.check;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-@Data
+
 public class CheckIn extends GeneralCheck {
    private  LocalDate startDate;
    private LocalTime startTime;
