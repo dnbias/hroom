@@ -1,15 +1,17 @@
 package com.dnbias.hroom.room;
 
-import com.spike.springboot.hroom.demo.feedback.Feedback;
-import com.spike.springboot.hroom.demo.user.LandLord;
-import com.spike.springboot.hroom.demo.user.User;
+import com.dnbias.hroom.feedback.Feedback;
+import com.dnbias.hroom.feedback.TargetOfFeedback;
+import com.dnbias.hroom.user.Landlord;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Insertion  {
+public abstract class Insertion implements TargetOfFeedback {
 
-    public Insetion(String features, String description, double price, String city, String address, List<Feedback> receivedFeedbacks, int area, LandLord landLord, String photo, String name, int meanRating, Disponibility disponibility, int insertionID) {
+    public Insertion(String features, String description, double price, String city, String address,
+                     List<Feedback> receivedFeedbacks, int area, Landlord landLord, String photo, String name,
+                     int meanRating, Availability availability, int insertionID) {
         this.features = features;
         this.description = description;
         this.price = price;
@@ -21,7 +23,7 @@ public abstract class Insertion  {
         this.photo = photo;
         this.name = name;
         this.meanRating = meanRating;
-        this.disponibility = disponibility;
+        this.availability = availability;
         this.insertionID = insertionID;
     }
 
@@ -32,16 +34,15 @@ public abstract class Insertion  {
     private String address;
     private List<Feedback> receivedFeedbacks = new ArrayList<>();
     private int area;
-    private LandLord landLord;
+    private Landlord landLord;
     private String photo; // va sistemata nellla costruzione del codice
     private String name;
     private int meanRating;
-    private Disponibility disponibility;
+    private Availability availability;
     private int insertionID;
 
 
-    public void createDisponibility(Disponibility disponibility) {
-
+    public void createAvailability(Availability availability) {
 
     }
 
@@ -101,11 +102,11 @@ public abstract class Insertion  {
         this.area = area;
     }
 
-    public LandLord getLandLord() {
+    public Landlord getLandLord() {
         return landLord;
     }
 
-    public void setLandLord(LandLord landLord) {
+    public void setLandLord(Landlord landLord) {
         this.landLord = landLord;
     }
 
@@ -133,12 +134,12 @@ public abstract class Insertion  {
         this.meanRating = meanRating;
     }
 
-    public Disponibility getDisponibility() {
-        return disponibility;
+    public Availability getAvailability() {
+        return availability;
     }
 
-    public void setDisponibility(Disponibility disponibility) {
-        this.disponibility = disponibility;
+    public void setAvailability(Availability availability) {
+        this.availability = availability;
     }
 
     public int getInsertionID() {
