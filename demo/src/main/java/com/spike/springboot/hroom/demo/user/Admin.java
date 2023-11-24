@@ -12,7 +12,7 @@ public class Admin extends User {
 
     }
 
-    public void allowNewRentable(String insertionID){
+    public void allowNewInsertion(String insertionID){
 
     }
 

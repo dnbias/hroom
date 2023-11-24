@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Tenant extends User {
-    private String residece;
 
-        private List<Insertion> savedInsertions = new ArrayList<>();
+    private String residece;
+    private List<Insertion> savedInsertions = new ArrayList<>();
     private String preferredPayment;
 
     private List<Feedback> receivedFeedbacks = new ArrayList<>();
