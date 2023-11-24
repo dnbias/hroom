@@ -9,6 +9,20 @@ import java.util.List;
 
 public abstract class Insertion  {
 
+    private String features; // cosa intendiamo?
+    private String description;
+    private double price;
+    private String city;
+    private String address;
+    private List<Feedback> receivedFeedbacks = new ArrayList<>();
+    private int area;
+    private LandLord landLord;
+    private String photo; // va sistemata nellla costruzione del codice
+    private String name;
+    private int meanRating;
+    private Disponibility disponibility;
+    private int insertionID;
+
     public Insetion(String features, String description, double price, String city, String address, List<Feedback> receivedFeedbacks, int area, LandLord landLord, String photo, String name, int meanRating, Disponibility disponibility, int insertionID) {
         this.features = features;
         this.description = description;
@@ -25,19 +39,6 @@ public abstract class Insertion  {
         this.insertionID = insertionID;
     }
 
-    private String features; // cosa intendiamo?
-    private String description;
-    private double price;
-    private String city;
-    private String address;
-    private List<Feedback> receivedFeedbacks = new ArrayList<>();
-    private int area;
-    private LandLord landLord;
-    private String photo; // va sistemata nellla costruzione del codice
-    private String name;
-    private int meanRating;
-    private Disponibility disponibility;
-    private int insertionID;
 
 
     public void createDisponibility(Disponibility disponibility) {
