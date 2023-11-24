@@ -6,9 +6,9 @@ import com.spike.springboot.hroom.demo.user.LandLord;
 import java.util.Date;
 import java.util.List;
 
-public class Room extends Rentable{
-    public Room(String features, String description, double price, String city, String address, List<Feedback> receivedFeedbacks, int area, LandLord landLord, String photo, String name, int meanRating, Disponibility disponibility, int rentableID) {
-        super(features, description, price, city, address, receivedFeedbacks, area, landLord, photo, name, meanRating, disponibility, rentableID);
+public class Room extends Insertion{
+    public Room(String features, String description, double price, String city, String address, List<Feedback> receivedFeedbacks, int area, LandLord landLord, String photo, String name, int meanRating, Disponibility disponibility, int insertionID) {
+        super(features, description, price, city, address, receivedFeedbacks, area, landLord, photo, name, meanRating, disponibility, insertionID);
     }
 
     @Override
