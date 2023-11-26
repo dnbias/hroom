@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>hroom-web</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>hroom-web Webapp</name>
     <url>http://maven.apache.org</url>
     <dependencies>
