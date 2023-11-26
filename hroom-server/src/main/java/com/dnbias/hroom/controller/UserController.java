@@ -1,5 +1,6 @@
-package com.dnbias.hroom.service;
+package com.dnbias.hroom.controller;
 
+import com.dnbias.hroom.service.UserService;
 import com.dnbias.hroom.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
