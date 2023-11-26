@@ -22,10 +22,8 @@ public class Admin extends User {
 
     }
 
-
-    @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId, typeUser choose) throws IllegalArgumentException {
-
+    public void Register(String username, String password, String name, String surname, Date birthdate, int userId) throws IllegalArgumentException {
+        super.Register(username, password, name, surname, birthdate, userId, Capability.ADMIN);
     }
 
 

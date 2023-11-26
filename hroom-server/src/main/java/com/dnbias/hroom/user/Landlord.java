@@ -18,18 +18,22 @@ public class Landlord extends User{
 
     private int numberOfRents;
 
-    private List<Report> report;
-    private Map<Tenant, Insertion> mapReservations;
+    private List<Report> reports;
+    private Map<Tenant, Insertion> reservations;
 
-    public Landlord(String residence, List<Insertion> insertionOwned, List<Feedback> feedbackMean, int numberOfInsertions, int numberOfRents, List<Report> report, Map<Tenant, Insertion> mapReservations) {
-        this.residence = residence;
-        this.insertionOwned = insertionOwned;
-        this.feedbackMean = feedbackMean;
-        this.numberOfInsertions = numberOfInsertions;
-        this.numberOfRents = numberOfRents;
-        this.report = report;
-        this.mapReservations = mapReservations;
+    public Landlord(String username, String password, String name, String surname, Date birthdate,
+                    Long userId, String residence, List<Insertion> insertionOwned, List<Feedback> feedbackMean,
+                    int numberOfInsertions, int numberOfRents, List<Report> reports, Map<Tenant, Insertion> reservations) {
+        super(username, password, name, surname, birthdate, userId, Capability.TENANT);
+        setResidence(residence);
+        setInsertionOwned(insertionOwned);
+        setFeedbackMean(feedbackMean);
+        setNumberOfInsertions(numberOfInsertions);
+        setNumberOfRents(numberOfRents);
+        setReports(reports);
+        setReservations(reservations);
     }
+
 
     public void addFeedBack(Tenant tenant, String message){
 
@@ -37,15 +41,8 @@ public class Landlord extends User{
 
     public Insertion createInsertion( String features,String Description,String price, String city, String address,String name, String photo)
     {
-        Insertion insertion= null;
-        return insertion;
+        return null;
     }
-
-    @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId, typeUser choose) throws IllegalArgumentException {
-
-    }
-
 
     public String getResidence() {
         return residence;
@@ -87,19 +84,19 @@ public class Landlord extends User{
         this.numberOfRents = numberOfRents;
     }
 
-    public List<Report> getReport() {
-        return report;
+    public List<Report> getReports() {
+        return reports;
     }
 
-    public void setReport(List<Report> report) {
-        this.report = report;
+    public void setReports(List<Report> report) {
+        this.reports = report;
     }
 
-    public Map<Tenant, Insertion> getMapReservations() {
-        return mapReservations;
+    public Map<Tenant, Insertion> getReservations() {
+        return reservations;
     }
 
-    public void setMapReservations(Map<Tenant, Insertion > mapReservations) {
-        this.mapReservations = mapReservations;
+    public void setReservations(Map<Tenant, Insertion > reservations) {
+        this.reservations = reservations;
     }
 }
