@@ -14,10 +14,7 @@ public class Landlord extends User{
     private List<Insertion> insertionOwned = new ArrayList<>();
     private List<Feedback> feedbackMean = new ArrayList<>();
     private int numberOfInsertions;
-
-
     private int numberOfRents;
-
     private List<Report> reports;
     private Map<Tenant, Insertion> reservations;
 
