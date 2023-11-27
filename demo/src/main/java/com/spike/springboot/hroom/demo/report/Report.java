@@ -1,7 +1,7 @@
 package com.spike.springboot.hroom.demo.report;
 
 public class Report {
-
+int x;
     private int reportID;
     private double totalEarnings;
     private int totalHourRented;
