@@ -5,7 +5,6 @@ import com.dnbias.hroom.user.User;
 import java.sql.Timestamp;
 
 public abstract class Feedback {
-
    private User writer;
    private int rating;
    private String description;

@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$" dumb="true">
       <excludeFolder url="file://$MODULE_DIR$/src/main/web/dist" />
       <excludeFolder url="file://$MODULE_DIR$/src/main/web/tmp" />
+      <excludeFolder url="file://$MODULE_DIR$/src/main/web/node/node_modules" />
     </content>
   </component>
 </module>
