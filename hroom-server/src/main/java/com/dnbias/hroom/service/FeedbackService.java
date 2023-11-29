@@ -12,7 +12,7 @@ public interface FeedbackService {
 
     public Feedback updateFeedback(Feedback Feedback) throws BusinessException;
 
-    public void deleteFeedback(Long id) throws BusinessException;
+public void deleteFeedback(Long id) throws BusinessException;
 
-    public List<Feedback> getAllFeedbacks();
-}
+public List<Feedback> getAllFeedbacks();
+        }
