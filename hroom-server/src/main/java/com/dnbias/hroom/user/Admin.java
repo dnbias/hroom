@@ -3,8 +3,10 @@ package com.dnbias.hroom.user;
 import java.util.Date;
 
 public class Admin extends User {
-    public Admin(String areaOfCompetence) {
-        this.areaOfCompetence = areaOfCompetence;
+    public Admin(String username, String password, String name, String surname, Date birthdate,
+                 Long userId, String areaOfCompetence) {
+        super(username, password, name, surname, birthdate, userId, Capability.ADMIN);
+        setAreaOfCompetence(areaOfCompetence);
     }
     private String areaOfCompetence;
 
@@ -19,12 +21,6 @@ public class Admin extends User {
 
 
     public void deleteInsertion(){
-
-    }
-
-
-    @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId, typeUser choose) throws IllegalArgumentException {
 
     }
 

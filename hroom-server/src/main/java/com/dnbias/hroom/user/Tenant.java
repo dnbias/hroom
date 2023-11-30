@@ -17,13 +17,15 @@ public class Tenant extends User implements TargetOfFeedback {
     private List<Feedback> receivedFeedbacks = new ArrayList<>();
     private HashMap<Reservation,String> reservations ;
 
-    public Tenant(String residence, List<Insertion> savedInsertions, String preferredPayment,
+    public Tenant(String username, String password, String name, String surname, Date birthdate, Long userId,
+                  String residence, List<Insertion> savedInsertions, String preferredPayment,
                   List<Feedback> receivedFeedbacks, HashMap<Reservation, String> reservations) {
-        this.residence = residence;
-        this.savedInsertions = savedInsertions;
-        this.preferredPayment = preferredPayment;
-        this.receivedFeedbacks = receivedFeedbacks;
-        this.reservations = reservations;
+        super(username, password, name, surname, birthdate, userId, Capability.TENANT);
+        setResidence(residence);
+        setSavedInsertions(savedInsertions);
+        setPreferredPayment(preferredPayment);
+        setReceivedFeedbacks(receivedFeedbacks);
+        setReservations(reservations);
     }
 
     // TODO: 19/11/23
@@ -40,16 +42,9 @@ public class Tenant extends User implements TargetOfFeedback {
 
     }
 
-    @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId,
-                         typeUser choose) throws IllegalArgumentException {
-
-    }
-
     public String getResidence() {
         return residence;
     }
-
 
     public void setResidence(String residence) {
         this.residence = residence;
@@ -61,6 +56,11 @@ public class Tenant extends User implements TargetOfFeedback {
 
     public void setSavedInsertions(List<Insertion> savedInsertions) {
         this.savedInsertions = savedInsertions;
+    }
+
+    public void saveInsertion(Insertion insertion) {
+        if (!savedInsertions.contains(insertion))
+            savedInsertions.add(insertion);
     }
 
     public String getPreferredPayment() {
