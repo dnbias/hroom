@@ -13,15 +13,15 @@ import exception.BusinessException;
 public class TenantController {
     @Autowired
     TenantService tenantService;
-    // @Autowired
-    // FeedbackOfInsertionService feedbackService;
+    @Autowired
+    FeedbackOfInsertionService feedbackService;
 
     void sendFeedback(FeedbackOfInsertion feedback) throws BusinessException {
-        // feedbackService.saveFeedback(feedback);
+        feedbackService.saveFeedback(feedback);
     }
 
     void deleteFeedbackById(Long feedbackId) throws BusinessException {
-        // feedbackService.deleteFeedbackById(feedbackId);
+        feedbackService.deleteFeedbackById(feedbackId);
     }
 
     void makeReservation() {}

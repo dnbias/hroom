@@ -18,7 +18,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
 public class Landlord extends User{
     @Id
@@ -67,7 +66,7 @@ public class Landlord extends User{
 
     public void setInsertions(List<Long> insertionOwnedIds) {
         this.insertionOwnedIds = insertionOwnedIds;
-    }
+}
 
     public int getNumberOfInsertions() {
         return numberOfInsertions;
