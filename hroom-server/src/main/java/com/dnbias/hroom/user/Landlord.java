@@ -3,6 +3,7 @@ package com.dnbias.hroom.user
 
 import com.dnbias.hroom.feedback.FeedbackOfInsertion;
 import com.dnbias.hroom.report.Report;
+import com.dnbias.hroom.reservation.Reservation;
 import com.dnbias.hroom.room.Insertion;
 
 import jakarta.persistence.CascadeType;
@@ -15,8 +16,6 @@ import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 
 @Entity
@@ -59,6 +58,21 @@ public class Landlord extends User{
 
     public void setInsertionOwnedIds(List<Long> insertionOwnedIds) {
         this.insertionOwnedIds = insertionOwnedIds;
+    public ArrayList<Insertion> getInsertions() {
+        return insertions;
+    }
+
+    public void setInsertions(ArrayList<Insertion> insertionOwned) {
+        this.insertions = insertionOwned;
+    }
+
+    public float getFeedbackMean() {
+        return feedbackMean;
+    }
+
+    public void setFeedbackMean(float feedbackMean) {
+        this.feedbackMean = feedbackMean;
+>>>>>>> efd8d0b (feat: fixes to domain, services and controllers)
     }
 
     public int getNumberOfInsertions() {

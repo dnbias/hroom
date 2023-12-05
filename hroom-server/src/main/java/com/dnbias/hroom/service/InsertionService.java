@@ -5,7 +5,7 @@ import com.dnbias.hroom.room.Insertion;
 import java.util.List;
 
 public interface InsertionService {
-    Insertion saveLandlord(Insertion insertion);
+    Insertion saveInsertion(Insertion insertion);
 
     List<Insertion> fetchInsertionList();
 

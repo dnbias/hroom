@@ -49,7 +49,6 @@ public class Tenant extends User {
         this.residence = residence;
     }
 
-
     public String getPreferredPayment() {
         return preferredPayment;
     }

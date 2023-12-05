@@ -27,4 +27,12 @@ public class Admin extends User {
     public void setAreaOfCompetence(String areaOfCompetence) {
         this.areaOfCompetence = areaOfCompetence;
     }
+
+    public enum AreaOfCompetence {
+        WORLD,
+        NA,
+        SA,
+        EU,
+        ASIA
+    }
 }

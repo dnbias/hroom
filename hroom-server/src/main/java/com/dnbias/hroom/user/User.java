@@ -27,13 +27,13 @@ public abstract class User {
         ADMIN
     }
 
-    public User(String username, String password, String name, String surname, Date birthdate, Long userId, Capability capability) {
+    public User(String username, String password, String name, String surname,
+                Date birthdate, Capability capability) {
         setUsername(username);
         setPassword(password);
         setName(name);
         setSurname(surname);
         setBirthdate(birthdate);
-        setId(userId);
         setCapability(capability);
     }
 
