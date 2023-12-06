@@ -27,9 +27,24 @@ public class Report {
     }
 
     public void printReport(){
-
+        String reportString = generateReport();
+        System.out.println(reportString);
     }
+
+    public String generateReport() {
+        return String.format("""       
+               Report ID : %d
+               Total Earnings %.2f
+               Total Hours Rented: %d
+               Number of Rentals: %d
+               Number of Clients: %d
+               Monthly Earnings: %d
+               """,reportID,totalEarnings,totalHourRented,numberOfRentals,numberOfClients,monthlyEarnings);
+    }
+
     public void showReport(){
+        String reportString = generateReport();
+        System.out.println(reportString);
 
     }
 

@@ -19,7 +19,7 @@
     </parent>
     <modules>
         <module>hroom-server</module>
-  <!--      <module>hroom-web</module> -->
+        <module>hroom-web</module>
     </modules>
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
