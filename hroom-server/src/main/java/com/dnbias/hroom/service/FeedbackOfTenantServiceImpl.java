@@ -1,8 +1,7 @@
 package com.dnbias.hroom.service;
 
-import com.dnbias.hroom.feedback.Feedback;
-import com.dnbias.hroom.repository.FeedbackRepositoy;
-import com.dnbias.hroom.repository.UserRepository;
+import com.dnbias.hroom.feedback.FeedbackOfTenant;
+import com.dnbias.hroom.repository.FeedbackOfTenantRepository;
 import exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -12,11 +11,9 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
-public class FeedbackServiceImpl implements FeedbackService{
-
-
+public class FeedbackOfTenantServiceImpl implements FeedbackOfTenantService {
     @Autowired
-    private FeedbackRepositoy repository;
+    private FeedbackOfTenantRepository repository;
     private boolean isValidRating(int rating) {
         if (rating  < 0 || rating > 10) {
             return false;
@@ -24,7 +21,7 @@ public class FeedbackServiceImpl implements FeedbackService{
         return true;
     }
     @Override
-    public Feedback createFeedback(Feedback feedback) throws BusinessException {
+    public FeedbackOfTenant saveFeedback(FeedbackOfTenant feedback) throws BusinessException {
 
         if (!isValidRating(feedback.getRating())) {
             throw new BusinessException("rating should be between 0 and 10");
@@ -33,11 +30,11 @@ public class FeedbackServiceImpl implements FeedbackService{
     }
 
     @Override
-    public Feedback getFeedbackById(Long id) throws BusinessException {
+    public FeedbackOfTenant findById(Long id) throws BusinessException {
         if (id < 0) {
             throw new BusinessException("id cannot be" + id);
         }
-        Feedback feedback = null;
+        FeedbackOfTenant feedback = null;
         try {
             feedback = repository.findById(id).get();
         } catch (NoSuchElementException e) {
@@ -48,7 +45,7 @@ public class FeedbackServiceImpl implements FeedbackService{
     }
 
     @Override
-    public Feedback updateFeedback(Feedback feedback) throws BusinessException {
+    public FeedbackOfTenant updateFeedback(FeedbackOfTenant feedback, Long feedbackId) throws BusinessException {
         if (!isValidRating(feedback.getRating())) {
             throw new BusinessException("rating should be between 0 and 10");
         }
@@ -66,7 +63,7 @@ public class FeedbackServiceImpl implements FeedbackService{
     }
 
     @Override
-    public void deleteFeedback(Long id) throws BusinessException {
+    public void deleteFeedbackById(Long id) throws BusinessException {
         if (id < 0) {
             throw new BusinessException("id cannot be" + id);
         }
@@ -79,8 +76,8 @@ public class FeedbackServiceImpl implements FeedbackService{
     }
 
     @Override
-    public List<Feedback> getAllFeedbacks() {
-        return repository.findAll();
+    public List<FeedbackOfTenant> fetchFeedbackList() {
+        return (List<FeedbackOfTenant>) repository.findAll();
 
     }
 }

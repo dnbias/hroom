@@ -9,16 +9,16 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class LandlordController {
-    @Autowired
-    LandlordService landlordService;
-    @Autowired
-    InsertionService insertionService;
+    // @Autowired
+    // LandlordService landlordService;
+    // @Autowired
+    // InsertionService insertionService;
 
-    void createInsertion(Insertion insertion) {
-        insertionService.saveInsertion(insertion);
-    }
+    // void createInsertion(Insertion insertion) {
+    //     insertionService.saveInsertion(insertion);
+    // }
 
-    void deleteInsertionById(Long insertionId) {
-        insertionService.deleteInsertionById(insertionId);
-    }
+    // void deleteInsertionById(Long insertionId) {
+    //     insertionService.deleteInsertionById(insertionId);
+    // }
 }

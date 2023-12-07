@@ -36,7 +36,7 @@ public class Landlord extends User{
                     List<Long> insertionOwnedIds, int numberOfInsertions,
                     int numberOfRents, List<Long> reportsIds,
                     List<Long> reservationsIds) {
-        super(username, password, name, surname, birthdate, userId, Capability.TENANT);
+        super(username, password, name, surname, birthdate, Capability.TENANT);
         setInsertionOwnedIds(insertionOwnedIds);
         setReportsIds(reportsIds);
         setReservationsIds(reservationsIds);
@@ -59,21 +59,14 @@ public class Landlord extends User{
 
     public void setInsertionOwnedIds(List<Long> insertionOwnedIds) {
         this.insertionOwnedIds = insertionOwnedIds;
-    public ArrayList<Insertion> getInsertions() {
-        return insertions;
     }
 
-    public void setInsertions(ArrayList<Insertion> insertionOwned) {
-        this.insertions = insertionOwned;
+    public List<Long> getInsertions() {
+        return insertionOwnedIds;
     }
 
-    public float getFeedbackMean() {
-        return feedbackMean;
-    }
-
-    public void setFeedbackMean(float feedbackMean) {
-        this.feedbackMean = feedbackMean;
->>>>>>> efd8d0b (feat: fixes to domain, services and controllers)
+    public void setInsertions(List<Long> insertionOwnedIds) {
+        this.insertionOwnedIds = insertionOwnedIds;
     }
 
     public int getNumberOfInsertions() {

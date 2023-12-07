@@ -1,23 +1,12 @@
 package com.dnbias.hroom.user;
 
-import com.dnbias.hroom.feedback.FeedbackOfTenant;
-import com.dnbias.hroom.reservation.Reservation;
-import com.dnbias.hroom.room.Insertion;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
-
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-
 
 @Entity
 public class Tenant extends User {
@@ -30,15 +19,22 @@ public class Tenant extends User {
     private List<Long> receivedFeedbacksIds = new ArrayList<>();
     private List<Long> reservationsIds ;
 
-    public Tenant(String username, String password, String name, String surname, Date birthdate, Long userId,
-                  String residence, List<Long> savedInsertionsIds, String preferredPayment,
-                  List<Long> receivedFeedbacksIds, List<Long> reservationsIds) {
-        super(username, password, name, surname, birthdate, userId, Capability.TENANT);
+    public Tenant(String username, String password, String name, String surname,
+                  Date birthdate, String residence, List<Long> savedInsertionsIds,
+                  String preferredPayment, List<Long> receivedFeedbacksIds,
+                  List<Long> reservationsIds) {
+        super(username, password, name, surname, birthdate, Capability.TENANT);
         setResidence(residence);
         setSavedInsertionsIds(savedInsertionsIds);
         setPreferredPayment(preferredPayment);
         setReceivedFeedbacksIds(receivedFeedbacksIds);
         setReservationsIds(reservationsIds);
+    }
+
+    public Tenant(String username, String password, String name, String surname,
+                  Date birthdate, String residence) {
+        super(username, password, name, surname, birthdate, Capability.TENANT);
+        setResidence(residence);
     }
 
     public String getResidence() {

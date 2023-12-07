@@ -46,4 +46,11 @@ public class FeedbackOfTenant extends Feedback{
         this.tenant = tenant;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

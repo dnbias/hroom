@@ -1,7 +1,7 @@
 package com.dnbias.hroom.controller;
 
-import com.dnbias.hroom.feedback.FeedbackOfRentable;
-import com.dnbias.hroom.service.FeedbackService;
+import com.dnbias.hroom.feedback.FeedbackOfInsertion;
+import com.dnbias.hroom.service.FeedbackOfInsertionService;
 import com.dnbias.hroom.service.TenantService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +13,15 @@ import exception.BusinessException;
 public class TenantController {
     @Autowired
     TenantService tenantService;
-    @Autowired
-    FeedbackService feedbackService;
+    // @Autowired
+    // FeedbackOfInsertionService feedbackService;
 
-    void sendFeedback(FeedbackOfRentable feedback) throws BusinessException {
-        feedbackService.createFeedback(feedback);
+    void sendFeedback(FeedbackOfInsertion feedback) throws BusinessException {
+        // feedbackService.saveFeedback(feedback);
     }
 
     void deleteFeedbackById(Long feedbackId) throws BusinessException {
-        feedbackService.deleteFeedback(feedbackId);
+        // feedbackService.deleteFeedbackById(feedbackId);
     }
 
     void makeReservation() {}
