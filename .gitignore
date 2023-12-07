@@ -173,4 +173,4 @@ dist
 .pnp.*
 
 # Node
-*/node/node
+node
