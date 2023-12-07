@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +24,7 @@ public class Insertion {
     private double price;
     private String city;
     private String address;
-    // private List<Feedback> receivedFeedbacks = new ArrayList<>();
+    private List<Long> receivedFeedbacksIds = new ArrayList<>();
     private int area;
     @ManyToOne
     @JoinColumn(name = "landlord_id")
@@ -31,25 +32,24 @@ public class Insertion {
     private String photo; // va sistemata nellla costruzione del codice
     private String name;
     private int meanRating;
-    private Availability availability;
-    private int insertionID;
+    private Long availabilityId;
 
     public Insertion(String features, String description, double price, String city, String address,
-                     List<Feedback> receivedFeedbacks, int area, Landlord landlord, String photo, String name,
-                     int meanRating, Availability availability, int insertionID) {
+                     List<Long> receivedFeedbacksIds, int area, Landlord landlord, String photo, String name,
+                     int meanRating, Long availabilityId, Long insertionID) {
         this.features = features;
         this.description = description;
         this.price = price;
         this.city = city;
         this.address = address;
-        // this.receivedFeedbacks = receivedFeedbacks;
+        this.receivedFeedbacksIds = receivedFeedbacksIds;
         this.area = area;
         this.landlord = landlord;
         this.photo = photo;
         this.name = name;
         this.meanRating = meanRating;
-        this.availability = availability;
-        this.insertionID = insertionID;
+        this.availabilityId = availabilityId;
+        this.id = insertionID;
     }
 
     public void createAvailability(Availability availability) {
@@ -96,14 +96,6 @@ public class Insertion {
         this.address = address;
     }
 
-    // public List<Feedback> getReceivedFeedbacks() {
-    //     return receivedFeedbacks;
-    // }
-
-    // public void setReceivedFeedbacks(List<Feedback> receivedFeedbacks) {
-    //     this.receivedFeedbacks = receivedFeedbacks;
-    // }
-
     public int getArea() {
         return area;
     }
@@ -144,19 +136,35 @@ public class Insertion {
         this.meanRating = meanRating;
     }
 
-    public Availability getAvailability() {
-        return availability;
+    public Long getInsertionID() {
+        return id;
     }
 
-    public void setAvailability(Availability availability) {
-        this.availability = availability;
+    public void setInsertionID(Long insertionID) {
+        this.id = insertionID;
     }
 
-    public int getInsertionID() {
-        return insertionID;
+    public Long getId() {
+        return id;
     }
 
-    public void setInsertionID(int insertionID) {
-        this.insertionID = insertionID;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public List<Long> getReceivedFeedbacksIds() {
+        return receivedFeedbacksIds;
+    }
+
+    public void setReceivedFeedbacksIds(List<Long> receivedFeedbacksIds) {
+        this.receivedFeedbacksIds = receivedFeedbacksIds;
+    }
+
+    public Long getAvailabilityId() {
+        return availabilityId;
+    }
+
+    public void setAvailabilityId(Long availabilityId) {
+        this.availabilityId = availabilityId;
     }
 }

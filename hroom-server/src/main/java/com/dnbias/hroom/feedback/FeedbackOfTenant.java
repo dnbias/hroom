@@ -1,7 +1,5 @@
 package com.dnbias.hroom.feedback;
 
-import com.dnbias.hroom.user.User;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

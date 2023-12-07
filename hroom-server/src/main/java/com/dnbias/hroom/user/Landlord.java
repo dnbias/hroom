@@ -1,4 +1,5 @@
-package com.dnbias.hroom.user;
+package com.dnbias.hroom.user
+;
 
 import com.dnbias.hroom.feedback.FeedbackOfInsertion;
 import com.dnbias.hroom.report.Report;
@@ -23,26 +24,25 @@ public class Landlord extends User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
-    private String residence;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "landlord", cascade = CascadeType.ALL)
-    private List<Insertion> insertionOwned;
+    private List<Long> insertionOwnedIds;
+    private List<Long> reportsIds;
+    private List<Long> reservationsIds;
     private int numberOfInsertions;
     private int numberOfRents;
-    private List<Report> reports;
-    private Map<Tenant, Insertion> reservations;
+    private String residence;
 
     public Landlord(String username, String password, String name, String surname,
                     Date birthdate, Long userId, String residence,
-                    List<Insertion> insertionOwned, int numberOfInsertions,
-                    int numberOfRents, List<Report> reports,
-                    Map<Tenant, Insertion> reservations) {
+                    List<Long> insertionOwnedIds, int numberOfInsertions,
+                    int numberOfRents, List<Long> reportsIds,
+                    List<Long> reservationsIds) {
         super(username, password, name, surname, birthdate, userId, Capability.TENANT);
-        setResidence(residence);
-        setInsertionOwned(insertionOwned);
+        setInsertionOwnedIds(insertionOwnedIds);
+        setReportsIds(reportsIds);
+        setReservationsIds(reservationsIds);
         setNumberOfInsertions(numberOfInsertions);
         setNumberOfRents(numberOfRents);
-        setReports(reports);
-        setReservations(reservations);
+        setResidence(residence);
     }
 
     public String getResidence() {
@@ -53,12 +53,12 @@ public class Landlord extends User{
         this.residence = residence;
     }
 
-    public List<Insertion> getInsertionOwned() {
-        return insertionOwned;
+    public List<Long> getInsertionOwnedIds() {
+        return insertionOwnedIds;
     }
 
-    public void setInsertionOwned(List<Insertion> insertionOwned) {
-        this.insertionOwned = insertionOwned;
+    public void setInsertionOwnedIds(List<Long> insertionOwnedIds) {
+        this.insertionOwnedIds = insertionOwnedIds;
     }
 
     public int getNumberOfInsertions() {
@@ -77,19 +77,19 @@ public class Landlord extends User{
         this.numberOfRents = numberOfRents;
     }
 
-    public List<Report> getReports() {
-        return reports;
+    public List<Long> getReportsIds() {
+        return reportsIds;
     }
 
-    public void setReports(List<Report> report) {
-        this.reports = report;
+    public void setReportsIds(List<Long> reportsIds) {
+        this.reportsIds = reportsIds;
     }
 
-    public Map<Tenant, Insertion> getReservations() {
-        return reservations;
+    public List<Long> getReservationsIds() {
+        return reservationsIds;
     }
 
-    public void setReservations(Map<Tenant, Insertion > reservations) {
-        this.reservations = reservations;
+    public void setReservationsIds(List<Long> reservationsIds) {
+        this.reservationsIds = reservationsIds;
     }
 }
