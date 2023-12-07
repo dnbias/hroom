@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/hroom-parent.iml" filepath="$PROJECT_DIR$/hroom-parent.iml" />
-      <module fileurl="file://$PROJECT_DIR$/hroom-web/hroom-web.iml" filepath="$PROJECT_DIR$/hroom-web/hroom-web.iml" />
     </modules>
   </component>
 </project>

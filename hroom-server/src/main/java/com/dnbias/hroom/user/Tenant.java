@@ -1,66 +1,48 @@
 package com.dnbias.hroom.user;
 
-import com.dnbias.hroom.feedback.TargetOfFeedback;
-import com.dnbias.hroom.feedback.Feedback;
-import com.dnbias.hroom.reservation.Reservation;
-import com.dnbias.hroom.room.Insertion;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
-public class Tenant extends User implements TargetOfFeedback {
+@Entity
+public class Tenant extends User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
     private String residence;
-    private List<Insertion> savedInsertions = new ArrayList<>();
     private String preferredPayment;
-    private List<Feedback> receivedFeedbacks = new ArrayList<>();
-    private HashMap<Reservation,String> reservations ;
+    private List<Long> savedInsertionsIds = new ArrayList<>();
+    private List<Long> receivedFeedbacksIds = new ArrayList<>();
+    private List<Long> reservationsIds ;
 
-    public Tenant(String residence, List<Insertion> savedInsertions, String preferredPayment,
-                  List<Feedback> receivedFeedbacks, HashMap<Reservation, String> reservations) {
-        this.residence = residence;
-        this.savedInsertions = savedInsertions;
-        this.preferredPayment = preferredPayment;
-        this.receivedFeedbacks = receivedFeedbacks;
-        this.reservations = reservations;
+    public Tenant(String username, String password, String name, String surname,
+                  Date birthdate, String residence, List<Long> savedInsertionsIds,
+                  String preferredPayment, List<Long> receivedFeedbacksIds,
+                  List<Long> reservationsIds) {
+        super(username, password, name, surname, birthdate, Capability.TENANT);
+        setResidence(residence);
+        setSavedInsertionsIds(savedInsertionsIds);
+        setPreferredPayment(preferredPayment);
+        setReceivedFeedbacksIds(receivedFeedbacksIds);
+        setReservationsIds(reservationsIds);
     }
 
-    // TODO: 19/11/23
-    public void addFeedBack(Insertion insertion, int rating, String description)
-    {
-
-    }
-
-    public void modifyReservation(String username , Date newDate){
-
-    }
-
-    public void makeTransaction(){
-
-    }
-
-    @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId,
-                         typeUser choose) throws IllegalArgumentException {
-
+    public Tenant(String username, String password, String name, String surname,
+                  Date birthdate, String residence) {
+        super(username, password, name, surname, birthdate, Capability.TENANT);
+        setResidence(residence);
     }
 
     public String getResidence() {
         return residence;
     }
 
-
     public void setResidence(String residence) {
         this.residence = residence;
-    }
-
-    public List<Insertion> getSavedInsertions() {
-        return savedInsertions;
-    }
-
-    public void setSavedInsertions(List<Insertion> savedInsertions) {
-        this.savedInsertions = savedInsertions;
     }
 
     public String getPreferredPayment() {
@@ -71,19 +53,36 @@ public class Tenant extends User implements TargetOfFeedback {
         this.preferredPayment = preferredPayment;
     }
 
-    public List<Feedback> getReceivedFeedbacks() {
-        return receivedFeedbacks;
+    public Long getId() {
+        return id;
     }
 
-    public void setReceivedFeedbacks(List<Feedback> receivedFeedbacks) {
-        this.receivedFeedbacks = receivedFeedbacks;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public HashMap<Reservation, String> getReservations() {
-        return reservations;
+    public List<Long> getSavedInsertionsIds() {
+        return savedInsertionsIds;
     }
 
-    public void setReservations(HashMap<Reservation, String> reservations) {
-        this.reservations = reservations;
+    public void setSavedInsertionsIds(List<Long> savedInsertionsIds) {
+        this.savedInsertionsIds = savedInsertionsIds;
     }
+
+    public List<Long> getReceivedFeedbacksIds() {
+        return receivedFeedbacksIds;
+    }
+
+    public void setReceivedFeedbacksIds(List<Long> receivedFeedbacksIds) {
+        this.receivedFeedbacksIds = receivedFeedbacksIds;
+    }
+
+    public List<Long> getReservationsIds() {
+        return reservationsIds;
+    }
+
+    public void setReservationsIds(List<Long> reservationsIds) {
+        this.reservationsIds = reservationsIds;
+    }
+
 }

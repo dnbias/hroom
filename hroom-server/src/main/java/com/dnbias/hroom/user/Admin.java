@@ -2,38 +2,37 @@ package com.dnbias.hroom.user;
 
 import java.util.Date;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Admin extends User {
-    public Admin(String areaOfCompetence) {
-        this.areaOfCompetence = areaOfCompetence;
-    }
-    private String areaOfCompetence;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    private AreaOfCompetence areaOfCompetence;
 
-    public void banUser(String username, String userID){
-
-    }
-
-    public void allowNewInsertion(String insertionID){
-
+    public Admin(String username, String password, String name, String surname,
+                 Date birthdate, AreaOfCompetence areaOfCompetence) {
+        super(username, password, name, surname, birthdate, Capability.ADMIN);
+        setAreaOfCompetence(areaOfCompetence);
     }
 
-
-
-    public void deleteInsertion(){
-
-    }
-
-
-    @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId, typeUser choose) throws IllegalArgumentException {
-
-    }
-
-
-    public String getAreaOfCompetence() {
+    public AreaOfCompetence getAreaOfCompetence() {
         return areaOfCompetence;
     }
 
-    public void setAreaOfCompetence(String areaOfCompetence) {
+    public void setAreaOfCompetence(AreaOfCompetence areaOfCompetence) {
         this.areaOfCompetence = areaOfCompetence;
+    }
+
+    public enum AreaOfCompetence {
+        WORLD,
+        NA,
+        SA,
+        EU,
+        ASIA
     }
 }

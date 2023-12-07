@@ -1,16 +1,24 @@
 package com.dnbias.hroom.report;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Report {
 
-    private int reportID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private double totalEarnings;
     private int totalHourRented;
     private int numberOfRentals;
     private int numberOfClients;
     private int monthlyEarnings;
 
-    public Report(int reportID, double totalEarnings, int totalHourRented, int numberOfRentals, int numberOfClients, int monthlyEarnings) {
-        this.reportID = reportID;
+    public Report(Long id, double totalEarnings, int totalHourRented, int numberOfRentals, int numberOfClients, int monthlyEarnings) {
+        this.id = id;
         this.totalEarnings = totalEarnings;
         this.totalHourRented = totalHourRented;
         this.numberOfRentals = numberOfRentals;
@@ -23,14 +31,6 @@ public class Report {
     }
     public void showReport(){
 
-    }
-
-    public int getReportID() {
-        return reportID;
-    }
-
-    public void setReportID(int reportID) {
-        this.reportID = reportID;
     }
 
     public double getTotalEarnings() {
@@ -71,5 +71,13 @@ public class Report {
 
     public void setMonthlyEarnings(int monthlyEarnings) {
         this.monthlyEarnings = monthlyEarnings;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
