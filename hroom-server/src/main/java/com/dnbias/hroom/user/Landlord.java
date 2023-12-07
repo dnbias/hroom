@@ -1,51 +1,49 @@
-package com.dnbias.hroom.user;
+package com.dnbias.hroom.user
+;
 
-import com.dnbias.hroom.feedback.Feedback;
+import com.dnbias.hroom.feedback.FeedbackOfInsertion;
 import com.dnbias.hroom.report.Report;
+import com.dnbias.hroom.reservation.Reservation;
 import com.dnbias.hroom.room.Insertion;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
+
+@Entity
 public class Landlord extends User{
-    private String residence;
-    private List<Insertion> insertionOwned = new ArrayList<>();
-    private List<Feedback> feedbackMean = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    private List<Long> insertionOwnedIds;
+    private List<Long> reportsIds;
+    private List<Long> reservationsIds;
     private int numberOfInsertions;
-
-
     private int numberOfRents;
+    private String residence;
 
-    private List<Report> report;
-    private Map<Tenant, Insertion> mapReservations;
-
-    public Landlord(String residence, List<Insertion> insertionOwned, List<Feedback> feedbackMean, int numberOfInsertions, int numberOfRents, List<Report> report, Map<Tenant, Insertion> mapReservations) {
-        this.residence = residence;
-        this.insertionOwned = insertionOwned;
-        this.feedbackMean = feedbackMean;
-        this.numberOfInsertions = numberOfInsertions;
-        this.numberOfRents = numberOfRents;
-        this.report = report;
-        this.mapReservations = mapReservations;
+    public Landlord(String username, String password, String name, String surname,
+                    Date birthdate, Long userId, String residence,
+                    List<Long> insertionOwnedIds, int numberOfInsertions,
+                    int numberOfRents, List<Long> reportsIds,
+                    List<Long> reservationsIds) {
+        super(username, password, name, surname, birthdate, Capability.TENANT);
+        setInsertionOwnedIds(insertionOwnedIds);
+        setReportsIds(reportsIds);
+        setReservationsIds(reservationsIds);
+        setNumberOfInsertions(numberOfInsertions);
+        setNumberOfRents(numberOfRents);
+        setResidence(residence);
     }
-
-    public void addFeedBack(Tenant tenant, String message){
-
-    }
-
-    public Insertion createInsertion( String features,String Description,String price, String city, String address,String name, String photo)
-    {
-        Insertion insertion= null;
-        return insertion;
-    }
-
-    @Override
-    public void Register(String username, String password, String name, String Surname, Date Birthdate, int userId, typeUser choose) throws IllegalArgumentException {
-
-    }
-
 
     public String getResidence() {
         return residence;
@@ -55,20 +53,20 @@ public class Landlord extends User{
         this.residence = residence;
     }
 
-    public List<Insertion> getInsertionOwned() {
-        return insertionOwned;
+    public List<Long> getInsertionOwnedIds() {
+        return insertionOwnedIds;
     }
 
-    public void setInsertionOwned(List<Insertion> insertionOwned) {
-        this.insertionOwned = insertionOwned;
+    public void setInsertionOwnedIds(List<Long> insertionOwnedIds) {
+        this.insertionOwnedIds = insertionOwnedIds;
     }
 
-    public List<Feedback> getFeedbackMean() {
-        return feedbackMean;
+    public List<Long> getInsertions() {
+        return insertionOwnedIds;
     }
 
-    public void setFeedbackMean(List<Feedback> feedbackMean) {
-        this.feedbackMean = feedbackMean;
+    public void setInsertions(List<Long> insertionOwnedIds) {
+        this.insertionOwnedIds = insertionOwnedIds;
     }
 
     public int getNumberOfInsertions() {
@@ -87,19 +85,19 @@ public class Landlord extends User{
         this.numberOfRents = numberOfRents;
     }
 
-    public List<Report> getReport() {
-        return report;
+    public List<Long> getReportsIds() {
+        return reportsIds;
     }
 
-    public void setReport(List<Report> report) {
-        this.report = report;
+    public void setReportsIds(List<Long> reportsIds) {
+        this.reportsIds = reportsIds;
     }
 
-    public Map<Tenant, Insertion> getMapReservations() {
-        return mapReservations;
+    public List<Long> getReservationsIds() {
+        return reservationsIds;
     }
 
-    public void setMapReservations(Map<Tenant, Insertion > mapReservations) {
-        this.mapReservations = mapReservations;
+    public void setReservationsIds(List<Long> reservationsIds) {
+        this.reservationsIds = reservationsIds;
     }
 }
