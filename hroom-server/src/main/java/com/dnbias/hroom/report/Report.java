@@ -39,7 +39,7 @@ public class Report {
                Number of Rentals: %d
                Number of Clients: %d
                Monthly Earnings: %d
-               """,reportID,totalEarnings,totalHourRented,numberOfRentals,numberOfClients,monthlyEarnings);
+               """,id,totalEarnings,totalHourRented,numberOfRentals,numberOfClients,monthlyEarnings);
     }
 
     public void showReport(){
