@@ -1,46 +1,56 @@
 package com.dnbias.hroom.room;
 
 import com.dnbias.hroom.feedback.Feedback;
-import com.dnbias.hroom.feedback.TargetOfFeedback;
 import com.dnbias.hroom.user.Landlord;
 
-import java.util.ArrayList;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+
 import java.util.List;
 
-public abstract class Insertion implements TargetOfFeedback {
-
-    public Insertion(String features, String description, double price, String city, String address,
-                     List<Feedback> receivedFeedbacks, int area, Landlord landLord, String photo, String name,
-                     int meanRating, Availability availability, int insertionID) {
-        this.features = features;
-        this.description = description;
-        this.price = price;
-        this.city = city;
-        this.address = address;
-        this.receivedFeedbacks = receivedFeedbacks;
-        this.area = area;
-        this.landLord = landLord;
-        this.photo = photo;
-        this.name = name;
-        this.meanRating = meanRating;
-        this.availability = availability;
-        this.insertionID = insertionID;
-    }
+@Entity
+public class Insertion {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String features; // cosa intendiamo?
     private String description;
     private double price;
     private String city;
     private String address;
-    private List<Feedback> receivedFeedbacks = new ArrayList<>();
+    // private List<Feedback> receivedFeedbacks = new ArrayList<>();
     private int area;
-    private Landlord landLord;
+    @ManyToOne
+    @JoinColumn(name = "landlord_id")
+    private Landlord landlord;
     private String photo; // va sistemata nellla costruzione del codice
     private String name;
     private int meanRating;
     private Availability availability;
     private int insertionID;
 
+    public Insertion(String features, String description, double price, String city, String address,
+                     List<Feedback> receivedFeedbacks, int area, Landlord landlord, String photo, String name,
+                     int meanRating, Availability availability, int insertionID) {
+        this.features = features;
+        this.description = description;
+        this.price = price;
+        this.city = city;
+        this.address = address;
+        // this.receivedFeedbacks = receivedFeedbacks;
+        this.area = area;
+        this.landlord = landlord;
+        this.photo = photo;
+        this.name = name;
+        this.meanRating = meanRating;
+        this.availability = availability;
+        this.insertionID = insertionID;
+    }
 
     public void createAvailability(Availability availability) {
 
@@ -86,13 +96,13 @@ public abstract class Insertion implements TargetOfFeedback {
         this.address = address;
     }
 
-    public List<Feedback> getReceivedFeedbacks() {
-        return receivedFeedbacks;
-    }
+    // public List<Feedback> getReceivedFeedbacks() {
+    //     return receivedFeedbacks;
+    // }
 
-    public void setReceivedFeedbacks(List<Feedback> receivedFeedbacks) {
-        this.receivedFeedbacks = receivedFeedbacks;
-    }
+    // public void setReceivedFeedbacks(List<Feedback> receivedFeedbacks) {
+    //     this.receivedFeedbacks = receivedFeedbacks;
+    // }
 
     public int getArea() {
         return area;
@@ -102,12 +112,12 @@ public abstract class Insertion implements TargetOfFeedback {
         this.area = area;
     }
 
-    public Landlord getLandLord() {
-        return landLord;
+    public Landlord getLandlord() {
+        return landlord;
     }
 
-    public void setLandLord(Landlord landLord) {
-        this.landLord = landLord;
+    public void setLandlord(Landlord landlord) {
+        this.landlord = landlord;
     }
 
     public String getPhoto() {

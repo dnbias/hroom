@@ -1,25 +1,40 @@
 package com.dnbias.hroom.user;
 
-import com.dnbias.hroom.feedback.TargetOfFeedback;
-import com.dnbias.hroom.feedback.Feedback;
+import com.dnbias.hroom.feedback.FeedbackOfTenant;
 import com.dnbias.hroom.reservation.Reservation;
 import com.dnbias.hroom.room.Insertion;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class Tenant extends User implements TargetOfFeedback {
+
+@Entity
+public class Tenant extends User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
     private String residence;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Insertion> savedInsertions = new ArrayList<>();
     private String preferredPayment;
-    private List<Feedback> receivedFeedbacks = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tenant", cascade = CascadeType.ALL)
+    private List<FeedbackOfTenant> receivedFeedbacks = new ArrayList<>();
     private HashMap<Reservation,String> reservations ;
 
     public Tenant(String username, String password, String name, String surname, Date birthdate, Long userId,
                   String residence, List<Insertion> savedInsertions, String preferredPayment,
-                  List<Feedback> receivedFeedbacks, HashMap<Reservation, String> reservations) {
+                  List<FeedbackOfTenant> receivedFeedbacks, HashMap<Reservation, String> reservations) {
         super(username, password, name, surname, birthdate, userId, Capability.TENANT);
         setResidence(residence);
         setSavedInsertions(savedInsertions);
@@ -71,11 +86,11 @@ public class Tenant extends User implements TargetOfFeedback {
         this.preferredPayment = preferredPayment;
     }
 
-    public List<Feedback> getReceivedFeedbacks() {
+    public List<FeedbackOfTenant> getReceivedFeedbacks() {
         return receivedFeedbacks;
     }
 
-    public void setReceivedFeedbacks(List<Feedback> receivedFeedbacks) {
+    public void setReceivedFeedbacks(List<FeedbackOfTenant> receivedFeedbacks) {
         this.receivedFeedbacks = receivedFeedbacks;
     }
 
