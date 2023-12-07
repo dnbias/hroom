@@ -1,10 +1,25 @@
 package com.dnbias.hroom.room;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
 public class Availability {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    private int weekdays;
+    private LocalDate timeStart;
+    private LocalDate timeEnd;
+    private ArrayList<LocalDate> daysNotAvailable;
 
-    public Availability(int weekdays, LocalDate timeStart, LocalDate timeEnd, LocalDate daysNotAvailable) {
+    public Availability(int weekdays, LocalDate timeStart, LocalDate timeEnd,
+                        ArrayList<LocalDate> daysNotAvailable) {
         this.weekdays = weekdays;
         this.timeStart = timeStart;
         this.timeEnd = timeEnd;
@@ -35,19 +50,12 @@ public class Availability {
         this.timeEnd = timeEnd;
     }
 
-    public LocalDate getDaysNotAvailable() {
+    public ArrayList<LocalDate> getDaysNotAvailable() {
         return daysNotAvailable;
     }
 
-    public void setDaysNotAvailable(LocalDate daysNotAvailable) {
+    public void setDaysNotAvailable(ArrayList<LocalDate> daysNotAvailable) {
         this.daysNotAvailable = daysNotAvailable;
     }
-
-    private int weekdays;
-
-    private LocalDate timeStart;
-    private LocalDate timeEnd;
-
-    private LocalDate daysNotAvailable;
 
 }

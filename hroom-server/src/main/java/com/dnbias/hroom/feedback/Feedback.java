@@ -1,30 +1,18 @@
 package com.dnbias.hroom.feedback;
 
-import com.dnbias.hroom.user.User;
-
+import jakarta.persistence.MappedSuperclass;
 import java.sql.Timestamp;
 
+@MappedSuperclass
 public abstract class Feedback {
-   private User writer;
-   private int rating;
-   private String description;
-   private Timestamp timestamp;
-   private TargetOfFeedback target;
+    private int rating;
+    private String description;
+    private Timestamp timestamp;
 
-    public Feedback(User writer, int rating, String description, Timestamp timestamp, TargetOfFeedback target) {
-        this.writer = writer;
+    public Feedback(int rating, String description, Timestamp timestamp) {
         this.rating = rating;
         this.description = description;
         this.timestamp = timestamp;
-        this.target = target;
-    }
-
-    public User getWriter() {
-        return writer;
-    }
-
-    public void setWriter(User writer) {
-        this.writer = writer;
     }
 
     public int getRating() {
@@ -49,13 +37,5 @@ public abstract class Feedback {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public TargetOfFeedback getTarget() {
-        return target;
-    }
-
-    public void setTarget(TargetOfFeedback target) {
-        this.target = target;
     }
 }
