@@ -31,6 +31,16 @@ public class TenantServiceImpl implements TenantService {
     }
 
     @Override
+    public Tenant findById(Long userId) {
+        Optional<Tenant> optional = repository.findById(userId);
+        if (optional.isEmpty()) {
+            // throw new MissingUserException;
+            return null;
+        }
+        return optional.get();
+    }
+
+    @Override
     public Tenant updateTenant(Tenant tenant, Long userId) {
         Optional<Tenant> optional = repository.findById(userId);
         if (optional.isEmpty()) {

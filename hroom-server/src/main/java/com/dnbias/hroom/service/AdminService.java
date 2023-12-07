@@ -11,4 +11,7 @@ public interface AdminService {
     Admin updateAdmin(Admin admin, Long userId);
 
     void deleteAdminById(Long userId);
+
+    void banUserById(Long userId);
+
 }

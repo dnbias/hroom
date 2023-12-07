@@ -1,6 +1,9 @@
 package com.dnbias.hroom.feedback;
 
 import jakarta.persistence.MappedSuperclass;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
 import java.sql.Timestamp;
 
 @MappedSuperclass
@@ -9,7 +12,7 @@ public abstract class Feedback {
     private String description;
     private Timestamp timestamp;
 
-    public Feedback(int rating, String description, Timestamp timestamp) {
+    public Feedback(@Min(0) @Max(5) int rating, String description, Timestamp timestamp) {
         this.rating = rating;
         this.description = description;
         this.timestamp = timestamp;

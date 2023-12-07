@@ -8,6 +8,8 @@ public interface TenantService {
 
     List<Tenant> fetchTenantList();
 
+    Tenant findById(Long userId);
+
     Tenant updateTenant(Tenant tenant, Long userId);
 
     void deleteTenantById(Long userId);
