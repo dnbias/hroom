@@ -1,6 +1,6 @@
 package com.dnbias.hroom.user;
 
-import java.util.Date;
+import jakarta.persistence.MappedSuperclass;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

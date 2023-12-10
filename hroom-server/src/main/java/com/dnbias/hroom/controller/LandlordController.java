@@ -4,21 +4,41 @@ import com.dnbias.hroom.room.Insertion;
 import com.dnbias.hroom.service.InsertionService;
 import com.dnbias.hroom.service.LandlordService;
 
+import com.dnbias.hroom.user.Landlord;
+import com.dnbias.hroom.user.Tenant;
+import com.dnbias.hroom.user.User;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class LandlordController {
-    @Autowired
-    LandlordService landlordService;
-    @Autowired
-    InsertionService insertionService;
+     @Autowired
+    private  LandlordService service;
 
-    void createInsertion(Insertion insertion) {
-        insertionService.saveInsertion(insertion);
+    @PostMapping("/landlord")
+    public Landlord saveLandLord(@Valid @RequestBody Landlord user){
+        return service.saveLandlord(user);
     }
 
-    void deleteInsertionById(Long insertionId) {
-        insertionService.deleteInsertionById(insertionId);
+    @GetMapping("/landlord")
+    public List<Landlord> fetchLandLordList()
+    {
+        return service.fetchLandlordList();
+    }
+    @PutMapping("/landlord/{id}")
+    public User updateLandlord(@RequestBody Landlord user,
+                           @PathVariable("id") Long userId)
+    {
+        return service.updateLandlord(user, userId);
+    }
+    @DeleteMapping("/landlord/{id}")
+    public String deleteLandlordById(@PathVariable("id") Long userId)
+    {
+        service.deleteLandlordById((userId));
+        return "Deleted Successfully";
     }
 }

@@ -1,6 +1,10 @@
 package com.dnbias.hroom.user;
 
-import javax.persistence.*;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
+
 import java.util.Date;
 
 /*
@@ -28,7 +32,7 @@ public abstract class User {
     }
 
     public User(String username, String password, String name, String surname,
-                Date birthdate, Capability capability) {
+                Date birthdate, Long userId, Capability capability) {
         setUsername(username);
         setPassword(password);
         setName(name);

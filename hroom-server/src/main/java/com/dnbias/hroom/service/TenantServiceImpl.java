@@ -1,7 +1,7 @@
 package com.dnbias.hroom.service;
 
 import com.dnbias.hroom.repository.TenantRepository;
-import com.dnbias.hroom.repository.UserRepository;
+
 import com.dnbias.hroom.user.Tenant;
 import com.dnbias.hroom.user.User;
 import org.springframework.beans.factory.annotation.Autowired;

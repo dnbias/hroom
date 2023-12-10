@@ -1,30 +1,40 @@
 package com.dnbias.hroom.controller;
 
-import com.dnbias.hroom.feedback.FeedbackOfInsertion;
-import com.dnbias.hroom.service.FeedbackOfInsertionService;
 import com.dnbias.hroom.service.TenantService;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import com.dnbias.hroom.user.Tenant;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
-import exception.BusinessException;
-
-@Controller
+@RestController
 public class TenantController {
-    @Autowired
-    TenantService tenantService;
-    @Autowired
-    FeedbackOfInsertionService feedbackService;
 
-    void sendFeedback(FeedbackOfInsertion feedback) throws BusinessException {
-        feedbackService.saveFeedback(feedback);
-    }
+        @Autowired
+        private TenantService service;
 
-    void deleteFeedbackById(Long feedbackId) throws BusinessException {
-        feedbackService.deleteFeedbackById(feedbackId);
-    }
+        @PostMapping("/tenant")
+        public Tenant saveTenant(@Valid @RequestBody Tenant user) {
+                return service.saveTenant(user);
+        }
 
-    void makeReservation() {}
+        @GetMapping("/tenant")
+        public List<Tenant> fetchTenantList()
+        {
+                return service.fetchTenantList();
+        }
 
-    void makeTransaction() {}
+        @PutMapping("/tenant/{id}")
+        public Tenant updateUser(@RequestBody Tenant user,
+                               @PathVariable("id") Long userId)
+        {
+                return service.updateTenant(user, userId);
+        }
+
+        @DeleteMapping("/tenant/{id}")
+        public String deleteUserById(@PathVariable("id") Long userId)
+        {
+                service.deleteTenantById(userId);
+                return "Deleted Successfully";
+        }
 }

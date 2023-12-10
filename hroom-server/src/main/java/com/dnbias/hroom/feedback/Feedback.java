@@ -46,4 +46,8 @@ public abstract class Feedback {
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
+
+    public Long getId() {
+
+    }
 }

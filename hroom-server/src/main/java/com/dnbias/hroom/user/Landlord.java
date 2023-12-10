@@ -1,20 +1,11 @@
 package com.dnbias.hroom.user
 ;
 
-import com.dnbias.hroom.feedback.FeedbackOfInsertion;
-import com.dnbias.hroom.report.Report;
-import com.dnbias.hroom.reservation.Reservation;
-import com.dnbias.hroom.room.Insertion;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -35,7 +26,7 @@ public class Landlord extends User{
                     List<Long> insertionOwnedIds, int numberOfInsertions,
                     int numberOfRents, List<Long> reportsIds,
                     List<Long> reservationsIds) {
-        super(username, password, name, surname, birthdate, Capability.TENANT);
+        super(username, password, name, surname, birthdate, userId, Capability.TENANT);
         setInsertionOwnedIds(insertionOwnedIds);
         setReportsIds(reportsIds);
         setReservationsIds(reservationsIds);
