@@ -24,6 +24,12 @@ public class TenantController {
                 return service.fetchTenantList();
         }
 
+        @GetMapping("/tenant/{id}")
+        public Tenant fetchTenantList(@PathVariable Long id)
+        {
+                return service.findById(id);
+        }
+
         @PutMapping("/tenant/{id}")
         public Tenant updateUser(@RequestBody Tenant user,
                                @PathVariable("id") Long userId)

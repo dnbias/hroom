@@ -34,7 +34,7 @@ public class TenantServiceImpl implements TenantService {
     public Tenant findById(Long userId) {
         Optional<Tenant> optional = repository.findById(userId);
         if (optional.isEmpty()) {
-            // throw new MissingUserException;
+            throw new MissingUserException(userId);
             return null;
         }
         return optional.get();
@@ -44,7 +44,7 @@ public class TenantServiceImpl implements TenantService {
     public Tenant updateTenant(Tenant tenant, Long userId) {
         Optional<Tenant> optional = repository.findById(userId);
         if (optional.isEmpty()) {
-            // throw new MissingUserException;
+            throw new MissingUserException(userId);
             return null;
         }
 
@@ -64,5 +64,7 @@ public class TenantServiceImpl implements TenantService {
     public void deleteTenantById(Long userId) {
         repository.deleteById(userId);
     }
+
+
 
 }

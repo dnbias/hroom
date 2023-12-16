@@ -14,28 +14,45 @@ import java.util.List;
 public class AdminController {
     @Autowired
     private AdminService service;
+    @Autowired
+    private TenantController tenantController;
+    @Autowired
+    private LandlordController landlordController;
+
+
     @PostMapping("/admins")
     public Admin saveAdmin(@Valid @RequestBody Admin user){
         return  service.saveAdmin(user);
     }
+
     @GetMapping("/users")
     public List<Admin> fetchUserList(){
         return service.fetchAdminList();
     }
+
     @PutMapping("/admin/{id}")
     public Admin updateadmin(@RequestBody Admin user,
                            @PathVariable("id") Long userId)
     {
         return service.updateAdmin(user, userId);
     }
+
     @DeleteMapping("/admin/{id}")
     public String deleteUserById(@PathVariable("id") Long userId)
     {
         service.deleteAdminById(userId);
         return "Deleted Successfully";
     }
-    //todo come la gestiamo
-   // public void banUserById(Long userId) {*/
 
+    @DeleteMapping("/admin/ban/tenant/{id}")
+    public String banTenantById(@PathVariable("id") Long userId) {
+        tenantController.deleteUserById(userId);
+        return "Tenant banned";
+    }
 
+    @DeleteMapping("/admin/ban/landlord/{id}")
+    public String banLandlordById(@PathVariable("id") Long userId) {
+        landlordController.deleteLandlordById(userId);
+        return "Landlord banned";
+    }
 }
