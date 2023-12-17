@@ -1,20 +1,25 @@
 package com.dnbias.hroom.reservation;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 public class CheckIn extends GeneralCheck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
-    private LocalDate startDate;
-    private LocalTime startTime;
+   private  LocalDate startDate;
+   private LocalTime startTime;
+
+    public CheckIn(Long id, LocalDate startDate, LocalTime startTime) {
+        this.id = id;
+        this.startDate = startDate;
+        this.startTime = startTime;
+    }
 
     public LocalDate getStartDate() {
         return startDate;

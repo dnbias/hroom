@@ -1,9 +1,9 @@
 package com.dnbias.hroom.user;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.dnbias.hroom.reservation.Reservation;
+import jakarta.persistence.*;
+
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -17,12 +17,13 @@ public class Tenant extends User {
     private String preferredPayment;
     private List<Long> savedInsertionsIds = new ArrayList<>();
     private List<Long> receivedFeedbacksIds = new ArrayList<>();
-    private List<Long> reservationsIds ;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tenant", cascade = CascadeType.ALL)
+    private List<Reservation> reservationsIds ;
 
     public Tenant(String username, String password, String name, String surname,
                   Date birthdate, String residence, List<Long> savedInsertionsIds,
                   String preferredPayment, List<Long> receivedFeedbacksIds,
-                  List<Long> reservationsIds) {
+                  List<Reservation> reservationsIds) {
         super(username, password, name, surname, birthdate, Capability.TENANT);
         setResidence(residence);
         setSavedInsertionsIds(savedInsertionsIds);
@@ -77,12 +78,11 @@ public class Tenant extends User {
         this.receivedFeedbacksIds = receivedFeedbacksIds;
     }
 
-    public List<Long> getReservationsIds() {
+    public List<Reservation> getReservationsIds() {
         return reservationsIds;
     }
 
-    public void setReservationsIds(List<Long> reservationsIds) {
+    public void setReservationsIds(List<Reservation> reservationsIds) {
         this.reservationsIds = reservationsIds;
     }
-
 }
