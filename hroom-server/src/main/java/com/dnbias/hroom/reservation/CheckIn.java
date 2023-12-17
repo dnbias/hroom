@@ -1,7 +1,18 @@
+<<<<<<<< HEAD:hroom-server/src/main/java/com/dnbias/hroom/reservation/CheckIn.java
 package com.dnbias.hroom.reservation;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+========
+package com.dnbias.hroom.check;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+
+public class CheckIn extends GeneralCheck {
+   private  LocalDate startDate;
+   private LocalTime startTime;
+>>>>>>>> 3d9cfcd (Ora funziona se no sclero):hroom-server/src/main/java/com/dnbias/hroom/check/CheckIn.java
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

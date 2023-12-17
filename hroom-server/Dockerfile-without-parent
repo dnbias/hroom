@@ -29,5 +29,4 @@ COPY --from=build-stage /app-build/target/hroom-server*.jar /app-server/hroom-se
 EXPOSE 8080
 
 # imposto il comando di avvio
-CMD ["java", "-jar", "hroom-server.jar"]
-
+CMD ["java", "-jar", "hroom-server.jar", "--spring.profiles.active=docker"]

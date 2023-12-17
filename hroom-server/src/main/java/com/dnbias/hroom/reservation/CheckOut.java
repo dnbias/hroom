@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:hroom-server/src/main/java/com/dnbias/hroom/reservation/CheckOut.java
 package com.dnbias.hroom.reservation;
+========
+package com.dnbias.hroom.check;
+>>>>>>>> 3d9cfcd (Ora funziona se no sclero):hroom-server/src/main/java/com/dnbias/hroom/check/CheckOut.java
 
 import java.time.LocalDate;
 import java.time.LocalTime;

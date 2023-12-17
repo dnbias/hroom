@@ -21,6 +21,13 @@
     <build>
         <finalName>hroom-web</finalName>
         <plugins>
+            <!--<plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>-->
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>

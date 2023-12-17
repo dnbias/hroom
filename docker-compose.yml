@@ -11,7 +11,7 @@ services:
       - "8080:8080"
     container_name: server-app
     depends_on:
-      - mysql-app
+      - mariadb-app
     networks:
       - backend
 
@@ -28,24 +28,26 @@ services:
     networks:
       - frontend
 
-  mysql-app:
-    image: mysql:8.0
-    restart: on-failure
-    container_name: mysql-app
-    volumes:
-      - mysql-db:/var/lib/mysql
+  # connettersi da locale al server mariadb di docker tramite localhost:3308
+  # user: hroom
+  # pass: hroom
+  mariadb-app:
+    image: mariadb:latest
+    container_name: mariadb-app
     environment:
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_DATABASE=hroom
-      - MYSQL_USER=hroomuser
-      - MYSQL_PASSWORD=hroompassword
+      MYSQL_DATABASE: hroom_database
+      MYSQL_USER: hroom
+      MYSQL_PASSWORD: hroom
+      MYSQL_ROOT_PASSWORD: root_password
     ports:
-      - "3306:3306"
+      - "3308:3306"
+    volumes:
+      - mariadb-data:/var/lib/mysql
     networks:
       - backend
 
 volumes:
-  mysql-db: {}
+  mariadb-data: {}
 
 networks:
   backend: {}
