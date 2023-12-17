@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class Landlord extends User{
+public class Landlord extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -22,11 +22,11 @@ public class Landlord extends User{
     private String residence;
 
     public Landlord(String username, String password, String name, String surname,
-                    Date birthdate, Long userId, String residence,
+                    Date birthdate, String residence,
                     List<Long> insertionOwnedIds, int numberOfInsertions,
                     int numberOfRents, List<Long> reportsIds,
                     List<Long> reservationsIds) {
-        super(username, password, name, surname, birthdate, userId, Capability.TENANT);
+        super(username, password, name, surname, birthdate, Capability.TENANT);
         setInsertionOwnedIds(insertionOwnedIds);
         setReportsIds(reportsIds);
         setReservationsIds(reservationsIds);

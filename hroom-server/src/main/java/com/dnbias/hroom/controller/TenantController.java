@@ -1,9 +1,9 @@
 package com.dnbias.hroom.controller;
-
+import com.dnbias.hroom.exception.MissingUserException;
 import com.dnbias.hroom.service.TenantService;
-import org.springframework.beans.factory.annotation.Autowired;
 import com.dnbias.hroom.user.Tenant;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -27,14 +27,22 @@ public class TenantController {
         @GetMapping("/tenant/{id}")
         public Tenant fetchTenantList(@PathVariable Long id)
         {
-                return service.findById(id);
+                try {
+                        return service.findById(id);
+                } catch (MissingUserException e) {
+                        return null;
+                }
         }
 
         @PutMapping("/tenant/{id}")
         public Tenant updateUser(@RequestBody Tenant user,
                                @PathVariable("id") Long userId)
         {
-                return service.updateTenant(user, userId);
+                try {
+                        return service.updateTenant(user, userId);
+                } catch (MissingUserException e) {
+                        return null;
+                }
         }
 
         @DeleteMapping("/tenant/{id}")

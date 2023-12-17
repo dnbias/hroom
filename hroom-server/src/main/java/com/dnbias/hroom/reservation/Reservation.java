@@ -1,7 +1,7 @@
 package com.dnbias.hroom.reservation;
 
-import com.dnbias.hroom.check.CheckIn;
-import com.dnbias.hroom.check.CheckOut;
+import com.dnbias.hroom.reservation.CheckIn;
+import com.dnbias.hroom.reservation.CheckOut;
 import com.dnbias.hroom.room.Insertion;
 import com.dnbias.hroom.transaction.Transaction;
 import com.dnbias.hroom.user.Tenant;
@@ -9,7 +9,7 @@ import com.dnbias.hroom.user.Tenant;
 public class Reservation {
 
    private Transaction transaction;
-   private  CheckIn checkIn;
+   private CheckIn checkIn;
    private CheckOut checkOut;
    private Tenant tenant;
    private Insertion rented;

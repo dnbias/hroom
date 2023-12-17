@@ -5,11 +5,8 @@ import com.dnbias.hroom.service.InsertionService;
 import com.dnbias.hroom.service.LandlordService;
 
 import com.dnbias.hroom.user.Landlord;
-import com.dnbias.hroom.user.Tenant;
-import com.dnbias.hroom.user.User;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,7 +27,7 @@ public class LandlordController {
         return service.fetchLandlordList();
     }
     @PutMapping("/landlord/{id}")
-    public User updateLandlord(@RequestBody Landlord user,
+    public Landlord updateLandlord(@RequestBody Landlord user,
                            @PathVariable("id") Long userId)
     {
         return service.updateLandlord(user, userId);

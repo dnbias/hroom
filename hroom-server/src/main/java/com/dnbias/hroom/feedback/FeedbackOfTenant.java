@@ -13,7 +13,7 @@ import com.dnbias.hroom.user.Tenant;
 import java.sql.Timestamp;
 
 @Entity
-public class FeedbackOfTenant extends Feedback{
+public class FeedbackOfTenant extends Feedback {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -24,7 +24,8 @@ public class FeedbackOfTenant extends Feedback{
     @JoinColumn(name = "tenant_id")
     private Tenant tenant;
 
-    public FeedbackOfTenant(Landlord writer, int rating, String description, Timestamp timestamp, Tenant tenant) {
+    public FeedbackOfTenant(Landlord writer, int rating, String description,
+                            Timestamp timestamp, Tenant tenant) {
         super(rating, description, timestamp);
         setLandlord(writer);
         setTenant(tenant);

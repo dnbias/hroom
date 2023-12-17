@@ -32,7 +32,7 @@ public abstract class User {
     }
 
     public User(String username, String password, String name, String surname,
-                Date birthdate, Long userId, Capability capability) {
+                Date birthdate, Capability capability) {
         setUsername(username);
         setPassword(password);
         setName(name);

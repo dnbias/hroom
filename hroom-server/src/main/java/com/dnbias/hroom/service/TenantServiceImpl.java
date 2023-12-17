@@ -1,15 +1,13 @@
 package com.dnbias.hroom.service;
 
+import com.dnbias.hroom.exception.MissingUserException;
 import com.dnbias.hroom.repository.TenantRepository;
 
 import com.dnbias.hroom.user.Tenant;
-import com.dnbias.hroom.user.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.logging.Logger;
 
@@ -31,21 +29,23 @@ public class TenantServiceImpl implements TenantService {
     }
 
     @Override
-    public Tenant findById(Long userId) {
+    public Tenant findById(Long userId) throws MissingUserException {
         Optional<Tenant> optional = repository.findById(userId);
+
         if (optional.isEmpty()) {
             throw new MissingUserException(userId);
-            return null;
         }
+
         return optional.get();
     }
 
     @Override
-    public Tenant updateTenant(Tenant tenant, Long userId) {
+    public Tenant updateTenant(Tenant tenant, Long userId)
+        throws MissingUserException {
         Optional<Tenant> optional = repository.findById(userId);
+
         if (optional.isEmpty()) {
             throw new MissingUserException(userId);
-            return null;
         }
 
         Tenant userDB = optional.get();

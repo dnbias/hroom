@@ -1,4 +1,4 @@
-package com.dnbias.hroom.check;
+package com.dnbias.hroom.reservation;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -17,7 +17,8 @@ public abstract class Feedback {
     private String description;
     private Timestamp timestamp;
 
-    public Feedback(@Min(0) @Max(5) int rating, String description, Timestamp timestamp) {
+    public Feedback(@Min(0) @Max(5) int rating,
+                    String description, Timestamp timestamp) {
         this.rating = rating;
         this.description = description;
         this.timestamp = timestamp;
@@ -45,9 +46,5 @@ public abstract class Feedback {
 
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
-    }
-
-    public Long getId() {
-
     }
 }

@@ -1,6 +1,5 @@
 package com.dnbias.hroom.room;
 
-import com.dnbias.hroom.feedback.Feedback;
 import com.dnbias.hroom.user.Landlord;
 
 import jakarta.persistence.Entity;
@@ -19,7 +18,7 @@ public class Insertion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String features; // cosa intendiamo?
+    private String features; // TODO cosa intendiamo?
     private String description;
     private double price;
     private String city;
@@ -29,7 +28,7 @@ public class Insertion {
     @ManyToOne
     @JoinColumn(name = "landlord_id")
     private Landlord landlord;
-    private String photo; // va sistemata nellla costruzione del codice
+    private String photo; // TODO va sistemata nellla costruzione del codice
     private String name;
     private int meanRating;
     private Long availabilityId;

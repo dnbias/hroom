@@ -1,3 +1,5 @@
+##### GUARDARE application.properties
+##### MariaDB e' gia' impostato li'
 spring:
   # ========= DATABASE MYSQL =========== #
   datasource:
