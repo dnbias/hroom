@@ -1,13 +1,15 @@
 package com.dnbias.hroom.reservation;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 @Entity
 public class CheckOut extends GeneralCheck{
     @Id
@@ -16,7 +18,9 @@ public class CheckOut extends GeneralCheck{
     private LocalDate endDate;
     private LocalTime startTime;
 
-    public CheckOut(LocalDate endDate, LocalTime startTime) {
+
+    public CheckOut(Long id, LocalDate endDate, LocalTime startTime) {
+        this.id = id;
         this.endDate = endDate;
         this.startTime = startTime;
     }
