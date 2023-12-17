@@ -2,7 +2,6 @@ package com.dnbias.hroom.feedback;
 
 import com.dnbias.hroom.room.Insertion;
 import com.dnbias.hroom.user.Tenant;
-import com.dnbias.hroom.user.User;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -44,6 +43,14 @@ public class FeedbackOfInsertion extends Feedback {
 
     public void setInsertion(Insertion insertion) {
         this.insertion = insertion;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }

@@ -1,0 +1,33 @@
+#Stage 1
+# imagine docker per buildare
+FROM maven:3.8.1 as build-stage
+
+# imposto la working directory
+WORKDIR /app-build
+
+# copio i file del progetto nell'immagine docker
+COPY . .
+
+# go-offline using the pom.xml
+RUN mvn dependency:go-offline
+
+# compila e builda il progetto escludendo i test
+RUN mvn clean install -Dmaven.test.skip=true
+
+#Stage 2
+# immagine docker per eseguire il jar
+FROM openjdk:21-jdk-slim
+
+# imposto la working directory
+WORKDIR /app-server
+
+# Copia l'eseguibile jar del progetto server (* serve per matchare ogni aumenti di versione)
+# i file sono compilati dall'immagine di build precedente
+COPY --from=build-stage /app-build/target/hroom-server*.jar /app-server/hroom-server.jar
+
+# Specifica la porta su cui l'applicazione ascolterà le richieste
+EXPOSE 8080
+
+# imposto il comando di avvio
+CMD ["java", "-jar", "hroom-server.jar"]
+

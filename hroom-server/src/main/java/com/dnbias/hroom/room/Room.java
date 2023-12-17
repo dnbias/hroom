@@ -1,6 +1,5 @@
 package com.dnbias.hroom.room;
 
-import com.dnbias.hroom.feedback.Feedback;
 import com.dnbias.hroom.user.Landlord;
 
 import java.util.List;

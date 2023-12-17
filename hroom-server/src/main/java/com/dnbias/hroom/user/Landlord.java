@@ -1,26 +1,16 @@
 package com.dnbias.hroom.user
 ;
 
-import com.dnbias.hroom.feedback.FeedbackOfInsertion;
-import com.dnbias.hroom.report.Report;
-import com.dnbias.hroom.reservation.Reservation;
-import com.dnbias.hroom.room.Insertion;
-
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
-public class Landlord extends User{
+public class Landlord extends User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
@@ -32,7 +22,7 @@ public class Landlord extends User{
     private String residence;
 
     public Landlord(String username, String password, String name, String surname,
-                    Date birthdate, Long userId, String residence,
+                    Date birthdate, String residence,
                     List<Long> insertionOwnedIds, int numberOfInsertions,
                     int numberOfRents, List<Long> reportsIds,
                     List<Long> reservationsIds) {
@@ -67,7 +57,7 @@ public class Landlord extends User{
 
     public void setInsertions(List<Long> insertionOwnedIds) {
         this.insertionOwnedIds = insertionOwnedIds;
-    }
+}
 
     public int getNumberOfInsertions() {
         return numberOfInsertions;

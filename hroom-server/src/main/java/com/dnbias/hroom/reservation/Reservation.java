@@ -1,81 +1,67 @@
 package com.dnbias.hroom.reservation;
 
-import com.dnbias.hroom.check.CheckIn;
-import com.dnbias.hroom.check.CheckOut;
-import com.dnbias.hroom.room.Insertion;
-import com.dnbias.hroom.transaction.Transaction;
-import com.dnbias.hroom.user.Tenant;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
+@Entity
 public class Reservation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
+    private Long transactionId;
+    private Long checkInId;
+    private Long checkOutId;
+    private Long tenantId;
+    private Long insertionId;
 
-   private Transaction transaction;
-   private  CheckIn checkIn;
-   private CheckOut checkOut;
-   private Tenant tenant;
-   private Insertion rented;
-   private int insertionID;
-
-    public Reservation(Transaction transaction, CheckIn checkIn, CheckOut checkOut, Tenant tenant, Insertion rented, int insertionID) {
-        this.transaction = transaction;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
-        this.tenant = tenant;
-        this.rented = rented;
-        this.insertionID = insertionID;
+    public Reservation(Long transactionId, Long checkInId, Long checkOutId,
+                       Long tenantId, Long insertionId) {
+        this.transactionId = transactionId;
+        this.checkInId = checkInId;
+        this.checkOutId = checkOutId;
+        this.tenantId = tenantId;
+        this.insertionId = insertionId;
     }
 
-    public void addCheckIn(CheckIn checkIn){
-
-   }
-   public void addCheckOut(CheckOut checkOut){
-
+    public Long getInsertionId() {
+        return insertionId;
     }
 
-    public Transaction getTransaction() {
-        return transaction;
+    public void setInsertionId(Long insertionId) {
+        this.insertionId = insertionId;
     }
 
-    public void setTransaction(Transaction transaction) {
-        this.transaction = transaction;
+    public Long getTenantId() {
+        return tenantId;
     }
 
-    public CheckIn getCheckIn() {
-        return checkIn;
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
-    public void setCheckIn(CheckIn checkIn) {
-        this.checkIn = checkIn;
+    public Long getTransactionId() {
+        return transactionId;
     }
 
-    public CheckOut getCheckOut() {
-        return checkOut;
+    public void setTransaction(Long transactionId) {
+        this.transactionId = transactionId;
     }
 
-    public void setCheckOut(CheckOut checkOut) {
-        this.checkOut = checkOut;
+    public Long getCheckInId() {
+        return checkInId;
     }
 
-    public Tenant getTenant() {
-        return tenant;
+    public void setCheckInId(Long checkInId) {
+        this.checkInId = checkInId;
     }
 
-    public void setTenant(Tenant tenant) {
-        this.tenant = tenant;
+    public Long getCheckOutId() {
+        return checkOutId;
     }
 
-    public Insertion getRented() {
-        return rented;
-    }
-
-    public void setRented(Insertion rented) {
-        this.rented = rented;
-    }
-
-    public int getInsertionID() {
-        return insertionID;
-    }
-
-    public void setReservationID(int insertionID) {
-        this.insertionID = insertionID;
+    public void setCheckOutId(Long checkOutId) {
+        this.checkOutId = checkOutId;
     }
 }
