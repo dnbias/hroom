@@ -3,15 +3,8 @@ package com.dnbias.hroom.feedback;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.sql.Timestamp;
 
-@MappedSuperclass
 public abstract class Feedback {
     private int rating;
     private String description;
