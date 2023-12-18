@@ -12,7 +12,7 @@ COPY . .
 RUN mvn dependency:go-offline
 
 # compila e builda il progetto escludendo i test
-RUN mvn clean install -Dmaven.test.skip=true
+RUN mvn clean install -Dmaven.test.skip=false
 
 #Stage 2
 # immagine docker per eseguire il jar

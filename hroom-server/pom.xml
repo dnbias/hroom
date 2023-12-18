@@ -5,6 +5,7 @@
     <description>Progetto hroom-server</description>
     <artifactId>hroom-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <parent>
         <groupId>com.dnbias.hroom</groupId>
@@ -20,8 +21,6 @@
         <start-class>com.dnbias.HroomApplication</start-class>
     </properties>
 
-    <artifactId>hroom-server</artifactId>
-    <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org.eclipse.persistence</groupId>
@@ -54,27 +53,18 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <!-- NON NECESSARIO - è già incluso nello starter di springboot
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <scope>runtime</scope>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <scope>provided</scope>
-        </dependency> -->
+            <version>3.2.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -85,11 +75,10 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- NON NECESSARIO
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-integration</artifactId>
-        </dependency>-->
+        </dependency>
         <dependency>
             <!-- Spring Cloud starter -->
             <groupId>org.springframework.cloud</groupId>
@@ -102,12 +91,6 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
             <version>4.1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.2</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -142,7 +125,6 @@
     </dependencyManagement>
     <build>
         <plugins>
-            <!-- NON NECESSARI
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
@@ -150,15 +132,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-            </plugin>-->
-                <!-- <groupId>org.springframework.boot</groupId> -->
-                <plugin>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <configuration>
-                    </configuration>
-                </plugin>
-            <!-- NON SERVONO - stiamo buildando 2 progetti separati (server e web)
-            non devono dipendere l'uno dall'altro dentro un unico eseguibile
+            </plugin>
+            <!-- <groupId>org.springframework.boot</groupId> -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -167,26 +146,26 @@
                     <target>21</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <artifactId>maven-resources-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>
-                        <configuration>
-                            <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory>
-                            <resources>
-                                <resource>
-                                    <directory>${project.parent.basedir}/hroom-web/src/main/web/dist/np-app/</directory>
-                                </resource>
-                            </resources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin> -->
+            <!-- <plugin> -->
+            <!--     <artifactId>maven-resources-plugin</artifactId> -->
+            <!--     <executions> -->
+            <!--         <execution> -->
+            <!--             <id>copy-resources</id> -->
+            <!--             <phase>validate</phase> -->
+            <!--             <goals> -->
+            <!--                 <goal>copy-resources</goal> -->
+            <!--             </goals> -->
+            <!--             <configuration> -->
+            <!--                 <outputDirectory>${project.build.directory}/classes/resources/</outputDirectory> -->
+            <!--                 <resources> -->
+            <!--                     <resource> -->
+            <!--                         <directory>${project.parent.basedir}/hroom-web/src/main/web/dist/np-app/</directory> -->
+            <!--                     </resource> -->
+            <!--                 </resources> -->
+            <!--             </configuration> -->
+            <!--         </execution> -->
+            <!--     </executions> -->
+            <!-- </plugin> -->
         </plugins>
     </build>
 </project>
