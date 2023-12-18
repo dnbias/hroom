@@ -7,12 +7,52 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
+
     <parent>
         <groupId>com.dnbias.hroom</groupId>
         <artifactId>hroom-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <!-- mvn groupId:artifactId:goal -P profile-1,profile-2,?profile-3 -->
+    <profiles>
+        <profile>
+            <id>tenants-server</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <java.version>21</java.version>
+                <name>hroom-tenants-microservice</name>
+                <description>tenants microservice</description>
+                <artifactId>hroom-tenants-microservice</artifactId>
+                <start-class>com.dnbias.hroom.server.TenantsServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>feedbacks-tenant-server</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <java.version>21</java.version>
+                <name>hroom-feedbacks-tenant-microservice</name>
+                <description>feedbacks tenant microservice</description>
+                <artifactId>feedbacks-tenant-microservice</artifactId>
+                <start-class>com.dnbias.hroom.server.FeedbacksTenantServer</start-class>
+            </properties>
+        </profile>
+    </profiles>
 
     <!-- Definire il main da cui partire in caso di multipli -->
     <!-- O usare i profili maven -->
