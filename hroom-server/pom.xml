@@ -3,54 +3,186 @@
     <modelVersion>4.0.0</modelVersion>
     <name>hroom-server</name>
     <description>Progetto hroom-server</description>
+    <groupId>com.dnbias.hroom</groupId>
     <artifactId>hroom-server</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-
     <parent>
         <groupId>com.dnbias.hroom</groupId>
         <artifactId>hroom-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <!-- mvn groupId:artifactId:goal -P profile-1,profile-2,?profile-3 -->
-    <!-- ./mvnw -pl :hroom-server -P profile-1,profile-2,?profile-3 -->
+    <!-- mvn package -pl :hroom-server -P profile-1,profile-2,profile-3 -->
     <profiles>
         <profile>
-            <id>tenants-server</id>
+            <id>registration-server</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
                 <directory>./target/</directory>
-                <finalName>${artifactId}-${version}</finalName>
+                <finalName>${artifactId}-${project.version}</finalName>
             </build>
             <properties>
                 <packaging>jar</packaging>
-                <java.version>21</java.version>
-                <name>hroom-tenants-microservice</name>
+                <name>hroom-registration-server</name>
+                <description>eureka registration server</description>
+                <artifactId>registration-server</artifactId>
+                <start-class>com.dnbias.hroom.server.RegistrationServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>landlords-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-landlords-service</name>
+                <description>landlords microservice</description>
+                <artifactId>hroom-landlords-service</artifactId>
+                <start-class>com.dnbias.hroom.server.LandlordsServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>admins-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-admins-service</name>
+                <description>admins microservice</description>
+                <artifactId>hroom-admins-service</artifactId>
+                <start-class>com.dnbias.hroom.server.AdminsServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>tenants-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-tenants-service</name>
                 <description>tenants microservice</description>
-                <artifactId>hroom-tenants-microservice</artifactId>
+                <artifactId>hroom-tenants-service</artifactId>
                 <start-class>com.dnbias.hroom.server.TenantsServer</start-class>
             </properties>
         </profile>
         <profile>
-            <id>feedbacks-tenant-server</id>
+            <id>feedbacks-tenant-service</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
             <build>
                 <directory>./target/</directory>
-                <finalName>${artifactId}-${version}</finalName>
+                <finalName>${artifactId}-${project.version}</finalName>
             </build>
             <properties>
                 <packaging>jar</packaging>
-                <java.version>21</java.version>
-                <name>hroom-feedbacks-tenant-microservice</name>
+                <name>hroom-feedbacks-tenant-service</name>
                 <description>feedbacks tenant microservice</description>
-                <artifactId>feedbacks-tenant-microservice</artifactId>
+                <artifactId>hroom-feedbacks-tenant-service</artifactId>
                 <start-class>com.dnbias.hroom.server.FeedbacksTenantServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>feedbacks-insertion-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-feedbacks-insertion-service</name>
+                <description>feedbacks insertion microservice</description>
+                <artifactId>hroom-feedbacks-insertion-service</artifactId>
+                <start-class>com.dnbias.hroom.server.FeedbacksInsertionServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>insertions-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-insertions-service</name>
+                <description>insertions microservice</description>
+                <artifactId>hroom-insertions-service</artifactId>
+                <start-class>com.dnbias.hroom.server.InsertionsServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>reservations-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-reservations-service</name>
+                <description>reservations microservice</description>
+                <artifactId>hroom-reservations-service</artifactId>
+                <start-class>com.dnbias.hroom.server.ReservationsServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>checkins-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-checkins-service</name>
+                <description>checkins microservice</description>
+                <artifactId>hroom-checkins-service</artifactId>
+                <start-class>com.dnbias.hroom.server.CheckInsServer</start-class>
+            </properties>
+        </profile>
+        <profile>
+            <id>checkouts-service</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <directory>./target/</directory>
+                <finalName>${artifactId}-${project.version}</finalName>
+            </build>
+            <properties>
+                <packaging>jar</packaging>
+                <name>hroom-checkouts-service</name>
+                <description>checkouts microservice</description>
+                <artifactId>hroom-checkouts-service</artifactId>
+                <start-class>com.dnbias.hroom.server.CheckOutsServer</start-class>
             </properties>
         </profile>
     </profiles>

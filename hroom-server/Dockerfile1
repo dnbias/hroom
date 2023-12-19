@@ -1,18 +1,30 @@
 #Stage 1
-# imagine docker per buildare
-FROM maven:3.8.1 as build-stage
+# Use alpine 3.18 as the base image
+FROM alpine:3.18
+
+# Set environment variables for configuration
+ENV JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+ENV MAVEN_HOME=/usr/share/maven
+
+# Install JDK 11 and maven
+RUN apk add --no-cache openjdk11 maven
+
+# Set default values for environment variables
+ENV PATH=$JAVA_HOME/bin:$MAVEN_HOME/bin:$PATH
 
 # imposto la working directory
 WORKDIR /app-build
 
 # copio i file del progetto nell'immagine docker
-COPY . .
+COPY hroom-server/ .
+COPY pom.xml ../pom.xml
 
 # go-offline using the pom.xml
 RUN mvn dependency:go-offline
+# RUN mvn verify --fail-never
 
-# compila e builda il progetto escludendo i test
-RUN ./mvnw clean install -pl :hroom-server -P tenants-server
+# compila e builda il microservizio escludendo i test
+RUN mvn package -P tenants-server -Dmaven.test.skip=true
 
 
 #Stage 2

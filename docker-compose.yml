@@ -1,17 +1,143 @@
 version: '3'
 
 services:
-  server-app:
+  registration-server-app:
     build:
       context: ./hroom-server
-      dockerfile: Dockerfile
-    image: hroom-server-image
+      dockerfile: docker/registration-server/Dockerfile
+    image: hroom-registration-server-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: server-app
+    container_name: registration-server-app
     depends_on:
       - mariadb-app
+    networks:
+      - backend
+
+  tenants-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/tenants-service/Dockerfile
+    image: hroom-tenants-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: tenants-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  admins-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/admins-service/Dockerfile
+    image: hroom-admins-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: admins-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  landlords-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/landlords-service/Dockerfile
+    image: hroom-landlords-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: landlords-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  insertions-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/insertions-service/Dockerfile
+    image: hroom-insertions-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: insertions-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  reservations-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/reservations-service/Dockerfile
+    image: hroom-reservations-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: reservations-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  checkins-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/checkins-service/Dockerfile
+    image: hroom-checkins-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: checkins-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  checkouts-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/checkouts-service/Dockerfile
+    image: hroom-checkouts-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: checkouts-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  feedbacks-tenant-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/feedbacks-tenant-service/Dockerfile
+    image: hroom-feedbacks-tenant-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: feedbacks-tenant-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  feedbacks-insertion-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/feedbacks-insertion-service/Dockerfile
+    image: hroom-feedbacks-insertion-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: feedbacks-insertion-microservice-app
+    depends_on:
+      - registration-server-app
     networks:
       - backend
 
@@ -24,7 +150,7 @@ services:
       - "80:80"
     container_name: web-app
     depends_on:
-      - server-app
+      - registration-server-app
     networks:
       - frontend
 
