@@ -15,7 +15,7 @@
     </parent>
 
     <!-- mvn groupId:artifactId:goal -P profile-1,profile-2,?profile-3 -->
-    <!-- ./mvnw -pn hroom-server -P profile-1,profile-2,?profile-3 -->
+    <!-- ./mvnw -pl :hroom-server -P profile-1,profile-2,?profile-3 -->
     <profiles>
         <profile>
             <id>tenants-server</id>
