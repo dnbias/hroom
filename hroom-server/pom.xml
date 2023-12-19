@@ -24,12 +24,19 @@
                 <directory>./target/</directory>
                 <finalName>${artifactId}-${project.version}</finalName>
             </build>
+            <!-- <dependencies> -->
+            <!--     <dependency> -->
+            <!--         <groupId>org.springframework.cloud</groupId> -->
+            <!--         <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId> -->
+            <!--         <version>4.1.0</version> -->
+            <!--     </dependency> -->
+            <!-- </dependencies> -->
             <properties>
                 <packaging>jar</packaging>
                 <name>hroom-registration-server</name>
                 <description>eureka registration server</description>
                 <artifactId>registration-server</artifactId>
-                <start-class>com.dnbias.hroom.server.RegistrationServer</start-class>
+                <start-class>com.dnbias.hroom.server.ServiceRegistrationServer</start-class>
             </properties>
         </profile>
         <profile>
@@ -192,6 +199,7 @@
     <properties>
         <java.version>21</java.version>
         <start-class>com.dnbias.HroomApplication</start-class>
+        <spring-cloud.version>2021.0.2</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -253,17 +261,12 @@
             <artifactId>spring-boot-starter-integration</artifactId>
         </dependency>
         <dependency>
-            <!-- Spring Cloud starter -->
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter</artifactId>
-            <version>4.1.0</version>
         </dependency>
-
         <dependency>
-            <!-- Eureka for service registration -->
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-            <version>4.1.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -283,6 +286,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
+        <!-- <dependency> -->
+        <!--     <groupId>com.sun.jersey.contribs</groupId> -->
+        <!--     <artifactId>jersey-apache-client4</artifactId> -->
+        <!--     <version>1.19.4</version> -->
+        <!-- </dependency> -->
     </dependencies>
     <!-- Spring Cloud dependencies -->
     <dependencyManagement>
