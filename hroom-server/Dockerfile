@@ -11,5 +11,5 @@ COPY target/hroom-server*.jar /app-server/hroom-server.jar
 EXPOSE 8080
 
 # imposto il comando di avvio
-CMD ["java", "-jar", "hroom-server.jar"]
-
+# imposto il profilo "docker" che prende come properties: application-docker.properties (che ha la connessione al db docker)
+CMD ["java", "-jar", "hroom-server.jar", "--spring.profiles.active=docker"]

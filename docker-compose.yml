@@ -1,17 +1,154 @@
 version: '3'
 
 services:
-  server-app:
+
+  config-server-app:
     build:
-      context: ./hroom-server
-      dockerfile: Dockerfile
-    image: hroom-server-image
+      context: ./hroom-server/config-server
+    image: hroom-config-server-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: server-app
+    container_name: config-server-app
+    networks:
+      - backend
+
+  discovery-server-app:
+    build:
+      context: ./hroom-server/discovery-server
+    image: hroom-discovery-server-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: discovery-server-app
     depends_on:
-      - mysql-app
+      - config-server
+      - mariadb-app
+    networks:
+      - backend
+
+  tenant-microservice:
+    build:
+      context: ./hroom-server/tenant-service
+    image: hroom-tenant-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: tenant-microservice-app
+    depends_on:
+      - discovery-server-app
+    networks:
+      - backend
+
+  admins-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/admins-service/Dockerfile
+    image: hroom-admins-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: admins-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  landlords-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/landlords-service/Dockerfile
+    image: hroom-landlords-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: landlords-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  insertions-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/insertions-service/Dockerfile
+    image: hroom-insertions-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: insertions-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  reservations-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/reservations-service/Dockerfile
+    image: hroom-reservations-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: reservations-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  checkins-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/checkins-service/Dockerfile
+    image: hroom-checkins-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: checkins-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  checkouts-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/checkouts-service/Dockerfile
+    image: hroom-checkouts-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: checkouts-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  feedbacks-tenant-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/feedbacks-tenant-service/Dockerfile
+    image: hroom-feedbacks-tenant-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: feedbacks-tenant-microservice-app
+    depends_on:
+      - registration-server-app
+    networks:
+      - backend
+
+  feedbacks-insertion-microservice:
+    build:
+      context: ./hroom-server
+      dockerfile: docker/feedbacks-insertion-service/Dockerfile
+    image: hroom-feedbacks-insertion-microservice-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: feedbacks-insertion-microservice-app
+    depends_on:
+      - registration-server-app
     networks:
       - backend
 
@@ -24,29 +161,44 @@ services:
       - "80:80"
     container_name: web-app
     depends_on:
-      - server-app
+      - registration-server-app
     networks:
       - frontend
 
-  mysql-app:
-    image: mysql:8.0
-    restart: on-failure
-    container_name: mysql-app
-    volumes:
-      - mysql-db:/var/lib/mysql
+  # connettersi da locale al server mariadb di docker tramite localhost:3308
+  # user: hroom
+  # pass: hroom
+  mariadb-app:
+    image: mariadb:latest
+    container_name: mariadb-app
     environment:
-      - MYSQL_ROOT_PASSWORD=admin
-      - MYSQL_DATABASE=hroom
-      - MYSQL_USER=hroomuser
-      - MYSQL_PASSWORD=hroompassword
+      MYSQL_DATABASE: hroom_database
+      MYSQL_USER: hroom
+      MYSQL_PASSWORD: hroom
+      MYSQL_ROOT_PASSWORD: root_password
     ports:
-      - "3306:3306"
+      - "3306:3308"
+    volumes:
+      - mariadb-data:/var/lib/mysql
+    networks:
+      - backend
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: "rmq3"
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "123456"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - backend
 
 volumes:
-  mysql-db: {}
+  mariadb-data: {}
 
 networks:
   backend: {}
+    driver: bridge
   frontend: {}

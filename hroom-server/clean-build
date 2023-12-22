@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+echo -n "Clean..."
+mvn clean -q
+echo "OK"
+echo ""
+
+mavenflags="-q -Dmaven.test.skip=true"
+
+profiles=("registration-server"
+          "feedbacks-tenant-service"
+          "feedbacks-insertion-service"
+          "tenants-service"
+          "landlords-service"
+          "admins-service"
+          "insertions-service"
+          "reservations-service"
+          "checkins-service"
+          "checkouts-service")
+len=${#profiles[@]}
+COUNTER=0
+echo "Running maven:"
+
+for profile in "${profiles[@]}"
+do
+    let COUNTER++
+    echo -n "($COUNTER/$len)   building $profile..."
+    mvn package -P "$profile" $mavenflags
+    echo "OK"
+done
