@@ -1,31 +1,42 @@
 version: '3'
 
 services:
-  registration-server-app:
+
+  config-server-app:
     build:
-      context: ./hroom-server
-      dockerfile: docker/registration-server/Dockerfile
-    image: hroom-registration-server-image
+      context: ./hroom-server/config-server
+    image: hroom-config-server-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: registration-server-app
+    container_name: config-server-app
+    networks:
+      - backend
+
+  discovery-server-app:
+    build:
+      context: ./hroom-server/discovery-server
+    image: hroom-discovery-server-image
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    container_name: discovery-server-app
     depends_on:
+      - config-server
       - mariadb-app
     networks:
       - backend
 
-  tenants-microservice:
+  tenant-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/tenants-service/Dockerfile
-    image: hroom-tenants-microservice-image
+      context: ./hroom-server/tenant-service
+    image: hroom-tenant-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: tenants-microservice-app
+    container_name: tenant-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - backend
 
@@ -172,9 +183,22 @@ services:
     networks:
       - backend
 
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    container_name: "rmq3"
+    environment:
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "123456"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - backend
+
 volumes:
   mariadb-data: {}
 
 networks:
   backend: {}
+    driver: bridge
   frontend: {}
