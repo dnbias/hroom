@@ -2,7 +2,6 @@ package com.dnbias.hroom.reservation;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import jakarta.persistence.MappedSuperclass;
 
 @MappedSuperclass

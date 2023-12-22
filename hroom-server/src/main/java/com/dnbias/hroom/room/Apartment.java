@@ -7,18 +7,18 @@ import java.util.List;
 public class Apartment extends Insertion {
     private int numberOfRooms;
 
-    public Apartment(String features, String description, double price,
+    public Apartment( Long id,String features, String description, double price,
                      String city, String address, List<Long> receivedFeedbacks,
                      int area, Landlord landlord, String photo, String name,
-                     int meanRating, Long availabilityId, Long id) {
-        super(features, description, price, city, address, receivedFeedbacks, area, landlord, photo, name, meanRating, availabilityId, id);
+                     int meanRating, boolean availabilityId) {
+        super(id,features, description, price, city, address, receivedFeedbacks, area, landlord, photo, name, meanRating, availabilityId);
     }
 
-    public Apartment(String features, String description, double price,
+    public Apartment(Long id,String features, String description, double price,
                      String city, String address, List<Long> receivedFeedbacks,
                      int area, Landlord landlord, String photo, String name,
-                     int meanRating, Long availabilityId, Long id, int numberOfRooms) {
-        super(features, description, price, city, address, receivedFeedbacks, area, landlord, photo, name, meanRating, availabilityId, id);
+                     int meanRating, boolean availability, int numberOfRooms) {
+        super(id,features, description, price, city, address, receivedFeedbacks, area, landlord, photo, name, meanRating, availability);
         this.numberOfRooms = numberOfRooms;
     }
 
