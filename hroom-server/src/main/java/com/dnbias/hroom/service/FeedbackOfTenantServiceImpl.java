@@ -15,7 +15,7 @@ public class FeedbackOfTenantServiceImpl implements FeedbackOfTenantService {
     @Autowired
     private FeedbackOfTenantRepository repository;
     private boolean isValidRating(int rating) {
-        if (rating  < 0 || rating > 10) {
+        if (rating  < 0 || rating > 5) {
             return false;
         }
         return true;
@@ -24,7 +24,7 @@ public class FeedbackOfTenantServiceImpl implements FeedbackOfTenantService {
     public FeedbackOfTenant saveFeedback(FeedbackOfTenant feedback) throws BusinessException {
 
         if (!isValidRating(feedback.getRating())) {
-            throw new BusinessException("rating should be between 0 and 10");
+            throw new BusinessException("rating should be between 0 and 5");
         }
         return repository.save(feedback);
     }
@@ -47,7 +47,7 @@ public class FeedbackOfTenantServiceImpl implements FeedbackOfTenantService {
     @Override
     public FeedbackOfTenant updateFeedback(FeedbackOfTenant feedback, Long feedbackId) throws BusinessException {
         if (!isValidRating(feedback.getRating())) {
-            throw new BusinessException("rating should be between 0 and 10");
+            throw new BusinessException("rating should be between 0 and 5");
         }
 
         if (feedback.getId() < 0) {

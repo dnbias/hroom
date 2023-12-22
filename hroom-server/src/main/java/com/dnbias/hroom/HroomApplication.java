@@ -1,5 +1,6 @@
 package com.dnbias.hroom;
 
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -14,6 +15,6 @@ public class HroomApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(HroomApplication.class, args);
-	}
 
+	}
 }

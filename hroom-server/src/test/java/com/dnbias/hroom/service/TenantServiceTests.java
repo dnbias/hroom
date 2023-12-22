@@ -1,9 +1,11 @@
 package com.dnbias.hroom.service;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.util.Date;
 
+import com.dnbias.hroom.exception.MissingUserException;
 import com.dnbias.hroom.user.Tenant;
 
 import org.junit.Test;
@@ -21,7 +23,7 @@ class TenantServiceTests {
     @BeforeAll
     void setUp() {
         tenant = new Tenant("user", "1234", "Bob", "Johnson",
-                                   new Date(), "Turin");
+                            new Date(), "Turin");
     }
 
     @Test
@@ -34,13 +36,21 @@ class TenantServiceTests {
     void testUpdateTenant() {
         Tenant newTenant = tenant;
         newTenant.setPassword("4321");
-        service.updateTenant(newTenant, tenant.getId());
+        try {
+            service.updateTenant(newTenant, tenant.getId());
+        } catch (MissingUserException e) {
+            assertFalse(true);
+        }
     }
 
     @Test
     void testFindById() {
-        Tenant found = service.findById(tenant.getId());
-        assertEquals(tenant, found);
+        try {
+            Tenant found = service.findById(tenant.getId());
+            assertEquals(tenant, found);
+        } catch (MissingUserException e) {
+            assertFalse(true);
+        }
     }
 
     @Test

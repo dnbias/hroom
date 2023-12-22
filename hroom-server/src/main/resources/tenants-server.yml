@@ -1,0 +1,47 @@
+# Spring properties
+spring:
+  application:
+     name: tenants-service
+  datasource:
+    url: jdbc:mariadb://localhost:3306/hroom_database
+    username: hroom
+    password: hroom
+    drive-class-name: org.mariadb.jdbc.Driver
+  main:
+    allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show_sql: true
+    # properties:
+    #   hibernate:
+    #     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+logging:
+  lever:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
+
+hibernate:
+  annotation:
+    packages:
+      to:
+        scan: com.dnbias.hroom.*
+
+# Discovery Server Access
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:1111/eureka/
+  instance:
+    hostname: locahost
+    leaseRenewalIntervalInSeconds: 5         # DO NOT DO THIS IN PRODUCTION
+
+# HTTP Server
+server:
+  port: 8761   # HTTP (Tomcat) port
