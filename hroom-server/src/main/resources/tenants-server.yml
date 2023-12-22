@@ -2,9 +2,6 @@
 spring:
   application:
      name: tenants-service
-  jpa:
-    hibernate:
-      ddl-auto: update
   datasource:
     url: jdbc:mariadb://localhost:3306/hroom_database
     username: hroom
@@ -12,6 +9,13 @@ spring:
     drive-class-name: org.mariadb.jdbc.Driver
   main:
     allow-bean-definition-overriding: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+      show_sql: true
+    # properties:
+    #   hibernate:
+    #     dialect: org.hibernate.dialect.MySQL5InnoDBDialect
 
 logging:
   lever:
