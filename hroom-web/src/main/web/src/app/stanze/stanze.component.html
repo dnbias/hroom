@@ -1,0 +1,27 @@
+<h1>Stanze disponibili </h1>
+<table id ="stanze" border="1">
+        <caption>Soggiorni</caption>
+        <thead>
+        <tr>
+            <th>codSta</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+            <th>citta</th>
+            <th>valutazione</th>
+            <th>Attiva</th>
+            <th>Data</th>
+
+        </tr>
+        </thead>
+    <tbody>
+    <tr *ngFor="let stanza of stanze">
+        <td>{{stanza.codSta}}</td>
+        <td>{{stanza.descrizione}}</td>
+        <td>{{stanza.prezzo | currency : 'EUR'}}</td>
+        <td>{{stanza.citta}}</td>
+        <td>{{stanza.valutazione}}</td>
+        <td>{{stanza.active}}</td>
+        <td>{{stanza.data | date : 'dd/MM/YYYY'}}</td>
+    </tr>
+    </tbody>
+</table>
