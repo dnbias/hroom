@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {IStanze} from "../Models/Stanze";
+import {IStanze} from "../models/Stanze";
 
 @Component({
   selector: 'app-stanze',

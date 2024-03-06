@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-welcome',
@@ -8,11 +9,16 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class WelcomeComponent implements OnInit {
 
-  utente: string = "";
-  constructor(private route:ActivatedRoute) { }
+  utente : string = "";
+  titolo : string="Benvenuto in HRoom ";
+  sottotitolo : string ="Goditi  il tuo divertimento ad ore ";
+
+  constructor(private route : ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.utente = this.route.snapshot.params['userId'];
+
+    this.utente = this.route.snapshot.params['userid'];
+
   }
 
 }
