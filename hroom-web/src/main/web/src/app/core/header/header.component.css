@@ -1,0 +1,45 @@
+img {
+  display: inline-block;
+}
+
+.dduser {
+  margin-right: 50px;
+  margin-left: 20px;
+}
+
+/*
+nav {
+  margin-bottom: 0.8%;
+}
+*/
+.nav {
+  align-items: center;
+}
+
+.col-nav {
+  display: flex;
+  align-items: center;
+  border-right: 10px;
+  border-left: 10px;
+}
+
+.btn-mobile {
+  display: none;
+}
+
+.btn-icon {
+  text-align: center;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.nav-item > a {
+  border-radius: 0.25rem;
+  color: #adb5bd;
+  display: block;
+  text-decoration: none;
+}
+
+.search {
+  border-right: 10px;
+}

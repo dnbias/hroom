@@ -30,3 +30,5 @@ $DOCKER_COMPOSE_COMMAND
 # chmod 777 start.sh
 # Poi avviare lo script con:
 # .\start.sh
+# per avviare solo la parte web docker build -t web-angular .
+# docker run  --name web-angular-container -p 80:80 web-angular
