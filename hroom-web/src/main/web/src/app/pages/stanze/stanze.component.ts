@@ -6,7 +6,7 @@ import {StanzeService} from "../../../services/stanze.service";
 @Component({
   selector: 'app-stanze',
   templateUrl: './stanze.component.html',
-  styleUrl: './stanze.component.css'
+  styleUrls: ['./stanze.component.css']
 })
 export class StanzeComponent implements OnInit{
 

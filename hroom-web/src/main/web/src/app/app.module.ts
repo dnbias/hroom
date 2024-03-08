@@ -10,6 +10,10 @@ import { NgModule } from '@angular/core';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import {StanzeCardComponent} from "./components/stanze-card/stanze-card.component";
 import {GridStanzeComponent} from "./pages/grid-stanze/grid-stanze.component";
+import {RegistrazioneComponent} from "./pages/registrazione/registrazione.component";
+import {NotificationsComponent} from "./core/notifications/notifications.component";
+import {LogoutComponent} from "./pages/logout/logout.component";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
     declarations: [
@@ -18,19 +22,21 @@ import {GridStanzeComponent} from "./pages/grid-stanze/grid-stanze.component";
         LoginComponent,
         ErrorComponent,
         StanzeComponent,
+        LogoutComponent,
         GridStanzeComponent,
-        StanzeCardComponent
+        StanzeCardComponent,
+        RegistrazioneComponent
+
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        CoreModule
+        CoreModule,
+        HttpClientModule //!!per collegare la parte di login al welcome
+
     ],
     providers: [],
-    exports: [
-        StanzeCardComponent
-    ],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

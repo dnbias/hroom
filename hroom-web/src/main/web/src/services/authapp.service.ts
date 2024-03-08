@@ -8,19 +8,20 @@ export class AuthappService {
   constructor() { }
 
   autentica = (userid: string, password: string) : boolean => {
-    var retVal= (userid === 'Enrico' && password === '123') ? true : false;
-    if(retVal){
+    var retVal = (userid === 'Enrico' && password === '123') ? true : false;
+
+    if (retVal) {
       sessionStorage.setItem("Utente",userid);
     }
 
     return retVal;
   }
-  loggedUser =() :string | null =>(sessionStorage.getItem("Utente")) ? sessionStorage .getItem("Utente") : "";
 
-  isLogged = (): boolean=>(sessionStorage.getItem("Utente")) ? true : false;
+  loggedUser = (): string | null => (sessionStorage.getItem("Utente")) ? sessionStorage.getItem("Utente") : "";
 
-  cleanUser =(): void=> sessionStorage.removeItem("Utente");
+  isLogged = (): boolean => (sessionStorage.getItem("Utente")) ? true : false;
 
-  clearAll =(): void => sessionStorage.clear();
+  clearUser = (): void => sessionStorage.removeItem("Utente");
+
+  clearAll = (): void => sessionStorage.clear();
 }
-

@@ -14,9 +14,7 @@ export class GridStanzeComponent implements OnInit{
     stanze$: IStanze[]=[];
 
 
-  constructor(private stanzeService: StanzeService) {
-
-  }
+  constructor(private stanzeService: StanzeService) { }
 
   ngOnInit(): void {
       this.stanze$=this.stanzeService.getStanze();
@@ -28,6 +26,7 @@ export class GridStanzeComponent implements OnInit{
     handleDelete= (codsta: string)=> {
         console.log("Cliccato tasto elimina del codice" + codsta);
         this.stanze$.splice(this.stanze$.findIndex(x=>x.codSta==codsta),1);
-    }
+        console.log(this.stanze$);
+  }
 
 }

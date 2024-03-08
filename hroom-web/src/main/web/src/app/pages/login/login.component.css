@@ -3,17 +3,21 @@
   margin-bottom: 4%;
   margin-left: 35%;
 
+
 }
 .login-form{
   padding: 5%;
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+
 }
 .login-form h3{
   text-align: center;
   color: #333;
+
 }
 .login-container form{
   padding: 5%;
+
 }
 .btnSubmit
 {
@@ -27,6 +31,7 @@
   font-weight: 600;
   color: #fff;
   background-color: #0062cc;
+
 }
 .login-form .ForgetPwd{
   color: #0062cc;
@@ -38,6 +43,3 @@
   margin-top: 3%;
 }
 
-.alert {
-  margin-top: 2%;
-}

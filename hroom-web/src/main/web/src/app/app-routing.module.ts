@@ -7,10 +7,13 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import {LogoutComponent} from "./pages/logout/logout.component";
 import {RouteGuardService} from "../services/routeGuardService";
 import {GridStanzeComponent} from "./pages/grid-stanze/grid-stanze.component";
+import {RegistrazioneComponent} from "./pages/registrazione/registrazione.component";
+import {NotificationsComponent} from "./core/notifications/notifications.component";
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
   {path:'login', component: LoginComponent},
+  {path:'registrazione',component:RegistrazioneComponent},
   {path:'welcome/:userid', component: WelcomeComponent,canActivate:[RouteGuardService]},
   {path: 'stanze', component: StanzeComponent,canActivate:[RouteGuardService]},
   {path: 'stanze/grid', component: GridStanzeComponent,canActivate:[RouteGuardService]},

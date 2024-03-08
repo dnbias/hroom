@@ -15,6 +15,7 @@ export class StanzeCardComponent implements OnInit{
     stanza: IStanze={
       codSta:'',
       descrizione:'',
+      categoria:'',
       prezzo : 0,
       citta: '',
       valutazione : 0,
