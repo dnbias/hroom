@@ -12,8 +12,8 @@ RUN ./mvnw package -Dmaven.test.skip
 
 FROM openjdk:21-jdk-slim
 
-WORKDIR /config-server
+WORKDIR /feedback-tenant-service
 
-COPY --from=build /app/target/*.jar /config-server/config-server-0.0.1-SNAPSHOT.jar
+COPY --from=build /app/target/*.jar /feedback-tenant-service/feedback-tenant-service-*.jar
 
-ENTRYPOINT ["java","-jar","config-server-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","feedback-tenant-service-*.jar"]
