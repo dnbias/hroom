@@ -12,8 +12,8 @@ RUN ./mvnw package -Dmaven.test.skip
 
 FROM openjdk:21-jdk-slim
 
-WORKDIR /config-server
+WORKDIR /reservation-service
 
-COPY --from=build /app/target/*.jar /config-server/config-server-0.0.1-SNAPSHOT.jar
+COPY --from=build /app/target/*.jar /reservation-service/reservation-service-*.jar
 
-ENTRYPOINT ["java","-jar","config-server-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","reservation-service-*.jar"]
