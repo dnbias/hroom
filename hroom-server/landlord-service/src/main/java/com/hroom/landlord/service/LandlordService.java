@@ -1,6 +1,6 @@
-package com.dnbias.hroom.service;
+package com.hroom.landlord.service;
 
-import com.dnbias.hroom.user.Landlord;
+import com.hroom.landlord.entity.Landlord;
 import java.util.List;
 
 public interface LandlordService {

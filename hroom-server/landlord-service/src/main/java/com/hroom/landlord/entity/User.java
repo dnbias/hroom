@@ -1,4 +1,4 @@
-package com.hroom.tenant.entity;
+package com.hroom.landlord.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;

@@ -1,11 +1,11 @@
 package com.hroom.user.controller;
 
-import com.springbootmicroservices.userservice.dto.LoginRequest;
-import com.springbootmicroservices.userservice.dto.SignUpRequest;
-import com.springbootmicroservices.userservice.entity.User;
-import com.springbootmicroservices.userservice.service.KeycloakService;
-import com.springbootmicroservices.userservice.service.UserService;
-import com.springbootmicroservices.userservice.utils.UserContextHolder;
+import com.hroom.user.dto.LoginRequest;
+import com.hroom.user.dto.SignUpRequest;
+import com.hroom.user.entity.User;
+import com.hroom.user.service.KeycloakService;
+import com.hroom.user.service.UserService;
+import com.hroom.user.utils.UserContextHolder;
 import lombok.RequiredArgsConstructor;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;

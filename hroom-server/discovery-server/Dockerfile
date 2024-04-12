@@ -8,7 +8,7 @@ COPY .mvn .mvn
 RUN ./mvnw dependency:resolve
 
 COPY src src
-RUN ./mvnw package -Dmaven.test.skip
+RUN ./mvnw package -Dmaven.test.skip -B
 
 FROM openjdk:21-jdk-slim
 

@@ -1,7 +1,7 @@
-package com.dnbias.hroom.controller;
+package com.hroom.reservation.controller;
 
-import com.dnbias.hroom.reservation.Reservation;
-import com.dnbias.hroom.service.ReservationService;
+import com.hroom.reservation.entity.Reservation;
+import com.hroom.reservation.service.ReservationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
