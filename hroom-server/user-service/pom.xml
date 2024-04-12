@@ -17,6 +17,7 @@
     <properties>
         <java.version>21</java.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
+        <!-- <spring-security.version>5.6.5</spring-security.version> -->
     </properties>
 
     <dependencies>
@@ -59,6 +60,11 @@
         </dependency>
 
         <dependency>
+            <groupId>jakarta.ws.rs</groupId>
+            <artifactId>jakarta.ws.rs-api</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
@@ -66,14 +72,23 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-boot-starter</artifactId>
-            <version>18.0.2</version>
+            <version>24.0.2</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-admin-client</artifactId>
-            <version>18.0.2</version>
+            <version>24.0.2</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.keycloak/keycloak-spring-security-adapter -->
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-spring-security-adapter</artifactId>
+            <version>24.0.2</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>

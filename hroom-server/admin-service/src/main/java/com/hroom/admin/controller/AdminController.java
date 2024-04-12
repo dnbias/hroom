@@ -4,6 +4,7 @@ import com.hroom.admin.service.AdminService;
 import com.hroom.admin.entity.Admin;
 import com.hroom.admin.entity.Tenant;
 import com.hroom.admin.entity.User;
+import com.hroom.admin.exception.MissingUserException;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.slf4j.LoggerFactory;
 public class AdminController {
     @Autowired
     private AdminService service;
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @PostMapping("/admin")
     public Admin saveAdmin(@Valid @RequestBody Admin user){
@@ -58,13 +60,13 @@ public class AdminController {
 
     @DeleteMapping("/admin/ban/tenant/{id}")
     public String banTenantById(@PathVariable("id") Long userId) {
-        service.deleteUserById(userId);
+        service.banTenantById(userId);
         return "Tenant banned";
     }
 
     @DeleteMapping("/admin/ban/landlord/{id}")
     public String banLandlordById(@PathVariable("id") Long userId) {
-        service.deleteLandlordById(userId);
+        service.banLandlordById(userId);
         return "Landlord banned";
     }
 }

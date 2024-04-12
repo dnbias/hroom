@@ -1,9 +1,9 @@
-package com.dnbias.hroom.service;
+package com.hroom.reservation.service;
 
 
 import java.util.List;
 
-import com.dnbias.hroom.reservation.Reservation;
+import com.hroom.reservation.entity.Reservation;
 
 public interface ReservationService {
     Reservation saveReservation(Reservation reservation);

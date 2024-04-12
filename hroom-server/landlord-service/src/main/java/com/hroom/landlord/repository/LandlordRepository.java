@@ -1,6 +1,6 @@
-package com.dnbias.hroom.repository;
+package com.hroom.landlord.repository;
 
-import com.dnbias.hroom.user.Landlord;
+import com.hroom.landlord.entity.Landlord;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

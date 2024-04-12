@@ -4,11 +4,13 @@ import com.hroom.admin.repository.AdminRepository;
 import com.hroom.admin.service.AdminService;
 import com.hroom.admin.entity.Admin;
 import com.hroom.admin.entity.User;
+import com.hroom.admin.exception.MissingUserException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.List;
-import java.util.Optional;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.http.*;
+import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,7 +26,7 @@ public class AdminServiceImpl implements AdminService{
     private static final String TENANT_BASE_URL = "http://TENANT-SERVICE:8761/api/v1/tenant";
     private static final String LANDLORD_BASE_URL = "http://LANDLORD-SERVICE:8761/api/v1/landlord";
     private static final String USER_BASE_URL = "http://USER-SERVICE:9000/api/v1/user";
-    private final RestTemplate restTemplete;
+    private final RestTemplate restTemplate = new RestTemplate();
 
 
     @Override
@@ -80,7 +82,7 @@ public class AdminServiceImpl implements AdminService{
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
             HttpEntity < String > entity = new HttpEntity < > (httpHeaders);
-            return restTemplate.exchange(TENANT_BASE_URL + advertisementId,
+            return restTemplate.exchange(TENANT_BASE_URL + userId,
                                          HttpMethod.DELETE, entity, String.class);
         }
 
@@ -100,7 +102,7 @@ public class AdminServiceImpl implements AdminService{
             HttpHeaders httpHeaders = new HttpHeaders();
             httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
             HttpEntity < String > entity = new HttpEntity < > (httpHeaders);
-            return restTemplate.exchange(LANDLORD_BASE_URL + advertisementId,
+            return restTemplate.exchange(LANDLORD_BASE_URL + userId,
                                          HttpMethod.DELETE, entity, String.class);
         }
 

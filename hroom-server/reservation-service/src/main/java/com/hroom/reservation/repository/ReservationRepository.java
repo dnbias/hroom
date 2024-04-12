@@ -1,6 +1,6 @@
-package com.dnbias.hroom.repository;
+package com.hroom.reservation.repository;
 
-import com.dnbias.hroom.reservation.Reservation;
+import com.hroom.reservation.entity.Reservation;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

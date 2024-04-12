@@ -40,113 +40,113 @@ services:
     networks:
       - backend
 
-  admins-microservice:
+  admin-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/admins-service/Dockerfile
-    image: hroom-admins-microservice-image
+      dockerfile: docker/admin-service/Dockerfile
+    image: hroom-admin-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: admins-microservice-app
+    container_name: admin-microservice-app
     depends_on:
       - registration-server-app
     networks:
       - backend
 
-  landlords-microservice:
+  landlord-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/landlords-service/Dockerfile
+      dockerfile: docker/landlord-service/Dockerfile
     image: hroom-landlords-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: landlords-microservice-app
+    container_name: landlord-microservice-app
     depends_on:
       - registration-server-app
     networks:
       - backend
 
-  insertions-microservice:
+  insertion-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/insertions-service/Dockerfile
-    image: hroom-insertions-microservice-image
+      dockerfile: docker/insertion-service/Dockerfile
+    image: hroom-insertion-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: insertions-microservice-app
+    container_name: insertion-microservice-app
     depends_on:
       - registration-server-app
     networks:
       - backend
 
-  reservations-microservice:
+  reservation-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/reservations-service/Dockerfile
-    image: hroom-reservations-microservice-image
+      dockerfile: docker/reservation-service/Dockerfile
+    image: hroom-reservation-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: reservations-microservice-app
+    container_name: reservation-microservice-app
     depends_on:
       - registration-server-app
     networks:
       - backend
 
-  checkins-microservice:
+  check-in-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/checkins-service/Dockerfile
-    image: hroom-checkins-microservice-image
+      dockerfile: docker/check-in-service/Dockerfile
+    image: hroom-check-in-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: checkins-microservice-app
+    container_name: check-in-microservice-app
     depends_on:
       - registration-server-app
     networks:
       - backend
 
-  checkouts-microservice:
+  check-out-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/checkouts-service/Dockerfile
-    image: hroom-checkouts-microservice-image
+      dockerfile: docker/check-out-service/Dockerfile
+    image: hroom-check-out-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: checkouts-microservice-app
+    container_name: check-out-microservice-app
     depends_on:
       - registration-server-app
     networks:
       - backend
 
-  feedbacks-tenant-microservice:
+  feedback-tenant-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/feedbacks-tenant-service/Dockerfile
-    image: hroom-feedbacks-tenant-microservice-image
+      dockerfile: docker/feedback-tenant-service/Dockerfile
+    image: hroom-feedback-tenant-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: feedbacks-tenant-microservice-app
+    container_name: feedback-tenant-microservice-app
     depends_on:
       - registration-server-app
     networks:
       - backend
 
-  feedbacks-insertion-microservice:
+  feedback-insertion-microservice:
     build:
       context: ./hroom-server
-      dockerfile: docker/feedbacks-insertion-service/Dockerfile
-    image: hroom-feedbacks-insertion-microservice-image
+      dockerfile: docker/feedback-insertion-service/Dockerfile
+    image: hroom-feedback-insertion-microservice-image
     restart: on-failure
     ports:
       - "8080:8080"
-    container_name: feedbacks-insertion-microservice-app
+    container_name: feedback-insertion-microservice-app
     depends_on:
       - registration-server-app
     networks:

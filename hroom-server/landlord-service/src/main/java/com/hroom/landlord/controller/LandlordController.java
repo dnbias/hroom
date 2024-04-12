@@ -1,10 +1,9 @@
-package com.dnbias.hroom.controller;
+package com.hroom.landlord.controller;
 
-import com.dnbias.hroom.room.Insertion;
-import com.dnbias.hroom.service.InsertionService;
-import com.dnbias.hroom.service.LandlordService;
+import com.hroom.landlord.entity.Landlord;
+import com.hroom.landlord.entity.Insertion;
+import com.hroom.landlord.service.LandlordService;
 
-import com.dnbias.hroom.user.Landlord;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
