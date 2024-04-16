@@ -2,10 +2,18 @@ package com.hroom.insertion.entity;
 
 import java.util.List;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "Rooms")
+@Getter
+@Setter
+@NoArgsConstructor
 public class Room extends Insertion{
-    public Room(Long id,String features, String description, double price, String city, String address,
-                List<Long> receivedFeedbacks, int area, Long landlord_id, String photo, String name,
-                int meanRating, boolean availability) {
-        super(id,features, description, price, city, address, receivedFeedbacks, area, landlord_id, photo, name, meanRating, availability);
-    }
 }

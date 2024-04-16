@@ -2,30 +2,25 @@ package com.hroom.insertion.entity;
 
 import java.util.List;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Table(name = "Apartments")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Apartment extends Insertion {
+    @Column(nullable = false)
     private int numberOfRooms;
-
-    public Apartment( Long id,String features, String description, double price,
-                     String city, String address, List<Long> receivedFeedbacks,
-                     int area, Long landlord_id, String photo, String name,
-                     int meanRating, boolean availabilityId) {
-        super(id,features, description, price, city, address, receivedFeedbacks, area, landlord_id, photo, name, meanRating, availabilityId);
-    }
-
-    public Apartment(Long id,String features, String description, double price,
-                     String city, String address, List<Long> receivedFeedbacks,
-                     int area, Long landlord_id, String photo, String name,
-                     int meanRating, boolean availability, int numberOfRooms) {
-        super(id,features, description, price, city, address, receivedFeedbacks, area, landlord_id, photo, name, meanRating, availability);
-        this.numberOfRooms = numberOfRooms;
-    }
-
-    public int getNumberOfRooms() {
-        return numberOfRooms;
-    }
-
-    public void setNumberOfRooms(int  numberOfRooms) {
-        this.numberOfRooms = numberOfRooms;
-    }
-
 }
