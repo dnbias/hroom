@@ -27,7 +27,7 @@ public class TenantController {
                 return service.saveTenant(user);
         }
 
-        @GetMapping("/tenant")
+        @GetMapping("/tenantList")
         public List<Tenant> fetchTenantList() {
                 LOGGER.info("TenantController > fetchTenantList started");
                 LOGGER.info("TenantController > fetchTenantList");

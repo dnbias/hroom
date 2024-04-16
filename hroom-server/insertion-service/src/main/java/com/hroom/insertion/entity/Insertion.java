@@ -6,6 +6,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Column;
+import jakarta.persistence.Table;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,27 +16,35 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.image.BufferedImage;
 
 @Entity
 @Table(name = "Insertions")
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Setter
+@Getter
 public class Insertion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long landlord_id;
+    @Column(nullable = false)
+    private Long landlordId;
+    @Column(nullable = false)
     private String name;
     private String features; // TODO cosa intendiamo?
+    @Column(nullable = false)
     private String description;
+    @Column(nullable = false)
     private double price;
+    @Column(nullable = false)
     private String city;
+    @Column(nullable = false)
     private String address;
-    private List<Long> receivedFeedbacksIds = new ArrayList<>();
+    @Column(nullable = false)
     private int area;
-    private String photo; // TODO va sistemata nellla costruzione del codice
+    private BufferedImage photo;
     private int meanRating;
+    private List<Long> receivedFeedbacksIds;
     private Long availabilityId;
 }
