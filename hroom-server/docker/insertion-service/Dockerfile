@@ -1,6 +1,6 @@
 FROM openjdk:21-jdk-slim
 VOLUME /tmp
 ARG JAR_FILE
-COPY target/hroom-feedbacks-tenant-service*.jar app.jar
+COPY target/insertion-service*.jar app.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/app.jar"]
