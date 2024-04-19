@@ -2,6 +2,7 @@ FROM openjdk:21 AS build
 
 WORKDIR /app
 
+COPY parent parent
 COPY pom.xml mvnw ./
 RUN chmod +x mvnw
 COPY .mvn .mvn
