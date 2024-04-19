@@ -5,7 +5,7 @@ services:
   config-server-app:
     build:
       context: ./hroom-server/config-server
-    image: hroom-config-server-image
+    image: dnbias/hroom:config-server
     restart: on-failure
     ports:
       - "8080:8080"
@@ -16,7 +16,7 @@ services:
   discovery-server-app:
     build:
       context: ./hroom-server/discovery-server
-    image: hroom-discovery-server-image
+    image: dnbias/hroom:discovery-server
     restart: on-failure
     ports:
       - "8081:8080"
@@ -30,7 +30,7 @@ services:
   tenant-microservice:
     build:
       context: ./hroom-server/tenant-service
-    image: hroom-tenant-microservice-image
+    image: dnbias/hroom:tenant-microservice
     restart: on-failure
     ports:
       - "8082:8080"
@@ -43,7 +43,7 @@ services:
   admin-microservice:
     build:
       context: ./hroom-server/admin-service
-    image: hroom-admin-microservice-image
+    image: dnbias/hroom:admin-microservice
     restart: on-failure
     ports:
       - "8083:8080"
@@ -56,7 +56,7 @@ services:
   landlord-microservice:
     build:
       context: ./hroom-server/landlord-service
-    image: hroom-landlords-microservice-image
+    image: dnbias/hroom:landlords-microservice
     restart: on-failure
     ports:
       - "8084:8080"
@@ -69,7 +69,7 @@ services:
   insertion-microservice:
     build:
       context: ./hroom-server/insertion-service
-    image: hroom-insertion-microservice-image
+    image: dnbias/hroom:insertion-microservice
     restart: on-failure
     ports:
       - "8085:8080"
@@ -82,8 +82,7 @@ services:
   reservation-microservice:
     build:
       context: ./hroom-server/reservation-service
-      # dockerfile: docker/reservation-service/Dockerfile
-    image: hroom-reservation-microservice-image
+    image: dnbias/hroom:reservation-microservice
     restart: on-failure
     ports:
       - "8086:8080"
@@ -96,7 +95,7 @@ services:
   check-in-microservice:
     build:
       context: ./hroom-server/check-in-service
-    image: hroom-check-in-microservice-image
+    image: dnbias/hroom:check-in-microservice
     restart: on-failure
     ports:
       - "8087:8080"
@@ -109,7 +108,7 @@ services:
   check-out-microservice:
     build:
       context: ./hroom-server/check-out-service
-    image: hroom-check-out-microservice-image
+    image: dnbias/hroom:check-out-microservice
     restart: on-failure
     ports:
       - "8088:8080"
@@ -135,7 +134,7 @@ services:
   feedback-insertion-microservice:
     build:
       context: ./hroom-server/feedback-insertion-service
-    image: hroom-feedback-insertion-microservice-image
+    image: dnbias/hroom:feedback-insertion-microservice
     restart: on-failure
     ports:
       - "8090:8080"
@@ -145,11 +144,24 @@ services:
     networks:
       - backend
 
+  user-microservice:
+    build:
+      context: ./hroom-server/user-service
+    image: dnbias/hroom:user-microservice
+    restart: on-failure
+    ports:
+      - "8091:8080"
+    container_name: user-microservice-app
+    depends_on:
+      - discovery-server-app
+    networks:
+      - backend
+
   web-app:
     build:
       context: ./hroom-web
       dockerfile: Dockerfile
-    image: hroom-web-image
+    image: dnbias/hroom:web-app
     ports:
       - "80:80"
     container_name: web-app

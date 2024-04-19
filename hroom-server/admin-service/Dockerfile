@@ -3,6 +3,7 @@ FROM openjdk:21 AS build
 WORKDIR /app
 
 COPY pom.xml mvnw ./
+COPY parent parent
 RUN chmod +x mvnw
 COPY .mvn .mvn
 RUN ./mvnw dependency:resolve
