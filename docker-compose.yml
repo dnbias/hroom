@@ -2,25 +2,29 @@ version: '3'
 
 services:
 
-  config-server-app:
+  config-server:
     build:
       context: ./hroom-server/config-server
-    image: hroom-config-server-image
+    image: dnbias/hroom:config-server
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: config-server-app
+      - "9191:9191"
+    expose:
+      - "9191"
+    container_name: config-server
     networks:
       - backend
 
   discovery-server-app:
     build:
       context: ./hroom-server/discovery-server
-    image: hroom-discovery-server-image
+    image: dnbias/hroom:discovery-server
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: discovery-server-app
+      - "1111:1111"
+    expose:
+      - "1111"
+    container_name: discovery-server
     depends_on:
       - config-server
       - mariadb-app
@@ -30,125 +34,135 @@ services:
   tenant-microservice:
     build:
       context: ./hroom-server/tenant-service
-    image: hroom-tenant-microservice-image
+    image: dnbias/hroom:tenant-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
+      - "8082:8080"
     container_name: tenant-microservice-app
     depends_on:
       - discovery-server-app
     networks:
       - backend
 
-  admins-microservice:
+  admin-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/admins-service/Dockerfile
-    image: hroom-admins-microservice-image
+      context: ./hroom-server/admin-service
+    image: dnbias/hroom:admin-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: admins-microservice-app
+      - "8083:8080"
+    container_name: admin-microservice-app
     depends_on:
-      - registration-server-app
+      - config-server
+      - discovery-server-app
+      - keycloak
+    links:
+      - "config-server"
+      - "discovery-server-app"
     networks:
       - backend
 
-  landlords-microservice:
+  landlord-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/landlords-service/Dockerfile
-    image: hroom-landlords-microservice-image
+      context: ./hroom-server/landlord-service
+    image: dnbias/hroom:landlords-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: landlords-microservice-app
+      - "8084:8080"
+    container_name: landlord-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - backend
 
-  insertions-microservice:
+  insertion-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/insertions-service/Dockerfile
-    image: hroom-insertions-microservice-image
+      context: ./hroom-server/insertion-service
+    image: dnbias/hroom:insertion-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: insertions-microservice-app
+      - "8085:8080"
+    container_name: insertion-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - backend
 
-  reservations-microservice:
+  reservation-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/reservations-service/Dockerfile
-    image: hroom-reservations-microservice-image
+      context: ./hroom-server/reservation-service
+    image: dnbias/hroom:reservation-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: reservations-microservice-app
+      - "8086:8080"
+    container_name: reservation-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - backend
 
-  checkins-microservice:
+  check-in-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/checkins-service/Dockerfile
-    image: hroom-checkins-microservice-image
+      context: ./hroom-server/check-in-service
+    image: dnbias/hroom:check-in-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: checkins-microservice-app
+      - "8087:8080"
+    container_name: check-in-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - backend
 
-  checkouts-microservice:
+  check-out-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/checkouts-service/Dockerfile
-    image: hroom-checkouts-microservice-image
+      context: ./hroom-server/check-out-service
+    image: dnbias/hroom:check-out-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: checkouts-microservice-app
+      - "8088:8080"
+    container_name: check-out-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - backend
 
-  feedbacks-tenant-microservice:
+  feedback-tenant-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/feedbacks-tenant-service/Dockerfile
-    image: hroom-feedbacks-tenant-microservice-image
+      context: ./hroom-server/feedback-tenant-service
+    image: dnbias/hroom:feedback-tenant-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: feedbacks-tenant-microservice-app
+      - "8089:8080"
+    container_name: feedback-tenant-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - backend
 
-  feedbacks-insertion-microservice:
+  feedback-insertion-microservice:
     build:
-      context: ./hroom-server
-      dockerfile: docker/feedbacks-insertion-service/Dockerfile
-    image: hroom-feedbacks-insertion-microservice-image
+      context: ./hroom-server/feedback-insertion-service
+    image: dnbias/hroom:feedback-insertion-microservice
     restart: on-failure
     ports:
-      - "8080:8080"
-    container_name: feedbacks-insertion-microservice-app
+      - "8090:8080"
+    container_name: feedback-insertion-microservice-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
+    networks:
+      - backend
+
+  user-microservice:
+    build:
+      context: ./hroom-server/user-service
+    image: dnbias/hroom:user-microservice
+    restart: on-failure
+    ports:
+      - "8091:8080"
+    container_name: user-microservice-app
+    depends_on:
+      - discovery-server-app
     networks:
       - backend
 
@@ -156,12 +170,12 @@ services:
     build:
       context: ./hroom-web
       dockerfile: Dockerfile
-    image: hroom-web-image
+    image: dnbias/hroom:web-app
     ports:
       - "80:80"
     container_name: web-app
     depends_on:
-      - registration-server-app
+      - discovery-server-app
     networks:
       - frontend
 
@@ -170,7 +184,7 @@ services:
   # pass: hroom
   mariadb-app:
     image: mariadb:latest
-    container_name: mariadb-app
+    container_name: mariadb
     environment:
       MYSQL_DATABASE: hroom_database
       MYSQL_USER: hroom
@@ -195,10 +209,22 @@ services:
     networks:
       - backend
 
+  keycloak:
+    image: quay.io/keycloak/keycloak:latest
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    ports:
+      - "8181:8080"
+    networks:
+      - backend
+    command:
+      - start-dev
+
 volumes:
   mariadb-data: {}
 
 networks:
-  backend: {}
+  backend:
     driver: bridge
   frontend: {}

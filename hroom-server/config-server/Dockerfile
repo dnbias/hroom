@@ -12,8 +12,8 @@ RUN ./mvnw package -Dmaven.test.skip
 
 FROM openjdk:21-jdk-slim
 
-WORKDIR /configserver
+WORKDIR /config-server
 
-COPY --from=build /app/target/*.jar /configserver/configserver-0.0.1-SNAPSHOT.jar
+COPY --from=build /app/target/*.jar /config-server/config-server-0.0.1-SNAPSHOT.jar
 
-ENTRYPOINT ["java","-jar","configserver-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","config-server-0.0.1-SNAPSHOT.jar"]

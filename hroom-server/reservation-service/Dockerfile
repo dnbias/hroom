@@ -1,0 +1,20 @@
+FROM openjdk:21 AS build
+
+WORKDIR /app
+
+COPY parent parent
+COPY pom.xml mvnw ./
+RUN chmod +x mvnw
+COPY .mvn .mvn
+RUN ./mvnw dependency:resolve
+
+COPY src src
+RUN ./mvnw package -Dmaven.test.skip
+
+FROM openjdk:21-jdk-slim
+
+WORKDIR /reservation-service
+
+COPY --from=build /app/target/*.jar /reservation-service/reservation-service-*.jar
+
+ENTRYPOINT ["java","-jar","reservation-service-*.jar"]
