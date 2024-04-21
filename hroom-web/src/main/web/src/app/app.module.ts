@@ -15,7 +15,14 @@ import {NotificationsComponent} from "./core/notifications/notifications.compone
 import {LogoutComponent} from "./pages/logout/logout.component";
 import {HttpClientModule} from "@angular/common/http";
 
+import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
+import {RoomsComponent} from "./pages/room/room.component";
+import {ProvaComponent} from "./pages/prova/prova.component";
+import {UtentiComponent} from "./pages/utenti/utenti.component";
+
+
 @NgModule({
+    bootstrap: [AppComponent],
     declarations: [
         AppComponent,
         WelcomeComponent,
@@ -25,7 +32,11 @@ import {HttpClientModule} from "@angular/common/http";
         LogoutComponent,
         GridStanzeComponent,
         StanzeCardComponent,
-        RegistrazioneComponent
+        RegistrazioneComponent,
+        RoomsComponent,
+        NewBookingComponent,
+        ProvaComponent,
+        UtentiComponent,
 
     ],
     imports: [
@@ -36,7 +47,6 @@ import {HttpClientModule} from "@angular/common/http";
         HttpClientModule //!!per collegare la parte di login al welcome
 
     ],
-    providers: [],
-    bootstrap: [AppComponent]
+    providers: []
 })
 export class AppModule { }

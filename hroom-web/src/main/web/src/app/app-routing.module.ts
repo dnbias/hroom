@@ -9,6 +9,10 @@ import {RouteGuardService} from "../services/routeGuardService";
 import {GridStanzeComponent} from "./pages/grid-stanze/grid-stanze.component";
 import {RegistrazioneComponent} from "./pages/registrazione/registrazione.component";
 import {NotificationsComponent} from "./core/notifications/notifications.component";
+import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
+import {RoomsComponent} from "./pages/room/room.component";
+import {ProvaComponent} from "./pages/prova/prova.component";
+import {UtentiComponent} from "./pages/utenti/utenti.component";
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
@@ -18,6 +22,12 @@ const routes: Routes = [
   {path: 'stanze', component: StanzeComponent,canActivate:[RouteGuardService]},
   {path: 'stanze/grid', component: GridStanzeComponent,canActivate:[RouteGuardService]},
   {path:'logout', component : LogoutComponent,canActivate:[RouteGuardService]},
+  {path:'booking',component: NewBookingComponent, canActivate:[RouteGuardService]},
+
+
+  {path:'room',component: RoomsComponent,canActivate:[RouteGuardService]},
+  {path:'prova',component:ProvaComponent, canActivate:[RouteGuardService]},
+  {path:'utenti', component:UtentiComponent, canActivate:[RouteGuardService]},
   {path:'**', component: ErrorComponent},
 ];
 

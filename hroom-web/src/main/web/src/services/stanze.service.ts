@@ -16,10 +16,10 @@ export class StanzeService {
 
   getStanze =(): IStanze[]=> this.stanze;
 
-  getStanzeByCode = (codsta: string) : IStanze =>{
+  //getStanzeByCode = (codsta: string) : IStanze =>{
 
-    const index = this.stanze.findIndex(stanze=>stanze.codSta=codsta);
-    return  this.stanze[index];
+ //   const index = this.stanze.findIndex(stanze=>stanze.codSta=codsta);
+  //  return  this.stanze[index];
 
-  }
+ // }
 }

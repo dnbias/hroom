@@ -1,0 +1,98 @@
+<div class="container">
+  <h4>Nuova Prenotazione</h4>
+  <div class="row">
+    <div class="col-8">
+      <div class="row">
+        <div class="col-3">
+          <label>Nome</label>
+          <input type="text" class="form-control"  [(ngModel)]="bookingObj.name" />
+        </div>
+        <div class="col-3">
+          <label>Telefono</label>
+          <input type="text" class="form-control"  [(ngModel)]="bookingObj.mobileNo" />
+        </div>
+        <div class="col-3">
+          <label>Email</label>
+          <input type="text" class="form-control"  [(ngModel)]="bookingObj.email" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label>Città</label>
+          <input type="text" class="form-control"  [(ngModel)]="bookingObj.city" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label>Indirizzo </label>
+          <textarea class="form-control"  [(ngModel)]="bookingObj.address"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <label>Seleziona stanza</label>
+          <select class="form-control"  [(ngModel)]="bookingObj.roomId">
+            <option>Seleziona stanza</option>
+            <option *ngFor="let room of roomList" [value]="room.roomId"> {{room.roomName}}</option>
+          </select>
+        </div>
+        <div class="col-3">
+          <label>Costo Stanza</label>
+          <input type="text" class="form-control"  [(ngModel)]="bookingObj.bookingRate" />
+        </div>
+        <div class="col-3">
+          <label>Inizio Prenotazione</label>
+          <input type="date" class="form-control"  [(ngModel)]="bookingObj.bookingFromDate" />
+        </div>
+        <div class="col-3">
+          <label>Fine Prenotazione</label>
+          <input type="date" class="form-control"  [(ngModel)]="bookingObj.bookingToDate" />
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <label>Aggiungi un messaggio </label>
+          <textarea class="form-control"  [(ngModel)]="bookingObj.naration"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="col-4">
+      <div class="row">
+        <div class="col-6">
+          <h6>Dettagli ospite</h6>
+        </div>
+        <div class="col-6 text-end">
+          <button class="btn btn-primary btn-sm text-end" (click)="addGuest()">Aggiungi </button>
+        </div>
+      </div>
+      <div class="row pt-2">
+        <div class="col-12">
+          <table class="table table-bordered">
+            <tbody>
+            <tr *ngFor="let guest of bookingObj.hotelBookingDetails;let index= index">
+              <td>
+                <input type="text" class="form-control" [(ngModel)]="guest.customerName"   placeholder="Guest Name">
+              </td>
+              <td>
+                <input type="text" class="form-control"  [(ngModel)]="guest.aadharCardNo"   placeholder="Aadhar No">
+              </td>
+              <td>
+                <button class="btn btn-success" (click)="removeGuest(index)">Remove</button>
+              </td>
+            </tr>
+
+            </tbody>
+
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row pt-3">
+    <div class="col-8 text-center">
+      <button class="btn btn-success" (click)="onSaveBooking()">New Booking</button>
+    </div>
+  </div>
+</div>

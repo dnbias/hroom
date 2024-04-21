@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         map((params: ParamMap) => params.get('nologged')),
     );
 
-    this.filter$.subscribe(param => (param) ? this.notlogged = true : this.notlogged = false);
+    this.filter$.subscribe((param: any) => (param) ? this.notlogged = true : this.notlogged = false);
 
     console.log(this.notlogged);
 
