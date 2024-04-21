@@ -1,0 +1,53 @@
+
+  <section class="content-main">
+
+    <div class="content-header">
+      <h2 class="content-title">Griglia Stanze</h2>
+      <div>
+        <a href="#" class="btn btn-light">Esporta</a>
+        <a href="#" class="btn btn-light">Importa</a>
+        <a href="#" class="btn btn-primary">Aggiungi</a>
+      </div>
+    </div>
+
+    <div class="card mb-4">
+
+      <header class="card-header">
+        <div class="row gx-3">
+          <div class="col-lg-4 col-md-6 me-auto">
+            <input type="text" placeholder="Cerca..." class="form-control">
+          </div>
+          <div class="col-lg-2 col-6 col-md-3">
+            <select class="form-select">
+              <option>Tutte</option>
+              <option>Stanza arredata</option>
+              <option>Stanza non arredata</option>
+              <option>Alloggio</option>
+            </select>
+          </div>
+          <div class="col-lg-2 col-6 col-md-3">
+            <select class="form-select">
+              <option>Nuovi</option>
+              <option>Prezzo Basso</option>
+              <option>Più Frequentati</option>
+            </select>
+          </div>
+        </div>
+      </header> <!-- card-header end// -->
+
+      <div class="card-body">
+
+        <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5" *ngIf="stanze$">
+          <app-stanze-card
+                  *ngFor ="let stanza of stanze$"
+                  [stanza]="stanza"
+                  (delete)="handleDelete($event)"
+                  (edit)="handleEdit($event)"
+          ></app-stanze-card>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
