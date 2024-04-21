@@ -1,0 +1,16 @@
+##### GUARDARE application.properties
+##### MariaDB e' gia' impostato li'
+spring:
+  # ========= DATABASE MYSQL =========== #
+  datasource:
+    url: jdbc:mysql://mysql-app:3306/hroom?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: hroom_user
+    password: hroom_password
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      hibernate:
+        show_sql: false
+        dialect: org.hibernate.dialect.MariaDB53Dialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
