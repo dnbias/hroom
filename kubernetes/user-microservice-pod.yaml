@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.network/hroom-backend: "true"
+    io.kompose.service: user-microservice
+  name: user-microservice
+spec:
+  containers:
+    - image: dnbias/hroom:user-microservice
+      name: user-microservice-app
+      ports:
+        - containerPort: 8080
+          hostPort: 8091
+          protocol: TCP
+  restartPolicy: OnFailure
