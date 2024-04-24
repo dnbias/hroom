@@ -1,0 +1,16 @@
+<ul>
+    <li *ngFor="let stanza of room">
+
+        <a>
+        <img src= "{{stanza. imageUrl}}" alt="foto stanze">
+
+            <div class="content">
+                <div class="name">
+                    <p>ciao</p>
+                    {{stanza.nome}}
+                </div>
+                <span class="favorite{{stanza.favorite?'':'not'">❤️</span>
+            </div>
+        </a>
+    </li>
+</ul>

@@ -13,6 +13,8 @@ import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/room/room.component";
 import {ProvaComponent} from "./pages/prova/prova.component";
 import {UtentiComponent} from "./pages/utenti/utenti.component";
+import {LoggoogleComponent} from "./pages/loggoogle/loggoogle.component";
+import {HomeComponent} from "./pages/home/home.component";
 
 const routes: Routes = [
   {path:'', component: LoginComponent},
@@ -28,6 +30,8 @@ const routes: Routes = [
   {path:'room',component: RoomsComponent,canActivate:[RouteGuardService]},
   {path:'prova',component:ProvaComponent, canActivate:[RouteGuardService]},
   {path:'utenti', component:UtentiComponent, canActivate:[RouteGuardService]},
+  {path: 'google',component:LoggoogleComponent,canActivate:[RouteGuardService]},
+  {path:'home',component:HomeComponent,canActivate:[RouteGuardService]},
   {path:'**', component: ErrorComponent},
 ];
 

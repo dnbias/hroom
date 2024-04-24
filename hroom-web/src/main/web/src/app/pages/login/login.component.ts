@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+declare var google: any;
+
+import {Component, inject, OnInit} from '@angular/core';
 import { AuthappService } from '../../../services/authapp.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {Observable,map, of} from "rxjs";
@@ -9,6 +11,7 @@ import {Observable,map, of} from "rxjs";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
 
   userId: string = "";
   password: string = "";
@@ -26,7 +29,24 @@ export class LoginComponent implements OnInit {
 
   constructor(private route: Router, private route2: ActivatedRoute, private BasicAuth: AuthappService ) { }
 
+  private router = inject(Router);
   ngOnInit(): void {
+    google.accounts.id.initialize({
+      client_id: '805273237589-dqg9c3gk6245vuk9qe62j6uoef0i4fa3.apps.googleusercontent.com',
+      callback: (resp: any )=>this.handleLogin(resp)
+
+
+    });
+    google.accounts.id.renderButton(document.getElementById("google-btn"),{
+      theme: 'filled-blue',
+      size:'large',
+      shape:'rectangle',
+      width: 350,
+
+    })
+
+
+
     this.filter$ = this.route2.queryParamMap.pipe
     (
         map((params: ParamMap) => params.get('nologged')),
@@ -48,6 +68,22 @@ export class LoginComponent implements OnInit {
     }
     else {
       this.autenticato = false;
+
+    }
+  }
+
+
+  private decodeToken(token: string){
+    return JSON.parse(atob(token.split(".")[1]));
+  }
+  handleLogin(response: any){
+    if(response){
+      //decode the token
+      const payload = this.decodeToken((response.credential))
+      //store in session
+      sessionStorage.setItem("loggedInUser",JSON.stringify(payload));
+      //navigate to home
+      this.router.navigate(['home'])
 
     }
   }

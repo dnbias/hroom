@@ -19,6 +19,9 @@ import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/room/room.component";
 import {ProvaComponent} from "./pages/prova/prova.component";
 import {UtentiComponent} from "./pages/utenti/utenti.component";
+import {LoggoogleComponent} from "./pages/loggoogle/loggoogle.component";
+import {HomeComponent} from "./pages/home/home.component";
+
 
 
 @NgModule({
@@ -37,6 +40,10 @@ import {UtentiComponent} from "./pages/utenti/utenti.component";
         NewBookingComponent,
         ProvaComponent,
         UtentiComponent,
+        LoggoogleComponent,
+        HomeComponent
+
+
 
     ],
     imports: [
@@ -45,6 +52,7 @@ import {UtentiComponent} from "./pages/utenti/utenti.component";
         FormsModule,
         CoreModule,
         HttpClientModule //!!per collegare la parte di login al welcome
+
 
     ],
     providers: []

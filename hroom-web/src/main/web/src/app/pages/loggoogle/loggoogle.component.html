@@ -1,13 +1,9 @@
-<app-jumbotron [Titolo]="titolo" [SottoTitolo]="sottotitolo"></app-jumbotron>
 
 <div class="container login-container">
   <div class="row">
     <div class="col-md-6 login-form">
 
       <h3>Sign in</h3>
-      <div id ="google-btn">
-
-      </div>
       <div class="form-group">
         <input type="text" class="form-control"  id="userId" placeholder="Nome Utente / Mail" [(ngModel)] = "userId" >
       </div>
@@ -20,7 +16,9 @@
 
 
 
+        <div id ="google-btn">
 
+        </div>
       </div>
       <div class="form-group">
         <a href="#" class="ForgetPwd">Password Dimenticata?</a>
