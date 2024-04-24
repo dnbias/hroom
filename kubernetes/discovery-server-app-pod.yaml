@@ -12,6 +12,7 @@ spec:
   hostname: discovery-server
   containers:
     - image: dnbias/hroom:discovery-server
+      imagePullPolicy: "Always"
       name: discovery-server
       ports:
         - containerPort: 1111

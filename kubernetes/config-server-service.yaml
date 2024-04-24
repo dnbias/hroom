@@ -13,8 +13,6 @@ spec:
     - name: "9191"
       port: 9191
       targetPort: 9191
-    - name: 9191-tcp
-      port: 9191
-      targetPort: 9191
   selector:
     io.kompose.service: config-server
+  type: LoadBalancer
