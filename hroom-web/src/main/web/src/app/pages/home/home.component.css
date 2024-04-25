@@ -7,7 +7,7 @@ ul{
   padding: 0;
 }
 ul li a{
-  height: 25rem;
+  height: 22.5rem;
   width: 20rem;
   border: 1px solid whitesmoke;
   border-radius: 1rem;
@@ -24,13 +24,44 @@ li a:hover{
 .content{
   padding: .5rem 1rem;
   position: relative;
+  color: grey;
 }
 .favorite{
   position: absolute;
   top: .5rem;
   right: 1rem;
   font-size: 1.2rem;
+  color:red;
 }
 .favorite.not{
-  color: black;
+  color: grey;
+}
+
+.star{
+  margin-bottom: .2rem;
+}
+.product-item-footer{
+  display: flex;
+  justify-content: space-between ;
+  align-items: center;
+}
+.luogo{
+  flex :9;
+}
+.luogo span{
+  border-radius: 2rem;
+  background-color: whitesmoke;
+  color: green ;
+  font-size: .7rem;
+  margin-right: .3rem;
+  display: inline-block;
+}
+.tempo-room{
+  font-size: .8rem;
+  flex: 3;
+  text-align: right;
+}
+.prezzo{
+  color: #424242;
+  margin-top: .2rem;
 }

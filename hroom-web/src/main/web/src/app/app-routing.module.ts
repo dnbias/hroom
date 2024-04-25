@@ -24,6 +24,8 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'loggoogle',component:LoggoogleComponent,canActivate:[RouteGuardService]},
   {path:'booking',component:NewBookingComponent,canActivate:[RouteGuardService]},
+  {path:'search/:searchItem',component:HomeComponent},
+
   {path:'**', component: ErrorComponent},
 ];
 

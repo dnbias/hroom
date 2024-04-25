@@ -13,7 +13,7 @@ export class StanzaService {
         {
           id: 1 ,
           prezzo : 10,
-          nome : 'stanza bella',
+          nome : 'ciao',
           favorite: false,
           stelle: 4.0,
           tags: ['parigi','Idromassaggio','matrimoniale'],

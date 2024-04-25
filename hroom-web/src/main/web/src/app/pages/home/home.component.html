@@ -18,22 +18,21 @@
             </span>
             </div>
 
+
          <div class="tempo-room">
            <span>
              ⏳
            </span>
            {{stanza.roomtime}}
          </div>
-
-          <div class="price">
-            {{stanza.prezzo | currency:'EUR':true}}
-          </div>
-          <div class="stelle">
-            Valutazione:{{stanza.stelle}}
-          </div>
-
-
         </div>
+        <div class="prezzo">
+          {{stanza.prezzo | currency:'EUR':true}}
+        </div>
+
+      </div>
+      <div class="stelle">
+        Valutazione:{{stanza.stelle}}
       </div>
     </a>
   </li>
