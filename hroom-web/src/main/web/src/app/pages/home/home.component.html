@@ -1,16 +1,40 @@
+
 <ul>
-    <li *ngFor="let stanza of room">
+  <li *ngFor="let stanza of room">
 
-        <a>
-        <img src= "{{stanza. imageUrl}}" alt="foto stanze">
+    <a>
+      <img src= "{{stanza. imageUrl}}" alt="foto stanze">
 
-            <div class="content">
-                <div class="name">
-                    <p>ciao</p>
-                    {{stanza.nome}}
-                </div>
-                <span class="favorite{{stanza.favorite?'':'not'">❤️</span>
+      <div class="content">
+        <div class="name">
+          {{stanza.nome}}
+        </div>
+        <span class="favorite {{stanza.favorite?'':'not'}}">♥</span>
+
+        <div class="product-item-footer">
+          <div class=" luogo">
+            <span *ngFor ="let  luogo of stanza.luogo">
+                  {{luogo}}
+            </span>
             </div>
-        </a>
-    </li>
+
+         <div class="tempo-room">
+           <span>
+             ⏳
+           </span>
+           {{stanza.roomtime}}
+         </div>
+
+          <div class="price">
+            {{stanza.prezzo | currency:'EUR':true}}
+          </div>
+          <div class="stelle">
+            Valutazione:{{stanza.stelle}}
+          </div>
+
+
+        </div>
+      </div>
+    </a>
+  </li>
 </ul>

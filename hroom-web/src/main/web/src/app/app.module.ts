@@ -21,8 +21,8 @@ import {ProvaComponent} from "./pages/prova/prova.component";
 import {UtentiComponent} from "./pages/utenti/utenti.component";
 import {LoggoogleComponent} from "./pages/loggoogle/loggoogle.component";
 import {HomeComponent} from "./pages/home/home.component";
-
-
+// @ts-ignore
+import {RatingModule}  from "ng-starrating";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -41,7 +41,8 @@ import {HomeComponent} from "./pages/home/home.component";
         ProvaComponent,
         UtentiComponent,
         LoggoogleComponent,
-        HomeComponent
+        HomeComponent,
+        LoggoogleComponent,
 
 
 
@@ -51,7 +52,7 @@ import {HomeComponent} from "./pages/home/home.component";
         AppRoutingModule,
         FormsModule,
         CoreModule,
-        HttpClientModule //!!per collegare la parte di login al welcome
+        HttpClientModule, //!!per collegare la parte di login al welcome
 
 
     ],

@@ -2,7 +2,7 @@ export class stanze{
     id!: number;
     prezzo!:number;
     nome!:string;
-    favorite:boolean=false;
+    favorite: boolean=false;
     stelle:number=0;
     tags?:string[];
     imageUrl!:string;

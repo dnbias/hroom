@@ -17,7 +17,7 @@ export class StanzaService {
           favorite: false,
           stelle: 4.0,
           tags: ['parigi','Idromassaggio','matrimoniale'],
-          imageUrl:'/assets/StanzePic/foto1.jpeg',
+          imageUrl:'/assets/StanzePic/fotox.jpeg',
           roomtime: 10,
           luogo: ['Parigi'],
           nomeHost: 'Pier'
