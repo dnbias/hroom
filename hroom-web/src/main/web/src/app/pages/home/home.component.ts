@@ -15,8 +15,9 @@ export class HomeComponent implements  OnInit{
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       if(params['searchItem'])
-
            this.room = this.ss.getAll().filter(stanza => stanza.nome.toLowerCase().includes(params['searchItem'].toLowerCase()));
+      else if(params['tag'])
+        this.room=this.ss.getAllRoomByTag(params['tag'])
       else
           this.room = this.ss.getAll();
 

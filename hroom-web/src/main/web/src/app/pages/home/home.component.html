@@ -1,8 +1,9 @@
 <app-search></app-search>
+<app-tag></app-tag>
 <ul>
   <li *ngFor="let stanza of room">
 
-    <a>
+    <a routerLink="/stanza/{{stanza.id}}">
       <img src= "{{stanza. imageUrl}}" alt="foto stanze">
 
       <div class="content">

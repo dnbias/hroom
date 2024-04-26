@@ -24,6 +24,8 @@ import {HomeComponent} from "./pages/home/home.component";
 // @ts-ignore
 import {RatingModule}  from "ng-starrating";
 import {SearchComponent} from "./search/search.component";
+import {TagComponent} from "./pages/tag/tag.component";
+import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -45,6 +47,8 @@ import {SearchComponent} from "./search/search.component";
         HomeComponent,
         LoggoogleComponent,
         SearchComponent,
+        TagComponent,
+        StanzaPageComponent,
 
 
 

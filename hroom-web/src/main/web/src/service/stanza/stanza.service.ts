@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import{stanze} from "../../app/shared/models/stanza";
+import {Tag} from "../../app/shared/models/Tag";
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,22 @@ export class StanzaService {
 
   constructor() { }
 
+    getStanzaById(id:number): stanze{
+      return this.getAll().find(stanza=> stanza.id == id)!;
+    }
+  getAllRoomByTag(tag:string): stanze[] {
+    return tag == "All"?
+      this.getAll() : this.getAll().filter(stanza=>stanza.tags?.
+      includes(tag));
+
+  }
+  getAllTag():Tag[]{
+    return [
+      {nome: 'all', count: 10},
+      {nome: 'Appartamento', count: 10},
+      {nome: 'Idromassaggio', count: 2},
+    ]
+  }
   getAll():stanze[]{
     return[
         {
@@ -16,7 +33,7 @@ export class StanzaService {
           nome : 'ciao',
           favorite: false,
           stelle: 4.0,
-          tags: ['parigi','Idromassaggio','matrimoniale'],
+          tags: ['parigi','Idromassaggio','Appartamento'],
           imageUrl:'/assets/StanzePic/fotox.jpeg',
           roomtime: 10,
           luogo: ['Parigi'],
@@ -28,7 +45,7 @@ export class StanzaService {
             nome : 'Stanza suprema',
             favorite: false,
             stelle: 3.4,
-            tags: ['Milano','silenziosa','matrimoniale'],
+            tags: ['Milano','silenziosa','Appartamento'],
             imageUrl:'/assets/StanzePic/foto2.jpeg',
             roomtime: 10,
             luogo: ['Milano'],
@@ -134,4 +151,6 @@ export class StanzaService {
 
     ];
   }
+
+
 }
