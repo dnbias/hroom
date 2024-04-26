@@ -9,7 +9,7 @@ export class CartItem{
    stanza: stanze;
    numeroOre:number =1;
 
-  get prezzo():Number{
+  get prezzo():number{
     return this.stanza.prezzo * this.numeroOre;
 
   }

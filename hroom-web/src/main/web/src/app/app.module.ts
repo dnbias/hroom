@@ -26,6 +26,7 @@ import {RatingModule}  from "ng-starrating";
 import {SearchComponent} from "./search/search.component";
 import {TagComponent} from "./pages/tag/tag.component";
 import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
+import {CartPageComponent} from "./pages/cart-page/cart-page.component";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -49,6 +50,7 @@ import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
         SearchComponent,
         TagComponent,
         StanzaPageComponent,
+        CartPageComponent,
 
 
 

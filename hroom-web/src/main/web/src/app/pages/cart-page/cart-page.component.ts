@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Cart} from "../../shared/models/Cart";
+import {CartService} from "../../../service/cart/cart.service";
+import {CartItem} from "../../shared/models/cartItem";
 
 @Component({
   selector: 'app-cart-page',
@@ -7,7 +9,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './cart-page.component.css'
 })
 export class CartPageComponent implements OnInit{
+  cart!:Cart;
+  constructor(private cartService: CartService) {
+  }
   ngOnInit(): void {
+   /* setCart(){
+     this.cart= this.cartService.getCart();
+    }
+    removeFromCart(cartItem : CartItem){
+      this.cartService.removeFromCart(cartItem.food.id);
+      this.setCart();
+    }
+    changeHour(cartItem : cartItem, hourInString: string){
+      const hourRoom= parseInt(hourInString);
+      this.cartService.changeHour(cartItem.stanza.id,hourRoom);
+      this.setCart();
+    }*/
   }
 
 }

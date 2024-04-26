@@ -37,8 +37,13 @@ li a:hover{
   color: grey;
 }
 
-.star{
-  margin-bottom: .2rem;
+.valutazione{
+  position: absolute;
+
+  right: 1rem;
+  font-size: 1.2rem;
+  color:darkgrey;
+
 }
 .product-item-footer{
   display: flex;
@@ -62,6 +67,9 @@ li a:hover{
   text-align: right;
 }
 .prezzo{
-  color: #424242;
+  color: grey;
   margin-top: .2rem;
+}
+svg{
+  color: #ffdc42;
 }

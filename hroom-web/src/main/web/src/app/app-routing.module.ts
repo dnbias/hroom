@@ -13,6 +13,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {LoggoogleComponent} from "./pages/loggoogle/loggoogle.component";
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
+import {CartPageComponent} from "./pages/cart-page/cart-page.component";
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path:'search/:searchItem',component:HomeComponent},
   {path:'tag/:tag',component:HomeComponent},
   {path:'stanza/:id',component:StanzaPageComponent},
+  {path: 'cart-page',component:CartPageComponent},
   {path:'**', component: ErrorComponent},
 ];
 
