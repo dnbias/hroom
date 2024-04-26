@@ -23,6 +23,7 @@ import {LoggoogleComponent} from "./pages/loggoogle/loggoogle.component";
 import {HomeComponent} from "./pages/home/home.component";
 // @ts-ignore
 import {RatingModule}  from "ng-starrating";
+import {SearchComponent} from "./search/search.component";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -43,6 +44,7 @@ import {RatingModule}  from "ng-starrating";
         LoggoogleComponent,
         HomeComponent,
         LoggoogleComponent,
+        SearchComponent,
 
 
 
