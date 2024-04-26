@@ -26,4 +26,5 @@ export class HomeComponent implements  OnInit{
   }
 
 
+    protected readonly stanze = stanze;
 }

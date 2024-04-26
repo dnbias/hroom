@@ -27,6 +27,7 @@ import {SearchComponent} from "./search/search.component";
 import {TagComponent} from "./pages/tag/tag.component";
 import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
 import {CartPageComponent} from "./pages/cart-page/cart-page.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -51,6 +52,7 @@ import {CartPageComponent} from "./pages/cart-page/cart-page.component";
         TagComponent,
         StanzaPageComponent,
         CartPageComponent,
+        NotFoundComponent
 
 
 

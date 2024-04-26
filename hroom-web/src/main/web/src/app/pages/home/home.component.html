@@ -1,5 +1,6 @@
 <app-search></app-search>
 <app-tag></app-tag>
+<app-not-found [visible]="!stanze || stanze.length <=0"></app-not-found>
 <ul>
   <li *ngFor="let stanza of room">
 
