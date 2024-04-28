@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {StanzaService} from "../../../service/stanza/stanza.service";
 import {stanze} from "../../shared/models/stanza";
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, RouterLink} from '@angular/router';
 import {Tag} from "../../shared/models/Tag";
 import {filter} from "rxjs";
 import {ProjectService} from "../../../service/project.service";
@@ -21,6 +21,8 @@ export class HomeComponent implements  OnInit{
   centro: boolean=false;
   idro: boolean=false;
 
+
+  filtering :boolean=false;
   constructor(private ss: StanzaService, private route:ActivatedRoute, private projectService: ProjectService) {}
 
   ngOnInit(): void {
@@ -59,6 +61,9 @@ export class HomeComponent implements  OnInit{
      if(this.idro){
       filterTags.push(Tag.IDRO);
     }
+     if(this.spa || this.allin || this.stanza || this.appartamento || this.centro || this.idro || this.parcheggio){
+       this.filtering=true;
+     }
     this.room = this.projectService.GetRoomByFilter(filterTags);
   }
 ResetFilter(){
@@ -69,8 +74,9 @@ ResetFilter(){
   this.allin=false;
   this.stanza=false;
   this.appartamento=false;
-
+  this.filtering=false;
 }
 
 
+  protected readonly RouterLink = RouterLink;
 }
