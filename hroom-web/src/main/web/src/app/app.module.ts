@@ -17,7 +17,6 @@ import {HttpClientModule} from "@angular/common/http";
 
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/room/room.component";
-import {ProvaComponent} from "./pages/prova/prova.component";
 import {UtentiComponent} from "./pages/utenti/utenti.component";
 import {LoggoogleComponent} from "./pages/loggoogle/loggoogle.component";
 import {HomeComponent} from "./pages/home/home.component";
@@ -28,6 +27,11 @@ import {TagComponent} from "./pages/tag/tag.component";
 import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
 import {CartPageComponent} from "./pages/cart-page/cart-page.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {FeedbackComponent} from "./pages/welcome/Componenti-welcome/feedback/feedback.component";
+import {PrenotazioniComponent} from "./pages/welcome/Componenti-welcome/prenotazioni/prenotazioni.component";
+import {StanzeAffitateComponent} from "./pages/welcome/Componenti-welcome/stanze-affitate/stanze-affitate.component";
+import {PortfolioComponent} from "./pages/welcome/Componenti-welcome/portfolio/portfolio.component";
+import {ProjectCardComponent} from "./pages/welcome/Componenti-welcome/portfolio/project-card/project-card.component";
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -43,29 +47,36 @@ import {NotFoundComponent} from "./pages/not-found/not-found.component";
         RegistrazioneComponent,
         RoomsComponent,
         NewBookingComponent,
-        ProvaComponent,
         UtentiComponent,
         LoggoogleComponent,
         HomeComponent,
-        LoggoogleComponent,
+
         SearchComponent,
         TagComponent,
         StanzaPageComponent,
         CartPageComponent,
-        NotFoundComponent
+        NotFoundComponent,
+        FeedbackComponent,
+        PrenotazioniComponent,
+        StanzeAffitateComponent,
+        PortfolioComponent,
+        ProjectCardComponent,
 
 
 
     ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        CoreModule,
-        HttpClientModule, //!!per collegare la parte di login al welcome
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    CoreModule,
+    HttpClientModule,
 
 
-    ],
+    //!!per collegare la parte di login al welcome
+
+
+  ],
     providers: []
 })
 export class AppModule { }

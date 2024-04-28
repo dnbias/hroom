@@ -14,6 +14,11 @@ import {LoggoogleComponent} from "./pages/loggoogle/loggoogle.component";
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
 import {CartPageComponent} from "./pages/cart-page/cart-page.component";
+import {FeedbackComponent} from "./pages/welcome/Componenti-welcome/feedback/feedback.component";
+import {PortfolioComponent} from "./pages/welcome/Componenti-welcome/portfolio/portfolio.component";
+import {StanzeAffitateComponent} from "./pages/welcome/Componenti-welcome/stanze-affitate/stanze-affitate.component";
+import {PrenotazioniComponent} from "./pages/welcome/Componenti-welcome/prenotazioni/prenotazioni.component";
+import {NavComponent} from "./core/nav/nav.component";
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
@@ -30,11 +35,19 @@ const routes: Routes = [
   {path:'tag/:tag',component:HomeComponent},
   {path:'stanza/:id',component:StanzaPageComponent},
   {path: 'cart-page',component:CartPageComponent},
-  {path:'**', component: ErrorComponent},
+  {path:'feedback',component:FeedbackComponent},
+  {path:'portfolio',component:PortfolioComponent},
+  {path:'stanzeAffittate',component:StanzeAffitateComponent},
+  {path:'prenotazioni',component:PrenotazioniComponent},
+
+  {path:'**', component: ErrorComponent, pathMatch:'full'},
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  declarations: [
+    NavComponent
+  ],
+  exports: [RouterModule, NavComponent]
 })
 export class AppRoutingModule { }

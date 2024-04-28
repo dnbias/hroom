@@ -1,5 +1,5 @@
 
-<app-not-found [visible]="!stanza" notFoundMessage="Servizio non trovato!" resetLinkText="Vai alla Home"></app-not-found>
+<app-not-found [visible]="!stanza" notFoundMessage="Servizio non trovato!" resetLinkText="Vai alla Homepage"></app-not-found>
 <div *ngIf="stanza" class="container">
     <img [src]="stanza.imageUrl" [alt]="stanza.nome"/>
 
@@ -27,7 +27,7 @@
         </span>
     </div>
     <div class="tag">
-        <app-tag [stanzaPageTags]="stanza.tags" justifyContent="start"></app-tag>
+     <!--   <app-tag [stanzaPageTags]="stanza.tags" justifyContent="start"></app-tag>-->
     </div>
     <div class="tempo-room">
         <span>

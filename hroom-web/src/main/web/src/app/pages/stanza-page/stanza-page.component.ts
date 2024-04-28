@@ -27,5 +27,4 @@ export class StanzaPageComponent implements OnInit{
     this.cartService.addToCart(this.stanza);
     this.router.navigateByUrl('/cart-page')
   }
-
 }

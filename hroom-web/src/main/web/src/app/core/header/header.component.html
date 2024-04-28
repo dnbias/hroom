@@ -30,7 +30,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" title="utenti" routerLink="/utenti">
+          <a class="nav-link" title="utenti" routerLink="/welcome/:userId">
             <span class="material-icons md-card_membership" title="Fidelity" aria-hidden="true"></span>
             Utenti
           </a>
@@ -43,10 +43,6 @@
         </li>
       </ul>
 
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-
-      </form>
 
       <div class="col-nav">
         <button class="btn btn-icon btn-mobile me-auto" data-trigger="#offcanvas_aside"> <i class="md-28 material-icons md-menu"></i> </button>
@@ -68,7 +64,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="#"> English </a>
+            <a class="nav-link" href="#"> Italiano </a>
           </li>
 
           <li class="dropdown nav-item">
@@ -77,8 +73,7 @@
               <img class="img-xs rounded-circle"  *ngIf="!BasicAuth.isLogged()" src="/assets/images/avatars/offline_user.png" alt="User" width="35" height="35">
             </a>
             <div class="dropdown-menu dropdown-menu-end">
-              <a class="dropdown-item" routerLink="/login">Accedi</a>
-              <a class="dropdown-item" routerLink="/signup" routerLink="/registrazione">Registrati</a>
+
               <a class="dropdown-item disabled" href="#">Profilo</a>
               <a class="dropdown-item disabled" href="#">Settings</a>
               <hr class="dropdown-divider">

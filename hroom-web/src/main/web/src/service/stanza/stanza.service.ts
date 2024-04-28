@@ -14,15 +14,20 @@ export class StanzaService {
     }
   getAllRoomByTag(tag:string): stanze[] {
     return tag == "All"?
-      this.getAll() : this.getAll().filter(stanza=>stanza.tags?.
+      this.getAll() : this.getAll().filter(stanza=>stanza.tags.toString()
+            ?.
       includes(tag));
 
   }
   getAllTag():Tag[]{
     return [
-      {nome: 'all', count: 10},
-      {nome: 'Appartamento', count: 10},
-      {nome: 'Idromassaggio', count: 2},
+
+        Tag.STANZA,
+        Tag.IDRO,
+        Tag.COLAZIONE,
+        Tag.SPA,
+        Tag.PARCHEGGIO,
+
     ]
   }
   getAll():stanze[]{
@@ -33,11 +38,11 @@ export class StanzaService {
           nome : 'ciao',
           favorite: false,
           stelle: 4.0,
-          tags: ['parigi','Idromassaggio','Appartamento'],
+          tags: [Tag.STANZA, Tag.IDRO,],
           imageUrl:'/assets/StanzePic/fotox.jpeg',
           roomtime: 10,
           luogo: ['Parigi'],
-          nomeHost: 'Pier'
+          nomeHost: 'Enrico'
         },
         {
             id: 2 ,
@@ -45,7 +50,7 @@ export class StanzaService {
             nome : 'Stanza suprema',
             favorite: false,
             stelle: 3.4,
-            tags: ['Milano','silenziosa','Appartamento'],
+            tags: [Tag.STANZA, Tag.COLAZIONE],
             imageUrl:'/assets/StanzePic/foto2.jpeg',
             roomtime: 10,
             luogo: ['Milano'],
@@ -57,7 +62,7 @@ export class StanzaService {
             nome : 'Stanza spaziosa',
             favorite: false,
             stelle: 2.0,
-            tags: ['Londra','goodprice','matrimoniale'],
+            tags: [Tag.STANZA,  Tag.PARCHEGGIO],
             imageUrl:'/assets/StanzePic/foto3.jpeg',
             roomtime: 4,
             luogo: ['Londra'],
@@ -69,7 +74,7 @@ export class StanzaService {
             nome : 'Stanza Confortevole',
             favorite: false,
             stelle: 3.5,
-            tags: ['Bologna','silenziosa','matrimoniale'],
+            tags: [Tag.STANZA,Tag.COLAZIONE],
             imageUrl:'/assets/StanzePic/foto4.jpeg',
             roomtime: 10,
             luogo: ['Bologna'],
@@ -81,7 +86,7 @@ export class StanzaService {
             nome : 'Stanza Meravigliosa',
             favorite: false,
             stelle: 4.8,
-            tags: ['Bergamo','relax','matrimoniale'],
+            tags: [Tag.STANZA],
             imageUrl:'/assets/StanzePic/foto5.jpeg',
             roomtime: 10,
             luogo: ['Bergamo'],
@@ -93,7 +98,7 @@ export class StanzaService {
             nome : 'Stanza unica',
             favorite: false,
             stelle: 4.0,
-            tags: ['Brescia','Idromassaggio','coppia'],
+            tags: [Tag.STANZA],
             imageUrl:'/assets/StanzePic/foto6.jpeg',
             roomtime: 12,
             luogo: ['Brescia'],
@@ -105,7 +110,7 @@ export class StanzaService {
             nome : 'Stanza per coppie',
             favorite: false,
             stelle: 4.0,
-            tags: ['Catania','sole','coppia'],
+            tags: [Tag.STANZA],
             imageUrl:'/assets/StanzePic/foto7.jpeg',
             roomtime: 4,
             luogo: ['Catania'],
@@ -117,7 +122,7 @@ export class StanzaService {
             nome : 'Stanza deluxe',
             favorite: true,
             stelle: 4.2,
-            tags: ['Aosta','relax','singola'],
+            tags: [Tag.STANZA],
             imageUrl:'/assets/StanzePic/foto8.jpeg',
             roomtime: 4,
             luogo: ['Aosta'],
@@ -129,7 +134,7 @@ export class StanzaService {
             nome : 'Stanza standard',
             favorite: false,
             stelle: 2.5,
-            tags: ['Torino','universitario','singola'],
+            tags: [Tag.STANZA],
             imageUrl:'/assets/StanzePic/foto9.jpeg',
             roomtime: 4,
             luogo: ['Torino'],
@@ -141,11 +146,23 @@ export class StanzaService {
             nome : 'Stanza notte',
             favorite: true,
             stelle: 4.0,
-            tags: ['Catania','sole','coppia'],
+            tags: [Tag.STANZA],
             imageUrl:'/assets/StanzePic/foto10.jpeg',
             roomtime: 2,
             luogo: ['Cuneo'],
             nomeHost: 'Stefano'
+        },
+        {
+            id:11,
+            prezzo: 10,
+            nome:'Colazione',
+            favorite:false,
+            stelle: 5.0,
+            tags:[Tag.COLAZIONE],
+            imageUrl:"assets/Servizi/colazione.jpeg",
+            roomtime:1,
+            luogo:['Plus'],
+            nomeHost:'colazione'
         }
 
 

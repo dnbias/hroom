@@ -8,11 +8,9 @@ import {Tag} from "../../shared/models/Tag";
   styleUrl: './tag.component.css'
 })
 export class TagComponent implements OnInit{
-  @Input()
-  stanzaPageTags?:string[];
-  tags?:Tag[]=[];
-  @Input()
-  justifyContent?:string = 'center';
+  @Input()  stanzaPageTags?:string[];
+  @Input() tags?:Tag[]=[];
+  @Input()  justifyContent?:string = 'center';
 
 
 

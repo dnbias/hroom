@@ -1,3 +1,4 @@
+
 export interface  IStanze{
     codSta: string
     descrizione: string
