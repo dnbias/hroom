@@ -73,10 +73,11 @@ import {ProjectCardComponent} from "./pages/welcome/Componenti-welcome/portfolio
     HttpClientModule,
 
 
+
     //!!per collegare la parte di login al welcome
-
-
   ],
-    providers: []
+    providers: [],
+
+
 })
 export class AppModule { }

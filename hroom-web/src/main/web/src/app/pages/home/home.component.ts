@@ -2,6 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {StanzaService} from "../../../service/stanza/stanza.service";
 import {stanze} from "../../shared/models/stanza";
 import {ActivatedRoute} from '@angular/router';
+import {Tag} from "../../shared/models/Tag";
+import {filter} from "rxjs";
+import {ProjectService} from "../../../service/project.service";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +13,15 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements  OnInit{
   room :stanze[]=[];
-  constructor(private ss: StanzaService, private route:ActivatedRoute) {}
+  parcheggio: boolean =false;
+  appartamento: boolean =false;
+  spa: boolean =false;
+  stanza: boolean =false;
+  allin: boolean =false;
+  centro: boolean=false;
+  idro: boolean=false;
+
+  constructor(private ss: StanzaService, private route:ActivatedRoute, private projectService: ProjectService) {}
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -24,7 +35,42 @@ export class HomeComponent implements  OnInit{
     })
 
   }
+  filter(){
+    let filterTags: Tag[]=[];
+
+    if(this.parcheggio){
+      filterTags.push(Tag.PARCHEGGIO);
+    }
+    if(this.appartamento){
+      filterTags.push(Tag.APPARTAMENTO);
+    }
+    if(this.stanza){
+      filterTags.push(Tag.STANZA);
+    }
+    if(this.allin){
+      filterTags.push(Tag.ALLINCLUSIVE);
+    }
+    if(this.spa){
+      filterTags.push(Tag.SPA);
+    }
+    if(this.centro){
+      filterTags.push(Tag.CENTRO);
+    }
+     if(this.idro){
+      filterTags.push(Tag.IDRO);
+    }
+    this.room = this.projectService.GetRoomByFilter(filterTags);
+  }
+ResetFilter(){
+  this.idro=false;
+  this.spa=false;
+  this.parcheggio=false;
+  this.centro=false;
+  this.allin=false;
+  this.stanza=false;
+  this.appartamento=false;
+
+}
 
 
-   // protected readonly stanze = stanze;
 }

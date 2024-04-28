@@ -1,6 +1,63 @@
 <app-search></app-search>
 <app-tag></app-tag>
 <app-not-found [visible]= "!room || room.length <=0" resetLinkText="Torna alla home"></app-not-found>
+<p>
+  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    filtra
+  </button>
+  <button class="btn btn-outline-primary mb-2 me-2"(click)="ResetFilter()" >Reset </button>
+
+</p>
+<div class="collapse" id="collapseExample">
+
+    <div class="border mb-2 shadow-sa" style="width:  250px;">
+      <form>
+        <div class="row mx-0">
+          <div class="col">
+            <small><b>Filtro stanza:</b></small>
+            <div class="form-group">
+              <div class="form-check">
+                <input
+                        type="checkbox"
+                        class ="form-check-input position-static me-2"
+                        [(ngModel)]="stanza"
+                        (change)="filter()"
+                        name="stanza">
+                <label class="form-check-label small">stanza</label>
+              </div>
+
+            </div>
+          </div>
+          <div class="col">
+            <small><b>Filtro servizi:</b></small>
+            <div class="form-group">
+              <div class="form-check">
+                <input
+                        type="checkbox"
+                        class ="form-check-input position-static me-2"
+                        [(ngModel)]="idro"
+                        (change)="filter()"
+                        name="parcheggio">
+                <label class="form-check-label small">idro</label>
+              </div>
+
+            </div>
+          </div>
+
+
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+
+<div class="rmb-2">
+<div>
+
+</div>
+
 <ul>
   <li *ngFor="let stanza of room">
 

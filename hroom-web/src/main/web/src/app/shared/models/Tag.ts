@@ -5,6 +5,9 @@ export class Tag{
 
     static readonly COLAZIONE  = new Tag('Colazione','pink');
     static readonly SPA  = new Tag('Spa','black');
+    static readonly APPARTAMENTO  = new Tag('appartamento','yellow');
+    static readonly ALLINCLUSIVE  = new Tag('allinclusive','fuxia');
+    static readonly CENTRO  = new Tag('centro','fuxia');
 
 
 

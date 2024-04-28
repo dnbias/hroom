@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import {SalutiDataService} from "../../../services/data/saluti-data.service";
 import {stanze} from "../../shared/models/stanza";
 import {ProjectService} from "../../../service/project.service";
+import {Tag} from "../../shared/models/Tag";
 
 @Component({
   selector: 'app-welcome',
@@ -13,10 +14,11 @@ import {ProjectService} from "../../../service/project.service";
 export class WelcomeComponent implements OnInit {
 
     featuredProject={} as stanze;
-
+    rs={} as stanze[];
     utente : string = "";
-  titolo : string="Benvenuto in HRoom ";
-  sottotitolo : string ="Goditi  il tuo divertimento ad ore ";
+
+    titolo : string="Benvenuto in HRoom ";
+    sottotitolo : string ="Goditi  il tuo divertimento ad ore ";
 
   constructor(private route : ActivatedRoute, private salutiSrv : SalutiDataService,private projectService: ProjectService) {}
 

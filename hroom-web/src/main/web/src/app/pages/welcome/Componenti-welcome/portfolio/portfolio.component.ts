@@ -19,6 +19,11 @@ export class PortfolioComponent implements OnInit{
       this.project=this.projectService.GetProject();
    }
 
+    filter(){
+        let filterTags: Tag[]=[];
+
+        this.project = this.projectService.GetRoomByFilter(filterTags);
+    }
 
 
 }
