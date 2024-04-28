@@ -1,6 +1,20 @@
 <app-jumbotron [Titolo]="titolo" [SottoTitolo]="sottotitolo" [Show]="false"></app-jumbotron>
-<p>Saluti, {{ utente }} clicca <a routerLink="/stanze">qui</a> per vedere l'elenco degli articoli disponibili.</p>
+<p>Saluti, {{ utente }} clicca <a routerLink="/home">qui</a> per vedere l'elenco delle stanze disponibili.</p>
 
 <button class="btn btn-primary" (click)="getSaluti()">Saluti</button>
 <h2>{{saluti}}</h2>
 <h2>{{errore}}</h2>
+<div class="container">
+  <div class="text-center">
+    <h1 class="display-4">{{utente}}</h1>
+    <h1>Tipo utente: </h1>
+
+</div>
+<div class="col-lg shadow border m-1">
+  <div class="text-center">
+    <h2>About me</h2>
+    <img src="/src/main/web/src/assets/images/user.png" alt="Profile picture" width="256" height="256">
+
+  </div>
+</div>
+</div>

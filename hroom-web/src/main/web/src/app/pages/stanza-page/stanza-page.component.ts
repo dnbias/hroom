@@ -13,7 +13,8 @@ import {CartService} from "../../../service/cart/cart.service";
 })
 export class StanzaPageComponent implements OnInit{
   stanza!:stanze;
-  constructor(private activetedRoute:ActivatedRoute,private stanzaService:StanzaService,
+  constructor(private activetedRoute : ActivatedRoute,
+              private stanzaService : StanzaService,
               private cartService:CartService,private router: Router) {
     activetedRoute.params.subscribe((params)=>{
       if(params['id'])

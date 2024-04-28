@@ -1,5 +1,5 @@
 
-<app-not-found [visible]="!stanza" notFoundMessage="Servizio non trovato!"></app-not-found>
+<app-not-found [visible]="!stanza" notFoundMessage="Servizio non trovato!" resetLinkText="Vai alla Home"></app-not-found>
 <div *ngIf="stanza" class="container">
     <img [src]="stanza.imageUrl" [alt]="stanza.nome"/>
 
