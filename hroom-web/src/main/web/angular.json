@@ -87,7 +87,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/round.css"
+              "src/assets/css/round.css",
+              "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
           }

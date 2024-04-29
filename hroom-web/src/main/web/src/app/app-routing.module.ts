@@ -40,6 +40,7 @@ const routes: Routes = [
   {path:'stanzeAffittate',component:StanzeAffitateComponent},
   {path:'prenotazioni',component:PrenotazioniComponent},
 
+
   {path:'**', component: ErrorComponent, pathMatch:'full'},
 ];
 
