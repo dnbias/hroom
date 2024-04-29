@@ -1,0 +1,146 @@
+{
+  "user": [
+    {
+      "id": "admin",
+      "name": "NT Infotech",
+      "password": "pippo",
+      "email": "test@gmail.com",
+      "gender": "male",
+      "role": "admin",
+      "isactive": true,
+      "address": {
+        "area": "Milano"
+      }
+    },
+    {
+      "id": "testuser",
+      "name": "Test User",
+      "password": "Test@1234",
+      "email": "test@in.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true,
+      "address": {
+        "area": "Torino"
+      }
+    },
+    {
+      "id": "Jhon1",
+      "name": "NT Infotech",
+      "password": "Test@1233",
+      "email": "te@in.com",
+      "gender": "male",
+      "role": "tech",
+      "isactive": true,
+      "address": {
+        "area": "Bologna"
+      }
+    },
+    {
+      "id": "ntuser",
+      "name": "ramesh",
+      "password": "Test@1234",
+      "email": "te@in.com",
+      "gender": "male",
+      "role": "tech",
+      "isactive": true,
+      "address": {
+        "area": "Roma"
+      }
+    },
+    {
+      "id": "Enrico",
+      "name": "enrico",
+      "password": "pippo",
+      "email": "colomboenrico199@gmail.com",
+      "gender": "male",
+      "role": "",
+      "isactive": true
+    }
+  ],
+  "role": [
+    {
+      "code": "user",
+      "name": "User",
+      "id": "9862"
+    },
+    {
+      "code": "tech",
+      "name": "Technician",
+      "id": "53dd"
+    }
+  ],
+  "menu": [
+    {
+      "code": "user",
+      "name": "User",
+      "id": "1b7c"
+    },
+    {
+      "code": "customer",
+      "name": "Customer",
+      "id": "8bc8"
+    }
+  ],
+  "roleaccess": [
+    {
+      "role": "admin",
+      "menu": "user",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true,
+      "id": "4246"
+    },
+    {
+      "role": "admin",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true,
+      "id": "dcc5"
+    },
+    {
+      "role": "user",
+      "menu": "user",
+      "haveedit": false,
+      "haveadd": false,
+      "havedelete": false,
+      "id": "1afb"
+    },
+    {
+      "role": "user",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": false,
+      "id": "6059"
+    }
+  ],
+  "customer": [
+    {
+      "id": "1",
+      "name": "rakhesh",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "2",
+      "name": "rahul",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "3",
+      "name": "ramesh",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "4",
+      "name": "rahim",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "5",
+      "name": "robert",
+      "Creditlimit": 1000
+    }
+  ]
+}

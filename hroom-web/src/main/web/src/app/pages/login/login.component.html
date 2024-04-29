@@ -1,29 +1,23 @@
-<app-jumbotron [Titolo]="titolo" [SottoTitolo]="sottotitolo"></app-jumbotron>
+<mat-card>
+  <mat-card-header>
+    <h2>User Login</h2>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form" [formGroup]="loginform" (ngSubmit)="proceedlogin()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="id" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password" >
+      </mat-form-field>
 
-<div class="container login-container">
-  <div class="row">
-    <div class="col-md-6 login-form">
-      <h3>Sign in</h3>
-      <div class="form-group">
-        <input type="text" class="form-control"  id="userId" placeholder="Nome Utente / Mail" [(ngModel)] = "userId" >
+      <div>
+        <button mat-raised-button color="primary" >Login</button>
+        <a routerLink="/registrazione" mat-raised-button color="accent">New User?</a>
       </div>
-      <div class="form-group">
-        <input type="password" class="form-control"  id="password" placeholder="Password" [(ngModel)] = "password">
-      </div>
-      <div class="form-group">
-        <button (click) = gestAuth() class="btnSubmit">Connetti</button>
-      </div>
-      <div class="form-group">
-        <a href="#" class="ForgetPwd">Password Dimenticata?</a>
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf='!autenticato'>
-        {{errMsg}}
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf='notlogged'>
-        {{errMsg2}}
-      </div>
-    </div>
-  </div>
-</div>
-
+    </form>
+  </mat-card-content>
+</mat-card>
 
