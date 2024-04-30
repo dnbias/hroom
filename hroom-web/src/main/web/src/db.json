@@ -18,11 +18,8 @@
       "password": "Test@1234",
       "email": "test@in.com",
       "gender": "male",
-      "role": "user",
-      "isactive": true,
-      "address": {
-        "area": "Torino"
-      }
+      "role": "tech",
+      "isactive": true
     },
     {
       "id": "Jhon1",

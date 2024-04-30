@@ -21,6 +21,9 @@ import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {MaterialModule} from "../material.module";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {UpdatepopupComponent} from "./pages/updatepopup/updatepopup.component";
+import {UserListComponent} from "./pages/user-list/user-list.component";
+import {CustomerComponent} from "./pages/customer/customer.component";
 
 
 @NgModule({
@@ -34,6 +37,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         GridStanzeComponent,
         StanzeCardComponent,
         RegistrazioneComponent,
+        UpdatepopupComponent,
+        UserListComponent,
+        CustomerComponent
 
     ],
   imports: [
@@ -52,6 +58,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BrowserAnimationsModule,
     MaterialModule,
     ToastrModule.forRoot(),
+
     //!!per collegare la parte di login al welcome
 
   ],

@@ -12,9 +12,10 @@ import {NotificationsComponent} from "./core/notifications/notifications.compone
 import {UserListComponent} from "./pages/user-list/user-list.component";
 import {AuthGuard} from "./guard/auth.guard.service";
 import {HomeComponent} from "./pages/home/home.component";
+import {UpdatepopupComponent} from "./pages/updatepopup/updatepopup.component";
 
 const routes: Routes = [
-  {path:'', component: LoginComponent},
+  //{path:'', component: LoginComponent},
   {component:HomeComponent,path:'',canActivate:[AuthGuard]},
   {path:'login', component: LoginComponent},
   {path:'registrazione',component:RegistrazioneComponent},
@@ -22,7 +23,8 @@ const routes: Routes = [
   {path: 'stanze', component: StanzeComponent,canActivate:[RouteGuardService]},
   {path: 'stanze/grid', component: GridStanzeComponent,canActivate:[RouteGuardService]},
   {path:'logout', component : LogoutComponent,canActivate:[RouteGuardService]},
-  {path:'user',component:UserListComponent},
+  {path:'user',component:UserListComponent,canActivate:[AuthGuard]},
+  {path:'update',component:UpdatepopupComponent},
   {path:'**', component: ErrorComponent},
 ];
 
