@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: tenant-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tenant-microservice
+  template:
+    metadata:
+      name: tenant-microservice
+      labels:
+        app: tenant-microservice
+    spec:
+      containers:
+        - image: dnbias/hroom:tenant-microservice
+          name: tenant-microservice-app
+          imagePullPolicy: Always
+          env:
+              - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+                value: "true"
+      restartPolicy: Always

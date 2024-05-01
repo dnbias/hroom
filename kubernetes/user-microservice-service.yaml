@@ -9,8 +9,8 @@ metadata:
   name: user-microservice
 spec:
   ports:
-    - name: "8091"
-      port: 8091
+    - port: 80
       targetPort: 8080
   selector:
     io.kompose.service: user-microservice
+  type: LoadBalancer

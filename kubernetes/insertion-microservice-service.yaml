@@ -9,8 +9,9 @@ metadata:
   name: insertion-microservice
 spec:
   ports:
-    - name: "8085"
-      port: 8085
-      targetPort: 8080
+      - port: 80
+        targetPort: 8080
   selector:
     io.kompose.service: insertion-microservice
+    app: insertion-microservice
+  type: LoadBalancer

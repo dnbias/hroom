@@ -5,12 +5,12 @@ metadata:
     kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.32.0 (HEAD)
   labels:
-    io.kompose.service: mariadb-app
-  name: mariadb-app
+    io.kompose.service: mariadb
+  name: mariadb
 spec:
   ports:
     - name: "3306"
       port: 3306
-      targetPort: 3308
+      targetPort: 3306
   selector:
-    io.kompose.service: mariadb-app
+    io.kompose.service: mariadb

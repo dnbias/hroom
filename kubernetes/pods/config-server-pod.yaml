@@ -6,14 +6,16 @@ metadata:
     kompose.version: 1.32.0 (HEAD)
   labels:
     io.kompose.network/hroom-backend: "true"
-    io.kompose.service: insertion-microservice
-  name: insertion-microservice
+    io.kompose.service: config-server
+  name: config-server
 spec:
+  hostname: config-server
   containers:
-    - image: dnbias/hroom:insertion-microservice
-      name: insertion-microservice-app
+    - image: dnbias/hroom:config-server
+      name: config-server
+      imagePullPolicy: Always
       ports:
-        - containerPort: 8080
-          hostPort: 8085
+        - containerPort: 9191
+          hostPort: 9191
           protocol: TCP
   restartPolicy: OnFailure

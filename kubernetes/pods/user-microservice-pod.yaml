@@ -12,8 +12,8 @@ spec:
   containers:
     - image: dnbias/hroom:user-microservice
       name: user-microservice-app
-      ports:
-        - containerPort: 8080
-          hostPort: 8091
-          protocol: TCP
+      imagePullPolicy: Always
+      env:
+          - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+            value: "true"
   restartPolicy: OnFailure

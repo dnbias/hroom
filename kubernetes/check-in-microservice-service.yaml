@@ -9,8 +9,9 @@ metadata:
   name: check-in-microservice
 spec:
   ports:
-    - name: "8087"
-      port: 8087
+    - port: 80
       targetPort: 8080
   selector:
     io.kompose.service: check-in-microservice
+    app: check-in-microservice
+  type: LoadBalancer

@@ -9,8 +9,8 @@ metadata:
   name: admin-microservice
 spec:
   ports:
-    - name: "8083"
-      port: 8083
-      targetPort: 8080
+      - port: 80
+        targetPort: 8080
   selector:
-    io.kompose.service: admin-microservice
+    app: admin-microservice
+  type: LoadBalancer

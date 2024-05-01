@@ -6,27 +6,27 @@ items:
     kind: Service
     metadata:
       labels:
-        app: spring-cloud-kubernetes-discoveryserver
-      name: spring-cloud-kubernetes-discoveryserver
+        app: discovery-server
+      name: discovery-server
     spec:
       ports:
         - name: http
-          port: 80
+          port: 1111
           targetPort: 8761
       selector:
-        app: spring-cloud-kubernetes-discoveryserver
-      type: ClusterIP
+        app: discovery-server
+      # type: NodePort
   - apiVersion: v1
     kind: ServiceAccount
     metadata:
       labels:
-        app: spring-cloud-kubernetes-discoveryserver
+        app: discovery-server
       name: spring-cloud-kubernetes-discoveryserver
   - apiVersion: rbac.authorization.k8s.io/v1
     kind: RoleBinding
     metadata:
       labels:
-        app: spring-cloud-kubernetes-discoveryserver
+        app: discovery-server
       name: spring-cloud-kubernetes-discoveryserver:view
     roleRef:
       kind: Role
@@ -42,20 +42,20 @@ items:
       name: namespace-reader
     rules:
       - apiGroups: ["", "extensions", "apps"]
-        resources: ["services", "endpoints"]
+        resources: ["pods", "services", "endpoints"]
         verbs: ["get", "list", "watch"]
   - apiVersion: apps/v1
     kind: Deployment
     metadata:
-      name: spring-cloud-kubernetes-discoveryserver-deployment
+      name: discovery-server-deployment
     spec:
       selector:
         matchLabels:
-          app: spring-cloud-kubernetes-discoveryserver
+          app: discovery-server
       template:
         metadata:
           labels:
-            app: spring-cloud-kubernetes-discoveryserver
+            app: discovery-server
         spec:
           serviceAccount: spring-cloud-kubernetes-discoveryserver
           containers:

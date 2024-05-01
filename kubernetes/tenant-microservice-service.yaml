@@ -9,8 +9,9 @@ metadata:
   name: tenant-microservice
 spec:
   ports:
-    - name: "8082"
-      port: 8082
+    - port: 80
       targetPort: 8080
   selector:
     io.kompose.service: tenant-microservice
+    app: tenant-microservice
+  type: LoadBalancer

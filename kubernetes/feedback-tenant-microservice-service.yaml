@@ -9,8 +9,8 @@ metadata:
   name: feedback-tenant-microservice
 spec:
   ports:
-    - name: "8089"
-      port: 8089
+    - port: 80
       targetPort: 8080
   selector:
     io.kompose.service: feedback-tenant-microservice
+  type: LoadBalancer

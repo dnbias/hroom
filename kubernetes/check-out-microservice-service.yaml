@@ -9,8 +9,9 @@ metadata:
   name: check-out-microservice
 spec:
   ports:
-    - name: "8088"
-      port: 8088
+    - port: 80
       targetPort: 8080
   selector:
     io.kompose.service: check-out-microservice
+    app: check-out-microservice
+  type: LoadBalancer

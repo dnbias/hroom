@@ -9,8 +9,8 @@ metadata:
   name: reservation-microservice
 spec:
   ports:
-    - name: "8086"
-      port: 8086
+    - port: 80
       targetPort: 8080
   selector:
     io.kompose.service: reservation-microservice
+  type: LoadBalancer

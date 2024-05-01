@@ -12,8 +12,8 @@ spec:
   containers:
     - image: dnbias/hroom:landlords-microservice
       name: landlord-microservice-app
-      ports:
-        - containerPort: 8080
-          hostPort: 8084
-          protocol: TCP
+      imagePullPolicy: Always
+      env:
+          - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+            value: "true"
   restartPolicy: OnFailure
