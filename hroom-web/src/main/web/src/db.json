@@ -2,7 +2,7 @@
   "user": [
     {
       "id": "admin",
-      "name": "NT Infotech",
+      "name": "Amministratore",
       "password": "pippo",
       "email": "test@gmail.com",
       "gender": "male",
@@ -13,33 +13,33 @@
       }
     },
     {
-      "id": "testuser",
-      "name": "Test User",
-      "password": "Test@1234",
+      "id": "giorgio1",
+      "name": "giorgione",
+      "password": "pippo",
       "email": "test@in.com",
       "gender": "male",
-      "role": "tech",
+      "role": "user",
       "isactive": true
     },
     {
       "id": "Jhon1",
-      "name": "NT Infotech",
-      "password": "Test@1233",
+      "name": "John",
+      "password": "pippo",
       "email": "te@in.com",
       "gender": "male",
-      "role": "tech",
+      "role": "Landlord",
       "isactive": true,
       "address": {
-        "area": "Bologna"
+        "area": "Cuneo"
       }
     },
     {
-      "id": "ntuser",
-      "name": "ramesh",
-      "password": "Test@1234",
+      "id": "Paola",
+      "name": "Paola",
+      "password": "pippo",
       "email": "te@in.com",
       "gender": "male",
-      "role": "tech",
+      "role": "Tenant",
       "isactive": true,
       "address": {
         "area": "Roma"
@@ -51,7 +51,7 @@
       "password": "pippo",
       "email": "colomboenrico199@gmail.com",
       "gender": "male",
-      "role": "",
+      "role": "tenant",
       "isactive": true
     }
   ],
@@ -62,8 +62,13 @@
       "id": "9862"
     },
     {
-      "code": "tech",
-      "name": "Technician",
+      "code": "tenant",
+      "name": "Tenant",
+      "id": "53dd"
+    },
+    {
+      "code": "landlord",
+      "name": "Landlord",
       "id": "53dd"
     }
   ],
@@ -138,6 +143,48 @@
       "id": "5",
       "name": "robert",
       "Creditlimit": 1000
+    },
+    {
+      "id": "4220",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true
+    },
+    {
+      "id": "03bb",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true
+    },
+    {
+      "id": "ba75",
+      "name": "enrico",
+      "email": "cc",
+      "phone": "coc1",
+      "status": true
+    },
+    {
+      "id": "59e9",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true
+    },
+    {
+      "id": "e1fb",
+      "name": "121",
+      "email": "1212",
+      "phone": "121",
+      "status": false
+    },
+    {
+      "id": "91e9",
+      "name": "122",
+      "email": "121",
+      "phone": "12",
+      "status": true
     }
   ]
 }

@@ -1,0 +1,12 @@
+<app-nav></app-nav>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let stanza of project" class="col-lg-4 col-md-6 mb-4" style="max-width: 360px; min-width: 380px">
+      <app-project-card [stanza] = "stanza"></app-project-card>
+    </div>
+
+  </div>
+
+
+
+</div>

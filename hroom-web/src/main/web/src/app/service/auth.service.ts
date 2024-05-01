@@ -38,4 +38,13 @@ export class AuthService {
   Getaccessbyrole(role:any,menu:any){
     return this.http.get('http://localhost:3000/roleaccess?role='+role+'&menu='+menu)
   }
+
+
+  loggedUser = (): string | null => (sessionStorage.getItem("User")) ? sessionStorage.getItem("Utente") : "";
+
+  isLogged = (): boolean => (sessionStorage.getItem("User")) ? true : false;
+
+  clearUser = (): void => sessionStorage.removeItem("User");
+
+  clearAll = (): void => sessionStorage.clear();
 }

@@ -15,7 +15,7 @@ import {NotificationsComponent} from "./core/notifications/notifications.compone
 import {LogoutComponent} from "./pages/logout/logout.component";
 import {HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatFormField} from "@angular/material/form-field";
+import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
 import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {MaterialModule} from "../material.module";
@@ -24,24 +24,67 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {UpdatepopupComponent} from "./pages/updatepopup/updatepopup.component";
 import {UserListComponent} from "./pages/user-list/user-list.component";
 import {CustomerComponent} from "./pages/customer/customer.component";
+import {TagComponent} from "./pages/tag/tag.component";
+import {SearchComponent} from "./pages/search/search.component";
+import {HomeComponent} from "./pages/home/home.component";
+import {NotFoundComponent} from "./pages/not-found/not-found.component";
+import {CartPageComponent} from "./pages/cart-page/cart-page.component";
+import {StanzeModificaComponent} from "./pages/stanze-modifica/stanze-modifica.component";
+import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
+import {PortfolioComponent} from "./pages/welcome/portfolio/portfolio.component";
+import {ProjectCardComponent} from "./pages/welcome/portfolio/project-card/project-card.component";
+import {NavComponent} from "./core/nav/nav.component";
+import {PrenotazioniComponent} from "./pages/welcome/prenotazioni/prenotazioni.component";
+import {FeedbackComponent} from "./pages/welcome/feedback/feedback.component";
+import {BookingComponent} from "./pages/booking/booking.component";
+import {MatButton, MatButtonModule} from "@angular/material/button";
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatInput, MatInputModule} from "@angular/material/input";
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerModule,
+  MatDatepickerToggle
+} from "@angular/material/datepicker";
+import {provideNativeDateAdapter} from "@angular/material/core";
+import {DataComponent} from "./pages/data/data.component";
+
 
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        WelcomeComponent,
-        LoginComponent,
-        ErrorComponent,
-        StanzeComponent,
-        LogoutComponent,
-        GridStanzeComponent,
-        StanzeCardComponent,
-        RegistrazioneComponent,
-        UpdatepopupComponent,
-        UserListComponent,
-        CustomerComponent
+  declarations: [
+    AppComponent,
+    WelcomeComponent,
+    LoginComponent,
+    ErrorComponent,
+    StanzeComponent,
+    LogoutComponent,
+    GridStanzeComponent,
+    StanzeCardComponent,
+    RegistrazioneComponent,
+    UpdatepopupComponent,
+    UserListComponent,
+    CustomerComponent,
+    TagComponent,
+    HomeComponent,
+    SearchComponent,
+    TagComponent,
+    NotFoundComponent,
+    CartPageComponent,
+    StanzeModificaComponent,
+    StanzaPageComponent,
+    PortfolioComponent,
+    ProjectCardComponent,
+    NavComponent,
+    PrenotazioniComponent,
+    FeedbackComponent,
+    StanzeCardComponent,
 
-    ],
+
+
+
+
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -58,13 +101,26 @@ import {CustomerComponent} from "./pages/customer/customer.component";
     BrowserAnimationsModule,
     MaterialModule,
     ToastrModule.forRoot(),
+    MatButtonModule,
+    MatStepperModule,
+    MatInputModule,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    MatDatepickerModule,
+    MatFormFieldModule,
+    DataComponent,
 
-    //!!per collegare la parte di login al welcome
+
+//!!per collegare la parte di login al welcome
 
   ],
-    providers: [
+  providers: [
     provideAnimationsAsync()
   ],
-    bootstrap: [AppComponent]
+  exports: [
+    TagComponent
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

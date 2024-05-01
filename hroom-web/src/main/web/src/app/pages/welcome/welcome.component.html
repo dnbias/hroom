@@ -1,6 +1,28 @@
 <app-jumbotron [Titolo]="titolo" [SottoTitolo]="sottotitolo" [Show]="false"></app-jumbotron>
-<p>Saluti, {{ utente }} clicca <a routerLink="/stanze">qui</a> per vedere l'elenco degli articoli disponibili.</p>
+<app-nav></app-nav>
+<div class="container">
+  <div class="row">
+    <div class="col-lg shadow border m-1">
+      <div class="text-center">
+        <h2>About me</h2>
+        <p>Saluti, {{ utente }}</p>
+        <h1>Tipo utente: </h1>
+        <img src="../../../assets/images/avatars/avatar4.jpg" alt="immagine profilo" width="256" height="256" class="rounded-circle">
+        <p>
+          Adoro affittare le stanze a giovani coppie
+        </p>
+      </div>
+    </div>
 
-<button class="btn btn-primary" (click)="getSaluti()">Saluti</button>
-<h2>{{saluti}}</h2>
-<h2>{{errore}}</h2>
+    <div class="col-lg shadow border m-1">
+      <div class="text-center">
+        <h2>Featured Project</h2>
+        <h4>{{featuredProject.nome}}</h4>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+x
