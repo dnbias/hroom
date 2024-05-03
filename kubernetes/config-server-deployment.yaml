@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: config-server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      name: config-server
+      labels:
+        app: config-server
+    spec:
+      hostname: config-server
+      containers:
+      - image: dnbias/hroom:config-server
+        name: config-server
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9191
+          hostPort: 9191
+          protocol: TCP
+      restartPolicy: Always

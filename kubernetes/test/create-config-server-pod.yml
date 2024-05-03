@@ -8,3 +8,4 @@ spec:
      image: dnbias/hroom:config-server
      ports:
      - containerPort: 9191
+       name: config-port

@@ -1,4 +1,4 @@
-ng build # Immagine docker NGINX per servire l'app compilata
+#ng build # Immagine docker NGINX per servire l'app compilata
 FROM nginx:latest
 
 WORKDIR /usr/share/nginx/html

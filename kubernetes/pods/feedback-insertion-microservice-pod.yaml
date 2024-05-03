@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+    io.kompose.network/hroom-backend: "true"
+    io.kompose.service: feedback-insertion-microservice
+  name: feedback-insertion-microservice
+spec:
+  containers:
+    - image: dnbias/hroom:feedback-insertion-microservice
+      name: feedback-insertion-microservice-app
+      imagePullPolicy: Always
+      env:
+          - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+            value: "true"
+  restartPolicy: OnFailure

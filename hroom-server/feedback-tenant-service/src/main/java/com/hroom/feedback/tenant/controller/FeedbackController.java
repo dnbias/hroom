@@ -12,20 +12,26 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@RequestMapping("api/v1")
 @RestController
 public class FeedbackController {
     @Autowired
     private FeedbackOfTenantService service;
     // TODO cambia in Stringa e basta e implementa Handler eccezioni
     private MultiValueMap<String, String> map;
+    private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @PostMapping("/feedback/tenant")
-    public ResponseEntity<FeedbackOfTenant> createFeedbackOfTenant(
-                                @RequestBody FeedbackOfTenant Feedback) {
-
+    public ResponseEntity<FeedbackOfTenant> saveFeedback(
+                                @RequestBody FeedbackOfTenant feedback) {
+        LOGGER.info("FeedbackOfTenantController > saveFeedback started");
+        LOGGER.info("FeedbackOfTenantController > saveFeedback > feedback: "+feedback.toString());
         try {
             return new ResponseEntity<FeedbackOfTenant>(
-                                service.saveFeedback(Feedback), HttpStatus.OK);
+                                service.saveFeedback(feedback), HttpStatus.OK);
         } catch (BusinessException e) {
             map = new LinkedMultiValueMap<>();
             map.add("message", e.getMessage());
@@ -34,9 +40,19 @@ public class FeedbackController {
         }
     }
 
+
+    @GetMapping("/feedback/tenant")
+    public List<FeedbackOfTenant> fetchFeedbackList() {
+        LOGGER.info("FeedbackOfTenantController > fetchFeedbackList started");
+        LOGGER.info("FeedbackOfTenantController > fetchFeedbackList");
+        return service.fetchFeedbackList();
+    }
+
     @GetMapping("/feedback/tenant/{id}")
-    public ResponseEntity<FeedbackOfTenant> getFeedbackOfTenantById(
+    public ResponseEntity<FeedbackOfTenant> getFeedbackById(
                                         @PathVariable("id") Long id) {
+        LOGGER.info("FeedbackOfTenantController > getFeedbackById started");
+        LOGGER.info("FeedbackOfTenantController > getFeedbackById > id: "+id);
         try {
             return new ResponseEntity<FeedbackOfTenant>(service.findById(id),
                                                         HttpStatus.OK);
@@ -47,10 +63,13 @@ public class FeedbackController {
         }
     }
 
-    @PutMapping("/feedback/tenant")
+    @PutMapping("/feedback/tenant/{id}")
     public ResponseEntity<FeedbackOfTenant> updateFeedback(
                                         @RequestBody FeedbackOfTenant feedback,
                                         @PathVariable("id") Long id) {
+        LOGGER.info("FeedbackOfTenantController > updateFeedbackById started");
+        LOGGER.info("FeedbackOfTenantController > updateFeedbackById > feedback: "+feedback.toString());
+        LOGGER.info("FeedbackOfTenantController > updateFeedbackById > id: "+id);
         try {
             return new ResponseEntity<FeedbackOfTenant>(service.updateFeedback(feedback, id), HttpStatus.OK);
         } catch (BusinessException e) {
@@ -61,7 +80,9 @@ public class FeedbackController {
     }
 
     @DeleteMapping("/feedback/tenant/{id}")
-    public ResponseEntity<FeedbackOfTenant> deleteFeedback(@PathVariable("id") Long id) {
+    public ResponseEntity<FeedbackOfTenant> deleteFeedbackById(@PathVariable("id") Long id) {
+        LOGGER.info("FeedbackOfTenantController > deleteFeedbackById started");
+        LOGGER.info("FeedbackOfTenantController > deleteFeedbackById > id: "+id);
         try {
             service.deleteFeedbackById(id);
             return new ResponseEntity<FeedbackOfTenant>(HttpStatus.OK);
@@ -70,11 +91,5 @@ public class FeedbackController {
             map.add("message", e.getMessage());
             return new ResponseEntity<FeedbackOfTenant>(null, map, HttpStatus.NOT_FOUND);
         }
-    }
-
-    @GetMapping("/feedbacks/tenant")
-    public List<FeedbackOfTenant> getAllFeedbacksOfTenant() {
-
-        return service.fetchFeedbackList();
     }
 }
