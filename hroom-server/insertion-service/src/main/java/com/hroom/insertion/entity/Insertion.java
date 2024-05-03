@@ -16,7 +16,6 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.image.BufferedImage;
 
 @Entity
 @Table(name = "Insertions")
@@ -32,7 +31,7 @@ public class Insertion {
     private Long landlordId;
     @Column(nullable = false)
     private String name;
-    private String features; // TODO cosa intendiamo?
+    private String[] features;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
@@ -43,7 +42,8 @@ public class Insertion {
     private String address;
     @Column(nullable = false)
     private int area;
-    private BufferedImage photo;
+    // photo as BLOB in DB
+    private byte[] photo;
     private int meanRating;
     private List<Long> receivedFeedbacksIds;
     private Long availabilityId;

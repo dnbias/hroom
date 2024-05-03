@@ -13,8 +13,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-@RequestMapping("api/v1/admin")
+@RequestMapping("api/v1")
 @RestController
 public class AdminController {
     @Autowired
@@ -58,14 +57,18 @@ public class AdminController {
         return "Deleted Successfully";
     }
 
-    @DeleteMapping("/admin/ban/tenant/{id}")
+    @DeleteMapping("/ban/tenant/{id}")
     public String banTenantById(@PathVariable("id") Long userId) {
+        LOGGER.info("AdminController > banTenantById started");
+        LOGGER.info("AdminController > banTenantById > id: "+userId);
         service.banTenantById(userId);
         return "Tenant banned";
     }
 
-    @DeleteMapping("/admin/ban/landlord/{id}")
+    @DeleteMapping("/ban/landlord/{id}")
     public String banLandlordById(@PathVariable("id") Long userId) {
+        LOGGER.info("AdminController > banLandlordById started");
+        LOGGER.info("AdminController > banLandlordById > id: "+userId);
         service.banLandlordById(userId);
         return "Landlord banned";
     }

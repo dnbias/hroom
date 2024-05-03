@@ -65,7 +65,7 @@ services:
   landlord-microservice:
     build:
       context: ./hroom-server/landlord-service
-    image: dnbias/hroom:landlords-microservice
+    image: dnbias/hroom:landlord-microservice
     restart: on-failure
     ports:
       - "8084:8080"
