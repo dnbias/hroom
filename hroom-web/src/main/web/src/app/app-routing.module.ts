@@ -33,7 +33,7 @@ const routes: Routes = [
   {path:'registrazione',component:RegistrazioneComponent},
   {path:'welcome/:userid', component: WelcomeComponent},
   {path: 'stanze', component: StanzeModificaComponent,canActivate:[RouteGuardService]},
-  {path: 'stanze/grid', component: GridStanzeComponent,canActivate:[RouteGuardService]},
+  {path: 'stanze/grid', component: GridStanzeComponent},
   {path:'logout', component : LogoutComponent,canActivate:[RouteGuardService]},
   {path:'user',component:UserListComponent,canActivate:[AuthGuard]},
   {path:'update',component:UpdatepopupComponent},
