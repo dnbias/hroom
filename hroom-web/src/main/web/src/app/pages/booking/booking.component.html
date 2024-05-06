@@ -1,7 +1,9 @@
 
+
 <mat-stepper [linear]="isLinear" #stepper>
     <mat-step [stepControl]="firstFormGroup">
         <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Stanza scelta </ng-template>
 
             <div>
                 <button mat-button matStepperNext>Next</button>
@@ -10,7 +12,7 @@
     </mat-step>
     <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
         <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
+            <ng-template matStepLabel>Inserisci dati </ng-template>
 
             <mat-form-field>
                 <mat-label>Nome</mat-label>
@@ -58,13 +60,12 @@
         </form>
     </mat-step>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-
+        <ng-template matStepLabel>Riepilogo</ng-template>
         <p>You are now done.</p>
         <div>
             <button mat-button matStepperPrevious>Back</button>
             <button mat-button (click)="stepper.reset()">Reset</button>
         </div>
-
     </mat-step>
 </mat-stepper>
+

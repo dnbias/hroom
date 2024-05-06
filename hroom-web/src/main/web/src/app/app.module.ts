@@ -40,6 +40,7 @@ import {BookingComponent} from "./pages/booking/booking.component";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatInput, MatInputModule} from "@angular/material/input";
+
 import {
   MatDatepicker,
   MatDatepickerInput,
@@ -85,7 +86,8 @@ import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
     FeedbackComponent,
     StanzeCardComponent,
     WriteFeedbackComponent,
-    NewBookingComponent
+    NewBookingComponent,
+
 
 
 

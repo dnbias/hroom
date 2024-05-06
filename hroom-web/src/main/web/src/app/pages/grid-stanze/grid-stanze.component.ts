@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {StanzeCardComponent} from "../../components/stanze-card/stanze-card.component";
 import {StanzeService} from "../../../services/stanze.service";
 import {IStanze} from "../../models/Stanze";
-
+import {stanze} from "../../shared/models/stanza";
+import{StanzaService} from "../../service/stanza/stanza.service";
 
 @Component({
   selector: 'app-grid-stanze',
@@ -12,14 +13,26 @@ import {IStanze} from "../../models/Stanze";
 })
 export class GridStanzeComponent implements OnInit{
     stanze$: IStanze[]=[];
+    room$: stanze[]=[];
 
 
-  constructor(private stanzeService: StanzeService) { }
+  constructor(private stanzeService: StanzeService, private rs: StanzaService) { }
 
   ngOnInit(): void {
       this.stanze$=this.stanzeService.getStanze();
       console.log(this.stanze$);
+      this.room$=this.rs.getAll();
+      console.log(this.room$);
     }
+    modifica= (codice: number)=>{
+      console.log("cliccato tasto modifica del codice" + codice);
+    }
+    elimina=(codice:number)=>{
+    console.log("cliccato tasto elimina del codice"+codice);
+    this.room$.splice(this.room$.findIndex(x=>x.id==codice),1);
+    console.log(this.room$);
+  }
+
     handleEdit = (codsta: string)=>{
       console.log("Cliccato tasto modifica del codice"+ codsta);
     }
@@ -28,5 +41,6 @@ export class GridStanzeComponent implements OnInit{
         this.stanze$.splice(this.stanze$.findIndex(x=>x.codSta==codsta),1);
         console.log(this.stanze$);
   }
+
 
 }
