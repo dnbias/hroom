@@ -11,32 +11,32 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/home">
+          <a class="nav-link" aria-current="page" routerLink="/home" routerLinkActive="text-dark">
             <span class="material-icons md-home" title="home" aria-hidden="true"></span>
-            Home
+            Soggiorni
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" title="customer"  routerLink="/customer">
+          <a class="nav-link" title="customer"  routerLink="/customer" routerLinkActive="text-dark">
             <span class="material-icons md-archive" title="stanze" aria-hidden="true"></span>
             customer
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" title="Welcome" routerLink="/welcome/:userId">
+          <a class="nav-link" title="Welcome" routerLink="/welcome/:userId" routerLinkActive="text-dark">
             <span class="material-icons md-campaign" title="welcome" aria-hidden="true"></span>
             Welcome
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" title="Fidelity"  routerLink="/booking">
+          <a class="nav-link" title="Fidelity"  routerLink="/booking" routerLinkActive="text-dark">
             <span class="material-icons md-card_membership" title="booking" aria-hidden="true"></span>
           booking
           </a>
         </li>
         <li class="nav-item">
          <!-- <a class="nav-link" title="prenotazioni" routerLink="/">-->
-            <a class="nav-link"*ngIf="isadmin" routerLink="/user">
+            <a class="nav-link"*ngIf="isadmin" routerLink="/user" routerLinkActive="text-dark">
             <span class="material-icons md-local_grocery_store" title="user" aria-hidden="true"></span>
               Utenti
             </a>

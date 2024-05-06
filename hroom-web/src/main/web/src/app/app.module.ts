@@ -48,8 +48,13 @@ import {
 } from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {DataComponent} from "./pages/data/data.component";
+import {jqxGridModule} from "jqwidgets-ng/jqxgrid";
+import {jqxWindowModule} from "jqwidgets-ng/jqxwindow";
+import {jqxChartModule} from "jqwidgets-ng/jqxchart";
+import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 
-
+import { jqxRatingModule }    from 'jqwidgets-ng/jqxrating';
+import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 
 @NgModule({
   declarations: [
@@ -79,6 +84,8 @@ import {DataComponent} from "./pages/data/data.component";
     PrenotazioniComponent,
     FeedbackComponent,
     StanzeCardComponent,
+    WriteFeedbackComponent,
+    NewBookingComponent
 
 
 
@@ -110,7 +117,7 @@ import {DataComponent} from "./pages/data/data.component";
     MatDatepickerModule,
     MatFormFieldModule,
     DataComponent,
-
+    jqxGridModule, jqxWindowModule, jqxChartModule,jqxRatingModule
 
 //!!per collegare la parte di login al welcome
 

@@ -22,10 +22,13 @@ import {PrenotazioniComponent} from "./pages/welcome/prenotazioni/prenotazioni.c
 import {FeedbackComponent} from "./pages/welcome/feedback/feedback.component";
 import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
 import {BookingComponent} from "./pages/booking/booking.component";
+import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
+import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 
 const routes: Routes = [
   //{path:'', component: LoginComponent},
   {component:HomeComponent,path:'',canActivate:[AuthGuard]},
+  {path:'home', component:HomeComponent},
   {path:'login', component: LoginComponent},
   {path:'registrazione',component:RegistrazioneComponent},
   {path:'welcome/:userid', component: WelcomeComponent},
@@ -40,10 +43,12 @@ const routes: Routes = [
   {path: 'cart-page',component:CartPageComponent},
   {path:'portfolio',component:PortfolioComponent},
   {path:'booking',component:BookingComponent},
+  {path:'NewBook',component:NewBookingComponent},
 
   {path:'prenotazioni',component:PrenotazioniComponent},
   {path:'feedback', component:FeedbackComponent},
   {path:'stanza/:id',component:StanzaPageComponent},
+  {path:'feed',component:WriteFeedbackComponent},
   {path:'**', component: ErrorComponent},
 
 ];
