@@ -56,6 +56,7 @@ import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.comp
 
 import { jqxRatingModule }    from 'jqwidgets-ng/jqxrating';
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
+import {RoomsComponent} from "./pages/rooms/rooms.component";
 
 @NgModule({
   declarations: [
@@ -87,6 +88,7 @@ import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
     StanzeCardComponent,
     WriteFeedbackComponent,
     NewBookingComponent,
+    RoomsComponent,
 
 
 
