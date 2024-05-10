@@ -39,10 +39,10 @@
 
         <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5" *ngIf="stanze$">
           <app-stanze-card
-                  *ngFor ="let stanza of stanze$"
-                  [stanza]="stanza"
-                  (delete)="handleDelete($event)"
-                  (edit)="handleEdit($event)"
+                  *ngFor ="let stanza of room$"
+                  [room]="stanza"
+                  (delete)="elimina($event)"
+                  (edit)="modifica($event)"
           ></app-stanze-card>
         </div>
 

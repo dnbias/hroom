@@ -1,0 +1,80 @@
+ul{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+ul li a{
+  height: 22.5rem;
+  width: 20rem;
+  border: 1px solid whitesmoke;
+  border-radius: 1rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #e72929;
+}
+li a:hover{
+  opacity: 0.9;
+  cursor: pointer;
+}
+.content{
+  padding: .5rem 1rem;
+  position: relative;
+  color: grey;
+}
+.favorite{
+  position: absolute;
+  top: .5rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  color:red;
+}
+.favorite.not{
+  color: grey;
+}
+
+.valutazione{
+  position: absolute;
+
+  right: 1rem;
+  font-size: 1.2rem;
+  color:darkgrey;
+
+}
+.product-item-footer{
+  display: flex;
+  justify-content: space-between ;
+  align-items: center;
+}
+.luogo{
+  flex :9;
+}
+.luogo span{
+  border-radius: 2rem;
+  background-color: whitesmoke;
+  color: green ;
+  font-size: .7rem;
+  margin-right: .3rem;
+  display: inline-block;
+}
+.tempo-room{
+  font-size: .8rem;
+  flex: 3;
+  text-align: right;
+}
+.prezzo{
+  color: grey;
+  margin-top: .2rem;
+}
+svg{
+  color: #ffdc42;
+}
+
+p{
+
+  display: flex;
+}

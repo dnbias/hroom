@@ -1,54 +1,45 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthappService } from '../../../services/authapp.service';
-import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {Observable,map, of} from "rxjs";
+import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr'
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
-
-  userId: string = "";
-  password: string = "";
-
-  autenticato: boolean = true;
-  filter$: Observable<string | null> = of("");
-  notlogged : boolean = false;
-
-
-  errMsg: string = "Spiacente, la userid e/o la password sono errati!";
-  errMsg2: string = "Spiacente, devi autenticarti per poter accedere alla pagina selezionata!";
-
-  titolo: string = "Accesso & Autenticazione";
-  sottotitolo: string = "Procedi ad inserire la userid e la password";
-
-  constructor(private route: Router, private route2: ActivatedRoute, private BasicAuth: AuthappService ) { }
-
-  ngOnInit(): void {
-    this.filter$ = this.route2.queryParamMap.pipe
-    (
-        map((params: ParamMap) => params.get('nologged')),
-    );
-
-    this.filter$.subscribe(param => (param) ? this.notlogged = true : this.notlogged = false);
-
-    console.log(this.notlogged);
+export class LoginComponent {
+  constructor(private builder: FormBuilder, private toastr: ToastrService, private service: AuthService,
+              private router: Router) {
+    sessionStorage.clear();
 
   }
+  result: any;
 
-  gestAuth = (): void => {
-    console.log(this.userId);
+  loginform = this.builder.group({
+    id: this.builder.control('', Validators.required),
+    password: this.builder.control('', Validators.required)
+  });
 
-    if (this.BasicAuth.autentica(this.userId, this.password)) {
-         this.route.navigate(['welcome', this.userId]);
-
-      this.autenticato = true;
-    }
-    else {
-      this.autenticato = false;
-
+  proceedlogin() {
+    if (this.loginform.valid) {
+      this.service.GetUserbyCode(this.loginform.value.id).subscribe(item => {
+        this.result = item;
+        if (this.result.password === this.loginform.value.password) {
+          if (this.result.isactive) {
+            sessionStorage.setItem('username',this.result.id);
+            sessionStorage.setItem('role',this.result.role);
+            this.router.navigate(['']);
+          } else {
+            this.toastr.error('Please contact Admin', 'InActive User');
+          }
+        } else {
+          this.toastr.error('Invalid credentials');
+        }
+      });
+    } else {
+      this.toastr.warning('Please enter valid data.')
     }
   }
 }

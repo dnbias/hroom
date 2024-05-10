@@ -1,0 +1,8 @@
+
+<div *ngIf="tags" [style.justifyContent] = "justifyContent">
+  <a *ngFor = "let tag of tags" routerLink="/tag/{{tag}}"> {{tag}}
+  </a>
+</div>
+<div *ngIf="stanzaPageTags" [style.justifyContent]="justifyContent">
+  <a *ngFor = "let tagname of stanzaPageTags" routerLink="/tag/{{tagname}}"> {{tagname}}</a>
+</div>

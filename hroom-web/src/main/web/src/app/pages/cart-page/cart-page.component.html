@@ -1,0 +1,50 @@
+<app-not-found [visible]= "!cart || cart.items.length <=0"
+               notFoundMessage="Servizi non trovati!"
+               resetLinkText="Torna alla home"></app-not-found>
+
+<div *ngIf="cart && cart.items.length>0"  class="container">
+  <ul>
+    <li *ngFor="let cartItem of cart.items">
+      <div>
+        <img [src]="cartItem.stanza.imageUrl" [alt]="cartItem.stanza.nome">
+      </div>
+      <div>
+        <a routerLink="/stanza/({{cartItem.stanza.id}})">
+          {{cartItem.stanza.nome}}
+        </a>
+      </div>
+      <div>
+        <select #roomTimeSelect (change) ="changeHour(cartItem,roomTimeSelect.value)">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+          <option>6</option>
+          <option>7</option>
+          <option>8</option>
+          <option>9</option>
+          <option>10</option>
+        </select>
+      </div>
+      <div>
+        {{cartItem.prezzo | currency: 'EUR'}}
+      </div>
+      <div>
+        <button class="remove-button"(click)="removeFromCart(cartItem)">
+          Rimuovi
+        </button>
+      </div>
+    </li>
+  </ul>
+  <div class="checkout">
+    <div class="stanza-count">
+      {{cart.items.length}}
+    </div>
+    <div class ="total-price">
+      {{cart.totalPrice | currency: 'EUR'}}
+    </div>
+    <a routerLink="/booking"> Procedi al checkout</a>
+  </div>
+
+</div>
