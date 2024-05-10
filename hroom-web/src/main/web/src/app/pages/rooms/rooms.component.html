@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-12 text-end">
+    <button class="btn btn-primary" (click)="AddNEwRoom()">Add New</button>
+    <button class="btn btn-success mx-2" (click)="saveRooms()">Aggiorna</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Numero</th>
+        <th>Nome stanza</th>
+        <th>Disponibile</th>
+        <th>Capacità</th>
+        <th>Attiva per ore</th>
+        <th>Tarriffa</th>
+        <th>Extension No</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let room of roomList;let sr= index">
+        <td> {{sr+1}}</td>
+        <td>
+          <input type="text" [(ngModel)]="room.roomName" name="roomName{{sr}}" class="form-control" />
+        </td>
+        <td>
+          <input type="checkbox" [(ngModel)]="room.isAcAvailable" name="isAcAvailable{{sr}}" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="room.roomCapacity" name="roomCapacity{{sr}}"
+                 class="form-control" />
+        </td>
+
+        <td>
+          <input type="number" [(ngModel)]="room.roomTariff" name="roomTariff{{sr}}"
+                 class="form-control" />
+        </td>
+        <td>
+          <input type="number" [(ngModel)]="room.extensionNo" name="extensionNo{{sr}}"
+                 class="form-control" />
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="onDelete(room.roomId)">Remove</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
