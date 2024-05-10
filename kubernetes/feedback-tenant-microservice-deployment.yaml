@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: feedback-tenant-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feedback-tenant-microservice
+  template:
+    metadata:
+      name: feedback-tenant-microservice
+      labels:
+        app: feedback-tenant-microservice
+    spec:
+      containers:
+        - image: dnbias/hroom:feedback-tenant-microservice
+          name: feedback-tenant-microservice-app
+          imagePullPolicy: Always
+          env:
+              - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+                value: "true"
+      restartPolicy: Always

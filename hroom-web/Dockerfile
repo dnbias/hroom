@@ -1,16 +1,11 @@
-ng build # Immagine docker NGINX per servire l'app compilata
-FROM nginx:latest
+FROM node:alpine
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /usr/src/app
 
-# Copia i file compilati dall'immagine di build precedente
-COPY src/main/web/dist/hroom-app/browser /usr/share/nginx/html
+COPY ./src/main/web /usr/src/app
 
-# Copia il file di configurazione personalizzato di NGINX
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+RUN npm install -g @angular/cli
 
-# Espone la porta 80 per il traffico HTTP
-EXPOSE 80
+RUN npm install
 
-# Avvia NGINX in modalità daemon quando il container viene avviato
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["ng", "serve", "--host", "0.0.0.0"]

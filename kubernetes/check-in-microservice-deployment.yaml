@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: check-in-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: check-in-microservice
+  template:
+    metadata:
+      name: check-in-microservice
+      labels:
+        app: check-in-microservice
+    spec:
+      containers:
+        - image: dnbias/hroom:check-in-microservice
+          name: check-in-microservice-app
+          imagePullPolicy: Always
+          env:
+              - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+                value: "true"
+      restartPolicy: Always

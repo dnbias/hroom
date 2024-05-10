@@ -49,7 +49,9 @@ public class InsertionServiceImpl implements InsertionService {
     @Override
     public Insertion updateInsertion(Insertion insertion, Long insertionId)
         throws MissingInsertionException {
+
         LOGGER.info("InsertionServiceImpl > updateInsertion started");
+
         Optional<Insertion> optional = repository.findById(insertionId);
         if (optional.isEmpty()) {
             throw new MissingInsertionException(insertionId);

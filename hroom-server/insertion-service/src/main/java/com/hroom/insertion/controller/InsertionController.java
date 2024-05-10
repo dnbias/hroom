@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
-@RequestMapping("api/v1/insertion")
+@RequestMapping("api/v1")
 @RestController
 public class InsertionController {
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
@@ -31,7 +31,7 @@ public class InsertionController {
         return service.saveInsertion(insertion);
     }
 
-    @GetMapping("/insertionList")
+    @GetMapping("/insertion")
     public List<Insertion> fetchInsertList() {
         LOGGER.info("InsertionController > fetchInsertionList started");
         LOGGER.info("InsertionController > fetchInsertionList");
