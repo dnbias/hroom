@@ -1,0 +1,144 @@
+<!--
+<section class="content-main">
+
+  <div class="content-header">
+    <h2 class="content-title">Lista Stanze</h2>
+    <div>
+      <button class="btn btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+          <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+        </svg>
+        Nuovo
+      </button>
+    </div>
+  </div>
+  <div class="card mb-4">
+
+    <header class="card-header">
+      <div class="row gx-3">
+        <div class="col-lg-4 col-md-6 me-auto">
+          <input type="text" placeholder="Cerca..." class="form-control">
+        </div>
+        <div class="col-lg-2 col-6 col-md-3">
+          <select class="form-select">
+            <option>Status</option>
+            <option>Attiva</option>
+            <option>Eliminata</option>
+            <option>Tutti</option>
+          </select>
+        </div>
+        <div class="col-lg-2 col-6 col-md-3">
+          <select class="form-select">
+            <option>Cetegorie</option>
+            <option>Stanza Singola</option>
+            <option>Stanza xx</option>
+            <option>Alloggio intero</option>
+          </select>
+        </div>
+        <div class="col-lg-2 col-6 col-md-3">
+          <select class="form-select">
+            <option>Mostra 20</option>
+            <option>Mostra 30</option>
+            <option>Mostra 40</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+          <tr>
+            <th scope="col">Codice stanza</th>
+            <th scope="col">Descrizione</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">Valutazione</th>
+            <th scope="col">Città</th>
+            <th scope="col">Prezzo</th>
+            <th scope="col">Status</th>
+            <th scope="col">Data</th>
+            <th scope="col" class="text-end"> Azione </th>
+          </tr>
+          </thead>
+          <tbody>
+        <tr *ngFor="let stanza of stanze">
+            <td class="tbl-string">{{stanza.codSta}}</td>
+            <td class="tbl-string">{{stanza.descrizione}}</td>
+            <td class="tbl-string">{{stanza.categoria}}</td>
+            <td class="tbl-string">{{stanza.valutazione}}</td>
+            <td class="tbl-string">{{stanza.citta}}</td>
+            <td class="tbl-string">{{stanza.prezzo | currency : 'EUR'}}</td>
+            <td class="tbl-string infoBadge"><span class="badge rounded-pill alert-success">Attiva</span></td>
+            <td class="tbl-string">{{stanza.data | date : 'dd-MM-YYYY'}}</td>
+
+            <td class="text-end">
+              <button href="#" class="btn btn-light text-danger">Elimina</button>
+              <div class="dropdown">
+                <button href="#" data-bs-toggle="dropdown" class="btn btn-light">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                  </svg>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Dettaglio</a></li>
+                  <li><a class="dropdown-item" href="#">Info</a></li>
+                  <li><a class="dropdown-item" href="#">Modifica</a></li>
+                </ul>
+              </div>
+            </td>
+
+
+          </tr>
+          </tbody>
+        </table>
+
+        <nav class="float-end mt-3" aria-label="Page navigation">
+          <ul class="pagination">
+            <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+          </ul>
+        </nav>
+
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+-->
+<!--
+<h1>Stanze disponibili </h1>
+<table id ="stanze" border="1">
+
+        <thead>
+        <caption>Soggiorni</caption>
+        <tr>
+            <th>codSta</th>
+            <th>Descrizione</th>
+            <th>Prezzo</th>
+            <th>citta</th>
+            <th>valutazione</th>
+            <th>Attiva</th>
+            <th>Data</th>
+
+        </tr>
+        </thead>
+    <tbody>
+    <tr *ngFor="let stanza of stanze">
+        <td>{{stanza.codSta}}</td>
+        <td>{{stanza.descrizione}}</td>
+        <td>{{stanza.prezzo | currency : 'EUR'}}</td>
+        <td>{{stanza.citta}}</td>
+        <td>{{stanza.valutazione}}</td>
+        <td>{{stanza.active}}</td>
+        <td>{{stanza.data | date : 'dd/MM/YYYY'}}</td>
+    </tr>
+    </tbody>
+</table>
+-->

@@ -1,0 +1,204 @@
+{
+  "user": [
+    {
+      "id": "admin",
+      "name": "Amministratore",
+      "password": "pippo",
+      "email": "test@gmail.com",
+      "gender": "male",
+      "role": "admin",
+      "isactive": true,
+      "address": {
+        "area": "Milano"
+      }
+    },
+    {
+      "id": "giorgio1",
+      "name": "giorgione",
+      "password": "pippo",
+      "email": "test@in.com",
+      "gender": "male",
+      "role": "user",
+      "isactive": true
+    },
+    {
+      "id": "Jhon1",
+      "name": "John",
+      "password": "pippo",
+      "email": "te@in.com",
+      "gender": "male",
+      "role": "Landlord",
+      "isactive": true,
+      "address": {
+        "area": "Cuneo"
+      }
+    },
+    {
+      "id": "Paola",
+      "name": "Paola",
+      "password": "pippo",
+      "email": "te@in.com",
+      "gender": "male",
+      "role": "Tenant",
+      "isactive": true,
+      "address": {
+        "area": "Roma"
+      }
+    },
+    {
+      "id": "Enrico",
+      "name": "enrico",
+      "password": "pippo",
+      "email": "colomboenrico199@gmail.com",
+      "gender": "male",
+      "role": "tenant",
+      "isactive": true
+    }
+  ],
+  "role": [
+    {
+      "code": "user",
+      "name": "User",
+      "id": "9862"
+    },
+    {
+      "code": "tenant",
+      "name": "Tenant",
+      "id": "53dd"
+    },
+    {
+      "code": "landlord",
+      "name": "Landlord",
+      "id": "53dd"
+    }
+  ],
+  "menu": [
+    {
+      "code": "user",
+      "name": "User",
+      "id": "1b7c"
+    },
+    {
+      "code": "customer",
+      "name": "Customer",
+      "id": "8bc8"
+    }
+  ],
+  "roleaccess": [
+    {
+      "role": "admin",
+      "menu": "user",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true,
+      "id": "4246"
+    },
+    {
+      "role": "admin",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": true,
+      "id": "dcc5"
+    },
+    {
+      "role": "user",
+      "menu": "user",
+      "haveedit": false,
+      "haveadd": false,
+      "havedelete": false,
+      "id": "1afb"
+    },
+    {
+      "role": "user",
+      "menu": "customer",
+      "haveedit": true,
+      "haveadd": true,
+      "havedelete": false,
+      "id": "6059"
+    }
+  ],
+  "customer": [
+    {
+      "id": "1",
+      "name": "rakhesh",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "2",
+      "name": "rahul",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "3",
+      "name": "ramesh",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "4",
+      "name": "rahim",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "5",
+      "name": "robert",
+      "Creditlimit": 1000
+    },
+    {
+      "id": "4220",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true
+    },
+    {
+      "id": "03bb",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true
+    },
+    {
+      "id": "ba75",
+      "name": "enrico",
+      "email": "cc",
+      "phone": "coc1",
+      "status": true
+    },
+    {
+      "id": "59e9",
+      "name": "",
+      "email": "",
+      "phone": "",
+      "status": true
+    },
+    {
+      "id": "e1fb",
+      "name": "121",
+      "email": "1212",
+      "phone": "121",
+      "status": false
+    },
+    {
+      "id": "91e9",
+      "name": "122",
+      "email": "121",
+      "phone": "12",
+      "status": true
+    },
+    {
+      "id": "715e",
+      "name": "nbla ",
+      "email": "csj",
+      "phone": "nsaidw",
+      "status": true
+    },
+    {
+      "id": "eef8",
+      "name": "nbla ",
+      "email": "csj",
+      "phone": "nsaidw",
+      "status": true
+    }
+  ]
+}

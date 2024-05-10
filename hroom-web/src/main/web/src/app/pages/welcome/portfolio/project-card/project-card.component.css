@@ -1,0 +1,22 @@
+.tag{
+    padding: 0 20px;
+    height: 30px;
+    width: fit-content;
+    font-size: 14px;
+    line-height: 30px;
+    border-radius: 25px;
+    background-color: blue;
+    color: white;
+
+}
+img{
+    border-radius: 3rem;
+    flex: 1 0;
+    object-fit: cover;
+    height: 10rem;
+    margin: 1rem;
+
+}
+svg{
+    color: #ffdc42;
+}
