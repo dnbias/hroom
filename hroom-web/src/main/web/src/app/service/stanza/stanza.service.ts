@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import{stanze} from "../../shared/models/stanza";
 import {Tag} from "../../shared/models/tags";
 @Injectable({
@@ -6,19 +7,20 @@ import {Tag} from "../../shared/models/tags";
 })
 export class StanzaService {
 
-  constructor() { }
-
+  apiEndPoint: string = "https://hroom.com/api/insertion/"
+  constructor(private http: HttpClient) { }
 
   getStanzaById(id:number): stanze{
     return this.getAll().find(stanza=> stanza.id == id)!;
   }
+
   getAllRoomByTag(tag:string): stanze[] {
     return tag == "All"?
       this.getAll() : this.getAll().filter(stanza=>stanza.tags.toString()
         ?.
         includes(tag));
-
   }
+
   getAllTag():Tag[]{
     return [
 
@@ -30,6 +32,7 @@ export class StanzaService {
 
     ]
   }
+
   getAll():stanze[]{
     return[
       {
@@ -164,10 +167,6 @@ export class StanzaService {
         luogo:['Plus'],
         nomeHost:'colazione'
       }
-
-
     ];
   }
-
-
 }
