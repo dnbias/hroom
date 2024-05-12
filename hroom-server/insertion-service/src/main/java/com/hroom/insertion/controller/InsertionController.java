@@ -32,7 +32,7 @@ public class InsertionController {
     }
 
     @GetMapping("/insertion")
-    public List<Insertion> fetchInsertList() {
+    public List<Insertion> fetchInsertionList() {
         LOGGER.info("InsertionController > fetchInsertionList started");
         LOGGER.info("InsertionController > fetchInsertionList");
         return service.fetchInsertionList();

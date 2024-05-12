@@ -1,6 +1,7 @@
 {
   "name": "hroom-app",
   "version": "0.0.0",
+  "type": "module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -21,10 +22,12 @@
     "@angular/platform-browser-dynamic": "^17.0.0",
     "@angular/router": "^17.0.0",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.5",
     "jqGrid": "^5.8.6",
     "jqwidgets-ng": "^19.0.5",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
+    "ts-node": "^10.9.2",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
@@ -39,6 +42,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "tsx": "^4.10.0",
     "typescript": "~5.2.2"
   }
 }

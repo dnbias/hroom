@@ -40,6 +40,7 @@ import {BookingComponent} from "./pages/booking/booking.component";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatInput, MatInputModule} from "@angular/material/input";
+// import dotenv from 'dotenv';
 
 import {
   MatDatepicker,
@@ -90,11 +91,6 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
     NewBookingComponent,
     RoomsComponent,
 
-
-
-
-
-
   ],
   imports: [
     BrowserModule,
@@ -121,6 +117,7 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
     MatDatepickerModule,
     MatFormFieldModule,
     DataComponent,
+    // dotenv
     jqxGridModule, jqxWindowModule, jqxChartModule,jqxRatingModule
 
 //!!per collegare la parte di login al welcome
