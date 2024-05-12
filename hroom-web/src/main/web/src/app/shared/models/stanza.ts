@@ -12,6 +12,4 @@ export class stanze{
   roomtime!:number;
   luogo!:string[];
   nomeHost!:string;
-
-
 }

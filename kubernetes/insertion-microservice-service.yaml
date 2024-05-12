@@ -12,6 +12,5 @@ spec:
       - port: 80
         targetPort: 8080
   selector:
-    io.kompose.service: insertion-microservice
     app: insertion-microservice
   type: LoadBalancer

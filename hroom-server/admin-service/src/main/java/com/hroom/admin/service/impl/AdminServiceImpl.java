@@ -17,15 +17,15 @@ import org.slf4j.LoggerFactory;
 import static com.hroom.admin.security.SecurityTools.isSanitized;
 
 @Service
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements AdminService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private AdminRepository repository;
-    private static final String TENANT_BASE_URL = "http://TENANT-SERVICE:8761/api/v1/tenant";
-    private static final String LANDLORD_BASE_URL = "http://LANDLORD-SERVICE:8761/api/v1/landlord";
-    private static final String USER_BASE_URL = "http://USER-SERVICE:9000/api/v1/user";
+    private static final String TENANT_BASE_URL = "http://TENANT-SERVICE:8761/api/v1";
+    private static final String LANDLORD_BASE_URL = "http://LANDLORD-SERVICE:8761/api/v1";
+    private static final String USER_BASE_URL = "http://USER-SERVICE:9000/api/v1";
     private final RestTemplate restTemplate = new RestTemplate();
 
 
@@ -109,7 +109,7 @@ public class AdminServiceImpl implements AdminService{
         return null;
     }
 
-    private String getRoleInfo(){
+    private String getRoleInfo() {
 
         LOGGER.info("AdminServiceImpl > getRoleInfo is started");
 

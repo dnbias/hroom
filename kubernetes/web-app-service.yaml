@@ -5,13 +5,13 @@ metadata:
     kompose.cmd: kompose convert -f docker-compose.yml
     kompose.version: 1.32.0 (HEAD)
   labels:
-    io.kompose.service: web-app
+    app: web-app
   name: web-app
 spec:
   ports:
-    - name: "80"
+    - protocol: TCP
       port: 80
       targetPort: 80
   selector:
-    io.kompose.service: web-app
-  type: LoadBalancer
+    app: web-app
+  type: NodePort

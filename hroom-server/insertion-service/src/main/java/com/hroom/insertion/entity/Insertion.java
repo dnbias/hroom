@@ -8,10 +8,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Column;
 import jakarta.persistence.Table;
+import jakarta.persistence.Lob;
+import jakarta.persistence.DiscriminatorColumn;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.DiscriminatorType;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.ArrayList;
@@ -19,10 +23,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "Insertions")
-@AllArgsConstructor
 @NoArgsConstructor
 @Setter
 @Getter
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="insertion_type",
+  discriminatorType = DiscriminatorType.INTEGER)
 public class Insertion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,7 +37,7 @@ public class Insertion {
     private Long landlordId;
     @Column(nullable = false)
     private String name;
-    private String[] features;
+    private Features[] features;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
@@ -43,6 +49,8 @@ public class Insertion {
     @Column(nullable = false)
     private int area;
     // photo as BLOB in DB
+    @Lob
+    @Column(name = "photo", length = 400000)
     private byte[] photo;
     private int meanRating;
     private List<Long> receivedFeedbacksIds;

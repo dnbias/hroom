@@ -12,6 +12,5 @@ spec:
     - port: 80
       targetPort: 8080
   selector:
-    io.kompose.service: reservation-microservice
     app: reservation-microservice
   type: LoadBalancer
