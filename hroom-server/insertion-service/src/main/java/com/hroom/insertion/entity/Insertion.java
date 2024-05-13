@@ -49,9 +49,10 @@ public class Insertion {
     @Column(nullable = false)
     private int area;
     // photo as BLOB in DB
-    @Lob
-    @Column(name = "photo", length = 400000)
-    private byte[] photo;
+    // @Lob
+    // @Column(name = "photo", length = 400000)
+    // private byte[] photo;
+    private String photoUrl;
     private int meanRating;
     private List<Long> receivedFeedbacksIds;
     private Long availabilityId;

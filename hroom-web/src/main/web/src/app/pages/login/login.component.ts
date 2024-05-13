@@ -23,6 +23,7 @@ export class LoginComponent {
   });
 
   proceedlogin() {
+    console.log('proceedlogin call')
     if (this.loginform.valid) {
       this.service.GetUserbyCode(this.loginform.value.id).subscribe(item => {
         this.result = item;
@@ -30,7 +31,8 @@ export class LoginComponent {
           if (this.result.isactive) {
             sessionStorage.setItem('username',this.result.id);
             sessionStorage.setItem('role',this.result.role);
-            this.router.navigate(['']);
+            this.toastr.success('OK', 'Active User');
+            this.router.navigate(['/home']);
           } else {
             this.toastr.error('Please contact Admin', 'InActive User');
           }
