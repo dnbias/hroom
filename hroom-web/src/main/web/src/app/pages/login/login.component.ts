@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'
 import { AuthService } from '../../service/auth.service';
 
+// /*per l'avvio json-server --watch db.json
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
