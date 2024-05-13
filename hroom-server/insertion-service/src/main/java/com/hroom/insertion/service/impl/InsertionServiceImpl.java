@@ -63,7 +63,7 @@ public class InsertionServiceImpl implements InsertionService {
         if (isSanitized(insertion.getDescription())) insertionDB.setDescription(
                                                         insertion.getDescription());
         if (isSanitized(insertion.getPrice())) insertionDB.setPrice(insertion.getPrice());
-        if (isSanitized(insertion.getPhoto())) insertionDB.setPhoto(insertion.getPhoto());
+        if (isSanitized(insertion.getPhotoUrl())) insertionDB.setPhotoUrl(insertion.getPhotoUrl());
         if (isSanitized(insertion.getReceivedFeedbacksIds()))
             insertionDB.setReceivedFeedbacksIds(insertion.getReceivedFeedbacksIds());
         if (isSanitized(insertion.getAvailabilityId()))

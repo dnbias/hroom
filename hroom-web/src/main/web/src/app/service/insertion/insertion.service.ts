@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import dotenv from 'dotenv';
+import { insertion } from "../../shared/models/insertion";
+import { Tag } from "../../shared/models/tags";
+import { environment } from "../../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +11,7 @@ export class InsertionService {
 
   apiEndPoint: string;
   constructor(private http: HttpClient) {
-    dotenv.config();  // Load environment variables from .env file
-    const proxy = process.env['PROXY_IP'];
+    const proxy = environment.proxy_ip;
     console.log('Proxy IP:', proxy);
     this.apiEndPoint = proxy+"/api/v1/insertion"
   }
@@ -25,17 +26,17 @@ export class InsertionService {
     return this.http.delete(this.apiEndPoint+'/'+id);
   }
 
-  updateInsertion(id: number, ins: insertion) {
+  updateInsertion(id: number, ins: insertion): any {
     console.log('updateInsertion request: id='+id);
     return this.http.put(this.apiEndPoint+'/'+id, ins);
   }
 
-  fetchInsertionList() {
+  fetchInsertionList(): any {
     console.log('fetchInsertionList request');
     return this.http.get(this.apiEndPoint);
   }
 
-  findInsertion(id: number) {
+  findInsertion(id: number): any {
     console.log('findInsertion request: id='+id);
     return this.http.get(this.apiEndPoint+'/'+id);
   }
