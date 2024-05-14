@@ -46,7 +46,7 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
               "budgets": [
                 {
                   "type": "initial",
