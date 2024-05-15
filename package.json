@@ -1,5 +1,7 @@
 {
   "dependencies": {
+    "@abacritt/angularx-social-login": "^2.2.0",
+    "@types/gapi.auth2": "^0.0.60",
     "jqwidgets-ng": "^19.0.5"
   }
 }
