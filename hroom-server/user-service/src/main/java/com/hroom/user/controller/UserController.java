@@ -3,6 +3,7 @@ package com.hroom.user.controller;
 import com.hroom.user.dto.LoginRequest;
 import com.hroom.user.dto.SignUpRequest;
 import com.hroom.user.entity.User;
+import com.hroom.user.exception.MissingUserException;
 import com.hroom.user.service.KeycloakService;
 import com.hroom.user.service.UserService;
 import com.hroom.user.utils.UserContextHolder;
@@ -32,8 +33,9 @@ public class UserController {
     private final UserService userService;
     private final KeycloakService keycloakService;
 
+    // fetchall
     @PostMapping("/signup")
-    public ResponseEntity<?> signUpUser(@RequestBody SignUpRequest signUpRequest){
+    public ResponseEntity<String> signUpUser(@RequestBody SignUpRequest signUpRequest){
 
         LOGGER.info("UserController | signUpUser is started");
         LOGGER.info("UserController | signUpUser | SignUpRequest role : " + signUpRequest.getRole());
@@ -44,55 +46,104 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<AccessTokenResponse> login(@RequestBody LoginRequest request){
+    public ResponseEntity<User> login(@RequestBody LoginRequest request){
 
         LOGGER.info("UserController | login is started");
+        LOGGER.info("UserController | request: "+ request);
 
-        AccessTokenResponse accessTokenResponse =keycloakService.loginWithKeycloak(request);
-        if (accessTokenResponse == null){
-            LOGGER.info("UserController | login | Http Status Bad Request");
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(accessTokenResponse);
+        // AccessTokenResponse accessTokenResponse =keycloakService.loginWithKeycloak(request);
+        // if (accessTokenResponse == null){
+        //     LOGGER.info("UserController | login | Http Status Bad Request");
+        //     return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(accessTokenResponse);
+        // }
+        User response;
+        try {
+            response = userService.login(request);
+        } catch (MissingUserException e) {
+            LOGGER.info("UserController | login | MissingUserException caught");
+            return null;
         }
 
         LOGGER.info("UserController | login | Http Status Ok");
 
-        return ResponseEntity.ok(accessTokenResponse);
+        return ResponseEntity.ok(response);
     }
 
 
-    @GetMapping("/info")
-    public ResponseEntity<String> infoUser(){
+    @GetMapping("/info/{username}")
+    public ResponseEntity<String> infoUser(@PathVariable String username){
 
         LOGGER.info("UserController | infoUser is started");
 
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
-        LOGGER.info("UserController | infoUser | auth toString : " + auth.toString());
-        LOGGER.info("UserController | infoUser | auth getPrincipal : " + auth.getPrincipal());
+        // LOGGER.info("UserController | infoUser | auth toString : " + auth.toString());
+        // LOGGER.info("UserController | infoUser | auth getPrincipal : " + auth.getPrincipal());
 
-        KeycloakPrincipal principal = (KeycloakPrincipal)auth.getPrincipal();
-        KeycloakSecurityContext session = principal.getKeycloakSecurityContext();
-        AccessToken accessToken = session.getToken();
+        // KeycloakPrincipal principal = (KeycloakPrincipal)auth.getPrincipal();
+        // KeycloakSecurityContext session = principal.getKeycloakSecurityContext();
+        // AccessToken accessToken = session.getToken();
 
-        String username = accessToken.getPreferredUsername();
-        String email = accessToken.getEmail();
-        String lastname = accessToken.getFamilyName();
-        String firstname = accessToken.getGivenName();
-        String realmName = accessToken.getIssuer();
-        AccessToken.Access access = accessToken.getRealmAccess();
-        Set<String> roles = access.getRoles();
+        // String username = accessToken.getPreferredUsername();
+        // String email = accessToken.getEmail();
+        // String lastname = accessToken.getFamilyName();
+        // String firstname = accessToken.getGivenName();
+        // String realmName = accessToken.getIssuer();
+        // AccessToken.Access access = accessToken.getRealmAccess();
+        // Set<String> roles = access.getRoles();
 
-        String role = roles.stream()
-                .filter(s -> s.equals("ROLE_USER") || s.equals("ROLE_ADMIN"))
-                .findAny()
-                .orElse("noElement");
+        // String role = roles.stream()
+        //         .filter(s -> s.equals("ROLE_USER") || s.equals("ROLE_ADMIN"))
+        //         .findAny()
+        //         .orElse("noElement");
+        String info;
+        try {
+            info = userService.infoUser(username);
+        } catch (MissingUserException e) {
+            LOGGER.info("UserController | infoUser | MissingUserException caught");
+            return null;
+        }
 
-        LOGGER.info("UserController | infoUser | username : " + username);
-        LOGGER.info("UserController | infoUser | email : " + email);
-        LOGGER.info("UserController | infoUser | lastname : " + lastname);
-        LOGGER.info("UserController | infoUser | firstname : " + firstname);
-        LOGGER.info("UserController | infoUser | realmName : " + realmName);
-        LOGGER.info("UserController | infoUser | firstRole : " + role);
+        LOGGER.info("UserController | infoUser | user: "+username);
+        LOGGER.info("UserController | infoUser | OK");
+
+        return ResponseEntity.ok(info);
+    }
+
+    @GetMapping("/role/{username}")
+    public ResponseEntity<String> roleUser(@PathVariable String username){
+
+        LOGGER.info("UserController | roleUser is started");
+
+        // Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        // LOGGER.info("UserController | roleUser | auth toString : " + auth.toString());
+        // LOGGER.info("UserController | roleUser | auth getPrincipal : " + auth.getPrincipal());
+
+        // KeycloakPrincipal principal = (KeycloakPrincipal)auth.getPrincipal();
+        // KeycloakSecurityContext session = principal.getKeycloakSecurityContext();
+        // AccessToken accessToken = session.getToken();
+
+        // String username = accessToken.getPreferredUsername();
+        // AccessToken.Access access = accessToken.getRealmAccess();
+        // Set<String> roles = access.getRoles();
+
+        // String role = roles.stream()
+        //         .filter(s -> s.equals("ROLE_USER") || s.equals("ROLE_ADMIN"))
+        //         .findAny()
+        //         .orElse("noElement");
+
+        String role;
+        try {
+            role = userService.roleUser(username);
+        } catch (MissingUserException e) {
+            LOGGER.info("UserController > roleUser > MissingUserException caught");
+            return null;
+        }
+
+        LOGGER.info("UserController | roleUser | username : " + username);
+        LOGGER.info("UserController | roleUser | role : " + role);
+        LOGGER.info("UserController | roleUser | OK");
 
         return ResponseEntity.ok(role);
     }

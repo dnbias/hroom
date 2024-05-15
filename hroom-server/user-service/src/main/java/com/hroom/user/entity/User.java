@@ -25,6 +25,8 @@ import java.time.LocalDateTime;
 @DiscriminatorColumn(name="role",
   discriminatorType = DiscriminatorType.STRING)
 public class User extends IdBasedEntity implements Serializable {
+    @Column(insertable=false, updatable=false)
+    private String role;
     @Column(nullable = false)
     private String username;
     @Column (nullable = false)

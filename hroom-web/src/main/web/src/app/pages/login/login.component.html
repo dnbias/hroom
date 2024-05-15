@@ -2,12 +2,9 @@
   <mat-card-header>
     <h2>Login</h2>
   </mat-card-header>
-
   <mat-card-content>
-
-
-    <form class="login-form" [formGroup]="loginform" (ngSubmit)="proceedlogin()">
-
+    <form class="login-form" [formGroup]="loginform"
+          (ngSubmit)="loginform.valid && proceedLogin()">
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input matInput formControlName="id" >
@@ -16,7 +13,6 @@
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" >
       </mat-form-field>
-
       <div id="g_id_onload"
            data-client_id="90931732104-9u89avg9655fnr14ibvo58l35edfip1r.apps.googleusercontent.com"
            data-context="Accedi"
@@ -24,7 +20,6 @@
            data-login_uri="http://localhost:8888/api/login"
            data-itp_support="true">
       </div>
-
       <div class="g_id_signin"
            data-type="standard"
            data-shape="pill"
@@ -34,14 +29,10 @@
            data-locale="en"
            data-logo_alignment="left">
       </div>
-
       <br>
       <br>
         <button mat-raised-button color="primary">Login</button>
         <a routerLink="/registrazione" mat-raised-button color="accent">New User?</a>
-
-
-
     </form>
   </mat-card-content>
 </mat-card>

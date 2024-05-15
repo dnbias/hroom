@@ -14,4 +14,14 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @DiscriminatorValue("landlord")
-public class Landlord extends User {}
+public class Landlord extends User {
+    public Landlord(User u) {
+        this.setUsername(u.getUsername());
+        this.setPassword(u.getPassword());
+        this.setName(u.getName());
+        this.setSurname(u.getSurname());
+        this.setPhoneNumber(u.getPhoneNumber());
+        this.setEmail(u.getEmail());
+        this.setCreatedAt(u.getCreatedAt());
+    }
+}

@@ -11,21 +11,7 @@ import org.springframework.stereotype.Component;
 public class UserMapper {
 
     public static User signUpRequestToUser(SignUpRequest signUpRequest){
-        User user;
-        String role = signUpRequest.getRole();
-        switch (role) {
-                case "admin":
-                        user = new Admin();
-                        break;
-                case "tenant":
-                        user = new Tenant();
-                        break;
-                case "landlord":
-                        user = new Landlord();
-                        break;
-                default:
-                        user = new Tenant();
-        }
+        User user = new User();
         user.setUsername(signUpRequest.getUsername());
         user.setPassword(signUpRequest.getPassword());
         user.setPhoneNumber(signUpRequest.getPhoneNumber());

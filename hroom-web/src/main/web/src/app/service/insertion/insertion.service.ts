@@ -13,7 +13,7 @@ export class InsertionService {
   constructor(private http: HttpClient) {
     const proxy = environment.proxy_ip;
     console.log('Proxy IP:', proxy);
-    this.apiEndPoint = proxy+"/api/v1/insertion"
+    this.apiEndPoint = "/api/v1/insertion"
   }
 
   saveInsertion(ins: insertion) {
