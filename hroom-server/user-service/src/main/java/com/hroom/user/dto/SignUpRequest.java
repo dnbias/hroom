@@ -1,7 +1,6 @@
 package com.hroom.user.dto;
 
 import lombok.Data;
-import com.hroom.user.entity.User.Capability;
 
 @Data
 public class SignUpRequest {

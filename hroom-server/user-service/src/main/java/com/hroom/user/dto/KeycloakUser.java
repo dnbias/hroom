@@ -10,6 +10,7 @@ public class KeycloakUser {
     private String email;
     private String username;
     private String password;
+    private String phoneNumber;
     private String role;
 
 }
