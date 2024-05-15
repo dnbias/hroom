@@ -1,15 +1,20 @@
-import { Component } from '@angular/core';
+
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr'
 import { AuthService } from '../../service/auth.service';
 import { loginRequest } from '../../shared/models/loginRequest';
 
+
+// /*per l'avvio json-server --watch db.json
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+
 })
+
 export class LoginComponent {
   constructor(private builder: FormBuilder, private toastr: ToastrService,
               private service: AuthService, private router: Router) {
