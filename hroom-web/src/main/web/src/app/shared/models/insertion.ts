@@ -11,7 +11,7 @@ export interface insertion {
   city: string;
   address: string;
   area: number;
-  photoUrl: string;
+  photoIds: number[];
   rating: number;
   receivedFeedbacksIds: number[];
   availabilityId: number;
