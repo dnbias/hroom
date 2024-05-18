@@ -4,10 +4,11 @@ import {RoomService} from "../../service/room/room.service"
 import {InsertionService} from "../../service/insertion/insertion.service"
 import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
-import {InsertionService} from "../../service/insertion/insertion.service";
 import {insertion} from "../../shared/models/insertion";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 import { ToastrService } from 'ngx-toastr'
+
+import {ConsoleLogger} from "@angular/compiler-cli";
 
 
 @Component({
@@ -17,8 +18,7 @@ import { ToastrService } from 'ngx-toastr'
 })
 export class RoomsComponent implements OnInit{
 
-  constructor(private insService: InsertionService)  {
-  }
+
   insertionData : insertion={
       insertion_type: 'room',
       id: 0,
@@ -30,51 +30,23 @@ export class RoomsComponent implements OnInit{
       city: '',
       address: '',
       area: 0,
-      photoUrl: '',
+     photoIds: [],
       rating: 0,
       receivedFeedbacksIds: [],
       availabilityId: 0,
   }
     addRoom(){}
 
-    ngOnInit(): void {
-    }
-    OnSubmit(){
-    this.insService.saveInsertion(this.insertionData)
-        .subscribe(()=>{
-            console.log(JSON);
 
 
-        })
-    }
-
-
-    protected readonly onsubmit = onsubmit;
-}
-
-  roomList:any []= [];
-  roomObj: any = {
-    "roomId": 0,
-    "roomName": "",
-    "isAcAvailable": false,
-    "roomCapacity": 0,
-    "isActive": false,
-    "roomTariff": 0,
-    "extensionNo": ""
-  };
-
-  addIns(insertion : insertion){}
-
-  newUri: string = '';
 
   constructor(private svc: InsertionService,
               private toastr: ToastrService,
-              private roomSrv:RoomService,
-              private http: HttpClient) { }
+              private http: HttpClient) {
 
-  getStanze(){
-    return this.http.get(`${this.backendUrl}/stanze`);
-  }
+}
+        newUri='';
+
 
   ngOnInit(): void {
     // this.getAllRooms();
@@ -84,44 +56,50 @@ export class RoomsComponent implements OnInit{
   getAllRooms() {
     // this.roomSrv.getAllRooms().subscribe((res:any)=>{
     this.svc.fetchInsertionList().subscribe((res:any)=>{
-      this.roomList = res.data;
+      this.insertionData = res.data;
     })
   }
 
-  saveRooms() {
-    // this.roomSrv.saveUpdateRoom(this.roomList).subscribe((Res:any)=>{
-    //   if(Res.result) {
-    //     alert('Data Updated Success')
-    //   } else {
-    //     alert(Res.message)
-    //   }
-    // })
-
+  saveRooms()
+{
+  // this.roomSrv.saveUpdateRoom(this.roomList).subscribe((Res:any)=>{
+  //   if(Res.result) {
+  //     alert('Data Updated Success')
+  //   } else {
+  //     alert(Res.message)
+  //   }
+  // })
     // TODO allineare tabella con i dati in src/app/shared/models/insertion.ts
-    this.roomList.forEach((item) => {
-      this.svc.saveInsertion(item).subscribe(res => {
+    this.svc.saveInsertion(this.insertionData).subscribe(res => {
         console.log(res);
-      })
-    });
-    this.toastr.success('OK','Insertions Uploaded')
-
-  }
+        this.toastr.success('OK','Insertions Uploaded')
+    })
+   }
 
   AddNEwRoom() {
     const obj = {
-      "roomId": 0,
-      "roomName": "",
-      "isAcAvailable": false,
-      "roomCapacity": 0,
-      "isActive": false,
-      "roomTariff": 0,
-      "extensionNo": ""
+        insertion_type: 'room',
+        id: 0,
+        landlordId: 1,
+        name: '',
+        tags: [],
+        description: [''],
+        price: 0,
+        city: '',
+        address: '',
+        area: 0,
+        photoIds: [],
+        rating: 0,
+        receivedFeedbacksIds: [],
+        availabilityId: 0,
     }
-    this.roomList.unshift(obj)
+   // this.insertionData.unshift(obj)
   }
 
   onDelete(id: number) {
-    this.roomSrv.deletRoom(id).subscribe((res:any)=>{
+
+      //!!
+    this.svc.deleteInsertion(id).subscribe((res:any)=>{
       if(res.status == 200 || res.status == 201) {
         alert('Room Deleted Success');
         this.getAllRooms();
