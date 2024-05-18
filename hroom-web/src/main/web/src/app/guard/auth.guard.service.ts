@@ -8,16 +8,17 @@ import { AuthService } from '../service/auth.service';
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private service: AuthService, private router: Router,private tostr:ToastrService) { }
+  constructor(private authsvc: AuthService, private router: Router,private tostr:ToastrService) { }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (this.service.isLoggedIn()) {
+    if (this.authsvc.isLoggedIn()) {
       if (route.url.length > 0) {
         let menu = route.url[0].path;
+        console.log(menu);
         if (menu == 'user') {
-          if (this.service.getRole() == 'admin') {
+          if (this.authsvc.getRole() == 'admin') {
             return true;
           } else {
             this.router.navigate(['']);
