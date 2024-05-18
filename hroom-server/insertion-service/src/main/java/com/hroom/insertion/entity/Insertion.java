@@ -38,7 +38,7 @@ public class Insertion {
     @Column(nullable = false)
     private String name;
     private Features[] features;
-    @Column(nullable = false)
+    @Column(nullable = false, length = 600)
     private String description;
     @Column(nullable = false)
     private double price;
@@ -48,11 +48,7 @@ public class Insertion {
     private String address;
     @Column(nullable = false)
     private int area;
-    // photo as BLOB in DB
-    // @Lob
-    // @Column(name = "photo", length = 400000)
-    // private byte[] photo;
-    private String photoUrl;
+    private List<Long> photoIds;
     private int meanRating;
     private List<Long> receivedFeedbacksIds;
     private Long availabilityId;

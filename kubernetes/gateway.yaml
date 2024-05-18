@@ -96,7 +96,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /photos
+        value: /api/v1/upload/photo
     backendRefs:
     - name: insertion-microservice
       port: 80

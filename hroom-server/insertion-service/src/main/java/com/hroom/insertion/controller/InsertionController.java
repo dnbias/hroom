@@ -3,16 +3,22 @@ package com.hroom.insertion.controller;
 import com.hroom.insertion.entity.Insertion;
 import com.hroom.insertion.service.InsertionService;
 import com.hroom.insertion.exception.MissingInsertionException;
+import com.hroom.insertion.exception.MissingPhotoException;
 
 import jakarta.validation.Valid;
 
 import org.hibernate.service.spi.InjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.List;
 
 @RequestMapping("api/v1")
@@ -71,5 +77,53 @@ public class InsertionController {
         LOGGER.info("InsertionController > deleteInsertionById > id: " + insertionId);
         service.deleteInsertionById(insertionId);
         return "Deleted Successfully";
+    }
+
+    @PutMapping("/inseriton/photo")
+    public ResponseEntity<Long> uploadPhoto(byte[] image) {
+        LOGGER.info("InsertionController > uploadPhoto started");
+        Long id = null;
+
+        try {
+            id = service.uploadPhoto(image);
+        } catch (IOException e) {
+            LOGGER.error("InsertionController > uploadPhoto > IOException caught");
+            LOGGER.error(e.getMessage());
+            ResponseEntity.internalServerError().body("Upload Failed");
+        }
+
+        return ResponseEntity.ok(id);
+    }
+
+    @GetMapping("/insertion/photo/{id}")
+    public ResponseEntity<byte[]> downloadPhoto(@PathVariable("id") Long photoId) {
+        LOGGER.info("InsertionController > downloadPhoto started");
+        LOGGER.info("InsertionController > downloadPhoto > id: " + photoId);
+
+        byte[] data = null;
+
+        try {
+            data = service.downloadPhoto(photoId);
+        } catch (MissingPhotoException e) {
+            LOGGER.error("InsertionController > uploadPhoto > Exception caught");
+            LOGGER.error(e.getMessage());
+            ResponseEntity.internalServerError().body("Download Failed: photo not found");
+        }
+        // String encodedImage = Base64.encode(data);
+        // HttpHeaders headers = new HttpHeaders();
+        // headers.setContentType(MediaType.IMAGE_JPEG);
+
+        return ResponseEntity
+                .ok()
+                .contentType(MediaType.IMAGE_JPEG)
+                .body(data);
+    }
+
+    @DeleteMapping("/insertion/photo/{id}")
+    public ResponseEntity<String> deletePhoto(@PathVariable("id") Long photoId) {
+        LOGGER.info("InsertionController > deletePhotoById started");
+        LOGGER.info("InsertionController > deletePhotoById > id: " + photoId);
+        service.deletePhoto(photoId);
+        return ResponseEntity.ok("Deleted successfully");
     }
 }
