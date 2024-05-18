@@ -26,6 +26,19 @@ img{
     color: black;
     margin-left: 1rem;
 }
+
+.container .description {
+    max-width: 55rem;
+}
+.description{
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.3em;
+    flex-direction: default !important;
+    padding: 0rem !important;
+}
+
 .details .header{
     display: flex;
     justify-content: space-between;
