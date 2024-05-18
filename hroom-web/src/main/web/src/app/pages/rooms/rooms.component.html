@@ -1,7 +1,7 @@
 <div class="row">
-  <div class="col-12 text-end">
-    <button class="btn btn-primary" (click)="AddNEwRoom()">Add New</button>
-    <button class="btn btn-success mx-2" (click)="saveRooms()">Aggiorna</button>
+ <div class="col-12 text-end">
+    <button class="btn btn-primary" (click)="OnSubmit()">Add New</button>
+    <button class="btn btn-success mx-2">Aggiorna</button>
   </div>
 </div>
 <div class="row">
@@ -9,18 +9,69 @@
     <table class="table table-bordered">
       <thead>
       <tr>
+        <th>insertion_type</th>
         <th>Numero</th>
+        <th>Nome landlord</th>
         <th>Nome stanza</th>
-        <th>Disponibile</th>
-        <th>Capacità</th>
-        <th>Attiva per ore</th>
-        <th>Tarriffa</th>
-        <th>Extension No</th>
-        <th>Action</th>
+        <th>Tag</th>
+        <th>Descrizione</th>
+        <th>prezzo</th>
+        <th>Città</th>
+        <th>Indirizzo</th>
+        <th>Foto</th>
+        <th>Disponibilità</th>
+
       </tr>
       </thead>
+    <form (ngSubmit)="OnSubmit()">
+    <tr *ngFor = " let sr = index">
+      <td>{{sr+1}}</td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.insertion_type" name="Insertion_type{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.id" name="id{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.landlordId" name="landlordId{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.name" name="name{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.tags" name="tag{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.description" name="description{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.price" name="price{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.city" name="città{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.address" name="address{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.area" name="area{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.photoUrl" name="photoUrl{{sr}}" class="form-control" />
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="insertionData.availabilityId" name="availavilityId{{sr}}" class="form-control" />
+      </td>
+
+
+    </tr>
+
+
+
+
+    </form>
       <tbody>
-      <tr *ngFor="let room of roomList;let sr= index">
+      <!--<tr *ngFor="let room of room ;let sr= index">
         <td> {{sr+1}}</td>
         <td>
           <input type="text" [(ngModel)]="room.roomName" name="roomName{{sr}}" class="form-control" />
@@ -44,7 +95,7 @@
         <td>
           <button class="btn btn-sm btn-danger" (click)="onDelete(room.roomId)">Remove</button>
         </td>
-      </tr>
+      </tr>-->
       </tbody>
     </table>
   </div>

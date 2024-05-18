@@ -1,41 +1,53 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from "../../environment/environment";
+import { loginRequest } from '../shared/models/loginRequest';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  apiEndPoint: string;
+
   constructor(private http:HttpClient) {
+    const proxy = environment.proxy_ip;
+    this.apiEndPoint='/api/v1/';
+  }
 
+  login(inputdata: loginRequest){
+    console.log('login request');
+    return this.http.post(this.apiEndPoint+'login',inputdata)
   }
-  apiurl='http://localhost:3000/user';
-
-  RegisterUser(inputdata:any){
-    return this.http.post(this.apiurl,inputdata)
+  registerUser(inputdata:any){
+    return this.http.post(this.apiEndPoint+'signup',inputdata,
+                                  { responseType: 'text' });
   }
-  GetUserbyCode(id:any){
-    return this.http.get(this.apiurl+'/'+id);
+  getUser(username:any){
+    return this.http.get(this.apiEndPoint+'user/'+username);
   }
-  Getall(){
-    return this.http.get(this.apiurl);
+  getAll(){
+    return this.http.get(this.apiEndPoint+'user');
   }
-  updateuser(id:any,inputdata:any){
-    return this.http.put(this.apiurl+'/'+id,inputdata);
+  updateUser(id:any,inputdata:any){
+    return this.http.put(this.apiEndPoint+'user/'+id, inputdata);
   }
-  getuserrole(){
-    return this.http.get('http://localhost:3000/role');
+  getUserRole(){
+    return this.http.get(this.apiEndPoint+'role');
   }
-  isloggedin(){
+  getUserInfo(){
+    return this.http.get(this.apiEndPoint+'info');
+  }
+  isLoggedIn(){
     return sessionStorage.getItem('username')!=null;
   }
-  getrole(){
+  getRole(){
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
   }
-  GetAllCustomer(){
+  getAllCustomer(){
     return this.http.get('http://localhost:3000/customer');
   }
-  Getaccessbyrole(role:any,menu:any){
+  getAccessByRole(role:any,menu:any){
     return this.http.get('http://localhost:3000/roleaccess?role='+role+'&menu='+menu)
   }
 

@@ -25,6 +25,7 @@
     "dotenv": "^16.4.5",
     "jqGrid": "^5.8.6",
     "jqwidgets-ng": "^19.0.5",
+    "language-server": "^0.0.2",
     "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "ts-node": "^10.9.2",
@@ -33,7 +34,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^17.0.0",
-    "@angular/cli": "^17.0.0",
+    "@angular/cli": "^17.3.7",
     "@angular/compiler-cli": "^17.0.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",

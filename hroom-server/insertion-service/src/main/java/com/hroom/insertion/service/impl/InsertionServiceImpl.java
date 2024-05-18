@@ -2,12 +2,22 @@ package com.hroom.insertion.service.impl;
 
 import com.hroom.insertion.service.InsertionService;
 import com.hroom.insertion.repository.InsertionRepository;
+import com.hroom.insertion.repository.PhotoRepository;
 import com.hroom.insertion.entity.Insertion;
+import com.hroom.insertion.entity.Photo;
 import com.hroom.insertion.exception.MissingInsertionException;
+import com.hroom.insertion.exception.MissingPhotoException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,24 +32,26 @@ public class InsertionServiceImpl implements InsertionService {
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
     @Autowired
-    private InsertionRepository repository;
+    private InsertionRepository insertionRepository;
+    @Autowired
+    private PhotoRepository photoRepository;
 
     @Override
     public Insertion saveInsertion(Insertion insertion) {
         LOGGER.info("InsertionServiceImpl > saveInsertion started");
-        return repository.save(insertion);
+        return insertionRepository.save(insertion);
     }
 
     @Override
     public List<Insertion> fetchInsertionList() {
         LOGGER.info("InsertionServiceImpl > fetchInsertionList started");
-        return (List<Insertion>)  repository.findAll();
+        return (List<Insertion>)  insertionRepository.findAll();
     }
 
     @Override
     public Insertion findById(Long id) throws MissingInsertionException {
         LOGGER.info("InsertionServiceImpl > findById started");
-        Optional<Insertion> optional = repository.findById(id);
+        Optional<Insertion> optional = insertionRepository.findById(id);
         if (optional.isEmpty()) {
             throw new MissingInsertionException(id);
         }
@@ -52,7 +64,7 @@ public class InsertionServiceImpl implements InsertionService {
 
         LOGGER.info("InsertionServiceImpl > updateInsertion started");
 
-        Optional<Insertion> optional = repository.findById(insertionId);
+        Optional<Insertion> optional = insertionRepository.findById(insertionId);
         if (optional.isEmpty()) {
             throw new MissingInsertionException(insertionId);
         }
@@ -63,18 +75,50 @@ public class InsertionServiceImpl implements InsertionService {
         if (isSanitized(insertion.getDescription())) insertionDB.setDescription(
                                                         insertion.getDescription());
         if (isSanitized(insertion.getPrice())) insertionDB.setPrice(insertion.getPrice());
-        if (isSanitized(insertion.getPhoto())) insertionDB.setPhoto(insertion.getPhoto());
+        if (isSanitized(insertion.getPhotoIds())) insertionDB.setPhotoIds(insertion.getPhotoIds());
         if (isSanitized(insertion.getReceivedFeedbacksIds()))
             insertionDB.setReceivedFeedbacksIds(insertion.getReceivedFeedbacksIds());
         if (isSanitized(insertion.getAvailabilityId()))
             insertionDB.setAvailabilityId(insertion.getAvailabilityId());
 
-        return repository.save(insertionDB);
+        return insertionRepository.save(insertionDB);
     }
 
     @Override
     public void deleteInsertionById(Long insertionId) {
         LOGGER.info("InsertionServiceImpl > deleteInsertionById started");
-        repository.deleteById(insertionId);
+        insertionRepository.deleteById(insertionId);
+    }
+
+    @Override
+    public Long uploadPhoto(byte[] data) throws IOException {
+        LOGGER.info("InsertionServiceImpl > uploadPhoto started");
+
+        Photo photo = new Photo();
+        photo.setData(data);
+        Long id = photo.getId();
+
+        photoRepository.save(photo);
+        LOGGER.info("InsertionServiceImpl > uploadPhoto > file written to DB");
+        LOGGER.info("InsertionServiceImpl > uploadPhoto > id: " + id);
+
+        return id;
+    }
+
+    @Override
+    public byte[] downloadPhoto(Long id) throws MissingPhotoException {
+        LOGGER.info("InsertionServiceImpl > downloadPhoto started");
+
+        Optional<Photo> optional = photoRepository.findById(id);
+        if (optional.isEmpty()) {
+            throw new MissingPhotoException(id);
+        }
+        LOGGER.info("InsertionServiceImpl > downloadPhoto > file found");
+        return optional.get().getData();
+    }
+
+    @Override
+    public void deletePhoto(Long id) {
+        photoRepository.deleteById(id);
     }
 }

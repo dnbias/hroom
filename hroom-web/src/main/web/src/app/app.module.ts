@@ -2,11 +2,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {StanzeComponent} from './pages/stanze/stanze.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { CoreModule } from './core/core.module';
 import { ErrorComponent } from './pages/error/error.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LoginComponent } from './pages/login/login.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import {StanzeCardComponent} from "./components/stanze-card/stanze-card.component";
 import {GridStanzeComponent} from "./pages/grid-stanze/grid-stanze.component";
@@ -93,6 +94,7 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
 
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -118,7 +120,8 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
     MatFormFieldModule,
     DataComponent,
     // dotenv
-    jqxGridModule, jqxWindowModule, jqxChartModule,jqxRatingModule
+    jqxGridModule, jqxWindowModule, jqxChartModule,jqxRatingModule,
+
 
 //!!per collegare la parte di login al welcome
 

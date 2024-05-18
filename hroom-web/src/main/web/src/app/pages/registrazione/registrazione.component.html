@@ -4,10 +4,18 @@
     <h2>Registrazione</h2>
   </mat-card-header>
   <mat-card-content>
-    <form class="login-form" [formGroup]="registerform" (ngSubmit)="proceedregister()" >
+    <form class="login-form" [formGroup]="registerform" (ngSubmit)="proceedRegister()" >
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input matInput formControlName="id" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Numero di Telefono</mat-label>
+        <input matInput formControlName="telefono" >
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Cognome</mat-label>
+        <input matInput formControlName="cogname" >
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Name</mat-label>
@@ -16,21 +24,52 @@
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" >
+        <input matInput type="password" formControlName="password" >
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
         <input matInput formControlName="email" >
       </mat-form-field>
       <br>
+
       <mat-radio-group formControlName="gender" aria-label="Select an option">
         <mat-radio-button value="male">Male</mat-radio-button>
         <mat-radio-button value="female">Female</mat-radio-button>
       </mat-radio-group>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Data di Nascita</mat-label>
+        <input type="" matInput formControlName="datan" >
+      </mat-form-field>
+
+      <br>
+      <mat-radio-group formControlName="role" aria-label="Select an option">
+        <mat-radio-button value="male">Landlord</mat-radio-button>
+        <mat-radio-button value="female">Tenant</mat-radio-button>
+      </mat-radio-group>
       <div>
+
         <button  mat-raised-button color="primary">Submit</button>
         <a routerLink="/login" mat-raised-button color="accent">Back to Login</a>
+        <br>
+        <div id="g_id_onload"
+             data-client_id="90931732104-9u89avg9655fnr14ibvo58l35edfip1r.apps.googleusercontent.com"
+             data-context="signup"
+             data-ux_mode="popup"
+             data-login_uri="http://localhost:8888/api/registration"
+             data-itp_support="true">
+        </div>
+
+        <div class="g_id_signin"
+             data-type="icon"
+             data-shape="square"
+             data-theme="outline"
+             data-text="signup_with"
+             data-size="large"
+             data-locale="en">
+        </div>
       </div>
+
     </form>
   </mat-card-content>
 </mat-card>

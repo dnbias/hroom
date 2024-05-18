@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import dotenv from 'dotenv';
+import { insertion } from "../../shared/models/insertion";
+import { Tag } from "../../shared/models/tags";
+import { environment } from "../../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -9,35 +11,54 @@ export class InsertionService {
 
   apiEndPoint: string;
   constructor(private http: HttpClient) {
-    dotenv.config();  // Load environment variables from .env file
-    const proxy = process.env['PROXY_IP'];
+    const proxy = environment.proxy_ip;
     console.log('Proxy IP:', proxy);
-    this.apiEndPoint = proxy+"/api/v1/insertion"
+    this.apiEndPoint = "/api/v1"
   }
 
   saveInsertion(ins: insertion) {
     console.log('saveInsertion request');
-    return this.http.post(this.apiEndPoint, ins);
+    return this.http.post(this.apiEndPoint+'/insertion', ins);
   }
 
   deleteInsertion(id: number) {
     console.log('deleteInsertion request: id='+id);
-    return this.http.delete(this.apiEndPoint+'/'+id);
+    return this.http.delete(this.apiEndPoint+'/insertion/'+id);
   }
 
-  updateInsertion(id: number, ins: insertion) {
+  updateInsertion(id: number, ins: insertion): any {
     console.log('updateInsertion request: id='+id);
-    return this.http.put(this.apiEndPoint+'/'+id, ins);
+    return this.http.put(this.apiEndPoint+'/insertion/'+id, ins);
   }
 
-  fetchInsertionList() {
+  fetchInsertionList(): any {
     console.log('fetchInsertionList request');
-    return this.http.get(this.apiEndPoint);
+    return this.http.get(this.apiEndPoint+'/insertion');
   }
 
-  findInsertion(id: number) {
+  findInsertion(id: number): any {
     console.log('findInsertion request: id='+id);
-    return this.http.get(this.apiEndPoint+'/'+id);
+    return this.http.get(this.apiEndPoint+'/insertion/'+id);
+  }
+
+  uploadPhoto(data: any): any {
+    console.log('uploadPhoto request');
+    return this.http.put(this.apiEndPoint+'/insertion/photo', {
+      responseType: 'string', // the URI
+      data: data
+    });
+  }
+
+  downloadPhoto(id: any): any {
+    console.log('downloadPhoto request');
+    return this.http.get(this.apiEndPoint+'/insertion/photo/'+id, {
+      responseType: 'blob'
+    });
+  }
+
+  deletePhoto(id: any): any {
+    console.log('downloadPhoto request');
+    return this.http.delete(this.apiEndPoint+'/insertion/photo/'+id);
   }
 
 }
