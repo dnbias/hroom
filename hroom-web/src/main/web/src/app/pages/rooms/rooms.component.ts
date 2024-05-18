@@ -1,23 +1,21 @@
 import {Component, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {RoomService} from "../../service/room/room.service"
 import {InsertionService} from "../../service/insertion/insertion.service"
 import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {insertion} from "../../shared/models/insertion";
 import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
-import { ToastrService } from 'ngx-toastr'
-
+import {ToastrService} from 'ngx-toastr'
 import {ConsoleLogger} from "@angular/compiler-cli";
-
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
-export class RoomsComponent implements OnInit{
 
+export class RoomsComponent implements OnInit{
 
   insertionData : insertion={
       insertion_type: 'room',
@@ -35,17 +33,14 @@ export class RoomsComponent implements OnInit{
       receivedFeedbacksIds: [],
       availabilityId: 0,
   }
-    addRoom(){}
-
-
-
+  
+  addRoom(){}
 
   constructor(private svc: InsertionService,
               private toastr: ToastrService,
-              private http: HttpClient) {
-
-}
-        newUri='';
+              private http: HttpClient) { }
+        
+  newUri='';
 
 
   ngOnInit(): void {
@@ -60,23 +55,15 @@ export class RoomsComponent implements OnInit{
     })
   }
 
-  saveRooms()
-{
-  // this.roomSrv.saveUpdateRoom(this.roomList).subscribe((Res:any)=>{
-  //   if(Res.result) {
-  //     alert('Data Updated Success')
-  //   } else {
-  //     alert(Res.message)
-  //   }
-  // })
+  saveRooms() {
     // TODO allineare tabella con i dati in src/app/shared/models/insertion.ts
     this.svc.saveInsertion(this.insertionData).subscribe(res => {
         console.log(res);
         this.toastr.success('OK','Insertions Uploaded')
     })
-   }
-
-  AddNEwRoom() {
+   } 
+  
+  AddNewRoom() {
     const obj = {
         insertion_type: 'room',
         id: 0,
@@ -97,8 +84,6 @@ export class RoomsComponent implements OnInit{
   }
 
   onDelete(id: number) {
-
-      //!!
     this.svc.deleteInsertion(id).subscribe((res:any)=>{
       if(res.status == 200 || res.status == 201) {
         alert('Room Deleted Success');
@@ -110,7 +95,6 @@ export class RoomsComponent implements OnInit{
   }
 
   uploadPhoto(photo: any) {
-
     // var data = photoFile.arrayBuffer;
     this.svc.uploadPhoto(photo).subscribe((res: Response) => {
       console.log(res);
@@ -121,7 +105,7 @@ export class RoomsComponent implements OnInit{
         this.toastr.error('ERROR: '+res.status,
                           'Photo Upload failed');
       }
-    })
+    });
   }
 
   testPhotoUpload() {

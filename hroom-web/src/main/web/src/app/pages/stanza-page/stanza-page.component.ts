@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {stanze} from "../../shared/models/stanza";
+import {insertion} from "../../shared/models/insertion";
 import {ActivatedRoute, Route, Router} from "@angular/router";
-import {StanzaService} from "../../service/stanza/stanza.service";
+import {InsertionService} from "../../service/insertion/insertion.service";
 import {Cart} from "../../shared/models/cart";
 import {CartService} from "../../service/Cart/cart.service";
+import { Tag } from '../../shared/models/tags';
 
 
 @Component({
@@ -11,20 +12,44 @@ import {CartService} from "../../service/Cart/cart.service";
   templateUrl: './stanza-page.component.html',
   styleUrl: './stanza-page.component.css',
 })
+
 export class StanzaPageComponent implements OnInit{
-  stanza!:stanze;
+  insertion!: insertion;
+  photoURL: string = 'api/v1/insertion/photo/';
+  photos: string[]=[];
+  tags: string[]=[];
+
   constructor(private activetedRoute : ActivatedRoute,
-              private stanzaService : StanzaService,
+              private svc : InsertionService,
               private cartService:CartService,private router: Router) {
     activetedRoute.params.subscribe((params)=>{
       if(params['id'])
-        this.stanza = stanzaService.getStanzaById(params['id'])
+        this.insertion = svc.findInsertion(params['id']).subscribe((data: any) => {
+          this.insertion = data;
+          console.log(data);
+          data.photoIds.forEach(id => {
+            this.photos.push(this.photoURL+id);
+          })
+          data.features.forEach((tag: Tag) => {
+            this.tags.push(tag.toString());
+          })
+
+        })
     })
   }
   ngOnInit(): void {
   }
+
   addToCart(){
-    this.cartService.addToCart(this.stanza);
+    this.cartService.addToCart(this.insertion);
     this.router.navigateByUrl('/cart-page')
+  }
+
+  get isFavorite() {
+    return true;
+  }
+
+  get stars() {
+    return 5;
   }
 }
