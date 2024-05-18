@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { StanzeComponent } from './pages/stanze/stanze.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import {LogoutComponent} from "./pages/logout/logout.component";
@@ -57,7 +58,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), CommonModule],
   exports: [RouterModule],
 
 })
