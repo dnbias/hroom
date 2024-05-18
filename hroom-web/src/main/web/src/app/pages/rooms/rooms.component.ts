@@ -1,20 +1,57 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RoomService} from "../../service/room/room.service"
 import {InsertionService} from "../../service/insertion/insertion.service"
 import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
+import {InsertionService} from "../../service/insertion/insertion.service";
+import {insertion} from "../../shared/models/insertion";
+import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
 import { ToastrService } from 'ngx-toastr'
-import { insertion } from '../../shared/models/insertion';
+
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrl: './rooms.component.css'
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnInit{
 
-  private backendUrl = 'http://localhost:8080';
+  constructor(private insService: InsertionService)  {
+  }
+  insertionData : insertion={
+      insertion_type: 'room',
+      id: 0,
+      landlordId: 1,
+      name: '',
+      tags: [],
+      description: [''],
+      price: 0,
+      city: '',
+      address: '',
+      area: 0,
+      photoUrl: '',
+      rating: 0,
+      receivedFeedbacksIds: [],
+      availabilityId: 0,
+  }
+    addRoom(){}
+
+    ngOnInit(): void {
+    }
+    OnSubmit(){
+    this.insService.saveInsertion(this.insertionData)
+        .subscribe(()=>{
+            console.log(JSON);
+
+
+        })
+    }
+
+
+    protected readonly onsubmit = onsubmit;
+}
+
   roomList:any []= [];
   roomObj: any = {
     "roomId": 0,
@@ -25,6 +62,8 @@ export class RoomsComponent {
     "roomTariff": 0,
     "extensionNo": ""
   };
+
+  addIns(insertion : insertion){}
 
   newUri: string = '';
 
@@ -115,5 +154,3 @@ export class RoomsComponent {
       });
   }
 }
-
-
