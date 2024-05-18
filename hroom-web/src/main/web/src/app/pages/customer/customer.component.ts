@@ -32,7 +32,7 @@ export class CustomerComponent {
 
   }
   LoadCustomer() {
-    this.service.GetAllCustomer().subscribe(res => {
+    this.service.getAllCustomer().subscribe(res => {
       this.customerlist = res;
       this.dataSource = new MatTableDataSource(this.customerlist);
       this.dataSource.paginator = this.paginator;
@@ -40,7 +40,7 @@ export class CustomerComponent {
     });
   }
   SetAccesspermission() {
-    this.service.Getaccessbyrole(this.service.getrole(), 'customer').subscribe(res => {
+    this.service.getAccessByRole(this.service.getRole(), 'customer').subscribe(res => {
       this.accessdata = res;
       //console.log(this.accessdata);
 

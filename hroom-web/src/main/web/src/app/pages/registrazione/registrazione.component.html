@@ -4,7 +4,7 @@
     <h2>Registrazione</h2>
   </mat-card-header>
   <mat-card-content>
-    <form class="login-form" [formGroup]="registerform" (ngSubmit)="proceedregister()" >
+    <form class="login-form" [formGroup]="registerform" (ngSubmit)="proceedRegister()" >
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input matInput formControlName="id" >
@@ -24,7 +24,7 @@
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input type="password" matInput formControlName="password" >
+        <input matInput type="password" formControlName="password" >
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>

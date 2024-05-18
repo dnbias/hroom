@@ -53,6 +53,18 @@ spec:
     - path:
         type: PathPrefix
         value: /api/v1/user
+    - path:
+        type: PathPrefix
+        value: /api/v1/login
+    - path:
+        type: PathPrefix
+        value: /api/v1/signup
+    - path:
+        type: PathPrefix
+        value: /api/v1/info
+    - path:
+        type: PathPrefix
+        value: /j_spring_security_check
     backendRefs:
     - name: user-microservice
       port: 80
@@ -84,7 +96,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /photos
+        value: /api/v1/upload/photo
     backendRefs:
     - name: insertion-microservice
       port: 80
