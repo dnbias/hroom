@@ -2,7 +2,7 @@
 <app-tag></app-tag>
 <p> <app-data></app-data></p>
 
-<app-not-found [visible]= "!room || room.length <=0" resetLinkText="Torna alla home"></app-not-found>-
+<app-not-found [visible]= "!insertionsWithPhoto || insertionsWithPhoto.length <=0" resetLinkText="Torna alla home"></app-not-found>-
 <div>
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     filtra
@@ -77,20 +77,20 @@
   <div>
   </div>
   <ul>
-    <li *ngFor="let ins of insertions; let i = index">
-      <a routerLink="/stanza/{{ins.id}}">
-        <ng-container *ngIf="let p = photoURLs[i]">
-          <img ng-src="{{p}}" alt="foto stanza"/>
-        </ng-container>
+    <li *ngFor="let item of insertionsWithPhoto; let i = index" >
+      <a routerLink="/stanza/{{item.insertion.id}}">
+        <!-- <div *ngIf="let photo of item.photo"> -->
+          <img  src="{{item.photo}}" alt="foto stanza">
+        <!-- </div> -->
         <div class="content">
           <div class="name">
-            {{ins.name}}
+            {{item.insertion.name}}
           </div>
           <span class="favorite">♥</span>
           <div class="product-item-footer">
             <div class=" luogo">
               <span>
-                {{ins.city}}
+                {{item.insertion.city}}
               </span>
             </div>
             <div class="tempo-room">
@@ -101,10 +101,10 @@
             </div>
           </div>
           <div class="prezzo">
-            {{ins.price | currency:'EUR':true}}
+            {{item.insertion.price | currency:'EUR':'symbol'}}
           </div>
           <div class="valutazione">
-            {{ins.rating}}
+            {{item.insertion.rating}}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
               <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
