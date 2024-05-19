@@ -22,31 +22,31 @@
 </div>
 
 <div>
-  @for (preview of previews; track $index) {
-  <img [src]="preview" class="preview" />
-  }
+
+  <img *ngfor= "let preview of previews" [src]="preview" class="preview" />
+
 </div>
 
-@if (message.length) {
-<div class="alert alert-secondary my-3" role="alert">
-<ul>
-@for (msg of message; track $index) {
+
+<div *ngIf=message.length class="alert alert-secondary my-3" role="alert">
+<ul *ngFor=" let msg of message">
 <li>{{ msg }}</li>
-}
+
 </ul>
 </div>
-}
+
 
 <div class="card mt-3">
   <div class="card-header">List of Images</div>
   <ul class="list-group list-group-flush">
-    @for (image of imageInfos | async; track image.name) {
-    <li class="list-group-item">
+   <!-- @for (image of imageInfos | async; track image.name) {-->
+    <li  *ngFor="let image of imageInfos | async " class="list-group-item">
       <p>
         <a href="{{ image.url }}">{{ image.name }}</a>
       </p>
       <img src="{{ image.url }}" alt="{{ image.name }}" height="80px" />
     </li>
-    }
+
+    <!--}-->
   </ul>
 </div>

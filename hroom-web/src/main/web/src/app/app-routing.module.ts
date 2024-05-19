@@ -26,6 +26,7 @@ import {BookingComponent} from "./pages/booking/booking.component";
 import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/rooms/rooms.component";
+import {UploadImagesComponent} from "./components/upload-images/upload-images.component";
 
 const routes: Routes = [
   //{path:'', component: LoginComponent},
@@ -52,7 +53,7 @@ const routes: Routes = [
   {path:'stanza/:id',component:StanzaPageComponent},
   {path:'feed',component:WriteFeedbackComponent},
   {path:'room',component:RoomsComponent},
-
+  {path:'upload',component:UploadImagesComponent},
   {path:'**', component: ErrorComponent},
 
 ];
