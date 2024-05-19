@@ -15,32 +15,38 @@ export class RoomsComponent implements OnInit{
 
   insertionList:any[]=[];
   insertionData : insertion={
-    insertion_type: 'room',
-    id: 0,
-    landlordId: 1,
-    name: '',
-    tags: [],
-    description: [''],
-    price: 0,
-    city: '',
-    address: '',
-    area: 0,
-    photoIds: [],
-    rating: 0,
-    receivedFeedbacksIds: [],
-    availabilityId: 0,
+    "insertion_type": 'room',
+    "id": 0,
+    "landlordId": 1,
+    "name": '',
+    "tags": [],
+    "description": [''],
+    "price": 0,
+    "city": '',
+    "address": '',
+    "area": 0,
+    "photoIds": [],
+    "rating": 0,
+    "receivedFeedbacksIds": [],
+    "availabilityId": 0,
+  };
+  availableTags: string[] = ['spa', 'handicap-friendly', 'parcheggio', 'allinclusive'];
+  ins = {
+    tags: ''
+  };
+
+  insertionsArray: insertion[]=[];
+  removeRiga(index:number) {
+    this.insertionsArray.splice(index,1)
   }
-  resetCamp(id:number){
-    this.svc.deleteInsertion(id).subscribe((res:any)=>{
-      this.insertionList=[];
-    });
-  }
+
 
   addRoom(){}
 
   constructor(private svc: InsertionService,
               private toastr: ToastrService,
               private http: HttpClient) {
+    this.insertionList=[];
 
   }
   newUri='';

@@ -77,4 +77,6 @@ export class UploadImagesComponent implements OnInit {
       this.selectedFiles = undefined;
     }
   }
+
+
 }

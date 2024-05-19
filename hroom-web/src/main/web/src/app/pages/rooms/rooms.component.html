@@ -41,7 +41,9 @@
             <input type="text" [(ngModel)]="ins.name" name="name" class="form-control"  />
           </td>
           <td>
-            <input type="text" [(ngModel)]="ins.tags" name="tag" class="form-control"  />
+            <select [(ngModel)]="ins.tags" name="tag" class="form-control">
+              <option *ngFor="let tag of availableTags" [value]="tag">{{ tag }}</option>
+            </select>
           </td>
           <td>
             <input type="text" [(ngModel)]="ins.description" name="description" class="form-control"  />
@@ -69,7 +71,7 @@
             <button class="btn btn-primary" (click)="saveRooms()">Aggiungi</button>
           </td>
           <td>
-            <button class="btn btn-sm btn-danger" (click)="resetCamp">rimuovi</button>
+            <button class="btn btn-sm btn-danger" (click)="removeRiga">rimuovi</button>
           </td>
 
 
