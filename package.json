@@ -4,7 +4,9 @@
     "@types/gapi.auth2": "^0.0.60",
     "jqwidgets-ng": "^19.0.5",
     "rxjs": "^7.8.1",
-    "typescript": "^5.4.5",
     "zone.js": "^0.14.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
   }
 }
