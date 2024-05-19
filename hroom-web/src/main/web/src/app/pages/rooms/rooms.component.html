@@ -1,6 +1,6 @@
 <div class="row">
- <div class="col-12 text-end">
-    <button class="btn btn-primary" (click)="OnSubmit()">Add New</button>
+  <div class="col-12 text-end">
+    <button class="btn btn-primary" (click)="AddNEwRoom()">Add New</button>
     <button class="btn btn-success mx-2">Aggiorna</button>
   </div>
 </div>
@@ -23,53 +23,54 @@
 
       </tr>
       </thead>
-    <form (ngSubmit)="OnSubmit()">
-    <tr *ngFor = " let sr = index">
-      <td>{{sr+1}}</td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.insertion_type" name="Insertion_type{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.id" name="id{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.landlordId" name="landlordId{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.name" name="name{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.tags" name="tag{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.description" name="description{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.price" name="price{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.city" name="città{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.address" name="address{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.area" name="area{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.photoUrl" name="photoUrl{{sr}}" class="form-control" />
-      </td>
-      <td>
-        <input type="text" [(ngModel)]="insertionData.availabilityId" name="availavilityId{{sr}}" class="form-control" />
-      </td>
+      <form (ngSubmit)="AddNEwRoom()">
+        <tr *ngFor = " let sr = index">
+          <td>{{sr+1}}</td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.insertion_type" name="Insertion_type{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.id" name="id{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.landlordId" name="landlordId{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.name" name="name{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.tags" name="tag{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.description" name="description{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.price" name="price{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.city" name="città{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.address" name="address{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.area" name="area{{sr}}" class="form-control" />
+          </td>
+
+          <td>
+            <input type="text" [(ngModel)]="insertionData.photoIds" name="photoUrl{{sr}}" class="form-control" />
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="insertionData.availabilityId" name="availavilityId{{sr}}" class="form-control" />
+          </td>
 
 
-    </tr>
+        </tr>
 
 
 
 
-    </form>
+      </form>
       <tbody>
       <!--<tr *ngFor="let room of room ;let sr= index">
         <td> {{sr+1}}</td>

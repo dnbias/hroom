@@ -6,11 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-      </profile>
-      <profile name="Annotation profile for hroom-parent" enabled="true">
-        <sourceOutputDir name="../target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
         <module name="hroom-web" />
       </profile>
     </annotationProcessing>
@@ -21,7 +16,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="hroom-server" options="" />
-      <module name="hroom-web" options="" />
+      <module name="hroom-web" options="-parameters" />
     </option>
   </component>
 </project>
