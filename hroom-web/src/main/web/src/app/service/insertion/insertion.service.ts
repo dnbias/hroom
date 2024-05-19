@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { insertion } from "../../shared/models/insertion";
 import { Tag } from "../../shared/models/tags";
-import { environment } from "../../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +10,6 @@ export class InsertionService {
 
   apiEndPoint: string;
   constructor(private http: HttpClient) {
-    const proxy = environment.proxy_ip;
-    console.log('Proxy IP:', proxy);
     this.apiEndPoint = "/api/v1"
   }
 

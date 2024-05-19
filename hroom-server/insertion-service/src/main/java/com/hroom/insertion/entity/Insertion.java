@@ -13,6 +13,7 @@ import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.DiscriminatorType;
+import jakarta.persistence.Entity;
 
 import lombok.NoArgsConstructor;
 import lombok.Getter;

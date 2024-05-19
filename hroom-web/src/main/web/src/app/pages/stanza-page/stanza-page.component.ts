@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {insertion} from "../../shared/models/insertion";
+import {feedback} from "../../shared/models/feedback"
 import {ActivatedRoute, Route, Router} from "@angular/router";
 import {InsertionService} from "../../service/insertion/insertion.service";
+import {FeedbackService} from "../../service/feedback/feedback.service";
 import {Cart} from "../../shared/models/cart";
 import {CartService} from "../../service/Cart/cart.service";
 import { Tag } from '../../shared/models/tags';
@@ -15,13 +17,16 @@ import { Tag } from '../../shared/models/tags';
 
 export class StanzaPageComponent implements OnInit{
   insertion!: insertion;
+  feedbacks: feedback[]=[];
+  tags: string[]=[];
   photoURL: string = 'api/v1/insertion/photo/';
   photos: string[]=[];
-  tags: string[]=[];
 
   constructor(private activetedRoute : ActivatedRoute,
               private svc : InsertionService,
-              private cartService:CartService,private router: Router) {
+              private svcFB : FeedbackService,
+              private svcCart: CartService,
+              private router: Router) {
     activetedRoute.params.subscribe((params)=>{
       if(params['id'])
         this.insertion = svc.findInsertion(params['id']).subscribe((data: any) => {
@@ -30,10 +35,20 @@ export class StanzaPageComponent implements OnInit{
           data.photoIds.forEach(id => {
             this.photos.push(this.photoURL+id);
           })
+          console.log(this.photos);
           data.features.forEach((tag: Tag) => {
             this.tags.push(tag.toString());
           })
-
+          console.log(this.tags);
+          //test
+          var feedbacksIds = [1,2,3];
+          feedbacksIds.forEach(fbID => {
+          // data.receivedFeedbacksIds.forEach(fbID => {
+            svcFB.findFeedback(fbID).subscribe((data: any) => {
+              this.feedbacks.push(data);
+              console.log(data);
+            })
+          })
         })
     })
   }
@@ -41,7 +56,7 @@ export class StanzaPageComponent implements OnInit{
   }
 
   addToCart(){
-    this.cartService.addToCart(this.insertion);
+    this.svcCart.addToCart(this.insertion);
     this.router.navigateByUrl('/cart-page')
   }
 

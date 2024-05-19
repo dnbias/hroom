@@ -125,14 +125,14 @@ services:
     networks:
       - backend
 
-  feedback-tenant-microservice:
+  feedback-microservice:
     build:
-      context: ./hroom-server/feedback-tenant-service
-    image: dnbias/hroom:feedback-tenant-microservice
+      context: ./hroom-server/feedback-service
+    image: dnbias/hroom:feedback-microservice
     restart: on-failure
     ports:
       - "8089:8080"
-    container_name: feedback-tenant-microservice-app
+    container_name: feedback-microservice-app
     depends_on:
       - discovery-server-app
     networks:
