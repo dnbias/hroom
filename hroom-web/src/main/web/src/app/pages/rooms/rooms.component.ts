@@ -12,32 +12,31 @@ import { ToastrService } from 'ngx-toastr'
 })
 
 export class RoomsComponent implements OnInit{
-
   insertionData : insertion={
-      insertion_type: 'room',
-      id: 0,
-      landlordId: 1,
-      name: '',
-      tags: [],
-      description: [''],
-      price: 0,
-      city: '',
-      address: '',
-      area: 0,
-     photoIds: [],
-      rating: 0,
-      receivedFeedbacksIds: [],
-      availabilityId: 0,
+    insertion_type: 'room',
+    id: 0,
+    landlordId: 1,
+    name: '',
+    tags: [],
+    description: [''],
+    price: 0,
+    city: '',
+    address: '',
+    area: 0,
+    photoIds: [],
+    rating: 0,
+    receivedFeedbacksIds: [],
+    availabilityId: 0,
   }
   
   addRoom(){}
 
   constructor(private svc: InsertionService,
               private toastr: ToastrService,
-              private http: HttpClient) { }
-        
-  newUri='';
+              private http: HttpClient) {
 
+  }
+  newUri='';
 
   ngOnInit(): void {
     // this.getAllRooms();
@@ -99,7 +98,7 @@ export class RoomsComponent implements OnInit{
         this.toastr.success('OK','Photo Uploaded');
       } else {
         this.toastr.error('ERROR: '+res.status,
-                          'Photo Upload failed');
+          'Photo Upload failed');
       }
     });
   }
