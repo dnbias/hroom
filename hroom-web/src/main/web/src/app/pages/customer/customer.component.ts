@@ -32,7 +32,7 @@ export class CustomerComponent {
 
   }
   LoadCustomer() {
-    this.service.getAllCustomer().subscribe(res => {
+    this.service.getAll().subscribe(res => {
       this.customerlist = res;
       this.dataSource = new MatTableDataSource(this.customerlist);
       this.dataSource.paginator = this.paginator;

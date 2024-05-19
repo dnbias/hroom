@@ -10,6 +10,8 @@ import {CartItem} from "../../shared/models/cartItem";
 })
 export class CartPageComponent implements OnInit{
   cart!:Cart;
+  photoURL: string = 'http://localhost:8888/api/v1/insertion/photo/';
+
   constructor(private cartService: CartService) {
 
     this.setCart();
@@ -22,12 +24,12 @@ export class CartPageComponent implements OnInit{
   }
 
   removeFromCart(cartItem : CartItem){
-    this.cartService.removeFromCart(cartItem.stanza.id);
+    this.cartService.removeFromCart(cartItem.insertion.id);
     this.setCart();
   }
   changeHour(cartItem: CartItem, hourInString: string){
     const hourRoom= parseInt(hourInString);
-    this.cartService.changeHour(cartItem.stanza.id,hourRoom);
+    this.cartService.changeHour(cartItem.insertion.id,hourRoom);
     this.setCart();
   }
 

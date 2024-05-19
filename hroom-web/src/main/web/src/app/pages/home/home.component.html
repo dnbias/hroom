@@ -79,9 +79,7 @@
   <ul>
     <li *ngFor="let item of insertionsWithPhoto; let i = index" >
       <a routerLink="/stanza/{{item.insertion.id}}">
-        <!-- <div *ngIf="let photo of item.photo"> -->
-          <img  src="{{item.photo}}" alt="foto stanza">
-        <!-- </div> -->
+        <img class="insertion"  src="{{item.photo}}" alt="foto stanza">
         <div class="content">
           <div class="name">
             {{item.insertion.name}}

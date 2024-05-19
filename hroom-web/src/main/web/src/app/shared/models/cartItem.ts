@@ -1,16 +1,16 @@
-import {stanze} from "./stanza";
+import { insertion } from "./insertion";
 
 export class CartItem{
-  constructor(stanza: stanze) {
-    this.stanza = stanza;
+  constructor(insertion: insertion) {
+    this.insertion = insertion;
 
 
   }
-   stanza: stanze;
-   numeroOre:number =1;
+   insertion: insertion;
+   numeroOre:number = 1;
 
   get prezzo():number{
-    return this.stanza.prezzo * this.numeroOre;
+    return this.insertion.price * this.numeroOre;
 
   }
 }
