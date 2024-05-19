@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-12 text-end">
-    <button class="btn btn-primary" (click)="AddNEwRoom()">Add New</button>
+    <button class="btn btn-primary" (click)="AddNewRoom()">Add New</button>
     <button class="btn btn-success mx-2">Aggiorna</button>
   </div>
 </div>
@@ -23,7 +23,7 @@
 
       </tr>
       </thead>
-      <form (ngSubmit)="AddNEwRoom()">
+      <form (ngSubmit)="AddNewRoom()">
         <tr *ngFor = " let sr = index">
           <td>{{sr+1}}</td>
           <td>
