@@ -1,7 +1,8 @@
 
 <app-not-found [visible]="!insertion" notFoundMessage="Servizio non trovato!" resetLinkText="Vai alla Homepage"></app-not-found>
 <div *ngIf="insertion" class="container">
-    <img [src]="this.photos[0]" [alt]="insertion.name"/>
+    <img class="loading-spinner" [hidden]="photoLoaded" src="../../../assets/images/loading-spinner.gif" />
+    <img [hidden]="!photoLoaded" [src]="this.photos[0]" [alt]="insertion.name" (load)="photoLoaded = true;"/>
 
     <div class="details">
         <div class="header">
