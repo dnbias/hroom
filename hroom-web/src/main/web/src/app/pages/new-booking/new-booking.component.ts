@@ -12,7 +12,7 @@ export class NewBookingComponent implements OnInit {
     "name": "",
     "mobileNo": "",
     "email": "",
-    "aadharNo": "",
+    "cartaid": "",
     "city": "",
     "address": "",
     "bookingId": 0,
@@ -33,7 +33,7 @@ export class NewBookingComponent implements OnInit {
     "bookingDetailId": 0,
     "bookingId": 0,
     "customerName": "",
-    "aadharCardNo": ""
+    "cartaid": ""
   }
   roomList:any[]=[];
 
