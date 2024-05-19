@@ -9,14 +9,15 @@ import { environment } from "../../../environment/environment";
 })
 export class InsertionService {
 
-  apiEndPoint: string;
+
+  apiEndPoint:  string;
   constructor(private http: HttpClient) {
     const proxy = environment.proxy_ip;
     console.log('Proxy IP:', proxy);
     this.apiEndPoint = "/api/v1"
   }
 
-  saveInsertion(ins: insertion) {
+  saveInsertion(ins: any[]) {
     console.log('saveInsertion request');
     return this.http.post(this.apiEndPoint+'/insertion', ins);
   }

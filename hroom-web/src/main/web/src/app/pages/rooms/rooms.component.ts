@@ -12,6 +12,8 @@ import { ToastrService } from 'ngx-toastr'
 })
 
 export class RoomsComponent implements OnInit{
+
+  insertionList:any[]=[];
   insertionData : insertion={
     insertion_type: 'room',
     id: 0,
@@ -28,7 +30,12 @@ export class RoomsComponent implements OnInit{
     receivedFeedbacksIds: [],
     availabilityId: 0,
   }
-  
+  resetCamp(id:number){
+    this.svc.deleteInsertion(id).subscribe((res:any)=>{
+      this.insertionList=[];
+    });
+  }
+
   addRoom(){}
 
   constructor(private svc: InsertionService,
@@ -46,18 +53,27 @@ export class RoomsComponent implements OnInit{
   getAllRooms() {
     // this.roomSrv.getAllRooms().subscribe((res:any)=>{
     this.svc.fetchInsertionList().subscribe((res:any)=>{
-      this.insertionData = res.data;
+      this.insertionList = res.data;
     })
   }
 
   saveRooms() {
     // TODO allineare tabella con i dati in src/app/shared/models/insertion.ts
-    this.svc.saveInsertion(this.insertionData).subscribe(res => {
+  this.insertionList.forEach(item=>
+  {
+    this.svc.saveInsertion(item).subscribe((res:any) => {
+      if(res.result){
+        alert('upload success');
         console.log(res);
         this.toastr.success('OK','Insertions Uploaded')
+      }
+      else alert(res.message)
+
     })
-   } 
-  
+  })
+
+   }
+
   AddNewRoom() {
     const obj = {
         insertion_type: 'room',
@@ -75,8 +91,10 @@ export class RoomsComponent implements OnInit{
         receivedFeedbacksIds: [],
         availabilityId: 0,
     }
-   // this.insertionData.unshift(obj)
+    this.insertionList.unshift(obj)
   }
+
+
 
   onDelete(id: number) {
     this.svc.deleteInsertion(id).subscribe((res:any)=>{
@@ -110,4 +128,6 @@ export class RoomsComponent implements OnInit{
         this.uploadPhoto(res);
       });
   }
+
+
 }
