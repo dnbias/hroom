@@ -36,7 +36,29 @@
                 <div class="col-3">
                     <label>Select Room</label>
                     <select class="form-control"  [(ngModel)]="bookingObj.roomId">
-                        <option>Selezione stanza</option>
+                      <option>BATHROOM</option>
+                      <option>HYDROMASSAGE</option>
+                      <option>WHEELCHAIR_ACCESS</option>
+                      <option>SPA</option>
+                      <option>ALLINCLUSIVE</option>
+                      <option>CENTER</option>
+                      <option>APARTMENT</option>
+                      <option>ROOM</option>
+                      <option>PRIVATEBATHROOM</option>
+                      <option>SEA</option>
+                      <option>MONTAIN</option>
+                      <option>MAISON</option>
+                      <option>PARKING</option>
+                      <option>AIRCONDITIONER</option>
+                      <option>BREAKFAST</option>
+                      <option>GYM</option>
+                      <option>CLEAN</option>
+                      <option>MASSAGE</option>
+                      <option>FREEZER</option>
+                      <option>TV</option>
+                      <option>WC</option>
+                      <option>MINIBAR</option>
+                      <option>BIDET</option>
                         <option *ngFor="let room of roomList" [value]="room.roomId"> {{room.roomName}}</option>
                     </select>
                 </div>

@@ -30,7 +30,31 @@ export class RoomsComponent implements OnInit{
     "receivedFeedbacksIds": [],
     "availabilityId": 0,
   };
-  availableTags: string[] = ['spa', 'handicap-friendly', 'parcheggio', 'allinclusive'];
+  availableTags: string[] = [
+    'BATHROOM',
+    'HYDROMASSAGE',
+    'WHEELCHAIR_ACCESS',
+    'SPA',
+    'ALLINCLUSIVE',
+   'CENTER',
+    'APARTMENT',
+    'ROOM',
+    'PRIVATEBATHROOM',
+    'SEA',
+    'MONTAIN',
+    'MAISON',
+    'PARKING',
+    'AIRCONDITIONER',
+    'BREAKFAST',
+    'GYM',
+    'CLEAN',
+    'MASSAGE',
+    'FREEZER',
+    'TV',
+    'WC',
+    'MINIBAR',
+    'BIDET'
+    ];
   ins = {
     tags: ''
   };
