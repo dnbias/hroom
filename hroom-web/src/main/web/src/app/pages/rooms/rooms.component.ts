@@ -1,13 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RoomService} from "../../service/room/room.service"
 import {InsertionService} from "../../service/insertion/insertion.service"
 import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {insertion} from "../../shared/models/insertion";
-import {log} from "@angular-devkit/build-angular/src/builders/ssr-dev-server";
-import {ToastrService} from 'ngx-toastr'
-import {ConsoleLogger} from "@angular/compiler-cli";
+import { ToastrService } from 'ngx-toastr'
 
 @Component({
   selector: 'app-rooms',
