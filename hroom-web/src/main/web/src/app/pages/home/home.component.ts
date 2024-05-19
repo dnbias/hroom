@@ -23,7 +23,7 @@ export class HomeComponent implements  OnInit{
   env = environment;
   room :stanze[]=[];
   insertions: insertion[]=[];
-  insertionsWithPhoto: { insertion: any, photo: any }[] = [];
+  insertionsWithPhoto: { insertion: any, photo: any, loaded: boolean}[] = [];
   photos: any[]=[];
   photoURLs: any[]=[];
   parcheggio: boolean =false;
@@ -60,7 +60,7 @@ export class HomeComponent implements  OnInit{
           data.forEach((ins, index) => {
             var id = ins.photoIds[0];
             var photoURL = 'http://localhost:8888/api/v1/insertion/photo/'+id;
-            this.insertionsWithPhoto.push({insertion: ins, photo: photoURL});
+            this.insertionsWithPhoto.push({insertion: ins, photo: photoURL, loaded: false});
           });
         });
         this.loadingService.loadingOff();

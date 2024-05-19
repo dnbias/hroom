@@ -142,3 +142,8 @@ svg{
     margin-left: 4px;
     margin: 2px;
 }
+
+img.loading-spinner {
+  object-fit: scale-down;
+  vertical-align: middle;
+}

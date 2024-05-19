@@ -79,7 +79,8 @@
   <ul>
     <li *ngFor="let item of insertionsWithPhoto; let i = index" >
       <a routerLink="/stanza/{{item.insertion.id}}">
-        <img class="insertion"  src="{{item.photo}}" alt="foto stanza">
+        <img class="loading-spinner" [hidden]="item.loaded" src="../../../assets/images/loading_spinner.gif" />
+        <img class="insertion" [hidden]="!item.loaded" src="{{item.photo}}" (load)="item.loaded = true;"/>
         <div class="content">
           <div class="name">
             {{item.insertion.name}}

@@ -21,6 +21,7 @@ export class StanzaPageComponent implements OnInit{
   tags: string[]=[];
   photoURL: string = 'api/v1/insertion/photo/';
   photos: string[]=[];
+  photoLoaded: boolean=false;
 
   constructor(private activetedRoute : ActivatedRoute,
               private svc : InsertionService,
