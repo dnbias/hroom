@@ -8,12 +8,13 @@ import { Tag } from "../../shared/models/tags";
 })
 export class InsertionService {
 
-  apiEndPoint: string;
+
+  apiEndPoint:  string;
   constructor(private http: HttpClient) {
     this.apiEndPoint = "/api/v1"
   }
 
-  saveInsertion(ins: insertion) {
+  saveInsertion(ins: any[]) {
     console.log('saveInsertion request');
     return this.http.post(this.apiEndPoint+'/insertion', ins);
   }
