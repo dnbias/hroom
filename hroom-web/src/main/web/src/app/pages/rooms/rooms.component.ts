@@ -31,35 +31,14 @@ export class RoomsComponent implements OnInit {
     "availabilityId": 0,
   };
   availableTags: string[] = [
-    'BATHROOM',
-    'HYDROMASSAGE',
-    'WHEELCHAIR_ACCESS',
-    'SPA',
-    'ALLINCLUSIVE',
-    'CENTER',
-    'APARTMENT',
-    'ROOM',
-    'PRIVATEBATHROOM',
-    'SEA',
-    'MONTAIN',
-    'MAISON',
-    'PARKING',
-    'AIRCONDITIONER',
-    'BREAKFAST',
-    'GYM',
-    'CLEAN',
-    'MASSAGE',
-    'FREEZER',
-    'TV',
-    'WC',
-    'MINIBAR',
-    'BIDET'
+    'BATHROOM', 'HYDROMASSAGE', 'WHEELCHAIR_ACCESS', 'SPA', 'ALLINCLUSIVE',
+    'CENTER', 'APARTMENT', 'ROOM', 'PRIVATEBATHROOM', 'SEA', 'MONTAIN',
+    'MAISON', 'PARKING', 'AIRCONDITIONER', 'BREAKFAST', 'GYM', 'CLEAN',
+    'MASSAGE', 'FREEZER', 'TV', 'WC', 'MINIBAR', 'BIDET'
   ];
   ins = {
     tags: [] as string[]
-
   };
-  selectedTag: string | undefined;
   dropdownOpen = false;
 
   toggleDropdown() {
@@ -97,7 +76,7 @@ export class RoomsComponent implements OnInit {
   newUri='';
 
   ngOnInit(): void {
-    // this.getAllRooms();
+
     this.testPhotoUpload();
   }
 
@@ -109,20 +88,17 @@ export class RoomsComponent implements OnInit {
   }
 
   saveRooms() {
-    // TODO allineare tabella con i dati in src/app/shared/models/insertion.ts
-  this.insertionList.forEach(item=>
-  {
-    this.svc.saveInsertion(item).subscribe((res:any) => {
-      if(res.result){
-        alert('upload success');
-        console.log(res);
-        this.toastr.success('OK','Insertions Uploaded')
-      }
-      else alert(res.message)
-
-    })
-  })
-
+    this.insertionList.forEach(item=>
+    {
+      this.svc.saveInsertion(item).subscribe((res:any) => {
+        if(res.result){
+          this.toastr.success('OK','Insertions Uploaded')
+        }
+        else{
+          this.toastr.error('ERROR',res.message);
+        }
+      });
+    });
    }
 
   AddNewRoom() {
@@ -150,10 +126,10 @@ export class RoomsComponent implements OnInit {
   onDelete(id: number) {
     this.svc.deleteInsertion(id).subscribe((res:any)=>{
       if(res.status == 200 || res.status == 201) {
-        alert('Room Deleted Success');
+        this.toastr.success('ROOM deleted succesfully');
         this.getAllRooms();
       } else {
-        alert(res.message)
+        this.toastr.error('ERROR',res.message);
       }
     })
   }
