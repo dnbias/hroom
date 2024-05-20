@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Tag} from "../../shared/models/tags"
+import {Tag, Tags} from "../../shared/models/tags"
 import { InsertionService } from '../../service/insertion/insertion.service';
 @Component({
   selector: 'app-tag',
@@ -9,7 +9,8 @@ import { InsertionService } from '../../service/insertion/insertion.service';
 })
 export class TagComponent implements OnInit{
   @Input() insertionPageTags?:string[];
-  @Input() tags?:Tag[]=[];
+   tags?:Tag[]=[];
+
   @Input() justifyContent?:string = 'center';
 
   constructor(private svc: InsertionService) {}

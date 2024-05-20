@@ -1,5 +1,5 @@
 
-  enum Tags{
+  export enum Tags{
     BATHROOM,
     HYDROMASSAGE,
     WHEELCHAIR_ACCESS,
