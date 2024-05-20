@@ -57,23 +57,33 @@ export class RoomsComponent implements OnInit {
     }
   }
 
-  insertionsArray: insertion[]=[];
+  insertionsArray: insertion[] = [];
 
 
   removeRiga(index: number) {
     this.insertionList.splice(index, 1);
+    this.resetTags();
+  }
+
+  resetTags() {
+    this.insertionList.forEach(item => {
+      item.tags = [];
+    });
   }
 
 
-  addRoom(){}
+
+  addRoom() {
+  }
 
   constructor(private svc: InsertionService,
               private toastr: ToastrService,
               private http: HttpClient) {
-    this.insertionsArray=[];
+    this.insertionsArray = [];
 
   }
-  newUri='';
+
+  newUri = '';
 
   ngOnInit(): void {
 
@@ -82,73 +92,71 @@ export class RoomsComponent implements OnInit {
 
   getAllRooms() {
     // this.roomSrv.getAllRooms().subscribe((res:any)=>{
-    this.svc.fetchInsertionList().subscribe((res:any)=>{
+    this.svc.fetchInsertionList().subscribe((res: any) => {
       this.insertionList = res.data;
     })
   }
 
   saveRooms() {
-    this.insertionList.forEach(item=>
-    {
-      this.svc.saveInsertion(item).subscribe((res:any) => {
-        if(res.result){
-          this.toastr.success('OK','Insertions Uploaded')
-        }
-        else{
-          this.toastr.error('ERROR',res.message);
+    this.insertionList.forEach(item => {
+      this.svc.saveInsertion(item).subscribe((res: any) => {
+        if (res.result) {
+          this.toastr.success('OK', 'Insertions Uploaded')
+        } else {
+          this.toastr.error('ERROR', res.message);
         }
       });
     });
-   }
+  }
 
   AddNewRoom() {
     const obj = {
-        insertion_type: 'room',
-        id: 0,
-        landlordId: 1,
-        name: '',
-        tags: [],
-        description: [''],
-        price: 0,
-        city: '',
-        address: '',
-        area: 0,
-        photoIds: [],
-        rating: 0,
-        receivedFeedbacksIds: [],
-        availabilityId: 0,
+      insertion_type: 'room',
+      id: 0,
+      landlordId: 1,
+      name: '',
+      tags: [],
+      description: [''],
+      price: 0,
+      city: '',
+      address: '',
+      area: 0,
+      photoIds: [],
+      rating: 0,
+      receivedFeedbacksIds: [],
+      availabilityId: 0,
     }
     this.insertionList.unshift(obj)
   }
 
 
-
   onDelete(id: number) {
-    this.svc.deleteInsertion(id).subscribe((res:any)=>{
-      if(res.status == 200 || res.status == 201) {
-        this.toastr.success('ROOM deleted succesfully');
+    this.svc.deleteInsertion(id).subscribe((res: any) => {
+      if (res.status == 200 || res.status == 201) {
+        this.toastr.success('Room deleted success');
         this.getAllRooms();
       } else {
-        this.toastr.error('ERROR',res.message);
+        this.toastr.error('ERROR', res.message);
       }
     })
   }
-/*
-  uploadPhoto(photo: any) {
-    // var data = photoFile.arrayBuffer;
-    this.svc.uploadPhoto(photo).subscribe((res: Response) => {
-      console.log(res);
-      if (res.status == 200 || res.status == 201) {
 
-        this.newUri = new String(res.body).toString();
-        this.toastr.success('OK','Photo Uploaded');
-      } else {
-        this.toastr.error('ERROR: '+res.status,
-          'Photo Upload failed');
-      }
-    });
-  }
-*/
+  /*
+    uploadPhoto(photo: any) {
+      // var data = photoFile.arrayBuffer;
+      this.svc.uploadPhoto(photo).subscribe((res: Response) => {
+        console.log(res);
+        if (res.status == 200 || res.status == 201) {
+
+          this.newUri = new String(res.body).toString();
+          this.toastr.success('OK','Photo Uploaded');
+        } else {
+          this.toastr.error('ERROR: '+res.status,
+            'Photo Upload failed');
+        }
+      });
+    }
+  */
 
   uploadPhoto(event: any, index: number) {
     const file = event.target.files[0];
@@ -167,6 +175,15 @@ export class RoomsComponent implements OnInit {
   }
 
   testPhotoUpload() {
+    this.http.get('assets/images/test.png', {responseType: 'blob'})
+      .subscribe(res => {
+        this.uploadPhoto(res, 0);
+      });
+  }
+}
+
+    /*
+  testPhotoUpload() {
     console.log('Testing upload w/ test.png')
     this.http.get('assets/images/test.png', { responseType: 'blob' })
       .subscribe(res => {
@@ -175,5 +192,9 @@ export class RoomsComponent implements OnInit {
       });
   }
 
+     */
 
-}
+
+
+
+

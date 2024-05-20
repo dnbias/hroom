@@ -69,8 +69,8 @@
 }
 
 .selected-tag {
-  background-color: #007bff;
-  color: white;
+  background-color: darkslategrey;
+  color: black;
   padding: 5px 10px;
   border-radius: 4px;
   margin-right: 5px;
@@ -81,5 +81,25 @@
 }
 
 .selected-tag:hover {
-  background-color: #0056b3;
+
+}
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.badge-info {
+  background-color: #fcf6bd;
+
+}
+
+.badge:hover {
+
 }

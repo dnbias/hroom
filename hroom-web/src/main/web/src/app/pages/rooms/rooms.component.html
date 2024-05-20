@@ -48,7 +48,7 @@
 
         <td>
           <div class="dropdown">
-            <button class="dropbtn" (click)="toggleDropdown()"> Tag</button>
+            <button class="dropbtn" (click)="toggleDropdown()">Tag</button>
             <div class="dropdown-content" [class.show]="dropdownOpen">
               <label *ngFor="let tag of availableTags">
                 <input
@@ -60,10 +60,7 @@
               </label>
             </div>
           </div>
-          <div>
-            Selezionati:
-            <span *ngFor="let tag of ins.tags" class="selected-tag">{{ tag }}</span>
-          </div>
+
 
         </td>
         <td>
@@ -95,9 +92,17 @@
           <button class="btn btn-sm btn-danger" (click)="removeRiga(sr)">Rimuovi</button>
         </td>
 
-
       </tr>
+      <div>
+        <div>
+          Selezionati:
+
+          <span *ngFor="let tag of ins.tags" class="badge badge-info " >{{ tag }}</span>
+        </div>
+      </div>
+
       </tbody>
+
 
       <!--
 

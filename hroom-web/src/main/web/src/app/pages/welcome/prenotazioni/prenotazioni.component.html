@@ -1,6 +1,24 @@
 <app-nav></app-nav>
-<div class="col-lg shadow border m-1">
-    <div class="text-center">
-        <h2>Featured Project</h2>
-        <h4>{{featuredProject.nome}}</h4>
-    </div>
+<div class="booking-list-container">
+  <h2>My Bookings</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Guest Name</th>
+      <th>Check-in Date</th>
+      <th>Check-out Date</th>
+      <th>Room Type</th>
+      <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let booking of bookings">
+      <td>{{ booking.guestName }}</td>
+      <td>{{ booking.checkInDate | date }}</td>
+      <td>{{ booking.checkOutDate | date }}</td>
+      <td>{{ booking.roomType }}</td>
+      <td>{{ booking.price | currency }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
