@@ -29,19 +29,6 @@ services:
     networks:
       - backend
 
-  tenant-microservice:
-    build:
-      context: ./hroom-server/tenant-service
-    image: dnbias/hroom:tenant-microservice
-    restart: on-failure
-    ports:
-      - "8082:8080"
-    container_name: tenant-microservice-app
-    depends_on:
-      - discovery-server-app
-    networks:
-      - backend
-
   admin-microservice:
     build:
       context: ./hroom-server/admin-service
@@ -57,19 +44,6 @@ services:
     links:
       - "config-server"
       - "discovery-server-app"
-    networks:
-      - backend
-
-  landlord-microservice:
-    build:
-      context: ./hroom-server/landlord-service
-    image: dnbias/hroom:landlord-microservice
-    restart: on-failure
-    ports:
-      - "8084:8080"
-    container_name: landlord-microservice-app
-    depends_on:
-      - discovery-server-app
     networks:
       - backend
 
@@ -133,19 +107,6 @@ services:
     ports:
       - "8089:8080"
     container_name: feedback-microservice-app
-    depends_on:
-      - discovery-server-app
-    networks:
-      - backend
-
-  feedback-insertion-microservice:
-    build:
-      context: ./hroom-server/feedback-insertion-service
-    image: dnbias/hroom:feedback-insertion-microservice
-    restart: on-failure
-    ports:
-      - "8090:8080"
-    container_name: feedback-insertion-microservice-app
     depends_on:
       - discovery-server-app
     networks:
