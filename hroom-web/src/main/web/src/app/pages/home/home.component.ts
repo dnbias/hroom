@@ -11,6 +11,7 @@ import { insertion } from '../../shared/models/insertion';
 import { insertionWithPhoto } from '../../shared/models/insertionWithPhoto';
 import { environment } from '../../../environment/environment';
 import { DomSanitizer } from '@angular/platform-browser';
+import { LoadingService } from '../../service/loading/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ export class HomeComponent implements  OnInit{
   env = environment;
   room :stanze[]=[];
   insertions: insertion[]=[];
-  insertionsWithPhoto: { insertion: any, photo: any }[] = [];
+  insertionsWithPhoto: { insertion: any, photo: any, loaded: boolean}[] = [];
   photos: any[]=[];
   photoURLs: any[]=[];
   parcheggio: boolean =false;
@@ -38,9 +39,11 @@ export class HomeComponent implements  OnInit{
               private svc: InsertionService,
               private route:ActivatedRoute,
               private projectService: ProjectService,
+              private loadingService: LoadingService,
               private domSanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
+    this.loadingService.loadingOn();
     this.route.params.subscribe(params => {
       if(params['searchItem'])
         this.room = this.ss.getAll()
@@ -54,24 +57,13 @@ export class HomeComponent implements  OnInit{
           // this.insertions = data;
           // this.insertionsWithPhoto = this.adaptInsertionsData(data);
 
-          console.log('downloading photos');
           data.forEach((ins, index) => {
             var id = ins.photoIds[0];
             var photoURL = 'http://localhost:8888/api/v1/insertion/photo/'+id;
-
-            this.insertionsWithPhoto.push({insertion: ins, photo: photoURL});
-            // this.svc.downloadPhoto(id).subscribe((pdata) => {
-            //   // this.photos[ins.id] = pdata;
-            //   // this.photoURLs[ins.id] = URL.createObjectURL(pdata);
-            //   // console.log(this.photoURLs[ins.id]);
-            //   // this.insertionsWithPhoto[ins.id].photo = pdata;
-            //   // var image = this.domSanitizer.bypassSecurityTrustHtml(pdata);
-            //   console.log(pdata);
-            // }, (err) => {
-            //   console.log(err);
-            // });
+            this.insertionsWithPhoto.push({insertion: ins, photo: photoURL, loaded: false});
           });
         });
+        this.loadingService.loadingOff();
       }
     })
   }

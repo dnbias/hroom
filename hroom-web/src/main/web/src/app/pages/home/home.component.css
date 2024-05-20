@@ -34,6 +34,14 @@ img.insertion {
   vertical-align: middle;
   height: 250px;
 }
+
+img.loading-spinner {
+  /* width: 150px; */
+  /* height: 150px; */
+  object-fit: scale-down;
+  vertical-align: middle;
+}
+
 .favorite{
   position: absolute;
   top: .5rem;
