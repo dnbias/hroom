@@ -25,57 +25,84 @@
       </tr>
       </thead>
       <tbody>
-        <tr *ngFor=" let ins of insertionList; let sr = index">
-          <td>{{sr+1}}</td>
-          <td>
-            <input type="text" [(ngModel)]="ins.insertion_type" name="Insertion_type" class="form-control" />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.id" name="id" class="form-control"/>
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.landlordId" name="landlordId"  class="form-control" />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.name" name="name" class="form-control"  />
-          </td>
-          <td>
-            <select [(ngModel)]="ins.tags" name="tag" class="form-control">
-              <option *ngFor="let tag of availableTags" [value]="tag">{{tag}}</option>
-            </select>
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.description" name="description" class="form-control"  />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.price" name="price"class="form-control" class="form-control"   />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.city" name="città"class="form-control" class="form-control"  />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.address" name="address" class="form-control" class="form-control" />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.area" name="area"  class="form-control" class="form-control"  />
-          </td>
+      <tr *ngFor=" let ins of insertionList; let sr = index">
+        <td>{{sr+1}}</td>
+        <td>
+          <input type="text" [(ngModel)]="ins.insertion_type" name="Insertion_type" class="form-control" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.id" name="id" class="form-control"/>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.landloIrIdId" name="landlordId"  class="form-control" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.name" name="name" class="form-control"  />
+        </td>
+        <!--
+        <td>
+          <select [(ngModel)]="ins.tags" name="tag" class="form-control">
+            <option class *ngFor="let tag of availableTags" [value]="tag">{{tag}}</option>
+          </select>
+        </td>-->
 
-          <td>
-            <input type="file" [(ngModel)]="ins.photoIds" name="photoUrl" class="form-control"  />
-          </td>
-          <td>
-            <input type="text" [(ngModel)]="ins.availabilityId" name="availavilityId" class="form-control"  class="form-control" />
-          </td>
-          <td>
-            <button class="btn btn-primary" (click)="saveRooms()">Aggiungi</button>
-          </td>
-          <td>
-            <button class="btn btn-sm btn-danger" (click)="removeRiga">rimuovi</button>
-          </td>
+        <td>
+          <div class="dropdown">
+            <button class="dropbtn" (click)="toggleDropdown()">Tag</button>
+            <div class="dropdown-content" [class.show]="dropdownOpen">
+              <label *ngFor="let tag of availableTags">
+                <input
+                  type="checkbox"
+                  [value]="tag"
+                  (change)="toggleTag($event, tag)"
+                  [checked]="ins.tags.includes(tag)">
+                {{ tag }}
+              </label>
+            </div>
+          </div>
 
 
-        </tr>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.description" name="description" class="form-control"  />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.price" name="price"class="form-control" class="form-control"   />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.city" name="città"class="form-control" class="form-control"  />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.address" name="address" class="form-control" class="form-control" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.area" name="area"  class="form-control" class="form-control"  />
+        </td>
+
+        <td>
+          <input type="file" [(ngModel)]="ins.photoIds" name="photoUrl" class="form-control"  />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.availabilityId" name="availavilityId" class="form-control"  class="form-control" />
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="saveRooms()">Aggiungi</button>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="removeRiga(sr)">Rimuovi</button>
+        </td>
+
+      </tr>
+      <div>
+        <div>
+          Selezionati:
+
+          <span *ngFor="let tag of ins.tags" class="badge badge-info " >{{ tag }}</span>
+        </div>
+      </div>
+
       </tbody>
+
 
       <!--
 

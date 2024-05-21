@@ -27,6 +27,8 @@ import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.comp
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/rooms/rooms.component";
 import {UploadImagesComponent} from "./components/upload-images/upload-images.component";
+import {BookedComponent} from "./pages/booked/booked.component";
+import {PaymentComponent} from "./pages/payment/payment.component";
 
 const routes: Routes = [
   //{path:'', component: LoginComponent},
@@ -58,6 +60,8 @@ const routes: Routes = [
   {path:'feed',component:WriteFeedbackComponent,canActivate:[AuthGuard]},
   {path:'upload',component:UploadImagesComponent},
   {path:'room',component:RoomsComponent, canActivate:[AuthGuard]},
+  {path:'booked',component:BookedComponent,canActivate:[AuthGuard]},
+  {path:'payment',component:PaymentComponent,canActivate:[AuthGuard]},
   {path:'**', component: ErrorComponent},
 ];
 

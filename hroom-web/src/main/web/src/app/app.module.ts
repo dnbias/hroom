@@ -62,6 +62,8 @@ import { jqxRatingModule }    from 'jqwidgets-ng/jqxrating';
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/rooms/rooms.component";
 import { LoadingInterceptor } from './service/loading/loading.interceptor';
+import {BookedComponent} from "./pages/booked/booked.component";
+import {PaymentComponent} from "./pages/payment/payment.component";
 
 @NgModule({
   declarations: [
@@ -94,6 +96,8 @@ import { LoadingInterceptor } from './service/loading/loading.interceptor';
     WriteFeedbackComponent,
     NewBookingComponent,
     RoomsComponent,
+    BookedComponent,
+    PaymentComponent,
   ],
   imports: [
     CommonModule,
