@@ -129,7 +129,6 @@ import {PaymentComponent} from "./pages/payment/payment.component";
     jqxGridModule, jqxWindowModule, jqxChartModule, jqxRatingModule,
     LoadingComponent
 
-//!!per collegare la parte di login al welcome
 
   ],
   providers: [
