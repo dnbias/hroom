@@ -29,6 +29,7 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
 import {UploadImagesComponent} from "./components/upload-images/upload-images.component";
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
+import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 
 const routes: Routes = [
   //{path:'', component: LoginComponent},
@@ -42,8 +43,8 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path:'registrazione',component:RegistrazioneComponent},
   {path:'welcome/:userid', component: WelcomeComponent,canActivate:[AuthGuard]},
-  {path: 'stanze', component: StanzeModificaComponent,canActivate:[AuthGuard]},
-  {path: 'stanze/grid', component: GridStanzeComponent,canActivate:[AuthGuard]},
+  {path: 'stanze', component: StanzeModificaComponent},
+  {path: 'stanze/grid', component: GridStanzeComponent},
   {path:'logout', component : LogoutComponent,canActivate:[AuthGuard]},
   {path:'user',component:UserListComponent,canActivate:[AuthGuard]},
   {path:'update',component:UpdatepopupComponent,canActivate:[AuthGuard]},
@@ -62,6 +63,7 @@ const routes: Routes = [
   {path:'room',component:RoomsComponent, canActivate:[AuthGuard]},
   {path:'booked',component:BookedComponent,canActivate:[AuthGuard]},
   {path:'payment',component:PaymentComponent,canActivate:[AuthGuard]},
+  {path:'popup',component:PopupAddComponent},
   {path:'**', component: ErrorComponent},
 ];
 

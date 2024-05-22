@@ -64,6 +64,7 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
 import { LoadingInterceptor } from './service/loading/loading.interceptor';
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
+import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 
 @NgModule({
   declarations: [
@@ -98,6 +99,7 @@ import {PaymentComponent} from "./pages/payment/payment.component";
     RoomsComponent,
     BookedComponent,
     PaymentComponent,
+    PopupAddComponent,
   ],
   imports: [
     CommonModule,
