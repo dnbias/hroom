@@ -103,3 +103,10 @@
 .badge:hover {
 
 }
+.tag-color {
+  display: inline-block;
+  width: 20px; /* Modifica a tuo piacimento */
+  height: 20px; /* Modifica a tuo piacimento */
+  margin-right: 5px; /* Modifica a tuo piacimento */
+  border-radius: 50%; /* Assicurati di adattare il bordo al tuo gusto */
+}

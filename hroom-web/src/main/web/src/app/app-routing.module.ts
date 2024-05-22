@@ -30,6 +30,7 @@ import {UploadImagesComponent} from "./components/upload-images/upload-images.co
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
 import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
+import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
 
 const routes: Routes = [
   //{path:'', component: LoginComponent},
@@ -64,6 +65,8 @@ const routes: Routes = [
   {path:'booked',component:BookedComponent,canActivate:[AuthGuard]},
   {path:'payment',component:PaymentComponent,canActivate:[AuthGuard]},
   {path:'popup',component:PopupAddComponent},
+  {path:'listautenti',component:ListaUtentiComponent},
+
   {path:'**', component: ErrorComponent},
 ];
 

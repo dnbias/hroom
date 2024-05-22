@@ -9,7 +9,6 @@
 
 
         <a href="#" class="btn btn-primary" (click)="openPopup()">Aggiungi</a>
-        <!-- Aggiungi l'ascoltatore dell'evento nel selettore del componente popup -->
 
         <app-popup-add *ngIf="showPopup" (close)="closePopup()"></app-popup-add>
 
@@ -45,12 +44,11 @@
       <div class="card-body">
 
         <div class="row gx-3 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-5" *ngIf="stanze$">
-          <app-stanze-card
-                  *ngFor ="let stanza of room$"
-                  [room]="stanza"
-                  (delete)="elimina($event)"
-                  (edit)="modifica($event)"
-          ></app-stanze-card>
+               <app-stanze-card
+       *ngFor ="let ins of "
+
+
+          ></app-stanze-card>-
         </div>
 
       </div>
