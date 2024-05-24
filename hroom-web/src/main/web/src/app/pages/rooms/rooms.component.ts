@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {insertion} from "../../shared/models/insertion";
 import { ToastrService } from 'ngx-toastr'
+import {TagUtility} from "../../shared/models/tags";
 
 @Component({
   selector: 'app-rooms',
@@ -14,6 +15,8 @@ import { ToastrService } from 'ngx-toastr'
 export class RoomsComponent implements OnInit {
 
   insertionList: any[] = [];
+  tagLists: any[] = [];
+
   insertionData: insertion = {
     "insertion_type": 'room',
     "id": 1,
@@ -44,6 +47,18 @@ export class RoomsComponent implements OnInit {
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
+  toggleTag(event: Event, tag: string) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.ins.tags.push(tag);
+    } else {
+      const index = this.ins.tags.indexOf(tag);
+      if (index > -1) {
+        this.ins.tags.splice(index, 1);
+      }
+    }
+  }
+  insertionsArray: insertion[] = [];
 
   toggleTag(event: Event, tag: string) {
     const checkbox = event.target as HTMLInputElement;
@@ -73,20 +88,32 @@ export class RoomsComponent implements OnInit {
 
 
 
+  removeRiga(index: number) {
+    this.insertionList.splice(index, 1);
+    this.tagLists.splice(index, 1);
+    this.resetTags();
+  }
+
+  resetTags() {
+    this.insertionList.forEach(item => {
+      item.tags = [];
+    });
+  }
+
   addRoom() {
   }
 
   constructor(private svc: InsertionService,
               private toastr: ToastrService,
-              private http: HttpClient) {
+              private http: HttpClient,
+              protected tagUtility: TagUtility) {
     this.insertionsArray = [];
-
   }
 
   newUri = '';
 
   ngOnInit(): void {
-
+    this.availableTags = this.tagUtility.getAllTags();
     this.testPhotoUpload();
   }
 
@@ -98,19 +125,20 @@ export class RoomsComponent implements OnInit {
   }
 
   saveRooms() {
-    this.insertionList.forEach(item => {
+    this.insertionList.forEach((item, index) => {
+      item.tags = this.tagLists[index];
       this.svc.saveInsertion(item).subscribe((res: any) => {
         if (res.result) {
           this.toastr.success('OK', 'Insertions Uploaded')
         } else {
-          this.toastr.error('ERROR', res.message);
+          this.toastr.error('ERROR INSERIMENTO DATI', res.message);
         }
       });
     });
   }
 
   AddNewRoom() {
-    const obj = {
+    const newRow = {
       insertion_type: 'room',
       id: 0,
       landlordId: 1,
@@ -126,7 +154,8 @@ export class RoomsComponent implements OnInit {
       receivedFeedbacksIds: [],
       availabilityId: 0,
     }
-    this.insertionList.unshift(obj)
+    this.insertionList.unshift(newRow)
+    this.tagLists.unshift([]);
   }
 
 
@@ -136,7 +165,7 @@ export class RoomsComponent implements OnInit {
         this.toastr.success('Room deleted success');
         this.getAllRooms();
       } else {
-        this.toastr.error('ERROR', res.message);
+        this.toastr.error('ERROR CANCELLAZIONE', res.message);
       }
     })
   }

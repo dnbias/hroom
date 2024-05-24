@@ -17,4 +17,12 @@ public interface ReservationService {
         throws MissingReservationException;
 
     void deleteReservationById(Long reservationId);
+
+    CheckIn saveCheckIn(CheckIn checkIn);
+
+    List<CheckIn> fetchCheckInList();
+
+    CheckIn updateCheckIn(CheckIn checkIn, Long checkInId);
+
+    void deleteCheckInById(Long checkInId);
 }

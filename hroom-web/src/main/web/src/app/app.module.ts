@@ -42,6 +42,7 @@ import {BookingComponent} from "./pages/booking/booking.component";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatInput, MatInputModule} from "@angular/material/input";
+
 // import {AsyncPipe} from "@angular/material/progress-spinner";
 // import dotenv from 'dotenv';
 
@@ -64,6 +65,9 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
 import { LoadingInterceptor } from './service/loading/loading.interceptor';
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
+import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
+import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
+
 
 @NgModule({
   declarations: [
@@ -98,7 +102,8 @@ import {PaymentComponent} from "./pages/payment/payment.component";
     RoomsComponent,
     BookedComponent,
     PaymentComponent,
-
+    PopupAddComponent,
+    ListaUtentiComponent,
   ],
   imports: [
     CommonModule,

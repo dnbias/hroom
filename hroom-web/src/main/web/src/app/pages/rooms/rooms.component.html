@@ -2,6 +2,7 @@
   <div class="col-12 text-end">
     <button class="btn btn-primary" (click)="AddNewRoom()">Add New</button>
   </div>
+
 </div>
 <div class="row">
   <div class="col-12">
@@ -10,7 +11,6 @@
       <tr>
         <th>Numero riga:</th>
         <th>Tipo struttura</th>
-        <th>Id</th>
         <th>Nome landlord</th>
         <th>Nome stanza</th>
         <th>Tag</th>
@@ -28,23 +28,32 @@
       <tr *ngFor=" let ins of insertionList; let sr = index">
         <td>{{sr+1}}</td>
         <td>
-          <input type="text" [(ngModel)]="ins.insertion_type" name="Insertion_type" class="form-control" />
+          <select [(ngModel)]="ins.insertion_type" name="Insertion_type" class="form-control">
+            <option [value]="1">Room</option>
+            <option [value]="2">Appartamento</option>
+          </select>
         </td>
+<!--
         <td>
-          <input type="text" [(ngModel)]="ins.id" name="id" class="form-control"/>
+          <input type="text" [(ngModel)]="ins.Insertion_type" name="Insertion_type"  class="form-control" />
         </td>
+-->
+
         <td>
           <input type="text" [(ngModel)]="ins.landloIrIdId" name="landlordId"  class="form-control" />
         </td>
         <td>
           <input type="text" [(ngModel)]="ins.name" name="name" class="form-control"  />
         </td>
+
         <!--
-        <td>
-          <select [(ngModel)]="ins.tags" name="tag" class="form-control">
-            <option class *ngFor="let tag of availableTags" [value]="tag">{{tag}}</option>
-          </select>
-        </td>-->
+            <td>
+              <select [(ngModel)]="ins.tags" name="tag" class="form-control">
+                <option class *ngFor="let tag of availableTags" [value]="tag">{{tag}}</option>
+              </select>
+            </td>
+    -->
+
 
         <td>
           <div class="dropdown">
@@ -56,12 +65,10 @@
                   [value]="tag"
                   (change)="toggleTag($event, tag)"
                   [checked]="ins.tags.includes(tag)">
-                {{ tag }}
+                <span [style.background-color]="tagUtility.getColor(tag)" class="badge tag-color">{{ tag }}</span>
               </label>
             </div>
           </div>
-
-
         </td>
         <td>
           <input type="text" [(ngModel)]="ins.description" name="description" class="form-control"  />
@@ -102,6 +109,14 @@
       </div>
 
       </tbody>
+
+      <div>
+        <td  *ngFor=" let ins of insertionList; let sr = index">
+          <input type="text" [(ngModel)]="ins.id" name="description" class="form-control"  />
+
+          <button class="btn btn-sm btn-danger" (click)="onDelete(ins.id)">cancella </button>
+        </td>
+      </div>
 
 
       <!--
