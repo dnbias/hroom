@@ -129,13 +129,13 @@ export class HomeComponent implements  OnInit{
     let filterTags: Tag[]=[];
 
     if(this.parcheggio){
-      filterTags.push(Tag.PARCHEGGIO);
+      filterTags.push(Tag.PARKING);
     }
     if(this.appartamento){
-      filterTags.push(Tag.APPARTAMENTO);
+      filterTags.push(Tag.APARTMENT);
     }
     if(this.stanza){
-      filterTags.push(Tag.STANZA);
+      filterTags.push(Tag.ROOM);
     }
     if(this.allin){
       filterTags.push(Tag.ALLINCLUSIVE);
@@ -144,10 +144,10 @@ export class HomeComponent implements  OnInit{
       filterTags.push(Tag.SPA);
     }
     if(this.centro){
-      filterTags.push(Tag.CENTRO);
+      filterTags.push(Tag.CENTER);
     }
     if(this.idro){
-      filterTags.push(Tag.IDRO);
+      filterTags.push(Tag.HYDROMASSAGE);
     }
     if(this.spa || this.allin || this.stanza || this.appartamento || this.centro || this.idro || this.parcheggio){
       this.filtering=true;

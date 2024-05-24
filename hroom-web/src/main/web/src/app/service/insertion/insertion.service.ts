@@ -67,8 +67,8 @@ export class InsertionService {
     return this.http.delete(this.apiEndPoint+'/insertion/photo/'+id);
   }
 
-  getAllTags(): Tag[] {
-    return Object.values(Tag);
+  getAllTags(): string[] {
+    return Object.keys(Tag);
   }
 
 }

@@ -41,7 +41,7 @@ export class StanzaPageComponent implements OnInit{
             this.tags.push(tag.toString());
           })
           console.log(this.tags);
-          //test
+          //test TODO
           var feedbacksIds = [1,2,3];
           feedbacksIds.forEach(fbID => {
           // data.receivedFeedbacksIds.forEach(fbID => {
