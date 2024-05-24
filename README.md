@@ -36,8 +36,10 @@ Services are accessible through the kong gateway at http://localhost:8888/api/v1
 
 Test them with curl:
 ``` bash
-curl -v http://localhost:8888/api/v1/insertion
+❯ curl -v http://localhost:8888/api/v1/insertion
 ```
+
+You might need to disable CORS to make the web-app work.
 
 [^1]: See https://docs.konghq.com/kubernetes-ingress-controller/latest/get-started/
 
