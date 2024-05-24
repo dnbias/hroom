@@ -85,13 +85,17 @@ public class InsertionController {
         Long id = null;
         try {
             id = service.uploadPhoto(roomId,image);
-        } catch (IOException e) {
+        } catch (IOException | MissingInsertionException e ) {
             LOGGER.error("InsertionController > uploadPhoto > IOException caught");
             LOGGER.error(e.getMessage());
             ResponseEntity.internalServerError().body("Upload Failed");
         }
 
         return ResponseEntity.ok(id);
+    }
+    @GetMapping("/insertion/test")
+    public String test(){
+        return "ciao";
     }
 
     @GetMapping("/insertion/photo/{id}")

@@ -91,7 +91,7 @@ public class InsertionServiceImpl implements InsertionService {
     }
 
     @Override
-    public Long uploadPhoto(Long roomId,byte[] data) throws IOException {
+    public Long uploadPhoto(Long roomId,byte[] data) throws IOException,MissingInsertionException  {
         Insertion insertion = findById(roomId);
         insertion.setPhoto(data);
         insertionRepository.save(insertion);
