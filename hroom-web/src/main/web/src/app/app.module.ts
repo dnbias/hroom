@@ -54,18 +54,21 @@ import {
 } from "@angular/material/datepicker";
 import {provideNativeDateAdapter} from "@angular/material/core";
 import {DataComponent} from "./pages/data/data.component";
+
+import 'jqwidgets-ng/jqwidgets/jqxcore';
 import {jqxGridModule} from "jqwidgets-ng/jqxgrid";
 import {jqxWindowModule} from "jqwidgets-ng/jqxwindow";
 import {jqxChartModule} from "jqwidgets-ng/jqxchart";
-import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
+import {jqxButtonModule} from 'jqwidgets-ng/jqxbuttons';
+import {jqxRatingModule}    from 'jqwidgets-ng/jqxrating';
 
-import { jqxRatingModule }    from 'jqwidgets-ng/jqxrating';
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/rooms/rooms.component";
-import { LoadingInterceptor } from './service/loading/loading.interceptor';
+import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
 import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
+import { LoadingInterceptor } from './service/loading/loading.interceptor';
 // import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
 
 
@@ -131,10 +134,10 @@ import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
     MatDatepickerModule,
     MatFormFieldModule,
     DataComponent,
-    jqxGridModule, jqxWindowModule, jqxChartModule, jqxRatingModule,
+    jqxButtonModule,
+    jqxGridModule, jqxWindowModule,
+    jqxChartModule, jqxRatingModule,
     LoadingComponent
-
-
   ],
   providers: [
     provideAnimationsAsync(),
