@@ -7,12 +7,14 @@ import com.hroom.admin.entity.User;
 import com.hroom.admin.exception.MissingUserException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
 import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 import static com.hroom.admin.security.SecurityTools.isSanitized;
 
@@ -20,13 +22,22 @@ import static com.hroom.admin.security.SecurityTools.isSanitized;
 public class AdminServiceImpl implements AdminService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    @Value("${spring.rabbitmq.exchange}")
+    private String exchange;
+    @Value("${spring.rabbitmq.routingkey}")
+    private String routingkey;
+
 
     @Autowired
     private AdminRepository repository;
-    private static final String TENANT_BASE_URL = "http://TENANT-SERVICE:8761/api/v1";
-    private static final String LANDLORD_BASE_URL = "http://LANDLORD-SERVICE:8761/api/v1";
-    private static final String USER_BASE_URL = "http://USER-SERVICE:9000/api/v1";
+    private static final String USER_BASE_URL = "http://user-microservice/api/v1";
     private final RestTemplate restTemplate = new RestTemplate();
+    private final RabbitTemplate rabbitTemplate;
+
+    @Autowired
+    public AdminServiceImpl(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
+    }
 
 
     @Override
@@ -70,41 +81,24 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public ResponseEntity<?> banTenantById(Long userId) {
-        LOGGER.info("AdminServiceImpl > banTenantById started");
-        LOGGER.info("AdminServiceImpl > banTenantById > userId : " + userId);
+    public ResponseEntity<?> banUserById(Long userId) {
+        LOGGER.info("AdminServiceImpl > banUserById started");
+        LOGGER.info("AdminServiceImpl > banUserById > userId : " + userId);
 
-        String result = getRoleInfo();
+        // String result = getRoleInfo();
 
-        LOGGER.info("AdminServiceImpl > banTenantById > role result : " + result);
+        // LOGGER.info("AdminServiceImpl > banUserById > role result : " + result);
 
-        if(result.equals("ROLE_ADMIN")){
-            HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            HttpEntity < String > entity = new HttpEntity < > (httpHeaders);
-            return restTemplate.exchange(TENANT_BASE_URL + userId,
-                                         HttpMethod.DELETE, entity, String.class);
-        }
+        // if(result.equals("ROLE_ADMIN")){
+            // HttpHeaders httpHeaders = new HttpHeaders();
+            // httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+            // HttpEntity < String > entity = new HttpEntity < > (httpHeaders);
+            // return restTemplate.exchange(USER_BASE_URL + userId,
+            //                              HttpMethod.DELETE, entity, String.class);
+        // }
 
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<?> banLandlordById(Long userId) {
-        LOGGER.info("AdminServiceImpl > banLandlordById started");
-        LOGGER.info("AdminServiceImpl > banLandlordById > userId : " + userId);
-
-        String result = getRoleInfo();
-
-        LOGGER.info("AdminServiceImpl > banLandlordById > role result : " + result);
-
-        if(result.equals("ROLE_ADMIN")){
-            HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            HttpEntity < String > entity = new HttpEntity < > (httpHeaders);
-            return restTemplate.exchange(LANDLORD_BASE_URL + userId,
-                                         HttpMethod.DELETE, entity, String.class);
-        }
+        LOGGER.info("AdminServiceImpl > banUserById > Invoking RabbitMq");
+        rabbitTemplate.convertAndSend(exchange, routingkey, userId);
 
         return null;
     }

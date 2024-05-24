@@ -6,6 +6,7 @@ import com.hroom.user.dto.LoginRequest;
 import com.hroom.user.dto.SignUpRequest;
 import com.hroom.user.entity.Admin;
 import com.hroom.user.entity.Landlord;
+import com.hroom.user.entity.Provider;
 import com.hroom.user.entity.Tenant;
 import com.hroom.user.entity.User;
 import com.hroom.user.exception.MissingUserException;
@@ -15,6 +16,7 @@ import com.hroom.user.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,8 +31,17 @@ public class UserServiceImpl implements UserService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
+    @Autowired
     private final UserRepository repository;
-    private final KeycloakService keycloakService;
+    // private final KeycloakService keycloakService;
+
+    @Override
+    public List<User> fetchUserList() {
+        LOGGER.info("UserServiceImpl | fetchUserList is started");
+        List<User> list = repository.findAll();
+        LOGGER.info("UserServiceImpl | fetchUserList OK");
+        return list;
+    }
 
     @Override
     public User login(LoginRequest request) throws MissingUserException {
@@ -124,6 +135,20 @@ public class UserServiceImpl implements UserService {
         String response = user.getRole();
 
         return response;
+    }
+
+    @Override
+    public void processOAuthPostLogin(String username) {
+        List<User> existUser = repository.findByUsername(username);
+
+        if (existUser.isEmpty()) {
+            User newUser = new Tenant();
+            newUser.setUsername(username);
+            newUser.setProvider(Provider.GOOGLE);
+            newUser.setCreatedAt(LocalDateTime.now());
+
+            repository.save(newUser);
+        }
     }
 
 }

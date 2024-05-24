@@ -13,4 +13,10 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>admin-service</name>
     <description>Admin Service</description>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+    </dependencies>
 </project>

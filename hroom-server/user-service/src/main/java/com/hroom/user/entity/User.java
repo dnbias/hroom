@@ -9,6 +9,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
@@ -41,12 +43,10 @@ public class User extends IdBasedEntity implements Serializable {
     private String email;
     @Column
     private LocalDateTime createdAt;
-
-    public enum Capability {
-        TENANT,
-        LANDLORD,
-        ADMIN
-    }
+    //
+    // oauth2
+    @Enumerated(EnumType.STRING)
+    private Provider provider;
 
     @Override
     public String toString() {

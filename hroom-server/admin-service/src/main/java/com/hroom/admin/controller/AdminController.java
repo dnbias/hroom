@@ -30,7 +30,6 @@ public class AdminController {
     @GetMapping("/admin")
     public List<Admin> fetchAdminList(){
         LOGGER.info("AdminController > fetchAdminList started");
-        LOGGER.info("AdminController > fetchAdminList");
         return service.fetchAdminList();
     }
 
@@ -57,19 +56,11 @@ public class AdminController {
         return "Deleted Successfully";
     }
 
-    @DeleteMapping("/ban/tenant/{id}")
-    public String banTenantById(@PathVariable("id") Long userId) {
-        LOGGER.info("AdminController > banTenantById started");
-        LOGGER.info("AdminController > banTenantById > id: "+userId);
-        service.banTenantById(userId);
-        return "Tenant banned";
-    }
-
-    @DeleteMapping("/ban/landlord/{id}")
-    public String banLandlordById(@PathVariable("id") Long userId) {
-        LOGGER.info("AdminController > banLandlordById started");
-        LOGGER.info("AdminController > banLandlordById > id: "+userId);
-        service.banLandlordById(userId);
-        return "Landlord banned";
+    @DeleteMapping("/ban/{id}")
+    public String banUserById(@PathVariable("id") Long userId) {
+        LOGGER.info("AdminController > banUserById started");
+        LOGGER.info("AdminController > banUserById > id: "+userId);
+        service.banUserById(userId);
+        return "User banned";
     }
 }

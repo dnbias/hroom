@@ -36,7 +36,7 @@ Services are accessible through the kong gateway at http://localhost:8888/api/v1
 
 Test them with curl:
 ``` bash
-❯ curl -v http://localhost:8888/api/v1/insertion
+❯ curl -s http://localhost:8888/api/v1/insertion | jq '.'
 ```
 
 You might need to disable CORS to make the web-app work.

@@ -15,7 +15,5 @@ public interface AdminService {
 
     void deleteAdminById(Long userId);
 
-    public ResponseEntity<?> banTenantById(Long userId);
-
-    public ResponseEntity<?> banLandlordById(Long userId);
+    public ResponseEntity<?> banUserById(Long userId);
 }
