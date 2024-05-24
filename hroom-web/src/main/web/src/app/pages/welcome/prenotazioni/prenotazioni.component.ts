@@ -2,6 +2,10 @@ import {Component, OnInit} from '@angular/core';
 
 import {stanze} from "../../../shared/models/stanza";
 import {ProjectService} from "../../../service/project/project.service";
+import {HttpClient} from "@angular/common/http";
+import {Observable} from "rxjs";
+import {Booking} from "../../../shared/models/booking";
+import {BookingService} from "../../../service/booking.service";
 
 @Component({
   selector: 'app-prenotazioni',
@@ -9,16 +13,17 @@ import {ProjectService} from "../../../service/project/project.service";
   templateUrl: './prenotazioni.component.html',
   styleUrl: './prenotazioni.component.css'
 })
-export class PrenotazioniComponent implements OnInit{
+export class PrenotazioniComponent {
+  bookings: Booking[] = [];
 
-  featuredProject={} as stanze;
-  constructor(private projectService: ProjectService) {
-  }
+  constructor(private bookingService: BookingService) {}
 
   ngOnInit(): void {
-    this.featuredProject= this.projectService.GetProjectById(1);
-
+    this.loadUserBookings();
   }
 
-
+  loadUserBookings(): void {
+    this.bookingService.getUserBookings()
+      .subscribe(bookings => this.bookings = bookings);
+  }
 }

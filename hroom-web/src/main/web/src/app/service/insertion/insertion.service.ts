@@ -38,12 +38,20 @@ export class InsertionService {
     console.log('findInsertion request: id='+id);
     return this.http.get(this.apiEndPoint+'/insertion/'+id);
   }
-
+/*
   uploadPhoto(data: any): any {
     console.log('uploadPhoto request');
     return this.http.put(this.apiEndPoint+'/insertion/photo', {
       responseType: 'string', // the URI
       data: data
+    });
+  }*/
+  uploadPhoto(file: any): any {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    console.log('uploadPhoto request');
+    return this.http.put(this.apiEndPoint + '/insertion/photo', formData, {
+      responseType: 'text' // Expecting a string response (token/URI)
     });
   }
 
@@ -64,3 +72,4 @@ export class InsertionService {
   }
 
 }
+

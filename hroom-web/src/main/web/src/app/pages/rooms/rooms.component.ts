@@ -16,6 +16,7 @@ export class RoomsComponent implements OnInit {
 
   insertionList: any[] = [];
   tagLists: any[] = [];
+
   insertionData: insertion = {
     "insertion_type": 'room',
     "id": 1,
@@ -59,6 +60,33 @@ export class RoomsComponent implements OnInit {
   }
   insertionsArray: insertion[] = [];
 
+  toggleTag(event: Event, tag: string) {
+    const checkbox = event.target as HTMLInputElement;
+    if (checkbox.checked) {
+      this.ins.tags.push(tag);
+    } else {
+      const index = this.ins.tags.indexOf(tag);
+      if (index > -1) {
+        this.ins.tags.splice(index, 1);
+      }
+    }
+  }
+
+  insertionsArray: insertion[] = [];
+
+
+  removeRiga(index: number) {
+    this.insertionList.splice(index, 1);
+    this.resetTags();
+  }
+
+  resetTags() {
+    this.insertionList.forEach(item => {
+      item.tags = [];
+    });
+  }
+
+
 
   removeRiga(index: number) {
     this.insertionList.splice(index, 1);
@@ -72,8 +100,6 @@ export class RoomsComponent implements OnInit {
     });
   }
 
-
-
   addRoom() {
   }
 
@@ -82,7 +108,6 @@ export class RoomsComponent implements OnInit {
               private http: HttpClient,
               protected tagUtility: TagUtility) {
     this.insertionsArray = [];
-
   }
 
   newUri = '';

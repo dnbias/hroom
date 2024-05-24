@@ -68,6 +68,7 @@ import {PaymentComponent} from "./pages/payment/payment.component";
 import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -130,10 +131,9 @@ import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component"
     MatDatepickerModule,
     MatFormFieldModule,
     DataComponent,
-    jqxGridModule, jqxWindowModule, jqxChartModule,jqxRatingModule,
-    LoadingComponent,
+    jqxGridModule, jqxWindowModule, jqxChartModule, jqxRatingModule,
+    LoadingComponent
 
-//!!per collegare la parte di login al welcome
 
   ],
   providers: [

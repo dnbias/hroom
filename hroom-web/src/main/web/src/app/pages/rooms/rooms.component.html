@@ -27,7 +27,6 @@
       <tbody>
       <tr *ngFor=" let ins of insertionList; let sr = index">
         <td>{{sr+1}}</td>
-
         <td>
           <select [(ngModel)]="ins.insertion_type" name="Insertion_type" class="form-control">
             <option [value]="1">Room</option>
@@ -39,6 +38,7 @@
           <input type="text" [(ngModel)]="ins.Insertion_type" name="Insertion_type"  class="form-control" />
         </td>
 -->
+
         <td>
           <input type="text" [(ngModel)]="ins.landloIrIdId" name="landlordId"  class="form-control" />
         </td>
@@ -53,6 +53,7 @@
               </select>
             </td>
     -->
+
 
         <td>
           <div class="dropdown">
@@ -69,10 +70,6 @@
             </div>
           </div>
         </td>
-
-
-
-
         <td>
           <input type="text" [(ngModel)]="ins.description" name="description" class="form-control"  />
         </td>
