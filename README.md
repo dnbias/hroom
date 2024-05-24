@@ -32,7 +32,8 @@ Check the status of the deployments:
 ```
 
 The web-app is accessible at http://localhost:8888.
-Services are accessible through the kong gateway at ~http://localhost:8888/api/v1/...
+Services are accessible through the kong gateway at http://localhost:8888/api/v1/name
+
 Test them with curl:
 ``` bash
 curl -v http://localhost:8888/api/v1/insertion
