@@ -1,0 +1,39 @@
+<div class="payment-container">
+  <h2>Payment Method</h2>
+  <mat-radio-group [(ngModel)]="selectedPaymentMethod">
+    <mat-radio-button value="paypal">PayPal</mat-radio-button>
+    <mat-radio-button value="creditCard">Credit Card</mat-radio-button>
+  </mat-radio-group>
+
+  <div *ngIf="selectedPaymentMethod === 'paypal'">
+    <!-- Inserisci qui il codice per la pagina PayPal -->
+    <p>Redirecting to PayPal...</p>
+    <button mat-raised-button color="primary" (click)="redirectToPayPal()">Proceed to PayPal</button>
+  </div>
+
+  <div *ngIf="selectedPaymentMethod === 'creditCard'">
+    <!-- Inserisci qui il codice per i dettagli della carta di credito -->
+    <h2>Payment Details</h2>
+    <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Card Number</mat-label>
+        <input matInput formControlName="cardNumber" placeholder="Enter your card number">
+        <mat-error *ngIf="paymentForm.get('cardNumber')?.invalid && paymentForm.get('cardNumber')?.touched">Please enter a valid 16-digit card number</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Expiration Date</mat-label>
+        <input matInput formControlName="expirationDate" placeholder="MM / YY">
+        <mat-error *ngIf="paymentForm.get('expirationDate')?.invalid && paymentForm.get('expirationDate')?.touched">Please enter a valid expiration date (MM/YY)</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>CVV</mat-label>
+        <input matInput formControlName="cvv" placeholder="CVV">
+        <mat-error *ngIf="paymentForm.get('cvv')?.invalid && paymentForm.get('cvv')?.touched">Please enter a valid 3-digit CVV</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit"   routerLink="/booked"   [disabled]="!paymentForm.valid">Pay Now</button>
+    </form>
+  </div>
+</div>

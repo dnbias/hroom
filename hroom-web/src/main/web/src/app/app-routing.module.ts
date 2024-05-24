@@ -58,7 +58,8 @@ const routes: Routes = [
   {path:'feed',component:WriteFeedbackComponent,canActivate:[AuthGuard]},
   {path:'upload',component:UploadImagesComponent},
   {path:'room',component:RoomsComponent, canActivate:[AuthGuard]},
-  {path:'**', component: ErrorComponent},
+
+//  {path:'**', component: ErrorComponent},
 ];
 
 @NgModule({

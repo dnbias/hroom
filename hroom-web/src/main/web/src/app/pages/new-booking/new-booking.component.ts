@@ -69,6 +69,8 @@ export class NewBookingComponent implements OnInit {
       }
     })
   }
+
+
 }
 
 

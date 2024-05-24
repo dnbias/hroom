@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from "../../../environment/environment";
 import { feedback } from '../../shared/models/feedback';
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,14 @@ export class FeedbackService {
     console.log('findFeedback request');
     return this.http.get(this.apiEndPoint+'/'+id);
   }
+  /*
+  getUserFeedbacks(userId: number) {
+    console.log('findFeedback request');
+    return this.http.get(this.apiEndPoint+'/'+userId);
+  }
 
+  submitFeedback(feedback: feedback) {
+    console.log('submitdFeedback request');
+    return this.http.get(this.apiEndPoint+'/');
+  }*/
 }
