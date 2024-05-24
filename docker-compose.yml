@@ -33,7 +33,7 @@ services:
     build:
       context: ./hroom-server/admin-service
     image: dnbias/hroom:admin-microservice
-    restart: on-failure
+    restart: never
     ports:
       - "8083:8080"
     container_name: admin-microservice-app
@@ -51,7 +51,7 @@ services:
     build:
       context: ./hroom-server/insertion-service
     image: dnbias/hroom:insertion-microservice
-    restart: on-failure
+    restart: never
     ports:
       - "8085:8080"
     container_name: insertion-microservice-app

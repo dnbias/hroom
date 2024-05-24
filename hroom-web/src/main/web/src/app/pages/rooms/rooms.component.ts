@@ -105,8 +105,9 @@ export class RoomsComponent implements OnInit {
     console.log(this.insertionList);
     this.insertionList.forEach(item => {
       this.svc.saveInsertion(item).subscribe((res: any) => {
-        if (res.result) {
-          this.uploadPhoto(res.result.id,this.photo)
+        console.log(res);
+        if (res) {
+          this.uploadPhoto(res.id,this.photo)
           //this.toastr.success('OK', 'Insertions Uploaded')
         } else {
           this.toastr.error('ERROR', res.message);

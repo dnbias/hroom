@@ -79,11 +79,10 @@ public class InsertionController {
         return "Deleted Successfully";
     }
 
-    @PutMapping("/inseriton/photo")
+    @PutMapping("/insertion/photo/{roomId}")
     public ResponseEntity<Long> uploadPhoto(@PathVariable("roomId") Long roomId, @RequestBody byte[] image) {
         LOGGER.info("InsertionController > uploadPhoto started");
         Long id = null;
-
         try {
             id = service.uploadPhoto(roomId,image);
         } catch (IOException e) {
@@ -91,7 +90,6 @@ public class InsertionController {
             LOGGER.error(e.getMessage());
             ResponseEntity.internalServerError().body("Upload Failed");
         }
-
 
         return ResponseEntity.ok(id);
     }
