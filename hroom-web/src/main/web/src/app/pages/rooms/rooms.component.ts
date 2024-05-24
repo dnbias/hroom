@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {InsertionService} from "../../service/insertion/insertion.service"
-import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {insertion} from "../../shared/models/insertion";
 import { ToastrService } from 'ngx-toastr'
@@ -43,22 +42,19 @@ export class RoomsComponent implements OnInit {
     tags: [] as string[]
   };
   dropdownOpen = false;
+  insertionsArray: insertion[] = [];
+  newUri = '';
+
+  constructor(private svc: InsertionService,
+              private toastr: ToastrService,
+              private http: HttpClient,
+              protected tagUtility: TagUtility) {
+    this.insertionsArray = [];
+  }
 
   toggleDropdown() {
     this.dropdownOpen = !this.dropdownOpen;
   }
-  toggleTag(event: Event, tag: string) {
-    const checkbox = event.target as HTMLInputElement;
-    if (checkbox.checked) {
-      this.ins.tags.push(tag);
-    } else {
-      const index = this.ins.tags.indexOf(tag);
-      if (index > -1) {
-        this.ins.tags.splice(index, 1);
-      }
-    }
-  }
-  insertionsArray: insertion[] = [];
 
   toggleTag(event: Event, tag: string) {
     const checkbox = event.target as HTMLInputElement;
@@ -71,22 +67,6 @@ export class RoomsComponent implements OnInit {
       }
     }
   }
-
-  insertionsArray: insertion[] = [];
-
-
-  removeRiga(index: number) {
-    this.insertionList.splice(index, 1);
-    this.resetTags();
-  }
-
-  resetTags() {
-    this.insertionList.forEach(item => {
-      item.tags = [];
-    });
-  }
-
-
 
   removeRiga(index: number) {
     this.insertionList.splice(index, 1);
@@ -102,15 +82,6 @@ export class RoomsComponent implements OnInit {
 
   addRoom() {
   }
-
-  constructor(private svc: InsertionService,
-              private toastr: ToastrService,
-              private http: HttpClient,
-              protected tagUtility: TagUtility) {
-    this.insertionsArray = [];
-  }
-
-  newUri = '';
 
   ngOnInit(): void {
     this.availableTags = this.tagUtility.getAllTags();
@@ -170,23 +141,6 @@ export class RoomsComponent implements OnInit {
     })
   }
 
-  /*
-    uploadPhoto(photo: any) {
-      // var data = photoFile.arrayBuffer;
-      this.svc.uploadPhoto(photo).subscribe((res: Response) => {
-        console.log(res);
-        if (res.status == 200 || res.status == 201) {
-
-          this.newUri = new String(res.body).toString();
-          this.toastr.success('OK','Photo Uploaded');
-        } else {
-          this.toastr.error('ERROR: '+res.status,
-            'Photo Upload failed');
-        }
-      });
-    }
-  */
-
   uploadPhoto(event: any, index: number) {
     const file = event.target.files[0];
     if (file) {
@@ -204,26 +158,10 @@ export class RoomsComponent implements OnInit {
   }
 
   testPhotoUpload() {
+    console.log('Testing upload w/ test.png')
     this.http.get('assets/images/test.png', {responseType: 'blob'})
       .subscribe(res => {
         this.uploadPhoto(res, 0);
       });
   }
 }
-
-    /*
-  testPhotoUpload() {
-    console.log('Testing upload w/ test.png')
-    this.http.get('assets/images/test.png', { responseType: 'blob' })
-      .subscribe(res => {
-        this.uploadPhoto({ target: { files: [res] } }, 0);
-       // this.uploadPhoto(res);
-      });
-  }
-
-     */
-
-
-
-
-

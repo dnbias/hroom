@@ -66,7 +66,7 @@ import { LoadingInterceptor } from './service/loading/loading.interceptor';
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
 import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
-import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
+// import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
 
 
 @NgModule({
@@ -103,7 +103,7 @@ import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component"
     BookedComponent,
     PaymentComponent,
     PopupAddComponent,
-    ListaUtentiComponent,
+    // ListaUtentiComponent,
   ],
   imports: [
     CommonModule,
