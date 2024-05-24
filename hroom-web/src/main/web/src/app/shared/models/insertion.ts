@@ -16,3 +16,4 @@ export interface insertion {
   receivedFeedbacksIds: number[];
   availabilityId: number;
 }
+

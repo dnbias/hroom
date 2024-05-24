@@ -54,7 +54,7 @@
                 <input
                   type="checkbox"
                   [value]="tag"
-                  (change)="toggleTag($event, tag)"
+                  (change)="toggleTag($event, tag,ins)"
                   [checked]="ins.tags.includes(tag)">
                 {{ tag }}
               </label>
@@ -80,7 +80,8 @@
         </td>
 
         <td>
-          <input type="file" [(ngModel)]="ins.photoIds" name="photoUrl" class="form-control"  />
+       <!--   <input type="file" [(ngModel)]="ins.photoIds" accept=".png,.jpg,.jpeg" name="photoUrl" class="form-control"  />-->
+          <input type="file" #imageInput (change)="processFile(imageInput)"   id="clogo" name="photo" accept=".png,.jpg,.jpeg">
         </td>
         <td>
           <input type="text" [(ngModel)]="ins.availabilityId" name="availavilityId" class="form-control"  class="form-control" />

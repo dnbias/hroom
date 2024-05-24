@@ -91,19 +91,13 @@ public class InsertionServiceImpl implements InsertionService {
     }
 
     @Override
-    public Long uploadPhoto(byte[] data) throws IOException {
-        LOGGER.info("InsertionServiceImpl > uploadPhoto started");
-
-        Photo photo = new Photo();
-        photo.setData(data);
-        Long id = photo.getId();
-
-        photoRepository.save(photo);
-        LOGGER.info("InsertionServiceImpl > uploadPhoto > file written to DB");
-        LOGGER.info("InsertionServiceImpl > uploadPhoto > id: " + id);
-
-        return id;
+    public Long uploadPhoto(Long roomId,byte[] data) throws IOException {
+        Insertion insertion = findById(roomId);
+        insertion.setPhoto(data);
+        insertionRepository.save(insertion);
+        return insertion.getId();
     }
+
 
     @Override
     public byte[] downloadPhoto(Long id) throws MissingPhotoException {

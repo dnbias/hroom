@@ -60,7 +60,7 @@ const routes: Routes = [
   {path:'stanza/:id',component:StanzaPageComponent,canActivate:[AuthGuard]},
   {path:'feed',component:WriteFeedbackComponent,canActivate:[AuthGuard]},
   {path:'upload',component:UploadImagesComponent},
-  {path:'room',component:RoomsComponent, canActivate:[AuthGuard]},
+  {path:'room',component:RoomsComponent},
   {path:'booked',component:BookedComponent,canActivate:[AuthGuard]},
   {path:'payment',component:PaymentComponent,canActivate:[AuthGuard]},
   {path:'popup',component:PopupAddComponent},

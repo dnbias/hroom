@@ -53,4 +53,7 @@ public class Insertion {
     private int meanRating;
     private List<Long> receivedFeedbacksIds;
     private Long availabilityId;
+    @Lob
+    private byte[] photo;
+
 }

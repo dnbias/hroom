@@ -39,12 +39,9 @@ export class InsertionService {
     return this.http.get(this.apiEndPoint+'/insertion/'+id);
   }
 
-  uploadPhoto(data: any): any {
+  uploadPhoto(photo:File,id: number ): any {
     console.log('uploadPhoto request');
-    return this.http.put(this.apiEndPoint+'/insertion/photo', {
-      responseType: 'string', // the URI
-      data: data
-    });
+    return this.http.put(this.apiEndPoint+'/insertion/photo/'+id, photo);
   }
 
   downloadPhoto(id: any): any {

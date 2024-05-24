@@ -4,6 +4,7 @@ import {FormsModule} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {insertion} from "../../shared/models/insertion";
 import { ToastrService } from 'ngx-toastr'
+import {FileSnippet} from "../../shared/models/FileSnipped";
 
 @Component({
   selector: 'app-rooms',
@@ -30,6 +31,8 @@ export class RoomsComponent implements OnInit {
     "receivedFeedbacksIds": [],
     "availabilityId": 0,
   };
+  photo!: FileSnippet;
+  photoFileName: string = '';
   availableTags: string[] = [
     'BATHROOM', 'HYDROMASSAGE', 'WHEELCHAIR_ACCESS', 'SPA', 'ALLINCLUSIVE',
     'CENTER', 'APARTMENT', 'ROOM', 'PRIVATEBATHROOM', 'SEA', 'MONTAIN',
@@ -45,14 +48,16 @@ export class RoomsComponent implements OnInit {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-  toggleTag(event: Event, tag: string) {
+  toggleTag(event: Event, tag: string,ins:any) {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
-      this.ins.tags.push(tag);
+      console.log("passo");
+        ins.tags.push(tag);
+      console.log(ins.tags);
     } else {
-      const index = this.ins.tags.indexOf(tag);
+      const index = ins.tags.indexOf(tag);
       if (index > -1) {
-        this.ins.tags.splice(index, 1);
+        ins.tags.splice(index, 1);
       }
     }
   }
@@ -72,7 +77,6 @@ export class RoomsComponent implements OnInit {
   }
 
 
-
   addRoom() {
   }
 
@@ -87,7 +91,7 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.testPhotoUpload();
+    //this.testPhotoUpload();
   }
 
   getAllRooms() {
@@ -98,14 +102,43 @@ export class RoomsComponent implements OnInit {
   }
 
   saveRooms() {
+    console.log(this.insertionList);
     this.insertionList.forEach(item => {
       this.svc.saveInsertion(item).subscribe((res: any) => {
         if (res.result) {
-          this.toastr.success('OK', 'Insertions Uploaded')
+          this.uploadPhoto(res.result.id,this.photo)
+          //this.toastr.success('OK', 'Insertions Uploaded')
         } else {
           this.toastr.error('ERROR', res.message);
         }
       });
+    });
+  }
+
+  processFile(imageInput: any) {
+    const file: File = imageInput.files[0];
+    const reader = new FileReader();
+
+    reader.addEventListener('load', (event: any) => {
+      this.photo = new FileSnippet(event.target.result, file);
+      this.photoFileName = file.name;
+    });
+
+    reader.readAsDataURL(file);
+  }
+/*
+* quando clicchi su aggiungi si scatena il metodo save che salva l'insertion
+chaimata l'api di save insertion, nel subscribe, se la richeista è andata a buon fine, si richiama il metodo upload photo
+che fa l'upload della foto per l'insertion appena creata
+quindi fa due richiesta e cascata, prima il sva edella ionsertio ne poi il save della foto su quella insertio
+* */
+  uploadPhoto(id:number,photo:FileSnippet) {
+    this.svc.uploadPhoto(photo.file, id).subscribe((res: any) => {
+      if (res.result) {
+        this.toastr.success('OK', 'Insertions Uploaded')
+      } else {
+        this.toastr.error('ERROR', res.message);
+      }
     });
   }
 
@@ -140,6 +173,7 @@ export class RoomsComponent implements OnInit {
       }
     })
   }
+}
 
   /*
     uploadPhoto(photo: any) {
@@ -156,7 +190,7 @@ export class RoomsComponent implements OnInit {
         }
       });
     }
-  */
+
 
   uploadPhoto(event: any, index: number) {
     const file = event.target.files[0];
@@ -173,14 +207,14 @@ export class RoomsComponent implements OnInit {
       });
     }
   }
-
-  testPhotoUpload() {
+  */
+/*  testPhotoUpload() {
     this.http.get('assets/images/test.png', {responseType: 'blob'})
       .subscribe(res => {
         this.uploadPhoto(res, 0);
       });
   }
-}
+}*/
 
     /*
   testPhotoUpload() {
