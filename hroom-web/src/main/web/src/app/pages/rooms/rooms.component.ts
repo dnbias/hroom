@@ -126,12 +126,7 @@ export class RoomsComponent implements OnInit {
 
     reader.readAsDataURL(file);
   }
-/*
-* quando clicchi su aggiungi si scatena il metodo save che salva l'insertion
-chaimata l'api di save insertion, nel subscribe, se la richeista è andata a buon fine, si richiama il metodo upload photo
-che fa l'upload della foto per l'insertion appena creata
-quindi fa due richiesta e cascata, prima il sva edella ionsertio ne poi il save della foto su quella insertio
-* */
+
   uploadPhoto(id:number,photo:FileSnippet) {
     this.svc.uploadPhoto(photo.file, id).subscribe((res: any) => {
       if (res.result) {
