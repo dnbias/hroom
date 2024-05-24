@@ -1,8 +1,8 @@
 <app-search></app-search>
 <app-tag></app-tag>
-<p> <app-data></app-data></p>
+<!-- p> <app-data></app-data></p>-->
 
-<app-not-found [visible]= "!insertionsWithPhoto || insertionsWithPhoto.length <=0" resetLinkText="Torna alla home"></app-not-found>-
+<app-not-found [visible]= "!insertionsWithPhoto || insertionsWithPhoto.length <=0" resetLinkText="Torna alla home"></app-not-found>
 <div>
   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
     filtra
@@ -79,9 +79,8 @@
   <ul>
     <li *ngFor="let item of insertionsWithPhoto; let i = index" >
       <a routerLink="/stanza/{{item.insertion.id}}">
-        <!-- <div *ngIf="let photo of item.photo"> -->
-          <img  src="{{item.photo}}" alt="foto stanza">
-        <!-- </div> -->
+        <img class="loading-spinner" [hidden]="item.loaded" src="../../../assets/images/loading-spinner.gif" />
+        <img class="insertion" [hidden]="!item.loaded" src="{{item.photo}}" (load)="item.loaded = true;"/>
         <div class="content">
           <div class="name">
             {{item.insertion.name}}
@@ -114,3 +113,6 @@
     </li>
   </ul>
 </div>
+
+
+<loading-indicator />

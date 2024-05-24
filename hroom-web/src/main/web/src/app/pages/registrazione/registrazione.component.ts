@@ -36,9 +36,9 @@ export class RegistrazioneComponent implements OnInit {
     if (this.registerform.valid) {
       this.request.username = this.id;
       this.request.name = this.name;
-      this.request.surname = 'Pippo'; //TODO
-      this.request.role = 'tenant'; //TODO
-      this.request.phoneNumber = '3339871212'; //TODO
+      this.request.surname = 'Pippo';
+      this.request.role = 'tenant';
+      this.request.phoneNumber = '3339871212';
       this.request.password = this.password;
       this.request.email = this.email;
       console.log(this.request);

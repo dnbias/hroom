@@ -15,7 +15,8 @@ ul li a{
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  color: #e72929;
+  /* color: #e72929; */
+  text-decoration: none !important;
 }
 li a:hover{
   opacity: 0.9;
@@ -26,6 +27,21 @@ li a:hover{
   position: relative;
   color: grey;
 }
+img.insertion {
+  /* width: 150px; */
+  /* height: 150px; */
+  object-fit: fill;
+  vertical-align: middle;
+  height: 250px;
+}
+
+img.loading-spinner {
+  /* width: 150px; */
+  /* height: 150px; */
+  object-fit: scale-down;
+  vertical-align: middle;
+}
+
 .favorite{
   position: absolute;
   top: .5rem;
@@ -77,4 +93,8 @@ svg{
 p{
 
   display: flex;
+}
+checkbox{
+    text-align:center;
+
 }

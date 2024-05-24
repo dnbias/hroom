@@ -2,21 +2,19 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { insertion } from "../../shared/models/insertion";
 import { Tag } from "../../shared/models/tags";
-import { environment } from "../../../environment/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class InsertionService {
 
-  apiEndPoint: string;
+
+  apiEndPoint:  string;
   constructor(private http: HttpClient) {
-    const proxy = environment.proxy_ip;
-    console.log('Proxy IP:', proxy);
     this.apiEndPoint = "/api/v1"
   }
 
-  saveInsertion(ins: insertion) {
+  saveInsertion(ins: any[]) {
     console.log('saveInsertion request');
     return this.http.post(this.apiEndPoint+'/insertion', ins);
   }
@@ -41,12 +39,9 @@ export class InsertionService {
     return this.http.get(this.apiEndPoint+'/insertion/'+id);
   }
 
-  uploadPhoto(data: any): any {
+  uploadPhoto(photo:File,id: number ): any {
     console.log('uploadPhoto request');
-    return this.http.put(this.apiEndPoint+'/insertion/photo', {
-      responseType: 'string', // the URI
-      data: data
-    });
+    return this.http.put(this.apiEndPoint+'/insertion/photo/'+id, photo);
   }
 
   downloadPhoto(id: any): any {
@@ -59,6 +54,10 @@ export class InsertionService {
   deletePhoto(id: any): any {
     console.log('downloadPhoto request');
     return this.http.delete(this.apiEndPoint+'/insertion/photo/'+id);
+  }
+
+  getAllTags(): string[] {
+    return Object.keys(Tag);
   }
 
 }

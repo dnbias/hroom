@@ -1,8 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {StanzaService} from "../../../../service/stanza/stanza.service";
-import {ActivatedRoute} from "@angular/router";
 import {stanze} from "../../../../shared/models/stanza";
+import { TagUtility } from '../../../../shared/models/tags';
 
 
 @Component({
@@ -16,10 +14,8 @@ export class ProjectCardComponent {
   @Input() stanza ={} as stanze;
 
 
-
-  constructor() {
+  constructor(public tagUtils: TagUtility) {
   }
-
 
 
 }

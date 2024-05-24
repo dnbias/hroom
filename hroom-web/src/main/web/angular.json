@@ -85,7 +85,7 @@
           "options": {
             "buildTarget": "move-safe:build",
             "proxyConfig": "proxy.conf.json"
-          }
+          },
           "configurations": {
             "production": {
               "buildTarget": "hroom-app:build:production"

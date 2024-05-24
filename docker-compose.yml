@@ -29,24 +29,11 @@ services:
     networks:
       - backend
 
-  tenant-microservice:
-    build:
-      context: ./hroom-server/tenant-service
-    image: dnbias/hroom:tenant-microservice
-    restart: on-failure
-    ports:
-      - "8082:8080"
-    container_name: tenant-microservice-app
-    depends_on:
-      - discovery-server-app
-    networks:
-      - backend
-
   admin-microservice:
     build:
       context: ./hroom-server/admin-service
     image: dnbias/hroom:admin-microservice
-    restart: on-failure
+    restart: never
     ports:
       - "8083:8080"
     container_name: admin-microservice-app
@@ -60,24 +47,11 @@ services:
     networks:
       - backend
 
-  landlord-microservice:
-    build:
-      context: ./hroom-server/landlord-service
-    image: dnbias/hroom:landlord-microservice
-    restart: on-failure
-    ports:
-      - "8084:8080"
-    container_name: landlord-microservice-app
-    depends_on:
-      - discovery-server-app
-    networks:
-      - backend
-
   insertion-microservice:
     build:
       context: ./hroom-server/insertion-service
     image: dnbias/hroom:insertion-microservice
-    restart: on-failure
+    restart: never
     ports:
       - "8085:8080"
     container_name: insertion-microservice-app
@@ -125,27 +99,14 @@ services:
     networks:
       - backend
 
-  feedback-tenant-microservice:
+  feedback-microservice:
     build:
-      context: ./hroom-server/feedback-tenant-service
-    image: dnbias/hroom:feedback-tenant-microservice
+      context: ./hroom-server/feedback-service
+    image: dnbias/hroom:feedback-microservice
     restart: on-failure
     ports:
       - "8089:8080"
-    container_name: feedback-tenant-microservice-app
-    depends_on:
-      - discovery-server-app
-    networks:
-      - backend
-
-  feedback-insertion-microservice:
-    build:
-      context: ./hroom-server/feedback-insertion-service
-    image: dnbias/hroom:feedback-insertion-microservice
-    restart: on-failure
-    ports:
-      - "8090:8080"
-    container_name: feedback-insertion-microservice-app
+    container_name: feedback-microservice-app
     depends_on:
       - discovery-server-app
     networks:

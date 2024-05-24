@@ -1,45 +1,70 @@
 
-<app-not-found [visible]="!stanza" notFoundMessage="Servizio non trovato!" resetLinkText="Vai alla Homepage"></app-not-found>
-<div *ngIf="stanza" class="container">
-    <img [src]="stanza.imageUrl" [alt]="stanza.nome"/>
+<app-not-found [visible]="!insertion" notFoundMessage="Servizio non trovato!" resetLinkText="Vai alla Homepage"></app-not-found>
+<div *ngIf="insertion" class="container">
+    <img class="loading-spinner" [hidden]="photoLoaded" src="../../../assets/images/loading-spinner.gif" />
+    <img [hidden]="!photoLoaded" [src]="this.photos[0]" [alt]="insertion.name" (load)="photoLoaded = true;"/>
 
     <div class="details">
         <div class="header">
         <span class="name">
-            {{stanza.nome}}
+            {{insertion.name}}
         </span>
-            <span class="favorite {{stanza.favorite?'':'not'}}">
+            <span class="favorite {{isFavorite?'':'not'}}">
             ♥
         </span>
         </div>
         <div class="valutazione">
-            Valutazione {{stanza.stelle}}
+            Valutazione {{stars}}
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
                 <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
             </svg>
-
         </div>
-
-
         <div class="luogo">
-        <span *ngFor="let luogo of stanza.luogo">
-            {{luogo}}
+        <span>
+            {{insertion.city}}
         </span>
         </div>
         <div class="tag">
-            <!--   <app-tag [stanzaPageTags]="stanza.tags" justifyContent="start"></app-tag>-->
+              <app-tag [tags]="this.tags" justifyContent="start"></app-tag>
         </div>
-        <div class="tempo-room">
-        <span>
-            tempo stanza minimo<strong>{{stanza.roomtime}}</strong>h
-        </span>
-        </div>
+        <!-- <div class="tempo-room"> -->
+        <!-- <span> -->
+        <!--     tempo stanza minimo<strong>{{stanza.roomtime}}</strong>h -->
+        <!-- </span> -->
+        <!-- </div> -->
         <div class="prezzo">
         <span>
-            {{stanza.prezzo | currency: 'EUR':true}}
+            {{insertion.price | currency: 'EUR':'symbol'}}
         </span>
         </div>
         <button (click)="addToCart()"> Prenota</button>
-
+    </div>
+    <div class="description">
+      <p>{{insertion.description}}</p>
+    </div>
+    <hr class="container-fluid">
+    <div class="feedbacks">
+      <ul class="feedbacks">
+        <li *ngFor="let fb of feedbacks">
+          <div class="fb-content">
+            <div class="fb-rating">
+              {{fb.rating}}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star-fill"
+              viewBox="0 0 16 16">
+              <path
+                d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+            </svg>
+            </div>
+            <p class="fb-description">
+              {{fb.description}}
+            </p>
+            <div class="fb-timestamp">
+              {{fb.timestamp}}
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
 </div>
+
+<loading-indicator />

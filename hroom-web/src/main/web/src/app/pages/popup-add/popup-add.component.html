@@ -1,0 +1,11 @@
+<button (click)="closePopup()">Chiudi</button>
+<div class="popup" *ngIf="showPopup">
+  <!-- Form per l'inserimento dei dati della stanza -->
+
+  <form (ngSubmit)="submitRoom()">
+    <!-- Campi del form -->
+    <p>ciao</p>
+
+    <button type="submit">Aggiungi Stanza</button>
+  </form>
+</div>

@@ -2,18 +2,15 @@
     <div class="card card-product-grid">
       <ul>
       <li>
+        <a  class="img-wrap"> <img src="{{insertionData.photoIds}}" class="img-rounded"  width="180" height="225" alt="Product"> </a>
+        <div class="info-wrap">
+        <a href="#" class="title text-truncate">{{insertionData.id}}</a>
+        <div class="prezzo">{{insertionData.price | currency:'EUR'}}</div>
 
-
-      <a  class="img-wrap"> <img src="{{room.imageUrl}}" class="img-rounded"  width="180" height="225" alt="Product"> </a>
-
-      <div class="info-wrap">
-        <a href="#" class="title text-truncate">{{room.id}}</a>
-        <div class="prezzo">{{room.prezzo | currency:'EUR'}}</div>
-
-        <button href="#"  class="btn btn-sm btn-light" (click)="modifica()">
+        <button href="#"  class="btn btn-sm btn-light" (click)="modificaI()">
           <i class="material-icons md-edit"></i>Modifica
         </button>
-        <button href="#"  class="btn btn-sm btn-outline-danger"(click)="cancella()">
+        <button href="#"  class="btn btn-sm btn-outline-danger"(click)="cancellaI()">
           <i class="material-icons md-delete_forever"></i>Elimina
         </button>
       </div>

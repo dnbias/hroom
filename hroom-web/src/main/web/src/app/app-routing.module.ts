@@ -26,35 +26,45 @@ import {BookingComponent} from "./pages/booking/booking.component";
 import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/rooms/rooms.component";
+import {UploadImagesComponent} from "./components/upload-images/upload-images.component";
+import {BookedComponent} from "./pages/booked/booked.component";
+import {PaymentComponent} from "./pages/payment/payment.component";
+import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 
 const routes: Routes = [
   //{path:'', component: LoginComponent},
-  {component:HomeComponent,path:'',canActivate:[AuthGuard]},
+  {
+    path:'',
+    redirectTo:'home',
+    pathMatch:'full'
+  },
+
   {path:'home', component:HomeComponent},
   {path:'login', component: LoginComponent},
   {path:'registrazione',component:RegistrazioneComponent},
-  {path:'welcome/:userid', component: WelcomeComponent},
-  {path: 'stanze', component: StanzeModificaComponent,canActivate:[RouteGuardService]},
+  {path:'welcome/:userid', component: WelcomeComponent,canActivate:[AuthGuard]},
+  {path: 'stanze', component: StanzeModificaComponent},
   {path: 'stanze/grid', component: GridStanzeComponent},
-  {path:'logout', component : LogoutComponent,canActivate:[RouteGuardService]},
+  {path:'logout', component : LogoutComponent,canActivate:[AuthGuard]},
   {path:'user',component:UserListComponent,canActivate:[AuthGuard]},
-  {path:'update',component:UpdatepopupComponent},
+  {path:'update',component:UpdatepopupComponent,canActivate:[AuthGuard]},
   {path:'tag/:tag',component:HomeComponent},
   {component:CustomerComponent,path:'customer',canActivate:[AuthGuard]},
   {path:'search/:searchItem',component:HomeComponent},
   {path: 'cart-page',component:CartPageComponent},
-  {path:'portfolio',component:PortfolioComponent},
+  {path:'portfolio',component:PortfolioComponent,canActivate:[AuthGuard]},
   {path:'booking',component:BookingComponent},
-  {path:'NewBook',component:NewBookingComponent},
-
-  {path:'prenotazioni',component:PrenotazioniComponent},
-  {path:'feedback', component:FeedbackComponent},
-  {path:'stanza/:id',component:StanzaPageComponent},
-  {path:'feed',component:WriteFeedbackComponent},
+  {path:'NewBook',component:NewBookingComponent,canActivate:[AuthGuard]},
+  {path:'prenotazioni',component:PrenotazioniComponent,canActivate:[AuthGuard]},
+  {path:'feedback', component:FeedbackComponent,canActivate:[AuthGuard]},
+  {path:'stanza/:id',component:StanzaPageComponent,canActivate:[AuthGuard]},
+  {path:'feed',component:WriteFeedbackComponent,canActivate:[AuthGuard]},
+  {path:'upload',component:UploadImagesComponent},
   {path:'room',component:RoomsComponent},
-
+  {path:'booked',component:BookedComponent,canActivate:[AuthGuard]},
+  {path:'payment',component:PaymentComponent,canActivate:[AuthGuard]},
+  {path:'popup',component:PopupAddComponent},
   {path:'**', component: ErrorComponent},
-
 ];
 
 @NgModule({

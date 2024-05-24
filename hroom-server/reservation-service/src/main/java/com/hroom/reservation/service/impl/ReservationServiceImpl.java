@@ -69,4 +69,32 @@ public class ReservationServiceImpl implements ReservationService {
         LOGGER.info("ReservationServiceImpl > deleteReservationById started");
         repository.deleteById(reservationId);
     }
+
+    @Autowired
+    CheckInRepository checkInRepository;
+    @Override
+    public CheckIn saveCheckIn(CheckIn checkIn) {
+        return checkInRepository.save(checkIn);
+    }
+
+    @Override
+    public List<CheckIn> fetchCheckInList() {
+        return (List<CheckIn>) checkInRepository.findAll();
+    }
+
+    @Override
+    public CheckIn updateCheckIn(CheckIn checkIn, Long checkInId) {
+        Optional<CheckIn> optional = checkInRepository.findById(checkInId);
+        if (optional.isEmpty()) {
+            return null;
+        }
+        CheckIn userDB = optional.get();
+        if (isSanitized(checkIn.getStartTime())) userDB.setStartTime(checkIn.getStartTime());
+        return checkInRepository.save(checkIn);
+    }
+
+    @Override
+    public void deleteCheckInById(Long checkInId) {
+
+    }
 }

@@ -44,19 +44,19 @@ export class AuthService {
   getRole(){
     return sessionStorage.getItem('role')!=null?sessionStorage.getItem('role')?.toString():'';
   }
-  getAllCustomer(){
-    return this.http.get('http://localhost:3000/customer');
-  }
+  // getAllCustomer(){
+  //   return this.http.get(this.apiEndPoint+/'user');
+  // }
   getAccessByRole(role:any,menu:any){
     return this.http.get('http://localhost:3000/roleaccess?role='+role+'&menu='+menu)
   }
 
 
-  loggedUser = (): string | null => (sessionStorage.getItem("User")) ? sessionStorage.getItem("Utente") : "";
+  loggedUser = (): string | null => (sessionStorage.getItem('username'));
 
-  isLogged = (): boolean => (sessionStorage.getItem("User")) ? true : false;
+  isLogged = (): boolean => (sessionStorage.getItem('username')) ? true : false;
 
-  clearUser = (): void => sessionStorage.removeItem("User");
+  clearUser = (): void => sessionStorage.removeItem('username');
 
   clearAll = (): void => sessionStorage.clear();
 }

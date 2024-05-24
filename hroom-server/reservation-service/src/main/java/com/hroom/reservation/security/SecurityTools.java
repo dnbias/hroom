@@ -14,4 +14,5 @@ public class SecurityTools {
     public static boolean isSanitized(Object O) {
         return Objects.nonNull(O);
     }
+
 }

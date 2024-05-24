@@ -1,0 +1,16 @@
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+form {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field {
+  margin-bottom: 20px;
+}

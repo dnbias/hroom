@@ -14,7 +14,7 @@ import {GridStanzeComponent} from "./pages/grid-stanze/grid-stanze.component";
 import {RegistrazioneComponent} from "./pages/registrazione/registrazione.component";
 import {NotificationsComponent} from "./core/notifications/notifications.component";
 import {LogoutComponent} from "./pages/logout/logout.component";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatFormField, MatFormFieldModule} from "@angular/material/form-field";
 import {MatCard, MatCardContent, MatCardHeader} from "@angular/material/card";
@@ -37,10 +37,12 @@ import {ProjectCardComponent} from "./pages/welcome/portfolio/project-card/proje
 import {NavComponent} from "./core/nav/nav.component";
 import {PrenotazioniComponent} from "./pages/welcome/prenotazioni/prenotazioni.component";
 import {FeedbackComponent} from "./pages/welcome/feedback/feedback.component";
+import { LoadingComponent } from "./service/loading/loading.component";
 import {BookingComponent} from "./pages/booking/booking.component";
 import {MatButton, MatButtonModule} from "@angular/material/button";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatInput, MatInputModule} from "@angular/material/input";
+// import {AsyncPipe} from "@angular/material/progress-spinner";
 // import dotenv from 'dotenv';
 
 import {
@@ -59,6 +61,10 @@ import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.comp
 import { jqxRatingModule }    from 'jqwidgets-ng/jqxrating';
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/rooms/rooms.component";
+import { LoadingInterceptor } from './service/loading/loading.interceptor';
+import {BookedComponent} from "./pages/booked/booked.component";
+import {PaymentComponent} from "./pages/payment/payment.component";
+import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 
 @NgModule({
   declarations: [
@@ -91,7 +97,9 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
     WriteFeedbackComponent,
     NewBookingComponent,
     RoomsComponent,
-
+    BookedComponent,
+    PaymentComponent,
+    PopupAddComponent,
   ],
   imports: [
     CommonModule,
@@ -119,15 +127,16 @@ import {RoomsComponent} from "./pages/rooms/rooms.component";
     MatDatepickerModule,
     MatFormFieldModule,
     DataComponent,
-    // dotenv
     jqxGridModule, jqxWindowModule, jqxChartModule,jqxRatingModule,
-
+    LoadingComponent,
 
 //!!per collegare la parte di login al welcome
 
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    { provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor, multi:true }
   ],
   exports: [
     TagComponent

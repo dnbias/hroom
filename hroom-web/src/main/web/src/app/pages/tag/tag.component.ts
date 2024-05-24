@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {StanzaService} from "../../service/stanza/stanza.service";
-import {Tag} from "../../shared/models/tags"
+import {Tag, TagUtility} from "../../shared/models/tags"
 @Component({
   selector: 'app-tag',
 
@@ -8,17 +7,13 @@ import {Tag} from "../../shared/models/tags"
   styleUrl: './tag.component.css'
 })
 export class TagComponent implements OnInit{
-  @Input()  stanzaPageTags?:string[];
-  @Input() tags?:Tag[]=[];
-  @Input()  justifyContent?:string = 'center';
+  @Input() tags?:string[];
+  @Input() justifyContent?:string = 'center';
 
-
-
-  constructor(private ss :StanzaService) {}
+  constructor(public tagUtil: TagUtility) {}
 
   ngOnInit(): void {
-    if(!this.stanzaPageTags)
-      this.tags = this.ss.getAllTag();
-
+    if(!this.tags)
+      this.tags = this.tagUtil.getAllTags();
   }
 }

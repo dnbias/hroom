@@ -6,7 +6,14 @@
       <div>
         <a href="#" class="btn btn-light">Esporta</a>
         <a href="#" class="btn btn-light">Importa</a>
-        <a href="#" class="btn btn-primary">Aggiungi</a>
+
+
+        <a href="#" class="btn btn-primary" (click)="openPopup()">Aggiungi</a>
+        <!-- Aggiungi l'ascoltatore dell'evento nel selettore del componente popup -->
+
+        <app-popup-add *ngIf="showPopup" (close)="closePopup()"></app-popup-add>
+
+
       </div>
     </div>
 

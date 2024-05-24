@@ -5,6 +5,8 @@ import {StanzeService} from "../../../services/stanze.service";
 import {IStanze} from "../../models/Stanze";
 import {stanze} from "../../shared/models/stanza";
 import{StanzaService} from "../../service/stanza/stanza.service";
+import {insertion} from "../../shared/models/insertion";
+import {InsertionService} from "../../service/insertion/insertion.service";
 
 @Component({
   selector: 'app-grid-stanze',
@@ -14,11 +16,13 @@ import{StanzaService} from "../../service/stanza/stanza.service";
 export class GridStanzeComponent implements OnInit{
     stanze$: IStanze[]=[];
     room$: stanze[]=[];
+    insert$:insertion[]=[];
+    in$:insertion[]=[];
 
-
-  constructor(private stanzeService: StanzeService, private rs: StanzaService) { }
+  constructor(private stanzeService: StanzeService, private rs: StanzaService, private ins: InsertionService) { }
 
   ngOnInit(): void {
+
       this.stanze$=this.stanzeService.getStanze();
       console.log(this.stanze$);
       this.room$=this.rs.getAll();
@@ -42,5 +46,15 @@ export class GridStanzeComponent implements OnInit{
         console.log(this.stanze$);
   }
 
+  showPopup: boolean = false;
 
+  // Metodo per aprire il popup
+  openPopup() {
+    this.showPopup = true;
+  }
+
+  // Metodo per chiudere il popup
+  closePopup() {
+    this.showPopup = false;
+  }
 }

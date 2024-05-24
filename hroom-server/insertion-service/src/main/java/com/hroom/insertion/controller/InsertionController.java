@@ -37,7 +37,7 @@ public class InsertionController {
         return service.saveInsertion(insertion);
     }
 
-    @GetMapping("/insertion")
+    @GetMapping("/insertion" )
     public List<Insertion> fetchInsertionList() {
         LOGGER.info("InsertionController > fetchInsertionList started");
         LOGGER.info("InsertionController > fetchInsertionList");
@@ -79,20 +79,23 @@ public class InsertionController {
         return "Deleted Successfully";
     }
 
-    @PutMapping("/inseriton/photo")
-    public ResponseEntity<Long> uploadPhoto(byte[] image) {
+    @PutMapping("/insertion/photo/{roomId}")
+    public ResponseEntity<Long> uploadPhoto(@PathVariable("roomId") Long roomId, @RequestBody byte[] image) {
         LOGGER.info("InsertionController > uploadPhoto started");
         Long id = null;
-
         try {
-            id = service.uploadPhoto(image);
-        } catch (IOException e) {
+            id = service.uploadPhoto(roomId,image);
+        } catch (IOException | MissingInsertionException e ) {
             LOGGER.error("InsertionController > uploadPhoto > IOException caught");
             LOGGER.error(e.getMessage());
             ResponseEntity.internalServerError().body("Upload Failed");
         }
 
         return ResponseEntity.ok(id);
+    }
+    @GetMapping("/insertion/test")
+    public String test(){
+        return "ciao";
     }
 
     @GetMapping("/insertion/photo/{id}")
