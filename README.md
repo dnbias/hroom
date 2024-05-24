@@ -2,13 +2,13 @@
 Project for TAAS course UniTo 2023/24
 ## Class Diagram
 <img title="class diagram" src="./docs/class_diagram.drawio.png">
-## To Start the Project
 
+## Starting the Project
 ``` bash
 ❯ minikube start
 ```
 
-Install Kong to manage the gateway[^1]:
+Install Kong[^1] to manage the gateway:
 ``` bash
 ❯ kubectl apply -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.0.0/standard-install.yaml
 ❯ helm repo add kong https://charts.konghq.com
@@ -32,7 +32,11 @@ Check the status of the deployments:
 ```
 
 The web-app is accessible at http://localhost:8888.
-Services are accessible through the kong gateway at ~http://localhost:8888/api/v1/<api-name>~
+Services are accessible through the kong gateway at ~http://localhost:8888/api/v1/...
+Test them with curl:
+``` bash
+curl -v http://localhost:8888/api/v1/insertion
+```
 
 [^1]: See https://docs.konghq.com/kubernetes-ingress-controller/latest/get-started/
 
