@@ -36,27 +36,13 @@ export class UserService {
     return throwError('Something bad happened; please try again later.');
   }
 
-/*
-  fetchUserList() {
-    return this.http.get(this.apiEndPoint + '/signup');
 
-  }*/
-  fetchUserList(): Observable<User[]> {
-    return this.http.get<User[]>(this.apiEndPoint + '/signup')
-      .pipe(
+    fetchUserList():any {
+      return this.http.get(this.apiEndPoint + '/user').pipe(
         catchError(this.handleError)
       );
-  }
 
-  // Metodo per eliminare un utente tramite ID
-  deleteUserById(userId: number): Observable<void> {
-    console.log('delete user request: id=' + userId);
-    return this.http.delete<void>(this.apiEndPoint + '/user/' + userId)
-      .pipe(
-        catchError(this.handleError)
-      );
-  }
-
+    }
 
   updateUser(user: User, userId: number):any {
     return this.http.put<User>(this.apiEndPoint+'/signup/',userId);
@@ -64,11 +50,13 @@ export class UserService {
   }
 
 
-  /*deleteUserById(userId: number) {
+  deleteUserById(userId: number):any {
     console.log('delete user request: id='+userId);
-    return this.http.delete(this.apiEndPoint+'/user/'+userId);
+    return this.http.delete(this.apiEndPoint+'/user/'+userId).pipe(
+      catchError(this.handleError)
+    );
   }
-*/
+
   banUserById(userId: number) {
     console.log('Ban user request: id='+userId);
     return this.http.delete(this.apiEndPoint+'/user/ban/'+userId);

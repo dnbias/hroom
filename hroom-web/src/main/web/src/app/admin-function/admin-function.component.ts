@@ -14,24 +14,23 @@ export class AdminFunctionComponent {
 
 
   users: User[] = [];
-
+  utentilista:User[]=[];
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-  //  this.loadUsers();
+    this.loadUsers();
   }
 
   loadUsers(): void {
     this.userService.fetchUserList().subscribe(
-      (data: User[]) => {
-        this.users = data;
+      (userslista) => {
+        this.users=userslista;
       },
       error => {
         console.error('Error fetching user list', error);
       }
     );
   }
-
   deleteUser(userId: number): void {
     this.userService.deleteUserById(userId).subscribe(
       () => {
