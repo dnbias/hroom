@@ -1,66 +1,63 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import {AuthService} from '../../service/auth.service'
 import { ToastrService } from 'ngx-toastr'
 import { registrationRequest } from '../../shared/models/registrationRequest';
+import {UserService} from "../../service/user/user.service";
+import {SignUpRequest} from "../../shared/models/signUpRequest";
 
 @Component({
   selector: 'app-registrazione',
   templateUrl: './registrazione.component.html',
   styleUrls: ['./registrazione.component.css']
 })
+
+
+
+
 export class RegistrazioneComponent implements OnInit {
+  registerForm: FormGroup;
 
-  constructor(private builder: FormBuilder, private service: AuthService, private router: Router,
-              private toastr: ToastrService) {
-
+  constructor(private fb: FormBuilder, private userService: UserService,private router: Router) {
+    this.registerForm = this.fb.group({
+      username: ['', Validators.required],
+      telefono: ['', Validators.required],
+      cognome: ['', Validators.required],
+      name: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      role: ['', Validators.required]
+    });
   }
 
-  request: registrationRequest = new registrationRequest();
-
-  registerform = this.builder.group({
-    id: this.builder.control('', Validators.compose([Validators.required, Validators.minLength(5)])),
-    name: this.builder.control('', Validators.required),
-    password: this.builder.control('', Validators.compose([
-      Validators.required,
-      Validators.minLength(8)])),
-    email: this.builder.control('', Validators.compose([
-      Validators.required, Validators.email])),
-    gender: this.builder.control('male'),
-    role: this.builder.control(''),
-    isactive: this.builder.control(false)
-  });
+  ngOnInit(): void {}
 
   proceedRegister() {
-    if (this.registerform.valid) {
-      this.request.username = this.id;
-      this.request.name = this.name;
-      this.request.surname = 'Pippo';
-      this.request.role = 'tenant';
-      this.request.phoneNumber = '3339871212';
-      this.request.password = this.password;
-      this.request.email = this.email;
-      console.log(this.request);
-      this.service.registerUser(this.request).subscribe(result => {
-        console.log(result);
-        this.toastr.success('Registered successfully')
-        this.router.navigate(['login'])
-      });
+    if (this.registerForm.valid) {
+      const user: SignUpRequest = {
+        username: this.registerForm.value.username,
+        phoneNumber: this.registerForm.value.telefono,
+        surname: this.registerForm.value.cognome,
+        name: this.registerForm.value.name,
+        password: this.registerForm.value.password,
+        email: this.registerForm.value.email,
+        provider: '', // Puoi settarlo se necessario
+        role: this.registerForm.value.role
+      };
+
+      this.userService.saveUser(user).subscribe(
+        response => {
+          console.log('User saved successfully', response);
+          this.router.navigate(['']);
+        },
+        error => {
+          console.error('Error saving user', error);
+        }
+      );
     } else {
-      this.toastr.warning('Please enter valid data.')
+      console.error('Form is invalid');
     }
   }
-
-  ngOnInit(): void {
-  }
-
-  get id() { return this.registerform.value?.id; }
-
-  get name() { return this.registerform.value?.name; }
-
-  get password() { return this.registerform.value?.password; }
-
-  get email() { return this.registerform.value?.password; }
-
 }
+

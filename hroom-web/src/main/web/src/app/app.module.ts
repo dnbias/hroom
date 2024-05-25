@@ -10,7 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import {StanzeCardComponent} from "./components/stanze-card/stanze-card.component";
-import {GridStanzeComponent} from "./pages/grid-stanze/grid-stanze.component";
+
 import {RegistrazioneComponent} from "./pages/registrazione/registrazione.component";
 import {NotificationsComponent} from "./core/notifications/notifications.component";
 import {LogoutComponent} from "./pages/logout/logout.component";
@@ -22,8 +22,7 @@ import {MatRadioButton, MatRadioGroup} from "@angular/material/radio";
 import {MaterialModule} from "../material.module";
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {UpdatepopupComponent} from "./pages/updatepopup/updatepopup.component";
-import {UserListComponent} from "./pages/user-list/user-list.component";
+
 import {CustomerComponent} from "./pages/customer/customer.component";
 import {TagComponent} from "./pages/tag/tag.component";
 import {SearchComponent} from "./pages/search/search.component";
@@ -64,11 +63,12 @@ import {jqxRatingModule}    from 'jqwidgets-ng/jqxrating';
 
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
 import {RoomsComponent} from "./pages/rooms/rooms.component";
-import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
+
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
 import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 import { LoadingInterceptor } from './service/loading/loading.interceptor';
+import {AdminFunctionComponent} from "./admin-function/admin-function.component";
 // import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
 
 
@@ -80,11 +80,10 @@ import { LoadingInterceptor } from './service/loading/loading.interceptor';
     ErrorComponent,
     StanzeComponent,
     LogoutComponent,
-    GridStanzeComponent,
+
     StanzeCardComponent,
     RegistrazioneComponent,
-    UpdatepopupComponent,
-    UserListComponent,
+
     CustomerComponent,
     TagComponent,
     HomeComponent,
@@ -100,13 +99,15 @@ import { LoadingInterceptor } from './service/loading/loading.interceptor';
     PrenotazioniComponent,
     FeedbackComponent,
     StanzeCardComponent,
-    WriteFeedbackComponent,
     NewBookingComponent,
     RoomsComponent,
     BookedComponent,
     PaymentComponent,
-    PopupAddComponent,
+
+    AdminFunctionComponent,
+
     // ListaUtentiComponent,
+
   ],
   imports: [
     CommonModule,
@@ -137,7 +138,7 @@ import { LoadingInterceptor } from './service/loading/loading.interceptor';
     jqxButtonModule,
     jqxGridModule, jqxWindowModule,
     jqxChartModule, jqxRatingModule,
-    LoadingComponent
+    LoadingComponent,
   ],
   providers: [
     provideAnimationsAsync(),

@@ -1,55 +1,41 @@
-
 <mat-card>
   <mat-card-header>
     <h2>Registrazione</h2>
   </mat-card-header>
   <mat-card-content>
-    <form class="login-form" [formGroup]="registerform" (ngSubmit)="proceedRegister()" >
+    <form class="login-form" [formGroup]="registerForm" (ngSubmit)="proceedRegister() ">
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
-        <input matInput formControlName="id" >
+        <input matInput formControlName="username">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Numero di Telefono</mat-label>
-        <input matInput formControlName="telefono" >
+        <input matInput formControlName="telefono">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Cognome</mat-label>
-        <input matInput formControlName="cogname" >
+        <input matInput formControlName="cognome">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Name</mat-label>
-        <input matInput formControlName="name" >
+        <input matInput formControlName="name">
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password" >
+        <input matInput type="password" formControlName="password">
       </mat-form-field>
       <mat-form-field class="example-full-width">
         <mat-label>Email</mat-label>
-        <input matInput formControlName="email" >
+        <input matInput formControlName="email">
       </mat-form-field>
-      <br>
-
-      <mat-radio-group formControlName="gender" aria-label="Select an option">
-        <mat-radio-button value="male">Male</mat-radio-button>
-        <mat-radio-button value="female">Female</mat-radio-button>
-      </mat-radio-group>
-      <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Data di Nascita</mat-label>
-        <input type="" matInput formControlName="datan" >
-      </mat-form-field>
-
       <br>
       <mat-radio-group formControlName="role" aria-label="Select an option">
-        <mat-radio-button value="male">Landlord</mat-radio-button>
-        <mat-radio-button value="female">Tenant</mat-radio-button>
+        <mat-radio-button value="Landlord">Landlord</mat-radio-button>
+        <mat-radio-button value="Tenant">Tenant</mat-radio-button>
       </mat-radio-group>
       <div>
-
-        <button  mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button color="primary" type="submit" routerLink="/home">Submit</button>
         <a routerLink="/login" mat-raised-button color="accent">Back to Login</a>
         <br>
         <div id="g_id_onload"
@@ -59,7 +45,6 @@
              data-login_uri="http://localhost:8888/api/v1/signup"
              data-itp_support="true">
         </div>
-
         <div class="g_id_signin"
              data-type="icon"
              data-shape="square"
@@ -69,8 +54,6 @@
              data-locale="en">
         </div>
       </div>
-
     </form>
   </mat-card-content>
 </mat-card>
-
