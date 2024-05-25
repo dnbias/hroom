@@ -13,10 +13,17 @@ import com.hroom.user.exception.MissingUserException;
 import com.hroom.user.repository.UserRepository;
 import com.hroom.user.service.KeycloakService;
 import com.hroom.user.service.UserService;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,14 +34,27 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 @Transactional
+@RabbitListener(queues = "${queue.name}")
 public class UserServiceImpl implements UserService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
-
+    @Value("${queue.name}")
+    private String queue;
+    // @Value("${spring.rabbitmq.template.exchange}")
+    // private String exchange;
+    // @Value("${spring.rabbitmq.template.routing-key}")
+    // private String routingkey;
     @Autowired
     private final UserRepository repository;
     // private final KeycloakService keycloakService;
+    // private Channel channel;
 
+    @RabbitHandler
+    public void receiver(Long userId) {
+        LOGGER.info("userId listener invoked - Consuming Message w/ Identifier : " + userId);
+        repository.deleteById(userId);
+        LOGGER.info("Deleted user: " + userId);
+    }
     @Override
     public List<User> fetchUserList() {
         LOGGER.info("UserServiceImpl | fetchUserList is started");
@@ -76,7 +96,7 @@ public class UserServiceImpl implements UserService {
             LOGGER.info("UserServiceImpl | signUpUser | status : " + status);
 
             User signUpUser = UserMapper.signUpRequestToUser(signUpRequest);
-            signUpUser.setCreatedAt(LocalDateTime.now());
+            signUpUser.setCreatedAt(LocalDateTime.now().toString());
             LOGGER.info("UserServiceImpl | signUpUser | user : " + signUpUser.getUsername());
             LOGGER.info("UserServiceImpl | signUpUser | password : " + signUpUser.getPassword());
             LOGGER.info("UserServiceImpl | signUpUser | name : " + signUpUser.getName());
@@ -146,7 +166,7 @@ public class UserServiceImpl implements UserService {
             User newUser = new Tenant();
             newUser.setUsername(username);
             newUser.setProvider(Provider.GOOGLE);
-            newUser.setCreatedAt(LocalDateTime.now());
+            newUser.setCreatedAt(LocalDateTime.now().toString());
 
             repository.save(newUser);
         }

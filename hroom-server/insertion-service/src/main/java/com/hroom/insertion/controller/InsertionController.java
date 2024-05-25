@@ -2,6 +2,8 @@ package com.hroom.insertion.controller;
 
 import com.hroom.insertion.entity.Insertion;
 import com.hroom.insertion.service.InsertionService;
+import com.hroom.insertion.service.RabbitMQInsertionService;
+import com.hroom.insertion.service.RabbitMQPhotoService;
 import com.hroom.insertion.exception.MissingInsertionException;
 import com.hroom.insertion.exception.MissingPhotoException;
 
@@ -28,6 +30,10 @@ public class InsertionController {
 
     @Autowired
     private InsertionService service;
+    @Autowired
+    private RabbitMQInsertionService insertionmq;
+    @Autowired
+    private RabbitMQPhotoService photomq;
 
     @PostMapping("/insertion")
     public Insertion saveInsertion(@Valid @RequestBody Insertion insertion) {

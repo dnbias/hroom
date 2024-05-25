@@ -8,6 +8,8 @@ import com.hroom.insertion.entity.Photo;
 import com.hroom.insertion.exception.MissingInsertionException;
 import com.hroom.insertion.exception.MissingPhotoException;
 
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

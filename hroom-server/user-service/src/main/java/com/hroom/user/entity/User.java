@@ -42,7 +42,7 @@ public class User extends IdBasedEntity implements Serializable {
     @Column (nullable = false)
     private String email;
     @Column
-    private LocalDateTime createdAt;
+    private String createdAt;
     //
     // oauth2
     @Enumerated(EnumType.STRING)

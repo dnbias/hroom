@@ -22,10 +22,14 @@ public class AdminServiceImpl implements AdminService {
     private String exchange;
     @Value("${spring.rabbitmq.template.routing-key}")
     private String routingkey;
-    private final String routingkeyPhoto="photo-routing";
-    private final String routingkeyInsertion="photo-insertion";
-    private final String exchangePhoto="photo-exchange";
-    private final String exchangeInsertion="insertion-exchange";
+    @Value("${spring.rabbitmq.template.photo.routing-key}")
+    private String routingkeyPhoto;
+    @Value("${spring.rabbitmq.template.insertion.routing-key}")
+    private String routingkeyInsertion;
+    @Value("${spring.rabbitmq.template.photo.exchange}")
+    private String exchangePhoto;
+    @Value("${spring.rabbitmq.template.insertion.exchange}")
+    private String exchangeInsertion;
 
 
     private static final String USER_BASE_URL = "http://user-microservice/api/v1";

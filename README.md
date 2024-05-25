@@ -21,7 +21,7 @@ Port-forward for ease of access:
 ❯ kubectl port-forward services/kong-gateway-proxy -n kong 8888:80 & &>/dev/null
 ```
 
-Install rabbitmq:
+Install rabbitmq:[^2]
 ``` bash
 ❯ kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml"
 ```
@@ -29,6 +29,11 @@ Install rabbitmq:
 Apply all the kubernetes files:
 ``` bash
 ❯ kubectl apply -f kubernetes
+```
+
+Port-forward rabbitmq to access the dashboard:
+``` bash
+❯ kubectl port-forward "service/hroom-mq" 15672 &
 ```
 
 Check the status of the deployments:
@@ -52,7 +57,7 @@ You can scale the deployments using the script ```scale-deployments```.
 ```
 
 [^1]: See https://docs.konghq.com/kubernetes-ingress-controller/latest/get-started/
-
+[^2]: See https://www.rabbitmq.com/kubernetes/operator/install-operator
 ## Building
 To build the modules use the docker-compose like so:
 ``` bash
