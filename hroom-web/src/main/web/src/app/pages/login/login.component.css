@@ -45,4 +45,6 @@
   margin-top: 3%;
 }
 
-
+.mat-mdc-form-field {
+  display: inline;
+}

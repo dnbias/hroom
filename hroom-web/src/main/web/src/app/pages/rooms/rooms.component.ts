@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {InsertionService} from "../../service/insertion/insertion.service"
 import {HttpClient} from "@angular/common/http";
 import {insertion} from "../../shared/models/insertion";
@@ -15,6 +15,7 @@ export class RoomsComponent implements OnInit {
 
   insertionList: any[] = [];
   tagLists: any[] = [];
+  file: any=null;
 
   insertionData: insertion = {
     "insertion_type": 'room',
@@ -33,10 +34,10 @@ export class RoomsComponent implements OnInit {
     "availabilityId": 0,
   };
   availableTags: string[] = [
-    'BATHROOM', 'HYDROMASSAGE', 'WHEELCHAIR_ACCESS', 'SPA', 'ALLINCLUSIVE',
-    'CENTER', 'APARTMENT', 'ROOM', 'PRIVATEBATHROOM', 'SEA', 'MONTAIN',
-    'MAISON', 'PARKING', 'AIRCONDITIONER', 'BREAKFAST', 'GYM', 'CLEAN',
-    'MASSAGE', 'FREEZER', 'TV', 'WC', 'MINIBAR', 'BIDET'
+    // 'BATHROOM', 'HYDROMASSAGE', 'WHEELCHAIR_ACCESS', 'SPA', 'ALLINCLUSIVE',
+    // 'CENTER', 'APARTMENT', 'ROOM', 'PRIVATEBATHROOM', 'SEA', 'MONTAIN',
+    // 'MAISON', 'PARKING', 'AIRCONDITIONER', 'BREAKFAST', 'GYM', 'CLEAN',
+    // 'MASSAGE', 'FREEZER', 'TV', 'WC', 'MINIBAR', 'BIDET'
   ];
   ins = {
     tags: [] as string[]
@@ -85,7 +86,7 @@ export class RoomsComponent implements OnInit {
 
   ngOnInit(): void {
     this.availableTags = this.tagUtility.getAllTags();
-    this.testPhotoUpload();
+    // this.testPhotoUpload();
   }
 
   getAllRooms() {
@@ -96,7 +97,9 @@ export class RoomsComponent implements OnInit {
   }
 
   saveRooms() {
+    console.log("saveRooms")
     this.insertionList.forEach((item, index) => {
+      // this.uploadPhoto(this.photoFile);
       item.tags = this.tagLists[index];
       this.svc.saveInsertion(item).subscribe((res: any) => {
         if (res.result) {
@@ -141,9 +144,16 @@ export class RoomsComponent implements OnInit {
     })
   }
 
-  uploadPhoto(event: any, index: number) {
-    const file = event.target.files[0];
+  @HostListener('change', ['$event.target.files']) emitFiles( event: FileList ) {
+    const file = event && event.item(0);
+    this.file = file;
+    console.log(file);
+    this.uploadPhoto(file, 0)
+  }
+
+  uploadPhoto(file: any, index: number) {
     if (file) {
+      console.log(file);
       this.svc.uploadPhoto(file).subscribe((res: any) => {
         console.log(res);
         if (res.status === 200 || res.status === 201) {
@@ -157,11 +167,9 @@ export class RoomsComponent implements OnInit {
     }
   }
 
-  testPhotoUpload() {
-    console.log('Testing upload w/ test.png')
-    this.http.get('assets/images/test.png', {responseType: 'blob'})
-      .subscribe(res => {
-        this.uploadPhoto(res, 0);
-      });
-  }
+  // testPhotoUpload() {
+  //   console.log('Testing upload w/ test.png')
+  //   const ph = fs.readFileSync('../../../assets/images/test.jpeg')
+  //   this.uploadPhoto(ph, 0);
+  // }
 }

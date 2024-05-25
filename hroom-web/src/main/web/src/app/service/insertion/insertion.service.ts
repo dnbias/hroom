@@ -47,10 +47,8 @@ export class InsertionService {
     });
   }*/
   uploadPhoto(file: any): any {
-    const formData: FormData = new FormData();
-    formData.append('file', file);
     console.log('uploadPhoto request');
-    return this.http.put(this.apiEndPoint + '/insertion/photo', formData, {
+    return this.http.put(this.apiEndPoint + '/insertion/photo', file, {
       responseType: 'text' // Expecting a string response (token/URI)
     });
   }

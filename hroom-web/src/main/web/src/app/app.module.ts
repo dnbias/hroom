@@ -63,7 +63,7 @@ import {jqxButtonModule} from 'jqwidgets-ng/jqxbuttons';
 import {jqxRatingModule}    from 'jqwidgets-ng/jqxrating';
 
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
-import {RoomsComponent} from "./pages/rooms/rooms.component";
+import { RoomsComponent } from './pages/rooms/RoomsComponent';
 import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";

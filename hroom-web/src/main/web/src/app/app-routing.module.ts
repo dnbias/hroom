@@ -25,7 +25,7 @@ import {StanzaPageComponent} from "./pages/stanza-page/stanza-page.component";
 import {BookingComponent} from "./pages/booking/booking.component";
 import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 import {NewBookingComponent} from "./pages/new-booking/new-booking.component";
-import {RoomsComponent} from "./pages/rooms/rooms.component";
+import { RoomsComponent } from './pages/rooms/RoomsComponent';
 import {UploadImagesComponent} from "./components/upload-images/upload-images.component";
 import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
