@@ -43,5 +43,16 @@ export class AdminFunctionComponent {
     );
   }
 
+  banUser(userId: number): void {
+    this.userService.deleteUserById(userId).subscribe(
+      () => {
+        console.log('User deleted successfully');
+        this.loadUsers();
+      },
+      error => {
+        console.error('Error deleting user', error);
+      }
+    );
+  }
 
 }
