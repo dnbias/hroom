@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {User} from "../shared/models/user";
-import {UserService} from "../service/user/user.service";
-import {SignUpRequest} from "../shared/models/signUpRequest";
+import {AdminService} from "../service/admin/admin.service";
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-admin-function',
@@ -10,19 +10,17 @@ import {SignUpRequest} from "../shared/models/signUpRequest";
   styleUrl: './admin-function.component.css'
 })
 export class AdminFunctionComponent {
-
-
-
   users: User[] = [];
   utentilista:User[]=[];
-  constructor(private userService: UserService) { }
+  constructor(private svcUser: UserService,
+              private svcAdmin: AdminService) { }
 
   ngOnInit(): void {
     this.loadUsers();
   }
 
   loadUsers(): void {
-    this.userService.fetchUserList().subscribe(
+    this.svcUser.fetchUserList().subscribe(
       (userslista) => {
         this.users=userslista;
       },
@@ -31,26 +29,14 @@ export class AdminFunctionComponent {
       }
     );
   }
-  deleteUser(userId: number): void {
-    this.userService.deleteUserById(userId).subscribe(
-      () => {
-        console.log('User deleted successfully');
-        this.loadUsers();
-      },
-      error => {
-        console.error('Error deleting user', error);
-      }
-    );
-  }
 
-  banUser(userId: number): void {
-    this.userService.deleteUserById(userId).subscribe(
-      () => {
-        console.log('User deleted successfully');
+  banUser(userId: number, i: number): void {
+    this.svcAdmin.banUserById(userId).subscribe(
+      res => {
+        console.log(res)
+        console.log('User banned successfully');
+        this.users.splice(i, 1);
         this.loadUsers();
-      },
-      error => {
-        console.error('Error deleting user', error);
       }
     );
   }

@@ -16,7 +16,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users">
+    <tr *ngFor="let user of users; let i = index">
       <td>{{ user.id }}</td>
       <td>{{ user.name }}</td>
       <td>{{ user.surname }}</td>
@@ -27,7 +27,7 @@
       <td>{{ user.role }}</td>
       <td>{{ user.phoneNumber }}</td>
       <td>
-        <button class="btn btn-danger btn-sm" (click)="banUser(user.id)">Delete</button>
+        <button class="btn btn-danger btn-sm" (click)="banUser(user.id, i)">Delete</button>
       </td>
     </tr>
     </tbody>
