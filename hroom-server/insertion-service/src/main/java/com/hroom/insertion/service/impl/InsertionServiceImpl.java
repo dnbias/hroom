@@ -96,9 +96,10 @@ public class InsertionServiceImpl implements InsertionService {
 
         Photo photo = new Photo();
         photo.setData(data);
-        Long id = photo.getId();
 
-        photoRepository.save(photo);
+        Photo savedObj = photoRepository.save(photo);
+        Long id = savedObj.getId();
+
         LOGGER.info("InsertionServiceImpl > uploadPhoto > file written to DB");
         LOGGER.info("InsertionServiceImpl > uploadPhoto > id: " + id);
 

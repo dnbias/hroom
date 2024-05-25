@@ -1,19 +1,11 @@
 package com.hroom.admin.service;
 
-import com.hroom.admin.entity.Admin;
-import com.hroom.admin.exception.MissingUserException;
-
-import org.springframework.http.ResponseEntity;
-import java.util.List;
-
 public interface AdminService {
-    Admin saveAdmin(Admin admin);
 
-    List<Admin> fetchAdminList();
+    public String deleteInsertionById(Long insId);
 
-    Admin updateAdmin(Admin admin, Long userId) throws MissingUserException;
+    public String deletePhotoById(Long photoId);
 
-    void deleteAdminById(Long userId);
+    public String banUserById(Long userId);
 
-    public ResponseEntity<?> banUserById(Long userId);
 }

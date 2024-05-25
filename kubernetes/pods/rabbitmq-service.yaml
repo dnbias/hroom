@@ -17,3 +17,4 @@ spec:
       targetPort: 15672
   selector:
     io.kompose.service: rabbitmq
+  type: NodePort

@@ -139,6 +139,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void processOAuthPostLogin(String username) {
+        LOGGER.info("UserServiceImpl | processOAuthPostLogin");
         List<User> existUser = repository.findByUsername(username);
 
         if (existUser.isEmpty()) {

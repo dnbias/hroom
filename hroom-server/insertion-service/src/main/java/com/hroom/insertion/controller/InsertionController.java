@@ -79,8 +79,8 @@ public class InsertionController {
         return "Deleted Successfully";
     }
 
-    @PutMapping("/inseriton/photo")
-    public ResponseEntity<Long> uploadPhoto(byte[] image) {
+    @PutMapping(value = "/insertion/photo", consumes = {"image/jpeg", "image/png"})
+    public ResponseEntity<Long> uploadPhoto(@RequestBody byte[] image) {
         LOGGER.info("InsertionController > uploadPhoto started");
         Long id = null;
 
@@ -109,9 +109,6 @@ public class InsertionController {
             LOGGER.error(e.getMessage());
             ResponseEntity.internalServerError().body("Download Failed: photo not found");
         }
-        // String encodedImage = Base64.encode(data);
-        // HttpHeaders headers = new HttpHeaders();
-        // headers.setContentType(MediaType.IMAGE_JPEG);
 
         return ResponseEntity
                 .ok()

@@ -21,6 +21,11 @@ Port-forward for ease of access:
 ❯ kubectl port-forward services/kong-gateway-proxy -n kong 8888:80 & &>/dev/null
 ```
 
+Install rabbitmq:
+``` bash
+❯ kubectl apply -f "https://github.com/rabbitmq/cluster-operator/releases/latest/download/cluster-operator.yml"
+```
+
 Apply all the kubernetes files:
 ``` bash
 ❯ kubectl apply -f kubernetes
@@ -40,6 +45,11 @@ Test them with curl:
 ```
 
 You might need to disable CORS to make the web-app work.
+
+You can scale the deployments using the script ```scale-deployments```.
+``` bash
+❯ ./scale-deployments -h
+```
 
 [^1]: See https://docs.konghq.com/kubernetes-ingress-controller/latest/get-started/
 

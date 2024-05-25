@@ -34,15 +34,17 @@ public class WebSecurityConfig {
                                                        throws Exception {
         return http
             .cors(AbstractHttpConfigurer::disable)
+            .csrf(AbstractHttpConfigurer::disable)
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/signup", "/login", "/oauth/**").permitAll()
+                .requestMatchers("/**", "/api/v1/signup", "/api/v1/login", "/login/oauth/**").permitAll()
                 .anyRequest().authenticated()
             )
+            .formLogin().disable()
             .oauth2Login(auth -> auth
-                .loginPage("/login")
-                .userInfoEndpoint(endpoint -> endpoint
-                    .userService(oauthUserService)
-                )
+                .loginPage("http://localhost:4200/home")
+                .userInfoEndpoint()
+                         .userService(oauthUserService)
+                .and()
                 .successHandler(new AuthenticationSuccessHandler() {
                         @Override
                         public void onAuthenticationSuccess(HttpServletRequest request,
@@ -52,12 +54,9 @@ public class WebSecurityConfig {
 
                             CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
                             userService.processOAuthPostLogin(oauthUser.getEmail());
-                            response.sendRedirect("/list");
+                            response.sendRedirect("http://localhost:4200/home");
                         }
                     })
-            )
-            .formLogin(auth -> auth
-                .permitAll()
             ).build();
     }
 
