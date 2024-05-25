@@ -31,7 +31,7 @@ Apply all the kubernetes files:
 ❯ kubectl apply -f kubernetes
 ```
 
-Port-forward rabbitmq to access the dashboard:
+Port-forward rabbitmq to access the dashboard (user: guest, pass: guest):
 ``` bash
 ❯ kubectl port-forward "service/hroom-mq" 15672 &
 ```
