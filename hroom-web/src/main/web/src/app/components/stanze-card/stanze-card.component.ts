@@ -40,7 +40,7 @@ export class StanzeCardComponent implements OnInit {
     "id": 1,
     "landlordId": 1,
     "name": '',
-    "tags": [],
+    "features": [],
     "description": [''],
     "price": 0,
     "city": '',
@@ -103,7 +103,7 @@ export class StanzeCardComponent implements OnInit {
       newInsertions[i].id = ins.id;
       newInsertions[i].landlordId = ins.landlordId;
       newInsertions[i].name = ins.name;
-      newInsertions[i].tags = ins.tags;
+      newInsertions[i].tags = ins.features;
       newInsertions[i].description = ins.description;
       newInsertions[i].price = ins.price;
       newInsertions[i].city = ins.city;
@@ -128,7 +128,7 @@ export class StanzeCardComponent implements OnInit {
       newInsertions[i].id = ins.id;
       newInsertions[i].landlordId = ins.landlordId;
       newInsertions[i].name = ins.name;
-      newInsertions[i].tags = ins.tags;
+      newInsertions[i].tags = ins.features;
       newInsertions[i].description = ins.description;
       newInsertions[i].price = ins.price;
       newInsertions[i].city = ins.city;

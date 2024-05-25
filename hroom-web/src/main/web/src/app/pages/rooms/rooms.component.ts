@@ -22,7 +22,7 @@ export class RoomsComponent implements OnInit {
     "id": 1,
     "landlordId": 1,
     "name": '',
-    "tags": [],
+    "features": [],
     "description": [''],
     "price": 0,
     "city": '',
@@ -44,7 +44,7 @@ export class RoomsComponent implements OnInit {
   };
   dropdownOpen = false;
   insertionsArray: insertion[] = [];
-  newUri = '';
+  newUri = 1;
 
   constructor(private svc: InsertionService,
               private toastr: ToastrService,
@@ -57,14 +57,14 @@ export class RoomsComponent implements OnInit {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-  toggleTag(event: Event, tag: string) {
+  toggleTag(event: Event, tag: string, ins: any) {
     const checkbox = event.target as HTMLInputElement;
     if (checkbox.checked) {
-      this.ins.tags.push(tag);
+      ins.features.push(tag);
     } else {
-      const index = this.ins.tags.indexOf(tag);
+      const index = ins.features.indexOf(tag);
       if (index > -1) {
-        this.ins.tags.splice(index, 1);
+        ins.features.splice(index, 1);
       }
     }
   }
@@ -99,10 +99,9 @@ export class RoomsComponent implements OnInit {
   saveRooms() {
     console.log("saveRooms")
     this.insertionList.forEach((item, index) => {
-      // this.uploadPhoto(this.photoFile);
-      item.tags = this.tagLists[index];
+      console.log(item)
       this.svc.saveInsertion(item).subscribe((res: any) => {
-        if (res.result) {
+        if (res) {
           this.toastr.success('OK', 'Insertions Uploaded')
         } else {
           this.toastr.error('ERROR INSERIMENTO DATI', res.message);
@@ -117,7 +116,7 @@ export class RoomsComponent implements OnInit {
       id: 0,
       landlordId: 1,
       name: '',
-      tags: [],
+      features: [],
       description: [''],
       price: 0,
       city: '',
@@ -155,9 +154,8 @@ export class RoomsComponent implements OnInit {
     if (file) {
       console.log(file);
       this.svc.uploadPhoto(file).subscribe((res: any) => {
-        console.log(res);
-        if (res.status === 200 || res.status === 201) {
-          this.newUri = res.body;
+        if (res) {
+          this.newUri = parseInt(res);
           this.toastr.success('OK', 'Photo Uploaded');
           this.insertionList[index].photoIds.push(this.newUri);
         } else {

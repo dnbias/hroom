@@ -63,8 +63,8 @@
                 <input
                   type="checkbox"
                   [value]="tag"
-                  (change)="toggleTag($event, tag)"
-                  [checked]="ins.tags.includes(tag)">
+                  (change)="toggleTag($event, tag, ins)"
+                  [checked]="ins.features.includes(tag)">
                 <span [style.background-color]="tagUtility.getColor(tag)" class="badge tag-color">{{ tag }}</span>
               </label>
             </div>

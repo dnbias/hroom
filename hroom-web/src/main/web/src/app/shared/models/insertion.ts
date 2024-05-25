@@ -5,7 +5,7 @@ export interface insertion {
   id: number;
   landlordId: number;
   name: string;
-  tags: Tag[];
+  features: Tag[];
   description: string[];
   price: number;
   city: string;
