@@ -1,12 +1,10 @@
-export class User {
-  id=0;
+export class SignUpRequest{
   name="";
   surname="";
   username="";
   password="";
   email="";
   provider="";
-  createAt="";
   role="";
   phoneNumber="";
 

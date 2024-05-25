@@ -1,0 +1,35 @@
+<div class="container mt-4">
+  <h2 class="text-center">User List</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Provider</th>
+      <th>Created At</th>
+      <th>Role</th>
+      <th>Phone Number</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users; let i = index">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.surname }}</td>
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.provider }}</td>
+      <td>{{ user.createAt | date:'short' }}</td> <!-- Using Angular date pipe -->
+      <td>{{ user.role }}</td>
+      <td>{{ user.phoneNumber }}</td>
+      <td>
+        <button class="btn btn-danger btn-sm" (click)="banUser(user.id, i)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

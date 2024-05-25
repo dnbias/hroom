@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WriteFeedbackComponent } from './write-feedback.component';
+import { ListaUtentiComponent } from './lista-utenti.component';
 
-describe('WriteFeedbackComponent', () => {
-  let component: WriteFeedbackComponent;
-  let fixture: ComponentFixture<WriteFeedbackComponent>;
+describe('ListaUtentiComponent', () => {
+  let component: ListaUtentiComponent;
+  let fixture: ComponentFixture<ListaUtentiComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WriteFeedbackComponent]
+      imports: [ListaUtentiComponent]
     })
     .compileComponents();
-    
-    fixture = TestBed.createComponent(WriteFeedbackComponent);
+
+    fixture = TestBed.createComponent(ListaUtentiComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
