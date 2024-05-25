@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Lista Utenti</h2>
+  <table class="user-table">
+    <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Email</th>
+      <th>Banned</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.name }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.banned }}</td>
+      <td>
+        <button class="delete" (click)="deleteUser(user.id)">Delete</button>
+        <button class="ban" (click)="banUser(user.id)">Ban</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
