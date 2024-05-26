@@ -20,6 +20,8 @@ public interface InsertionService {
 
     void deleteInsertionById(Long insertionId);
 
+    List<Long> fetchPhotoList();
+
     Long uploadPhoto(byte[] image) throws IOException;
 
     byte[] downloadPhoto(Long id) throws MissingPhotoException;

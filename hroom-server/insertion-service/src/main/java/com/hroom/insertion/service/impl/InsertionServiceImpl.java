@@ -19,6 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -90,6 +91,16 @@ public class InsertionServiceImpl implements InsertionService {
     public void deleteInsertionById(Long insertionId) {
         LOGGER.info("InsertionServiceImpl > deleteInsertionById started");
         insertionRepository.deleteById(insertionId);
+    }
+
+    @Override
+    public List<Long> fetchPhotoList() {
+        LOGGER.info("InsertionServiceImpl > fetchPhotoList started");
+        Iterable<Photo> list = photoRepository.findAll();
+        List<Long> ids = new ArrayList<>();
+        for (Photo i : list)
+            ids.add(i.getId());
+        return ids;
     }
 
     @Override

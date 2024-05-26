@@ -1,6 +1,7 @@
 package com.hroom.insertion.controller;
 
 import com.hroom.insertion.entity.Insertion;
+import com.hroom.insertion.entity.Photo;
 import com.hroom.insertion.service.InsertionService;
 import com.hroom.insertion.service.RabbitMQInsertionService;
 import com.hroom.insertion.service.RabbitMQPhotoService;
@@ -99,6 +100,13 @@ public class InsertionController {
         }
 
         return ResponseEntity.ok(id);
+    }
+
+    @GetMapping("/insertion/photo")
+    public List<Long> fetchPhotoList() {
+        LOGGER.info("InsertionController > fetchPhotoList started");
+        LOGGER.info("InsertionController > fetchPhotoList");
+        return service.fetchPhotoList();
     }
 
     @GetMapping("/insertion/photo/{id}")
