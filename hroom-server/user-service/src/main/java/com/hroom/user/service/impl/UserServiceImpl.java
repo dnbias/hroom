@@ -38,8 +38,6 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
-    @Value("${queue.name}")
-    private String queue;
     // @Value("${spring.rabbitmq.template.exchange}")
     // private String exchange;
     // @Value("${spring.rabbitmq.template.routing-key}")
@@ -49,12 +47,6 @@ public class UserServiceImpl implements UserService {
     // private final KeycloakService keycloakService;
     // private Channel channel;
 
-    @RabbitHandler
-    public void receiver(Long userId) {
-        LOGGER.info("userId listener invoked - Consuming Message w/ Identifier : " + userId);
-        repository.deleteById(userId);
-        LOGGER.info("Deleted user: " + userId);
-    }
     @Override
     public List<User> fetchUserList() {
         LOGGER.info("UserServiceImpl | fetchUserList is started");

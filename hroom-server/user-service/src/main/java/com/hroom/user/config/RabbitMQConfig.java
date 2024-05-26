@@ -17,6 +17,23 @@ import org.springframework.context.annotation.Configuration;
 class RabbitMQConfig {
 
     @Bean
+    public Queue queue(@Value("${queue.name}") String queueName) {
+        return new Queue(queueName, false);
+    }
+    @Bean
+    @ConditionalOnProperty(value = "spring.rabbitmq.template.exchange")
+    DirectExchange directExchange(@Value("${spring.rabbitmq.template.exchange}") String exchangeName) {
+        return new DirectExchange(exchangeName);
+    }
+    @Bean
+    @ConditionalOnProperty(value = "spring.rabbitmq.template.routing-key")
+    Binding directExchangeBinding(Queue queue,
+                                  DirectExchange directExchange,
+                                  @Value("${spring.rabbitmq.template.routing-key}") String routingKey) {
+        return BindingBuilder.bind(queue).to(directExchange).with(routingKey);
+    }
+
+    @Bean
     public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
         final var rabbitTemplate = new RabbitTemplate(connectionFactory);
         rabbitTemplate.setMessageConverter(producerJackson2MessageConverter());
