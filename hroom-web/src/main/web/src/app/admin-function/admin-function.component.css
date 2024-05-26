@@ -16,6 +16,16 @@ table {
   overflow: hidden;
 }
 
+table.photo {
+  max-width: fit-content;
+  min-width: 300px;
+}
+
+table.insertion {
+  max-width: inherit;
+  min-width: 500px;
+}
+
 thead {
   background-color: #343a40; /* Colore di sfondo per l'intestazione */
   color: #fff; /* Colore del testo per l'intestazione */

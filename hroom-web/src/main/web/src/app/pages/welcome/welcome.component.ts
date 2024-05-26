@@ -15,23 +15,28 @@ export class WelcomeComponent implements OnInit {
 
   featuredProject={} as stanze;
   rs={} as stanze[];
-  utente : string = "";
+  utente : string = "user";
+  role : string = "tenant";
 
   titolo : string="Benvenuto in HRoom ";
   sottotitolo : string ="Goditi  il tuo divertimento ad ore ";
 
-  constructor(private route : ActivatedRoute, private salutiSrv : SalutiDataService,private projectService: ProjectService) {}
-
+  constructor(private route : ActivatedRoute,
+              private salutiSrv : SalutiDataService,
+              private projectService: ProjectService) {}
 
 
   ngOnInit(): void {
     this.featuredProject= this.projectService.GetProjectById(1);
 
-
-
-    this.utente = this.route.snapshot.params['userid'];
-
+    var user = sessionStorage.getItem('username')
+    var role = sessionStorage.getItem('role')
+    if (user)
+      this.utente = user;
+    if (role)
+      this.role = role;
   }
+
   saluti : string = "";
   errore : string = "";
 

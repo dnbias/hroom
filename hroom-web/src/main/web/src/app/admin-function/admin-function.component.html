@@ -5,7 +5,7 @@
 </div>
 <div class="container mt-4">
   <h2 class="text-center">{{ tableName }} List</h2>
-  <table class="table table-striped" *ngIf="userTableEnabled">
+  <table class="table table-striped user" *ngIf="userTableEnabled">
     <thead class="thead-dark">
       <tr>
         <th>ID</th>
@@ -37,7 +37,7 @@
       </tr>
     </tbody>
   </table>
-  <table class="table table-striped" *ngIf="insTableEnabled">
+  <table class="table table-striped insertion" *ngIf="insTableEnabled">
     <thead class="thead-dark">
     <tr>
       <th>ID</th>
@@ -72,7 +72,7 @@
       </tr>
     </tbody>
   </table>
-  <table class="table table-striped" *ngIf="photoTableEnabled">
+  <table class="table table-striped photo" *ngIf="photoTableEnabled">
     <thead class="thead-dark">
     <tr>
       <th>ID</th>

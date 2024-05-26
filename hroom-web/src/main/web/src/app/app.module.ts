@@ -25,6 +25,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 import {CustomerComponent} from "./pages/customer/customer.component";
 import {TagComponent} from "./pages/tag/tag.component";
+import {TagButtonComponent} from "./pages/tag/button/tag.button.component";
 import {SearchComponent} from "./pages/search/search.component";
 import {HomeComponent} from "./pages/home/home.component";
 import {NotFoundComponent} from "./pages/not-found/not-found.component";
@@ -80,15 +81,13 @@ import {AdminFunctionComponent} from "./admin-function/admin-function.component"
     ErrorComponent,
     StanzeComponent,
     LogoutComponent,
-
     StanzeCardComponent,
     RegistrazioneComponent,
-
     CustomerComponent,
-    TagComponent,
     HomeComponent,
     SearchComponent,
     TagComponent,
+    TagButtonComponent,
     NotFoundComponent,
     CartPageComponent,
     StanzeModificaComponent,
@@ -103,11 +102,8 @@ import {AdminFunctionComponent} from "./admin-function/admin-function.component"
     RoomsComponent,
     BookedComponent,
     PaymentComponent,
-
     AdminFunctionComponent,
-
     // ListaUtentiComponent,
-
   ],
   imports: [
     CommonModule,
@@ -146,7 +142,8 @@ import {AdminFunctionComponent} from "./admin-function/admin-function.component"
       useClass: LoadingInterceptor, multi:true }
   ],
   exports: [
-    TagComponent
+    TagComponent,
+    TagButtonComponent
   ],
   bootstrap: [AppComponent]
 })

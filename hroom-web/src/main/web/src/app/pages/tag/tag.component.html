@@ -1,4 +1,5 @@
 <div *ngIf="tags" [style.justifyContent] = "justifyContent">
-  <button *ngFor = "let tag of tags" [ngStyle]="{'background-color': this.tagUtil.getColor(tag)}" (click)="home.toggleTagToFilter(tag)">{{tag}}</button>
-
+  <div *ngFor = "let tag of tags; let i as index">
+    <button  [ngStyle]="{'background-color': this.tagUtil.getColor(tag)}">{{tag}}</button>
+  </div>
 </div>

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Tag, TagUtility} from "../../shared/models/tags"
-import { HomeComponent } from '../home/home.component';
+import {TagUtility} from "../../shared/models/tags"
 @Component({
   selector: 'app-tag',
 
@@ -9,11 +8,9 @@ import { HomeComponent } from '../home/home.component';
 })
 export class TagComponent implements OnInit{
   @Input() tags?:string[];
-  @Input() justifyContent?:string = 'center';
+  @Input() justifyContent:string = 'center';
 
-  constructor(
-    public home: HomeComponent,
-    public tagUtil: TagUtility) {}
+  constructor(public tagUtil: TagUtility) {}
 
   ngOnInit(): void {
     if(!this.tags)
