@@ -28,7 +28,8 @@ export class StanzaPageComponent implements OnInit{
               private svc : InsertionService,
               private svcFB : FeedbackService,
               private svcCart: CartService,
-              private router: Router) {}
+              private router: Router,
+    ) {}
 
   ngOnInit(): void {
     this.activetedRoute.params.subscribe((params)=>{
@@ -65,4 +66,16 @@ export class StanzaPageComponent implements OnInit{
   get stars() {
     return 5;
   }
+  feedbackText: string = '';
+  rating: number | null = null;
+  starsX: number[] = [1, 2, 3, 4, 5];
+
+  onSubmit() {
+    if (this.feedbackText && this.rating !== null) {
+      console.log('Feedback:', this.feedbackText);
+      console.log('Rating:', this.rating);
+
+    }
+  }
+
 }
