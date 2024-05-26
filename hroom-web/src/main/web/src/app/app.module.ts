@@ -70,6 +70,7 @@ import {PaymentComponent} from "./pages/payment/payment.component";
 import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 import { LoadingInterceptor } from './service/loading/loading.interceptor';
 import {AdminFunctionComponent} from "./admin-function/admin-function.component";
+import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 // import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
 
 
@@ -103,6 +104,8 @@ import {AdminFunctionComponent} from "./admin-function/admin-function.component"
     BookedComponent,
     PaymentComponent,
     AdminFunctionComponent,
+    WriteFeedbackComponent,
+
     // ListaUtentiComponent,
   ],
   imports: [
