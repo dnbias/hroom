@@ -91,10 +91,8 @@ svg{
 }
 
 p{
-
   display: flex;
 }
 checkbox{
-    text-align:center;
-
+  text-align:center;
 }

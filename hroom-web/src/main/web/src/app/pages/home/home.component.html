@@ -1,78 +1,78 @@
 <app-search></app-search>
-<app-tag-button></app-tag-button>
+<app-tag-button classe="tags"></app-tag-button>
 <!-- p> <app-data></app-data></p>-->
 
 <app-not-found [visible]= "!insertionsWithPhoto || insertionsWithPhoto.length <=0" resetLinkText="Torna alla home"></app-not-found>
-<div>
-  <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-    filtra
-  </button>
-  <button class="btn btn-outline-primary mb-2 me-2" (click)="ResetFilter() "[hidden]="!filtering" >Reset </button>
+<!-- <div> -->
+<!--   <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> -->
+<!--     filtra -->
+<!--   </button> -->
+<!--   <button class="btn btn-outline-primary mb-2 me-2" (click)="ResetFilter() "[hidden]="!filtering" >Reset </button> -->
 
-</div>
-<div class="collapse" id="collapseExample">
-  <div class="border mb-2 shadow-sa" style="width:  250px;">
-    <form>
-      <div class="row mx-0">
-        <div class="col">
-          <small><b>Filtro stanza:</b></small>
-          <div class="form-group">
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class ="form-check-input position-static me-2"
-                [(ngModel)]="stanza"
-                (change)="filter()"
-                name="stanza">
-              <label class="form-check-label small">stanza</label>
-            </div>
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class ="form-check-input position-static me-2"
-                [(ngModel)]="appartamento"
-                (change)="filter()"
-                name="appartamento">
-              <label class="form-check-label small">appartamento</label>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <small><b>Filtro servizi:</b></small>
-          <div class="form-group">
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class ="form-check-input position-static me-2"
-                [(ngModel)]="idro"
-                (change)="filter()"
-                name="parcheggio">
-              <label class="form-check-label small">Idromassaggio</label>
-            </div>
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class ="form-check-input position-static me-2"
-                [(ngModel)]="allin"
-                (change)="filter()"
-                name="stanza">
-              <label class="form-check-label small">All-inclusive</label>
-            </div>
-            <div class="form-check">
-              <input
-                type="checkbox"
-                class ="form-check-input position-static me-2"
-                [(ngModel)]="spa"
-                (change)="filter()"
-                name="Spa">
-              <label class="form-check-label small">Spa</label>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+<!-- </div> -->
+<!-- <div class="collapse" id="collapseExample"> -->
+<!--   <div class="border mb-2 shadow-sa" style="width:  250px;"> -->
+<!--     <form> -->
+<!--       <div class="row mx-0"> -->
+<!--         <div class="col"> -->
+<!--           <small><b>Filtro stanza:</b></small> -->
+<!--           <div class="form-group"> -->
+<!--             <div class="form-check"> -->
+<!--               <input -->
+<!--                 type="checkbox" -->
+<!--                 class ="form-check-input position-static me-2" -->
+<!--                 [(ngModel)]="stanza" -->
+<!--                 (change)="filter()" -->
+<!--                 name="stanza"> -->
+<!--               <label class="form-check-label small">stanza</label> -->
+<!--             </div> -->
+<!--             <div class="form-check"> -->
+<!--               <input -->
+<!--                 type="checkbox" -->
+<!--                 class ="form-check-input position-static me-2" -->
+<!--                 [(ngModel)]="appartamento" -->
+<!--                 (change)="filter()" -->
+<!--                 name="appartamento"> -->
+<!--               <label class="form-check-label small">appartamento</label> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--         <div class="col"> -->
+<!--           <small><b>Filtro servizi:</b></small> -->
+<!--           <div class="form-group"> -->
+<!--             <div class="form-check"> -->
+<!--               <input -->
+<!--                 type="checkbox" -->
+<!--                 class ="form-check-input position-static me-2" -->
+<!--                 [(ngModel)]="idro" -->
+<!--                 (change)="filter()" -->
+<!--                 name="parcheggio"> -->
+<!--               <label class="form-check-label small">Idromassaggio</label> -->
+<!--             </div> -->
+<!--             <div class="form-check"> -->
+<!--               <input -->
+<!--                 type="checkbox" -->
+<!--                 class ="form-check-input position-static me-2" -->
+<!--                 [(ngModel)]="allin" -->
+<!--                 (change)="filter()" -->
+<!--                 name="stanza"> -->
+<!--               <label class="form-check-label small">All-inclusive</label> -->
+<!--             </div> -->
+<!--             <div class="form-check"> -->
+<!--               <input -->
+<!--                 type="checkbox" -->
+<!--                 class ="form-check-input position-static me-2" -->
+<!--                 [(ngModel)]="spa" -->
+<!--                 (change)="filter()" -->
+<!--                 name="Spa"> -->
+<!--               <label class="form-check-label small">Spa</label> -->
+<!--             </div> -->
+<!--           </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </form> -->
+<!--   </div> -->
+<!-- </div> -->
 <div class="rmb-2">
   <div>
   </div>

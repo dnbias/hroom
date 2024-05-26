@@ -1,8 +1,14 @@
 div{
   display: flex;
   flex-wrap: wrap;
-
+  max-width: 800px;
+  /* margin: 0 auto; */
 }
+
+.container {
+  padding-bottom: 20px;
+}
+
 div button{
   background-color: whitesmoke;
   padding: 2px 4px;

@@ -9,6 +9,11 @@
     min-width: 25rem;
     max-width: 40rem;
 }
+
+.valutazione {
+  padding-top: 10px;
+}
+
 img{
     border-radius: 3rem;
     flex: 1 0;
