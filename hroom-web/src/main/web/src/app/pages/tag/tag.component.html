@@ -1,3 +1,4 @@
 <div *ngIf="tags" [style.justifyContent] = "justifyContent">
-  <a *ngFor = "let tag of tags" routerLink="/tag/{{tag}}"  [ngStyle]="{'background-color': this.tagUtil.getColor(tag)}">{{tag}}</a>
+  <button *ngFor = "let tag of tags" [ngStyle]="{'background-color': this.tagUtil.getColor(tag)}" (click)="home.toggleTagToFilter(tag)">{{tag}}</button>
+
 </div>

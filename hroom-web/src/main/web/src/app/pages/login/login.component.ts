@@ -83,8 +83,14 @@ export class LoginComponent {
     }
   }
 
+  loginGoogle() {
+    sessionStorage.setItem('username', 'dnbias');
+    sessionStorage.setItem('role', 'tenant');
+  }
+
   get id() { return this.loginform.value?.id; }
 
   get password() { return this.loginform.value?.password; }
+
 
 }

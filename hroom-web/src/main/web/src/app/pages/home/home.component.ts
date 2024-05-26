@@ -20,10 +20,13 @@ import { LoadingService } from '../../service/loading/loading.service';
 })
 
 export class HomeComponent implements  OnInit{
+  filterTags: Tag[]=[];
   env = environment;
   room :stanze[]=[];
   insertions: insertion[]=[];
   insertionsWithPhoto: { insertion: any, photo: any, loaded: boolean}[] = [];
+  cachedInsertions: { insertion: any, photo: any, loaded: boolean}[] = [];
+  filteredInsertions: { insertion: any, photo: any, loaded: boolean}[] = [];
   photos: any[]=[];
   photoURLs: any[]=[];
   parcheggio: boolean =false;
@@ -125,34 +128,69 @@ export class HomeComponent implements  OnInit{
     return newInsertions;
   }
 
-  filter(){
-    let filterTags: Tag[]=[];
+  toggleTagToFilter(tag: any) {
+    if (!this.filterTags.includes(tag))
+      this.filterTags.push(tag);
+    else
+      this.filterTags = this.filterTags.filter((el) => el !== tag);
+    this.getRoomByFilter(this.filterTags);
+    console.log(this.filterTags);
+  }
 
+  filter(){
+    this.filterTags=[];
+
+    // if(this.selectedTag.length != 0){
+    //   filterTags.push()
+    // }
     if(this.parcheggio){
-      filterTags.push(Tag.PARKING);
+      this.filterTags.push(Tag.PARKING);
     }
     if(this.appartamento){
-      filterTags.push(Tag.APARTMENT);
+      this.filterTags.push(Tag.APARTMENT);
     }
     if(this.stanza){
-      filterTags.push(Tag.ROOM);
+      this.filterTags.push(Tag.ROOM);
     }
     if(this.allin){
-      filterTags.push(Tag.ALLINCLUSIVE);
+      this.filterTags.push(Tag.ALLINCLUSIVE);
     }
     if(this.spa){
-      filterTags.push(Tag.SPA);
+      this.filterTags.push(Tag.SPA);
     }
     if(this.centro){
-      filterTags.push(Tag.CENTER);
+      this.filterTags.push(Tag.CENTER);
     }
     if(this.idro){
-      filterTags.push(Tag.HYDROMASSAGE);
+      this.filterTags.push(Tag.HYDROMASSAGE);
     }
-    if(this.spa || this.allin || this.stanza || this.appartamento || this.centro || this.idro || this.parcheggio){
+    if(this.spa || this.allin || this.stanza || this.appartamento ||
+       this.centro || this.idro || this.parcheggio){
       this.filtering=true;
     }
-    this.room = this.projectService.GetRoomByFilter(filterTags);
+    this.getRoomByFilter(this.filterTags);
+  }
+
+  getRoomByFilter(tags: any[]) {
+    if (this.cachedInsertions.length == 0)
+      this.cachedInsertions = this.insertionsWithPhoto;
+    this.filteredInsertions = [];
+    if (tags.length == 0) {
+      this.insertionsWithPhoto = this.cachedInsertions;
+    } else {
+      this.cachedInsertions.forEach(
+        (i: { insertion: insertion, photo: any, loaded: boolean }) => {
+          var ok = true;
+          tags.forEach(t => {
+            if (!i.insertion.features.includes(t))
+              if (ok)
+                ok = false;
+          })
+          if (ok)
+            this.filteredInsertions.push(i);
+        })
+      this.insertionsWithPhoto = this.filteredInsertions;
+    }
   }
 
   ResetFilter(){

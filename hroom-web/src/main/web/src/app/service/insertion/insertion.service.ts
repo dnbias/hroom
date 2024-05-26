@@ -65,6 +65,11 @@ export class InsertionService {
     return this.http.delete(this.apiEndPoint+'/insertion/photo/'+id);
   }
 
+  fetchPhotoList(): any {
+    console.log('fetchPhotoList request');
+    return this.http.get(this.apiEndPoint+'/insertion/photo');
+  }
+
   getAllTags(): string[] {
     return Object.keys(Tag);
   }

@@ -3,7 +3,7 @@ div{
   flex-wrap: wrap;
 
 }
-div a{
+div button{
   background-color: whitesmoke;
   padding: 2px 4px;
   margin: 1px 2px;
@@ -13,7 +13,7 @@ div a{
   text-decoration: none;
   font-family: 'Dosis', Tahoma, Geneva, Verdana, sans-serif;
   border-radius: 11px;
-  border-style: outset;
+  border-style: none;
   border-block: none;
   border-width: medium;
 }
