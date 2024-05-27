@@ -50,7 +50,10 @@ export class LoginComponent {
 
   async handleCredentialResponse(response: any) {
     // Here will be the response from Google.
-    console.log(response);
+    // console.log(response);
+    this.loginGoogle();
+    this.toastr.success('OK', 'Active User');
+    this.router.navigate(['home']);
   }
 
   proceedLogin() {

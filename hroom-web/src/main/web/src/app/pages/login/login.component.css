@@ -48,3 +48,17 @@
 .mat-mdc-form-field {
   display: inline !important;
 }
+
+.g_id_signin {
+  position: relative;
+  margin: auto;
+  display:inline-block;
+  bottom: 0px;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.iframe {
+  display: inline !important;
+}

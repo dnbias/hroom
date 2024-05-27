@@ -13,12 +13,12 @@
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password" >
       </mat-form-field>
-      <div id="g_id_onload"
+      <div id="g_id_onloadA" class="google"
            data-client_id="55986931159-cgo7iq0rkupitd85injpre9bg69oh199.apps.googleusercontent.com"
            data-context="Accedi"
            data-ux_mode="popup"
            data-login_uri="http://localhost:8888/login/oauth2/code/google"
-           data-itp_support="true">
+           data-itp_support="true" (click)="loginGoogle()">
       </div>
       <div class="g_id_signin"
            data-type="standard"
@@ -27,7 +27,7 @@
            data-text="Accedi con"
            data-size="medium"
            data-locale="en"
-           data-logo_alignment="left"
+           data-logo_alignment="center"
            (click)="loginGoogle()">
       </div>
       <br>
