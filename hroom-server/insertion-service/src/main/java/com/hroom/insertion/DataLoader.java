@@ -74,41 +74,77 @@ public class DataLoader implements ApplicationRunner {
              photoIds ,3,new ArrayList<Long>(), 1L);
         photoIds.clear();
         photoIds.add(photoArray.get(1));
+        features = new Features[]{Features.BIDET, Features.PARKING, Features.WHEELCHAIR_ACCESS,
+                    Features.GYM, Features.TV, Features.CENTER};
         LoadRoom(1L,"Appartamento Liguria", features, loremIpsum, 320.00, "Genova",
              "Via Venezia 3", 12810,
              photoIds,5,new ArrayList<Long>(), 2L);
         photoIds.clear();
         photoIds.add(photoArray.get(2));
+        features = new Features[]{Features.AIRCONDITIONER, Features.APARTMENT, Features.CLEAN, Features.MASSAGE};
         LoadRoom(1L,"Bella Stanza", features, loremIpsum, 520.30, "Milano",
              "Corso Giulia 13", 32810,
              photoIds,5,new ArrayList<Long>(), 2L);
         photoIds.clear();
         photoIds.add(photoArray.get(3));
         photoIds.add(6L);
+        features = new Features[]{Features.APARTMENT, Features.ALLINCLUSIVE, Features.WC};
         LoadRoom(1L,"Stanza con Vista", features, loremIpsum, 190.00, "Genova",
              "Via Venezia 3", 12810,
              photoIds,5,new ArrayList<Long>(), 2L);
         photoIds.clear();
         photoIds.add(photoArray.get(4));
         photoIds.add(photoArray.get(5));
+        features = new Features[]{Features.ROOM, Features.WHEELCHAIR_ACCESS, Features.CENTER};
         LoadApartment(1L,"Spazioso Appartamento", features, loremIpsum, 390.00, "Padova",
              "Via Giordano Bruno 223", 14810,
              photoIds,5,new ArrayList<Long>(), 2L, 3);
         photoIds.clear();
         photoIds.add(photoArray.get(5));
+        features = new Features[]{Features.ROOM, Features.GYM, Features.HYDROMASSAGE, Features.MONTAIN};
         LoadApartment(1L,"Appartamento Interessante", features, loremIpsum, 290.00, "Pisa",
              "Via Venezia 3", 52810,
              photoIds,5,new ArrayList<Long>(), 2L, 4);
         photoIds.clear();
         photoIds.add(photoArray.get(6));
         photoIds.add(photoArray.get(1));
+        features = new Features[]{Features.APARTMENT, Features.SEA, Features.SPA, Features.BREAKFAST, Features.PARKING};
         LoadApartment(1L,"Appartamento Luminoso", features, loremIpsum, 120.00, "Pavia",
              "Via Torino 3", 22810,
              photoIds,5,new ArrayList<Long>(), 2L, 2);
         photoIds.clear();
         photoIds.add(photoArray.get(7));
         photoIds.add(photoArray.get(8));
+        features = new Features[]{Features.BREAKFAST, Features.SEA, Features.AIRCONDITIONER, Features.GYM, Features.PARKING};
         LoadApartment(1L,"Residence Tranquillo", features, loremIpsum, 190.00, "Napoli",
+             "Via Rodari 30", 42240,
+             photoIds,5,new ArrayList<Long>(), 2L, 6);
+        photoIds.clear();
+        photoIds.add(photoArray.get(8));
+        photoIds.add(photoArray.get(8));
+        features = new Features[]{Features.BREAKFAST, Features.SEA, Features.AIRCONDITIONER, Features.GYM, Features.PARKING};
+        LoadApartment(1L,"Residence", features, loremIpsum, 190.00, "Napoli",
+             "Via Rodari 30", 42240,
+             photoIds,5,new ArrayList<Long>(), 2L, 6);
+        photoIds.clear();
+        photoIds.add(photoArray.get(2));
+        photoIds.add(photoArray.get(8));
+        features = new Features[]{Features.SPA, Features.SEA, Features.ROOM, Features.GYM, Features.PARKING};
+        LoadApartment(1L,"SPA", features, loremIpsum, 390.00, "Napoli",
+             "Via Rodari 30", 42240,
+             photoIds,5,new ArrayList<Long>(), 2L, 6);
+        photoIds.clear();
+        photoIds.add(photoArray.get(3));
+        photoIds.add(photoArray.get(8));
+        features = new Features[]{Features.BREAKFAST, Features.SEA, Features.AIRCONDITIONER, Features.GYM, Features.PARKING};
+        LoadApartment(1L,"Stanza in Valle", features, loremIpsum, 390.00, "Sydney",
+             "Via Rodari 30", 42240,
+             photoIds,5,new ArrayList<Long>(), 2L, 6);
+        photoIds.clear();
+        photoIds.add(photoArray.get(1));
+        photoIds.add(photoArray.get(3));
+        features = new Features[]{Features.BREAKFAST, Features.SEA, Features.AIRCONDITIONER, Features.GYM, Features.PARKING};
+        LoadApartment(1L,"Casa Spaziosa", features, loremIpsum, 250.00, "Bergamo",
              "Via Rodari 30", 42240,
              photoIds,5,new ArrayList<Long>(), 2L, 6);
     }
