@@ -69,12 +69,28 @@ export class StanzaPageComponent implements OnInit{
   feedbackText: string = '';
   rating: number | null = null;
   starsX: number[] = [1, 2, 3, 4, 5];
+  starsSVG: number[] = [1, 2, 3, 4, 5];
 
   onSubmit() {
     if (this.feedbackText && this.rating !== null) {
       console.log('Feedback:', this.feedbackText);
       console.log('Rating:', this.rating);
+      var id = sessionStorage.getItem('id')
+      if (id) {
+        var fb: feedback = {
+          subject: 2, tenantId: +id, landlordId: 0, timestamp: '',
+          insertionId: this.insertion.id, rating: this.rating,
+          description: this.feedbackText
+        };
 
+        this.svcFB.saveFeedback(fb).subscribe(res => {
+          console.log(res);
+          this.feedbacks.push(fb);
+          console.log('Ok');
+        })
+      } else {
+        console.log('No userId found')
+      }
     }
   }
 

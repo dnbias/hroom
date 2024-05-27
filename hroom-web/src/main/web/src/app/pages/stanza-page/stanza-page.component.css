@@ -135,6 +135,10 @@ svg{
     padding-left: 2px;
     margin-left: 4px;
 }
+.fb-rating svg{
+  margin-top: 3;
+  margin-left: -5;
+}
 
 
 .fb-timestamp {

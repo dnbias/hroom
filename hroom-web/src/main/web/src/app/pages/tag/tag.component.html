@@ -1,5 +1,5 @@
 <div *ngIf="tags" [style.justifyContent] = "justifyContent">
-  <div *ngFor = "let tag of tags; let i as index">
+  <div *ngFor = "let tag of tags">
     <button  [ngStyle]="{'background-color': this.tagUtil.getColor(tag)}">{{tag}}</button>
   </div>
 </div>

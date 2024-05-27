@@ -146,7 +146,7 @@ import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.comp
   ],
   exports: [
     TagComponent,
-    TagButtonComponent
+    TagButtonComponent,
   ],
   bootstrap: [AppComponent]
 })
