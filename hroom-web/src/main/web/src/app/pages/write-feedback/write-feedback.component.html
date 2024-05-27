@@ -1,0 +1,17 @@
+<div class="feedback-container">
+  <h2>Lascia un Feedback</h2>
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="feedback">Il tuo feedback:</label>
+      <textarea id="feedback" [(ngModel)]="feedbackText" name="feedback" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="rating">Valutazione:</label>
+      <select id="rating" [(ngModel)]="rating" name="rating" required>
+        <option value="" disabled selected>Seleziona una valutazione</option>
+        <option *ngFor="let star of stars" [value]="star">{{ star }} stelle</option>
+      </select>
+    </div>
+    <button type="submit" class="submit-btn">Invia</button>
+  </form>
+</div>

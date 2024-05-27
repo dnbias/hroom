@@ -29,6 +29,7 @@ import {BookedComponent} from "./pages/booked/booked.component";
 import {PaymentComponent} from "./pages/payment/payment.component";
 import {PopupAddComponent} from "./pages/popup-add/popup-add.component";
 import {AdminFunctionComponent} from "./admin-function/admin-function.component";
+import {WriteFeedbackComponent} from "./pages/write-feedback/write-feedback.component";
 // import {ListaUtentiComponent} from "./pages/lista-utenti/lista-utenti.component";
 
 const routes: Routes = [
@@ -64,7 +65,7 @@ const routes: Routes = [
 
   {path:'admin',component:AdminFunctionComponent},
   // {path:'listautenti',component:ListaUtentiComponent},
-
+  {path:'writefeedback',component:WriteFeedbackComponent},
   {path:'**', component: ErrorComponent},
 ];
 
