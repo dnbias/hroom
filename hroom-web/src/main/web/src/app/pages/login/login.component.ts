@@ -70,6 +70,7 @@ export class LoginComponent {
         this.result = res;
         console.log(this.result);
         if (this.result.password === this.request.password) {
+          sessionStorage.setItem('id',this.result.id);
           sessionStorage.setItem('username',this.request.username);
           sessionStorage.setItem('role',this.result.role);
           this.toastr.success('OK', 'Active User');
@@ -84,6 +85,7 @@ export class LoginComponent {
   }
 
   loginGoogle() {
+    sessionStorage.setItem('id', '1');
     sessionStorage.setItem('username', 'dnbias');
     sessionStorage.setItem('role', 'tenant');
   }
