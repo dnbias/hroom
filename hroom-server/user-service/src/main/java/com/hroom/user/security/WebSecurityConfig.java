@@ -54,7 +54,7 @@ public class WebSecurityConfig {
 
                             CustomOAuth2User oauthUser = (CustomOAuth2User) authentication.getPrincipal();
                             userService.processOAuthPostLogin(oauthUser.getEmail());
-                            response.sendRedirect("http://localhost:4200/home");
+                            response.sendRedirect("http://localhost:8888/home");
                         }
                     })
             ).build();
