@@ -29,6 +29,9 @@ public class DataLoader implements ApplicationRunner {
         "foto5", "foto6", "foto7", "foto8", "foto9",
         "foto10", "fotox"
     };
+    private final long[] fbs = {
+        1L, 2L, 3L, 4L, 5L, 6L, 7L
+    };
     private InsertionRepository insertionRepository;
     private PhotoRepository photoRepository;
     private ArrayList<Long> photoArray;
@@ -56,7 +59,6 @@ public class DataLoader implements ApplicationRunner {
 
     void LoadRooms() {
         Features[] features = {Features.BATHROOM, Features.HYDROMASSAGE};
-        List<Long> receivedFBIds = new ArrayList<Long>();
         String loremIpsum = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, "+
             "sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "+
             "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris "+

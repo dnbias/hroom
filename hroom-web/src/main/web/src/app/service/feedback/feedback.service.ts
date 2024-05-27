@@ -35,6 +35,16 @@ export class FeedbackService {
     return this.http.get(this.apiEndPoint);
   }
 
+  fetchFeedbackOfTenant(id: number) {
+    console.log('fetchFeedbacksOfTenant request');
+    return this.http.get(this.apiEndPoint+'/tenant/'+id);
+  }
+
+  fetchFeedbackOfInsertion(id: number) {
+    console.log('fetchFeedbacksOfInsertion request');
+    return this.http.get(this.apiEndPoint+'/insertion/'+id);
+  }
+
   findFeedback(id: number) {
     console.log('findFeedback request');
     return this.http.get(this.apiEndPoint+'/'+id);

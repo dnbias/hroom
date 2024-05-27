@@ -111,16 +111,20 @@ svg{
 }
 
 .feedbacks li {
+  display: inline-block;
+  vertical-align: top;
   font-size: medium;
-  padding: 10px;
+  padding: 15px;
   max-width: 300px; /* Imposta la larghezza massima di ogni feedback */
 }
 .feedbacks ul {
-  display: flex;
-  flex-wrap: wrap; /* Aggiunto per far andare i feedback su più righe */
+  max-width: inherit;
+  /* display: flex; */
+  /* flex:auto; /\* Aggiunto per far andare i feedback su più righe *\/ */
   justify-content: center; /* Centra i feedback orizzontalmente */
-  margin: 20px;
-  padding: 5px;
+  /* margin: 20px; */
+  margin: 0 auto
+  /* padding: 5px; */
   list-style-type: none;
 }
 
@@ -151,6 +155,7 @@ svg{
     padding-left: 2px;
     margin-left: 4px;
     margin: 2px;
+    max-width: 180px;
 }
 
 img.loading-spinner {
@@ -158,18 +163,18 @@ img.loading-spinner {
   vertical-align: middle;
 
 }
-  .submit-btn {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
 .form-group label {
   display: block;

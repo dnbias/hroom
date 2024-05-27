@@ -34,7 +34,8 @@ export class StanzaPageComponent implements OnInit{
   ngOnInit(): void {
     this.activetedRoute.params.subscribe((params)=>{
       if(params['id'])
-        this.insertion = this.svc.findInsertion(params['id']).subscribe((data: any) => {
+        this.insertion = this.svc.findInsertion(params['id']).
+        subscribe((data: any) => {
           this.insertion = data;
           data.photoIds.forEach(id => {
             this.photos.push(this.photoURL+id);
@@ -42,15 +43,12 @@ export class StanzaPageComponent implements OnInit{
           data.features.forEach((tag: Tag) => {
             this.tags.push(tag.toString());
           })
-          //test TODO
-          var feedbacksIds = [1,2,3];
-          feedbacksIds.forEach(fbID => {
-          // data.receivedFeedbacksIds.forEach(fbID => {
-            this.svcFB.findFeedback(fbID).subscribe((data: any) => {
-              this.feedbacks.push(data);
-            })
-          })
         })
+      this.svcFB.fetchFeedbackOfInsertion(params['id']).subscribe(((fbs: any) => {
+        fbs.forEach(fb => {
+            this.feedbacks.push(fb);
+          })
+      }))
     })
   }
 
@@ -69,7 +67,6 @@ export class StanzaPageComponent implements OnInit{
   feedbackText: string = '';
   rating: number | null = null;
   starsX: number[] = [1, 2, 3, 4, 5];
-  starsSVG: number[] = [1, 2, 3, 4, 5];
 
   onSubmit() {
     if (this.feedbackText && this.rating !== null) {

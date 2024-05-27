@@ -43,7 +43,7 @@
       <p>{{insertion.description}}</p>
     </div>
     <hr class="container-fluid">
-    <div class="feedbacks">
+    <div class="feedbacks container">
       <ul class="feedbacks">
         <li *ngFor="let fb of feedbacks">
           <div class="fb-content">
@@ -65,7 +65,7 @@
         </li>
       </ul>
     </div>
-  <div class="feedback-container">
+  <div class="feedback-container container">
     <h2>Lascia un Feedback</h2>
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">

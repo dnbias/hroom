@@ -36,9 +36,20 @@ public class DataLoader implements ApplicationRunner {
 
        feedbacks.add(LoadFeedbackInsertion(1L, 1L, 5, "Ottima offerta!"));
        feedbacks.add(LoadFeedbackInsertion(2L, 1L, 4, "Appartamento molto bello."));
-       feedbacks.add(LoadFeedbackInsertion(3L, 1L, 4, "Molto bello."));
+       feedbacks.add(LoadFeedbackInsertion(3L, 1L, 3, "bello, si."));
        feedbacks.add(LoadFeedbackInsertion(1L, 2L, 4, "Molto bello."));
-       feedbacks.add(LoadFeedbackInsertion(2L, 2L, 5, "Appartamento molto bello."));
+       feedbacks.add(LoadFeedbackInsertion(2L, 2L, 5, "Appartamento interessante."));
+       feedbacks.add(LoadFeedbackInsertion(4L, 1L, 5, "Ottima!"));
+       feedbacks.add(LoadFeedbackInsertion(5L, 1L, 4, "Appartamento bello."));
+       feedbacks.add(LoadFeedbackInsertion(6L, 1L, 5, "Ottima!"));
+       feedbacks.add(LoadFeedbackInsertion(6L, 1L, 4, "Appartamento bello."));
+       feedbacks.add(LoadFeedbackInsertion(6L, 1L, 4, "Interessante offerta."));
+       feedbacks.add(LoadFeedbackInsertion(7L, 1L, 4, "Molto bello."));
+       feedbacks.add(LoadFeedbackInsertion(4L, 2L, 2, "bello."));
+       feedbacks.add(LoadFeedbackInsertion(7L, 2L, 5, "Stanza molto bella."));
+       feedbacks.add(LoadFeedbackInsertion(7L, 1L, 4, "Molto bello."));
+       feedbacks.add(LoadFeedbackInsertion(4L, 2L, 2, "bello."));
+       feedbacks.add(LoadFeedbackInsertion(7L, 2L, 5, "Appartamento molto bello."));
        feedbacks.add(LoadFeedbackTenant(3L, 1L, 4, "Ottimo cliente."));
        feedbacks.add(LoadFeedbackTenant(2L, 1L, 4, "Buon cliente."));
 

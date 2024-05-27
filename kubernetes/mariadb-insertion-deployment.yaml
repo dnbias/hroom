@@ -1,27 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert -f docker-compose.yml
-    kompose.version: 1.32.0 (HEAD)
-  labels:
-    io.kompose.service: mariadb
-  name: mariadb
+  name: mariadb-insertion-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: mariadb
+      app: mariadb-insertion
   strategy:
     type: Recreate
   template:
     metadata:
-      annotations:
-        kompose.cmd: kompose convert -f docker-compose.yml
-        kompose.version: 1.32.0 (HEAD)
+      name: mariadb-insertion
       labels:
-        io.kompose.network/hroom-backend: "true"
-        io.kompose.service: mariadb
+        app: mariadb-insertion
     spec:
       containers:
         - env:
@@ -34,13 +26,12 @@ spec:
             - name: MYSQL_USER
               value: hroom
           image: mariadb:latest
-          name: mariadb
+          name: mariadb-insertion
           ports:
             - containerPort: 3306
-              hostPort: 3306
               protocol: TCP
           volumeMounts:
-            - mountPath: /var/lib/mysql
+            - mountPath: /var/lib/mysql-insertion
               name: mariadb-insertion-data
       restartPolicy: Always
       volumes:
