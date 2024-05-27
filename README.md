@@ -1,7 +1,7 @@
 # HourRoom
 Project for TAAS course UniTo 2023/24
 ## Class Diagram
-<img title="class diagram" src="./docs/class_diagram.drawio.png">
+<img title="class diagram" src="./docs/insertion-svc-class-diagram.drawio.png">
 
 ## Starting the Project
 ``` bash
