@@ -70,15 +70,23 @@
     <form (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="feedback">Il tuo feedback:</label>
-        <textarea id="feedback" [(ngModel)]="feedbackText" name="feedback" required></textarea>
+        <textarea id="feedback" [(ngModel)]="feedbackDescription" name="feedback" required></textarea>
       </div>
+
+
       <div class="form-group">
-        <label for="rating">Valutazione:</label>
-        <select id="rating" [(ngModel)]="rating" name="rating" required>
+        <label for="rating">Valutazione (0-5):</label>
+        <select id="rating" [(ngModel)]="feedbackRating" name="rating" required>
           <option value="" disabled selected>Seleziona una valutazione</option>
-          <option *ngFor="let star of starsX" [value]="star">{{ star }} stelle</option>
+          <option [value]="0">0 stelle</option>
+          <option [value]="1">1 stella</option>
+          <option [value]="2">2 stelle</option>
+          <option [value]="3">3 stelle</option>
+          <option [value]="4">4 stelle</option>
+          <option [value]="5">5 stelle</option>
         </select>
       </div>
+
       <button type="submit" class="submit-btn">Invia</button>
     </form>
   </div>
