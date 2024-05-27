@@ -29,10 +29,7 @@ spec:
   - matches:
     - path:
         type: PathPrefix
-        value: /login
-    # - path:
-    #     type: PathPrefix
-    #     value: /login/oauth2/code/google
+        value: /login/oauth2/code/google
     - path:
         type: PathPrefix
         value: /oauth2
@@ -111,9 +108,6 @@ spec:
   - name: kong
   rules:
   - matches:
-    - path:
-        type: PathPrefix
-        value: /login/oauth2/code
     - path:
         type: PathPrefix
         value: /api/v1/user
