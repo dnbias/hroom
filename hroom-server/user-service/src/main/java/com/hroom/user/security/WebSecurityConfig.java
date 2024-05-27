@@ -41,7 +41,7 @@ public class WebSecurityConfig {
             )
             .formLogin().disable()
             .oauth2Login(auth -> auth
-                .loginPage("http://localhost:4200/home")
+                .loginPage("http://localhost:8888/home")
                 .userInfoEndpoint()
                          .userService(oauthUserService)
                 .and()
