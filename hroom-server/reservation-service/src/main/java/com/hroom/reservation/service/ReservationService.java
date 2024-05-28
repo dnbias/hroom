@@ -1,16 +1,28 @@
 package com.hroom.reservation.service;
 
+import com.hroom.reservation.entity.Reservation;
+import com.hroom.reservation.exception.MissingReservationException;
 
 import java.util.List;
-
-import com.hroom.reservation.entity.Reservation;
 
 public interface ReservationService {
     Reservation saveReservation(Reservation reservation);
 
     List<Reservation> fetchReservationList();
 
-    Reservation updateReservation(Reservation reservation, Long reservationId);
+    public Reservation findById(Long id)
+        throws MissingReservationException;
+
+    Reservation updateReservation(Reservation reservation, Long reservationId)
+        throws MissingReservationException;
 
     void deleteReservationById(Long reservationId);
+
+    CheckIn saveCheckIn(CheckIn checkIn);
+
+    List<CheckIn> fetchCheckInList();
+
+    CheckIn updateCheckIn(CheckIn checkIn, Long checkInId);
+
+    void deleteCheckInById(Long checkInId);
 }

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mariadb-insertion-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mariadb-insertion
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: mariadb-insertion
+      labels:
+        app: mariadb-insertion
+    spec:
+      containers:
+        - env:
+            - name: MYSQL_DATABASE
+              value: hroom_database
+            - name: MYSQL_PASSWORD
+              value: hroom
+            - name: MYSQL_ROOT_PASSWORD
+              value: root_password
+            - name: MYSQL_USER
+              value: hroom
+          image: mariadb:latest
+          name: mariadb-insertion
+          ports:
+            - containerPort: 3306
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /var/lib/mysql-insertion
+              name: mariadb-insertion-data
+      restartPolicy: Always
+      volumes:
+        - name: mariadb-insertion-data
+          persistentVolumeClaim:
+            claimName: mariadb-insertion-data

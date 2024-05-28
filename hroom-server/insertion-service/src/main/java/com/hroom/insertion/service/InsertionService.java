@@ -2,7 +2,9 @@ package com.hroom.insertion.service;
 
 import com.hroom.insertion.entity.Insertion;
 import com.hroom.insertion.exception.MissingInsertionException;
+import com.hroom.insertion.exception.MissingPhotoException;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface InsertionService {
@@ -17,4 +19,12 @@ public interface InsertionService {
         throws MissingInsertionException;
 
     void deleteInsertionById(Long insertionId);
+
+    List<Long> fetchPhotoList();
+
+    Long uploadPhoto(byte[] image) throws IOException;
+
+    byte[] downloadPhoto(Long id) throws MissingPhotoException;
+
+    void deletePhoto(Long id);
 }

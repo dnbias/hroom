@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: insertion-microservice-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: insertion-microservice
+  template:
+    metadata:
+      name: insertion-microservice
+      labels:
+        app: insertion-microservice
+    spec:
+      containers:
+        - image: dnbias/hroom:insertion-microservice
+          name: insertion-microservice-app
+          imagePullPolicy: Always
+          # env:
+          #     - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+          #       value: "true"
+      restartPolicy: Always

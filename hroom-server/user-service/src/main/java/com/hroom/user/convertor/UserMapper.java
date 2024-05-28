@@ -1,6 +1,9 @@
 package com.hroom.user.convertor;
 
 import com.hroom.user.dto.SignUpRequest;
+import com.hroom.user.entity.Admin;
+import com.hroom.user.entity.Landlord;
+import com.hroom.user.entity.Tenant;
 import com.hroom.user.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +15,6 @@ public class UserMapper {
         user.setUsername(signUpRequest.getUsername());
         user.setPassword(signUpRequest.getPassword());
         user.setPhoneNumber(signUpRequest.getPhoneNumber());
-        user.setRole(signUpRequest.getRole());
         user.setName(signUpRequest.getName());
         user.setSurname(signUpRequest.getSurname());
         user.setEmail(signUpRequest.getEmail());

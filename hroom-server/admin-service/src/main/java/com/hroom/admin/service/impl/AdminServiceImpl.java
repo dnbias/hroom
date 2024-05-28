@@ -1,115 +1,77 @@
 package com.hroom.admin.service.impl;
 
-import com.hroom.admin.repository.AdminRepository;
 import com.hroom.admin.service.AdminService;
 import com.hroom.admin.entity.Admin;
 import com.hroom.admin.entity.User;
 import com.hroom.admin.exception.MissingUserException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.http.*;
-import java.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static com.hroom.admin.security.SecurityTools.isSanitized;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 @Service
-public class AdminServiceImpl implements AdminService{
+public class AdminServiceImpl implements AdminService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(getClass());
+    @Value("${spring.rabbitmq.template.exchange}")
+    private String exchange;
+    @Value("${spring.rabbitmq.template.routing-key}")
+    private String routingkey;
+    @Value("${spring.rabbitmq.template.photo.routing-key}")
+    private String routingkeyPhoto;
+    @Value("${spring.rabbitmq.template.insertion.routing-key}")
+    private String routingkeyInsertion;
+    @Value("${spring.rabbitmq.template.photo.exchange}")
+    private String exchangePhoto;
+    @Value("${spring.rabbitmq.template.insertion.exchange}")
+    private String exchangeInsertion;
+
+
+    private static final String USER_BASE_URL = "http://user-microservice/api/v1";
+    private final RestTemplate restTemplate = new RestTemplate();
+    private final RabbitTemplate rabbitTemplate;
 
     @Autowired
-    private AdminRepository repository;
-    private static final String TENANT_BASE_URL = "http://TENANT-SERVICE:8761/api/v1/tenant";
-    private static final String LANDLORD_BASE_URL = "http://LANDLORD-SERVICE:8761/api/v1/landlord";
-    private static final String USER_BASE_URL = "http://USER-SERVICE:9000/api/v1/user";
-    private final RestTemplate restTemplate = new RestTemplate();
-
-
-    @Override
-    public Admin saveAdmin(Admin admin) {
-        LOGGER.info("AdminServiceImpl > saveAdmin started");
-        return repository.save(admin);
+    public AdminServiceImpl(RabbitTemplate rabbitTemplate) {
+        this.rabbitTemplate = rabbitTemplate;
     }
 
     @Override
-    public List<Admin> fetchAdminList() {
-        LOGGER.info("AdminServiceImpl > fetchAdminList started");
-        return (List<Admin>) repository.findAll();
+    public String deletePhotoById(Long photoId) {
+        LOGGER.info("AdminServiceImpl > deletePhotoById started");
+        LOGGER.info("AdminServiceImpl > deletePhotoById > photoId : " + photoId);
+
+        LOGGER.info("AdminServiceImpl > deletePhotoById > Invoking RabbitMq");
+        rabbitTemplate.convertAndSend(exchangePhoto, routingkeyPhoto, photoId);
+        return "Photo Deleted";
     }
 
     @Override
-    public Admin updateAdmin(Admin admin, Long userId)
-        throws MissingUserException {
-        LOGGER.info("AdminServiceImpl > updateAdmin started");
-        Optional<Admin> optional= repository.findById(userId);
+    public String deleteInsertionById(Long insId) {
+        LOGGER.info("AdminServiceImpl > deleteInsertionById started");
+        LOGGER.info("AdminServiceImpl > deleteInseritonById > insId : " + insId);
 
-        if(optional.isEmpty()) {
-            throw new MissingUserException(userId);
-        }
-
-        Admin userDB = optional.get();
-
-        if (isSanitized(admin.getUsername())) userDB.setUsername(admin.getUsername());
-        if (isSanitized(admin.getName())) userDB.setName(admin.getName());
-        if (isSanitized(admin.getSurname())) userDB.setSurname(admin.getSurname());
-        if (isSanitized(admin.getBirthdate())) userDB.setBirthdate(admin.getBirthdate());
-        if (isSanitized(admin.getCapability())) userDB.setCapability(admin.getCapability());
-        if (isSanitized(admin.getPassword())) userDB.setPassword(admin.getPassword());
-
-        return repository.save(userDB);
-    }
+        LOGGER.info("AdminServiceImpl > deleteInsertionById > Invoking RabbitMq");
+        rabbitTemplate.convertAndSend(exchangeInsertion, routingkeyInsertion, insId);
+        return "Insertion Deleted";
+    } 
 
     @Override
-    public void deleteAdminById(Long userId) {
-        LOGGER.info("AdminServiceImpl > deleteAdminById started");
-        repository.deleteById(userId);
+    public String banUserById(Long userId) {
+        LOGGER.info("AdminServiceImpl > banUserById started");
+        LOGGER.info("AdminServiceImpl > banUserById > userId : " + userId);
+
+        LOGGER.info("AdminServiceImpl > banUserById > Invoking RabbitMq");
+        rabbitTemplate.convertAndSend(exchange, routingkey, userId);
+        return "User Banned";
     }
 
-    @Override
-    public ResponseEntity<?> banTenantById(Long userId) {
-        LOGGER.info("AdminServiceImpl > banTenantById started");
-        LOGGER.info("AdminServiceImpl > banTenantById > userId : " + userId);
-
-        String result = getRoleInfo();
-
-        LOGGER.info("AdminServiceImpl > banTenantById > role result : " + result);
-
-        if(result.equals("ROLE_ADMIN")){
-            HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            HttpEntity < String > entity = new HttpEntity < > (httpHeaders);
-            return restTemplate.exchange(TENANT_BASE_URL + userId,
-                                         HttpMethod.DELETE, entity, String.class);
-        }
-
-        return null;
-    }
-
-    @Override
-    public ResponseEntity<?> banLandlordById(Long userId) {
-        LOGGER.info("AdminServiceImpl > banLandlordById started");
-        LOGGER.info("AdminServiceImpl > banLandlordById > userId : " + userId);
-
-        String result = getRoleInfo();
-
-        LOGGER.info("AdminServiceImpl > banLandlordById > role result : " + result);
-
-        if(result.equals("ROLE_ADMIN")){
-            HttpHeaders httpHeaders = new HttpHeaders();
-            httpHeaders.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-            HttpEntity < String > entity = new HttpEntity < > (httpHeaders);
-            return restTemplate.exchange(LANDLORD_BASE_URL + userId,
-                                         HttpMethod.DELETE, entity, String.class);
-        }
-
-        return null;
-    }
-
-    private String getRoleInfo(){
+    private String getRoleInfo() {
 
         LOGGER.info("AdminServiceImpl > getRoleInfo is started");
 

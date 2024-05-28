@@ -1,0 +1,34 @@
+#!/bin/sh
+
+usage() {
+echo "$(basename "$0") [-h|--help] [-a|--all] [-t|--target t] [--db|--mq|--web] [-n|--number n]"
+echo
+echo "Small utility to scale kubernetes deployments on the default namespace"
+echo "where:"
+echo "    -h|--help       shows this help text"
+echo "    -a|--all        scale all the deployments"
+echo "    -t|--target     target to scale"
+echo "    --db            scale mariadb"
+echo "    --mq            scale rabbitmq"
+echo "    --web           scale web-app"
+echo "    -n|--number     what to scale at, defaults to 0 if not specified"
+}
+
+number=0
+
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        -h|--help) usage ; exit ;;
+        -a|--all) target="$(kubectl --namespace default get deployment | awk '{print $1}' | tail -n +2)"; shift ;;
+        -t|--target) target="$2-microservice-deployment"; shift 2 ;;
+        --db) target="mariadb"; shift ;;
+        --mq) target="rabbitmq"; shift ;;
+        --web) target="web-app"; shift ;;
+        -n|--number) number="$2"; shift 2 ;;
+        /?) usage ; exit 1 ;;
+    esac
+done
+
+# echo "target: $target"
+# echo "number: $number"
+kubectl --namespace default scale deployment "$target" --replicas $number

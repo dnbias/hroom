@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 import {SalutiDataService} from "../../../services/data/saluti-data.service";
+import {stanze} from "../../shared/models/stanza";
+import {ProjectService} from "../../service/project/project.service"
+import {Tag} from "../../shared/models/tags";
 
 @Component({
   selector: 'app-welcome',
@@ -10,17 +13,30 @@ import {SalutiDataService} from "../../../services/data/saluti-data.service";
 })
 export class WelcomeComponent implements OnInit {
 
-  utente : string = "";
+  featuredProject={} as stanze;
+  rs={} as stanze[];
+  utente : string = "user";
+  role : string = "tenant";
+
   titolo : string="Benvenuto in HRoom ";
   sottotitolo : string ="Goditi  il tuo divertimento ad ore ";
 
-  constructor(private route : ActivatedRoute, private salutiSrv : SalutiDataService) {}
+  constructor(private route : ActivatedRoute,
+              private salutiSrv : SalutiDataService,
+              private projectService: ProjectService) {}
+
 
   ngOnInit(): void {
+    this.featuredProject= this.projectService.GetProjectById(1);
 
-    this.utente = this.route.snapshot.params['userid'];
-
+    var user = sessionStorage.getItem('username')
+    var role = sessionStorage.getItem('role')
+    if (user)
+      this.utente = user;
+    if (role)
+      this.role = role;
   }
+
   saluti : string = "";
   errore : string = "";
 

@@ -1,0 +1,12 @@
+# http://localhost:8888/login/oauth2/code/google
+spring:
+  security:
+      oauth2:
+        client:
+          registration:
+            google:
+              client-id: 55986931159-cgo7iq0rkupitd85injpre9bg69oh199.apps.googleusercontent.com
+              client-secret: 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
+              scope:
+                - email
+                - profile

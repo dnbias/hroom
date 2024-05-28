@@ -1,0 +1,90 @@
+<div class="tab">
+  <button class="tablinks" (click)="openTab('Users')">Users</button>
+  <button class="tablinks" (click)="openTab('Insertions')">Insertions</button>
+  <button class="tablinks" (click)="openTab('Photos')">Photos</button>
+</div>
+<div class="container mt-4">
+  <h2 class="text-center">{{ tableName }} List</h2>
+  <table class="table table-striped user" *ngIf="userTableEnabled">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Provider</th>
+        <th>Created At</th>
+        <th>Role</th>
+        <th>Phone Number</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users; let i = index">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.surname }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.provider }}</td>
+        <td>{{ user.createAt | date:'short' }}</td> <!-- Using Angular date pipe -->
+        <td>{{ user.role }}</td>
+        <td>{{ user.phoneNumber }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="banUser(user.id, i)">Ban</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped insertion" *ngIf="insTableEnabled">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>type</th>
+      <th>landlordID</th>
+      <th>name</th>
+      <th>tags</th>
+      <th>price</th>
+      <th>city</th>
+      <th>address</th>
+      <th>photoIds</th>
+      <th>receivedFeedbacksIds</th>
+      <th>availabilityId</th>
+      <th>Actions</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let ins of insertions; let i = index">
+        <td>{{ ins.id }}</td>
+        <td>{{ ins.insertion_type }}</td>
+        <td>{{ ins.landlordId }}</td>
+        <td>{{ ins.name }}</td>
+        <td>{{ ins.features }}</td>
+        <td>{{ ins.price }}</td>
+        <td>{{ ins.city }}</td>
+        <td>{{ ins.address }}</td>
+        <td>{{ ins.photoIds }}</td>
+        <td>{{ ins.receivedFeedbacksIds }}</td>
+        <td>{{ ins.availabilityId }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deleteInsertion(ins.id, i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table table-striped photo" *ngIf="photoTableEnabled">
+    <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Actions</th>
+    </tr>
+    <tbody>
+      <tr *ngFor="let photo of photos; let i = index">
+        <td>{{ photo }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="deletePhoto(photo, i)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

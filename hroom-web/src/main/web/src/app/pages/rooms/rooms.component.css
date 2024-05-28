@@ -1,0 +1,112 @@
+/* Stile per il bottone del dropdown */
+.dropbtn {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.dropbtn:hover {
+  background-color: #0056b3;
+}
+
+/* Contenitore del dropdown */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 200px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 1;
+  border-radius: 4px;
+  margin-top: 5px;
+  padding: 10px;
+  transition: opacity 0.3s ease;
+}
+
+/* Show the dropdown menu when it has the "show" class */
+.dropdown-content.show {
+  display: block;
+  opacity: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content label {
+  color: #333;
+  padding: 8px 12px;
+  text-decoration: none;
+  display: block;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content label:hover {
+  background-color: #f1f1f1;
+}
+
+/* Stile per le checkbox */
+.dropdown-content input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Stile per i tag selezionati */
+.selected-tags {
+  margin-top: 15px;
+  font-size: 16px;
+}
+
+.selected-tag {
+  background-color: darkslategrey;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 4px;
+  margin-right: 5px;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.selected-tag:hover {
+
+}
+.badge {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  color: black;
+
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.badge-info {
+  background-color: #fcf6bd;
+
+}
+
+.badge:hover {
+
+}
+.tag-color {
+  display: inline-block;
+  width: 20px; 
+  height: 20px; 
+  margin-right: 5px;
+  border-radius: 50%;
+}

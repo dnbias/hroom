@@ -1,0 +1,215 @@
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 3rem;
+}
+.container > *{
+    min-width: 25rem;
+    max-width: 40rem;
+}
+
+.valutazione {
+  padding-top: 10px;
+}
+
+img{
+    border-radius: 3rem;
+    flex: 1 0;
+    object-fit: cover;
+    height: 30rem;
+    margin: 1rem;
+}
+.details{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0;
+    border-radius: 3rem;
+    padding: 2rem;
+    color: black;
+    margin-left: 1rem;
+}
+
+.container .description {
+    max-width: 55rem;
+}
+.description{
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif !important;
+    font-size: 20px;
+    text-align: justify;
+    line-height: 1.3em;
+    flex-direction: default !important;
+    margin: 10px !important;
+    padding: 0px !important;
+}
+
+.details .header{
+    display: flex;
+    justify-content: space-between;
+}
+.details .name{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.details .favorite{
+    color: #e72929;
+    font-size: 2.5rem;
+}
+.details .favorite.not{
+    color: gray;
+}
+.details .luogo{
+    display: flex;
+    flex-wrap:wrap;
+    margin: 1rem 0;
+}
+.details .luogo > span{
+    padding: .5rem;
+    font-size: 1.2rem;
+    margin: .5rem .5rem .5rem 0;
+    border-radius: 2rem;
+    background-color: whitesmoke;
+    color:green;
+}
+.details .tempo-room{
+    margin:1rem;
+}
+.details .tempo-room span{
+    padding: .6rem 2rem 6rem 0;
+    border-radius: 10rem ;
+    font-size: 1.3rem;
+}
+.details .prezzo{
+    font-size: 1.8rem;
+    margin: 2rem 2rem 2rem 0;
+    color: green;
+}
+.details .prezzo::before{
+    content: "Prezzo:";
+    color: grey;
+}
+.details button{
+    color: white;
+    background-color: #0062cc;
+    border:none;
+    font-size: 1.2rem;
+    padding: 1rem;
+    border-radius: 10rem;
+    outline: none;
+    max-width: 125px;
+}
+.details button:hover{
+    opacity: .9;
+    cursor: pointer;
+}
+
+svg{
+    color: #ffdc42;
+    vertical-align: text-top;
+}
+
+.feedbacks li {
+  display: inline-block;
+  vertical-align: top;
+  font-size: medium;
+  padding: 15px;
+  max-width: 300px; /* Imposta la larghezza massima di ogni feedback */
+}
+.feedbacks ul {
+  max-width: inherit;
+  /* display: flex; */
+  /* flex:auto; /\* Aggiunto per far andare i feedback su più righe *\/ */
+  justify-content: center; /* Centra i feedback orizzontalmente */
+  /* margin: 20px; */
+  margin: 0 auto
+  /* padding: 5px; */
+  list-style-type: none;
+}
+
+.fb-content {
+    border-left: ridge;
+    border-radius: 4px;
+}
+
+.fb-rating {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 600;
+    padding-left: 2px;
+    margin-left: 4px;
+}
+.fb-rating svg{
+  margin-top: 3;
+  margin-left: -5;
+}
+
+
+.fb-timestamp {
+    padding-left: 2px;
+    margin-left: 4px;
+    color:dimgrey;
+}
+
+.fb-description {
+    padding-left: 2px;
+    margin-left: 4px;
+    margin: 2px;
+    max-width: 180px;
+}
+
+img.loading-spinner {
+  object-fit: scale-down;
+  vertical-align: middle;
+
+}
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  height: 100px;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+

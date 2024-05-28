@@ -1,0 +1,6 @@
+<div class="container" *ngIf="tags" [style.justifyContent] = "justifyContent">
+  <div *ngFor = "let tag of tags; let i as index">
+    <button  *ngIf="!tagStatus[i]" [ngStyle]="{'background-color': this.tagUtil.getColor(tag)}" (click)="toggle(tag,i)">{{tag}}</button>
+    <button  class="toggled" *ngIf="tagStatus[i]" (click)="toggle(tag,i)">{{tag}}</button>
+  </div>
+</div>

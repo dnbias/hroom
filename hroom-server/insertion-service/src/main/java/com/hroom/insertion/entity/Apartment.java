@@ -8,6 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.DiscriminatorValue;
+
+import org.springframework.beans.factory.annotation.Value;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,9 +21,9 @@ import lombok.Setter;
 @Table(name = "Apartments")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@DiscriminatorValue("2")
 public class Apartment extends Insertion {
-    @Column(nullable = false)
-    private int numberOfRooms;
+    @Column(nullable = false, columnDefinition = "integer default 1")
+    private int numberOfRooms = 2;
 }

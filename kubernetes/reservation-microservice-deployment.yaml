@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: reservation-microservice-deployment
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: reservation-microservice
+  template:
+    metadata:
+      name: reservation-microservice
+      labels:
+        app: reservation-microservice
+    spec:
+      containers:
+        - image: dnbias/hroom:reservation-microservice
+          name: reservation-microservice-app
+          imagePullPolicy: Always
+          env:
+              - name: SPRING_CLOUD_BOOTSTRAP_ENABLED
+                value: "true"
+      restartPolicy: Always

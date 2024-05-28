@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@abacritt/angularx-social-login": "^2.2.0",
+    "@types/gapi.auth2": "^0.0.60",
+    "jqwidgets-ng": "^19.0.5",
+    "rxjs": "^7.8.1",
+    "zone.js": "^0.14.6"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

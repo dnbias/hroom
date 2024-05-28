@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.32.0 (HEAD)
+  labels:
+      app: web-app
+  name: web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-app
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.32.0 (HEAD)
+      labels:
+        app: web-app
+    spec:
+      containers:
+        - image: dnbias/hroom:web-app
+          name: web-app
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always

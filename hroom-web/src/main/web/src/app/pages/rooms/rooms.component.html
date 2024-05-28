@@ -1,0 +1,154 @@
+<div class="row">
+  <div class="col-12 text-end">
+    <button class="btn btn-primary" (click)="AddNewRoom()">Add New</button>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-12">
+    <table class="table table-bordered">
+      <thead>
+      <tr>
+        <th>Numero riga:</th>
+        <th>Tipo struttura</th>
+        <th>Nome landlord</th>
+        <th>Nome stanza</th>
+        <th>Tag</th>
+        <th>Descrizione</th>
+        <th>Prezzo</th>
+        <th>Città</th>
+        <th>Indirizzo</th>
+        <th>Disponibilità</th>
+        <th>Foto</th>
+        <th>Availability</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor=" let ins of insertionList; let sr = index">
+        <td>{{sr+1}}</td>
+        <td>
+          <select [(ngModel)]="ins.insertion_type" name="Insertion_type" class="form-control">
+            <option [value]="1">Room</option>
+            <option [value]="2">Appartamento</option>
+          </select>
+        </td>
+<!--
+        <td>
+          <input type="text" [(ngModel)]="ins.Insertion_type" name="Insertion_type"  class="form-control" />
+        </td>
+-->
+
+        <td>
+          <input type="text" [(ngModel)]="ins.landlordId" name="landlordId"  class="form-control" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.name" name="name" class="form-control"  />
+        </td>
+
+        <!--
+            <td>
+              <select [(ngModel)]="ins.tags" name="tag" class="form-control">
+                <option class *ngFor="let tag of availableTags" [value]="tag">{{tag}}</option>
+              </select>
+            </td>
+    -->
+
+
+        <td>
+          <div class="dropdown">
+            <button class="dropbtn" (click)="toggleDropdown()">Tag</button>
+            <div class="dropdown-content" [class.show]="dropdownOpen">
+              <label *ngFor="let tag of availableTags">
+                <input
+                  type="checkbox"
+                  [value]="tag"
+                  (change)="toggleTag($event, tag, ins)"
+                  [checked]="ins.features.includes(tag)">
+                <span [style.background-color]="tagUtility.getColor(tag)" class="badge tag-color">{{ tag }}</span>
+              </label>
+            </div>
+          </div>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.description" name="description" class="form-control"  />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.price" name="price"class="form-control" class="form-control"   />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.city" name="città"class="form-control" class="form-control"  />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.address" name="address" class="form-control" class="form-control" />
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.area" name="area"  class="form-control" class="form-control"  />
+        </td>
+
+        <td>
+          <input type="file" name="photoUrl" class="form-control"/>
+        </td>
+        <td>
+          <input type="text" [(ngModel)]="ins.availabilityId" name="availavilityId" class="form-control"  class="form-control" />
+        </td>
+        <td>
+          <button class="btn btn-primary" (click)="saveRooms()">Aggiungi</button>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-danger" (click)="removeRiga(sr)">Rimuovi</button>
+        </td>
+
+      </tr>
+      <div>
+        <div>
+          Selezionati:
+
+          <span *ngFor="let tag of ins.tags" class="badge badge-info " >{{ tag }}</span>
+        </div>
+      </div>
+
+      </tbody>
+
+      <div>
+        <td  *ngFor=" let ins of insertionList; let sr = index">
+          <input type="text" [(ngModel)]="ins.id" name="description" class="form-control"  />
+
+          <button class="btn btn-sm btn-danger" (click)="onDelete(ins.id)">cancella </button>
+        </td>
+      </div>
+
+
+      <!--
+
+
+          <tr *ngFor="let room of room ;let sr= index">
+             <td> {{sr+1}}</td>
+             <td>
+               <input type="text" [(ngModel)]="room.roomName" name="roomName{{sr}}" class="form-control" />
+             </td>
+             <td>
+               <input type="checkbox" [(ngModel)]="room.isAcAvailable" name="isAcAvailable{{sr}}" />
+             </td>
+             <td>
+               <input type="text" [(ngModel)]="room.roomCapacity" name="roomCapacity{{sr}}"
+                      class="form-control" />
+             </td>
+
+             <td>
+               <input type="number" [(ngModel)]="room.roomTariff" name="roomTariff{{sr}}"
+                      class="form-control" />
+             </td>
+             <td>
+               <input type="number" [(ngModel)]="room.extensionNo" name="extensionNo{{sr}}"
+                      class="form-control" />
+             </td>
+             <td>
+               <button class="btn btn-sm btn-danger" (click)="onDelete(room.roomId)">Remove</button>
+             </td>
+           </tr>
+              </tbody>-->
+
+    </table>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  name: hroom-mq
+spec:
+  rabbitmq:
+    envConfig:
+      RABBITMQ_DEFAULT_USER='guest'
+      RABBITMQ_DEFAULT_PASS='guest'
+  service:
+    type: NodePort

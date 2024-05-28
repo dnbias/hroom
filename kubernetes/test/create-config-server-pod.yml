@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+   name: config-server-pod
+spec:
+   containers:
+   - name: config-server-container01
+     image: dnbias/hroom:config-server
+     ports:
+     - containerPort: 9191
+       name: config-port

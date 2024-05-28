@@ -1,0 +1,176 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: kong
+  annotations:
+    konghq.com/gatewayclass-unmanaged: 'true'
+spec:
+  controllerName: konghq.com/kic-gateway-controller
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: kong
+spec:
+  gatewayClassName: kong
+  listeners:
+  - protocol: HTTP
+    port: 80
+    name: proxy
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hroom-oauth-route
+spec:
+  parentRefs:
+  - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /login/oauth2/code/google
+    - path:
+        type: PathPrefix
+        value: /oauth2
+    - path:
+        type: PathPrefix
+        value: /oauth2/authentication
+    backendRefs:
+    - name: user-microservice
+      port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hroom-web-app-route
+spec:
+  parentRefs:
+  - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    - path:
+        type: PathPrefix
+        value: /login
+    - path:
+        type: PathPrefix
+        value: /home
+    backendRefs:
+    - name: web-app
+      port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hroom-admin-route
+spec:
+  parentRefs:
+  - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/admin
+    backendRefs:
+    - name: admin-microservice
+      port: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/ban
+    backendRefs:
+    - name: admin-microservice
+      port: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/delete/insertion
+    backendRefs:
+    - name: admin-microservice
+      port: 80
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/delete/photo
+    backendRefs:
+    - name: admin-microservice
+      port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hroom-user-route
+spec:
+  parentRefs:
+  - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/user
+    - path:
+        type: PathPrefix
+        value: /api/v1/login
+    - path:
+        type: PathPrefix
+        value: /api/v1/signup
+    - path:
+        type: PathPrefix
+        value: /api/v1/info
+    - path:
+        type: PathPrefix
+        value: /j_spring_security_check
+    backendRefs:
+    - name: user-microservice
+      port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hroom-insertion-route
+spec:
+  parentRefs:
+  - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/insertion
+    backendRefs:
+    - name: insertion-microservice
+      port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hroom-photos-route
+spec:
+  parentRefs:
+  - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/upload/photo
+    backendRefs:
+    - name: insertion-microservice
+      port: 80
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hroom-feedback-route
+spec:
+  parentRefs:
+  - name: kong
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /api/v1/feedback
+    backendRefs:
+    - name: feedback-microservice
+      port: 80
